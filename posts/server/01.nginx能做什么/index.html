@@ -1,0 +1,134 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><title>nginx能做什么 | 曜灵（SUN）Site</title><link href=/img-common/favicon.png rel="shortcut icon" type=image/x-icon><meta name=author content="曜灵"><meta name=description content="node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;"><meta name=generator content="Hugo 0.74.2"><link rel=canonical href=/posts/server/01.nginx%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88/><meta property="og:title" content="nginx能做什么"><meta property="og:description" content="node 作为当前最受欢迎的&#34;js版&#34;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;"><meta property="og:type" content="article"><meta property="og:url" content="/posts/server/01.nginx%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88/"><meta property="article:published_time" content="2018-02-09T00:00:00+00:00"><meta property="article:modified_time" content="2018-02-09T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="nginx能做什么"><meta name=twitter:description content="node 作为当前最受欢迎的&#34;js版&#34;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;"><link rel=stylesheet href=/css/semantic.min.css><link rel=stylesheet href=/css/OverlayScrollbars.min.css><link rel=stylesheet href=/css/github-markdown.css><link rel=stylesheet href=/css/site.css><style>.inverted a{color:#8fbc8f!important}</style><style>body{background-image:url(/img-common/background.jpg)}</style><link rel=stylesheet data-highlight href=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/gruvbox-light.min.css></head><body><nav class="ui secondary inverted menu dream-menu"><div class=item><i class="large link bullseye icon dream-flip-toggle" title=翻转！></i></div><div class=item><i class="large link home icon" title=首页 onclick="window.location.href='\/'"></i></div><div class=item><i class="large link icon theme-switch" onclick=themeSwitch()></i></div><div class=item><i class="large link search icon" onclick=toggleSearch()></i></div></nav><div class=flip-container><div class=flipper><section class=front><div class=dream-max-width><div class="ui centered relaxed grid dream-grid"><div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single" id=dream-save-post-as-img><section class="ui top attached segment cover"><div class=cover-img style=background-image:url()></div></section><section class="ui attached segment"><header><h1 class="ui large header">nginx能做什么<div class="sub header">@
+曜灵
+· Friday, Feb 9, 2018
+· 6 分钟阅读
+· 更新于 Feb 9, 2018</div></h1></header><article style=margin-top:2rem><p>node 作为当前最受欢迎的"js版"后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;</p><h2 id=能做什么>能做什么</h2><ol><li>反向代理</li><li>负载均衡</li><li>HTTP服务器（包含动静分离）</li><li>正向代理</li></ol><h2 id=反向代理>反向代理</h2><p>反向代理应该是Nginx做的最多的一件事了，什么是反向代理呢，以下是百度百科的说法：反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已。 下面贴上一段简单的实现反向代理的代码</p><pre><code>server { 
+  listen 80; 
+  server_name localhost; 
+  client_max_body_size 1024M;
+  location / {
+        proxy_pass http://localhost:8080;
+        proxy_set_header Host $host:$server_port;
+    }
+}
+</code></pre><p>保存配置文件后启动Nginx，这样当我们访问localhost的时候，就相当于访问localhost:8080了</p><h2 id=负载均衡>负载均衡</h2><p>负载均衡也是Nginx常用的一个功能，负载均衡其意思就是分摊到多个操作单元上进行执行，例如Web服务器、FTP服务器、企业关键应用服务器和其它关键任务服务器等，从而共同完成工作任务。简单而言就是当有2台或以上服务器时，根据规则随机的将请求分发到指定的服务器上处理，负载均衡配置一般都需要同时配置反向代理，通过反向代理跳转到负载均衡。而Nginx目前支持自带3种负载均衡策略，还有2种常用的第三方策略。</p><h5 id=1rr默认>1、RR（默认）</h5><p>每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除<br>简单配置</p><pre><code>upstream test {
+    server localhost:8080;
+    server localhost:8081;
+}
+server {
+    listen       81;                                                        
+    server_name  localhost;                                              
+    client_max_body_size 1024M;
+
+    location / {
+        proxy_pass http://test;
+        proxy_set_header Host $host:$server_port;
+    }
+}
+</code></pre><p>负载均衡的核心代码为</p><pre><code>upstream test {
+    server localhost:8080;
+    server localhost:8081;
+}
+</code></pre><p>这里我配置了2台服务器，当然实际上是一台，只是端口不一样而已，而8081的服务器是不存在的,也就是说访问不到，但是我们访问<a href=http://localhost/>http://localhost</a> 的时候,也不会有问题，会默认跳转到<a href=http://localhost:8080/>http://localhost:8080</a> 具体是因为Nginx会自动判断服务器的状态，如果服务器处于不能访问（服务器挂了），就不会跳转到这台服务器，所以也避免了一台服务器挂了影响使用的情况，由于Nginx默认是RR策略，所以我们不需要其他更多的设置</p><h5 id=2权重>2、权重</h5><p>指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。 例如</p><pre><code>upstream test {
+    server localhost:8080 weight=9;
+    server localhost:8081 weight=1;
+}
+</code></pre><p>那么10次一般只会有1次会访问到8081，而有9次会访问到8080</p><h5 id=3ip_hash>3、ip_hash</h5><p>上面的2种方式都有一个问题，那就是下一个请求来的时候请求可能分发到另外一个服务器，当我们的程序不是无状态的时候（采用了session保存数据），这时候就有一个很大的很问题了，比如把登录信息保存到了session中，那么跳转到另外一台服务器的时候就需要重新登录了，所以很多时候我们需要一个客户只访问一个服务器，那么就需要用iphash了，iphash的每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题</p><pre><code>upstream test {
+    ip_hash;
+    server localhost:8080;
+    server localhost:8081;
+}
+</code></pre><h5 id=4fair第三方>4、fair（第三方）</h5><p>按后端服务器的响应时间来分配请求，响应时间短的优先分配</p><pre><code>upstream backend {
+    fair;
+    server localhost:8080;
+    server localhost:8081;
+}
+</code></pre><h5 id=5url_hash第三方>5、url_hash（第三方）</h5><p>按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。 在upstream中加入hash语句，server语句中不能写入weight等其他的参数，hash_method是使用的hash算法</p><pre><code>upstream backend {
+    hash $request_uri;
+    hash_method crc32;
+    server localhost:8080;
+    server localhost:8081;
+}
+</code></pre><p>以上5种负载均衡各自适用不同情况下使用，所以可以根据实际情况选择使用哪种策略模式,不过fair和url_hash需要安装第三方模块才能使用，由于本文主要介绍Nginx能做的事情，所以Nginx安装第三方模块不会再本文介绍</p><h2 id=http服务器>HTTP服务器</h2><p>Nginx本身也是一个静态资源的服务器，当只有静态资源的时候，就可以使用Nginx来做服务器，同时现在也很流行动静分离，就可以通过Nginx来实现，首先看看Nginx做静态资源服务器</p><pre><code>server {
+    listen       80;                                                        
+    server_name  localhost;                                              
+    client_max_body_size 1024M;
+
+
+    location / {
+           root   e:wwwroot;
+           index  index.html;
+       }
+}
+</code></pre><p>这样如果访问<a href=http://localhost/>http://localhost</a> 就会默认访问到E盘wwwroot目录下面的index.html，如果一个网站只是静态页面的话，那么就可以通过这种方式来实现部署</p><h2 id=动静分离>动静分离</h2><p>动静分离是让动态网站里的动态网页根据一定规则把不变的资源和经常变的资源区分开来，动静资源做好了拆分以后，我们就可以根据静态资源的特点将其做缓存操作，这就是网站静态化处理的核心思路</p><pre><code>upstream test{ 
+  server localhost:8080; 
+  server localhost:8081; 
+}
+
+server {  
+    listen       80;  
+    server_name  localhost;  
+
+    location / {  
+        root   e:wwwroot;  
+        index  index.html;  
+    }  
+
+    # 所有静态请求都由nginx处理，存放目录为html  
+    location ~ .(gif|jpg|jpeg|png|bmp|swf|css|js)$ {  
+        root    e:wwwroot;  
+    }  
+
+    # 所有动态请求都转发给tomcat处理  
+    location ~ .(jsp|do)$ {  
+        proxy_pass  http://test;  
+    }  
+
+    error_page   500 502 503 504  /50x.html;  
+    location = /50x.html {  
+        root   e:wwwroot;  
+    }  
+}  
+</code></pre><p>这样我们就可以吧HTML以及图片和css以及js放到wwwroot目录下，而tomcat只负责处理jsp和请求，例如当我们后缀为gif的时候，Nginx默认会从wwwroot获取到当前请求的动态图文件返回，当然这里的静态文件跟Nginx是同一台服务器，我们也可以在另外一台服务器，然后通过反向代理和负载均衡配置过去就好了，只要搞清楚了最基本的流程，很多配置就很简单了，另外localtion后面其实是一个正则表达式，所以非常灵活</p><h2 id=正向代理>正向代理</h2><p>正向代理，意思是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端才能使用正向代理。当你需要把你的服务器作为代理服务器的时候，可以用Nginx来实现正向代理，但是目前Nginx有一个问题，那么就是不支持HTTPS，虽然我百度到过配置HTTPS的正向代理，但是到最后发现还是代理不了，当然可能是我配置的不对，所以也希望有知道正确方法的同志们留言说明一下</p><pre><code>resolver 114.114.114.114 8.8.8.8;
+server {
+
+    resolver_timeout 5s;
+
+    listen 81;
+
+    access_log  e:wwwrootproxy.access.log;
+    error_log   e:wwwrootproxy.error.log;
+
+    location / {
+        proxy_pass http://$host$request_uri;
+    }
+}
+</code></pre><p>resolver是配置正向代理的DNS服务器，listen 是正向代理的端口，配置好了就可以在ie上面或者其他代理插件上面使用服务器ip+端口号进行代理了</p><hr><p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>
+<strong>欢迎交流~</strong></p><p></p></article></section><footer class="ui attached segment dream-tags" data-html2canvas-ignore><a class="ui label" href=/tags/nginx title=nginx>nginx</a>
+<a class="ui label" href=/tags/%E8%84%9A%E6%89%8B%E6%9E%B6 title=脚手架>脚手架</a><div class="ui label" style=float:right;cursor:pointer onclick=savePostAsImg()><i class="save icon"></i>保存为图片</div></footer><footer class="ui bottom attached stacked segment post-disqus-area" data-html2canvas-ignore><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url='\/posts\/server\/01.nginx%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88\/';this.page.identifier='\/posts\/server\/01.nginx%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88\/';};(function(){var d=document,s=d.createElement('script');s.src='https://'+'...'+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></footer><div class="ui segment utterances-comments" data-html2canvas-ignore><script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=og:title theme=github-light crossorigin=anonymous async></script></div></div><div class="sixteen wide mobile sixteen wide tablet four wide computer column"><article class=dream-header><section class="ui top attached center aligned segment"><div class="ui small circular image"><img src=/img-common/favicon.png></div><div class="ui medium header">曜灵 的博客<div class="sub header" style=margin-top:.5rem>带着 "偏见" 去理解技术的世界！</div></div><div class="ui horizontal list"><a class=item href=/posts><i class="archive icon" title=归档></i></a><a class=item href=/tags><i class="tags icon" title=所有标签></i></a><a class=item href=/categories><i class="th list icon" title=所有分类></i></a></div></section><section class="ui attached center aligned segment dream-tags"><a class="ui label" href=/tags/css title=css>css</a>
+<a class="ui label" href=/tags/git title=git>git</a>
+<a class="ui label" href=/tags/github-action title=github-action>github-action</a>
+<a class="ui label" href=/tags/http title=http>http</a>
+<a class="ui label" href=/tags/hugo title=hugo>hugo</a>
+<a class="ui label" href=/tags/javascript title=javascript>javascript</a>
+<a class="ui label" href=/tags/nginx title=nginx>nginx</a>
+<a class="ui label" href=/tags/node title=node>node</a>
+<a class="ui label" href=/tags/npm title=npm>npm</a>
+<a class="ui label" href=/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88 title=react技术栈>react技术栈</a>
+<a class="ui label" href=/tags/vue%E6%8A%80%E6%9C%AF%E6%A0%88 title=vue技术栈>vue技术栈</a>
+<a class="ui label" href=/tags/%E6%B5%8F%E8%A7%88%E5%99%A8 title=浏览器>浏览器</a>
+<a class="ui label" href=/tags/%E7%AE%97%E6%B3%95 title=算法>算法</a>
+<a class="ui label" href=/tags/%E7%BC%93%E5%AD%98 title=缓存>缓存</a>
+<a class="ui label" href=/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86 title=网络原理>网络原理</a>
+<a class="ui label" href=/tags/%E8%84%9A%E6%89%8B%E6%9E%B6 title=脚手架>脚手架</a>
+<a class="ui label" href=/tags/%E8%87%AA%E5%8A%A8%E5%8C%96 title=自动化>自动化</a>
+<a class="ui label" href=/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F title=设计模式>设计模式</a>
+<a class="ui label" href=/tags/%E8%AE%BE%E8%AE%A1%E6%B3%9B%E5%9E%8B title=设计泛型>设计泛型</a></section><section class="ui attached segment dream-categories"><div class="ui accordion"><div class=title><i class="dropdown icon"></i><a href=/categories/server class=item>server</a></div><div class=content><div class="ui list"><div class=item><div class=content><a href=/posts/server/01.nginx%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88/ class=item>nginx能做什么</a></div></div></div></div><div class=title><i class="dropdown icon"></i><a href=/categories/%E5%85%B6%E4%BB%96 class=item>其他</a></div><div class=content><div class="ui list"><div class=item><div class=content><a href=/posts/%E5%85%B6%E4%BB%96/01.%E5%AD%A9%E5%AD%90-%E4%BD%A0%E8%A6%81%E8%B7%91%E5%95%8A/ class=item>孩子, 你要跑啊 - 待发布</a></div></div><div class=item><div class=content><a href=/posts/%E5%85%B6%E4%BB%96/02.%E5%86%8D%E4%B9%9F%E7%9C%8B%E4%B8%8D%E6%83%AF%E6%82%B2%E5%89%A7%E7%9A%84%E6%88%91%E4%BB%AC/ class=item>再也看不惯悲剧的我们-《飞驰人生》</a></div></div></div></div><div class=title><i class="dropdown icon"></i><a href=/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80 class=item>前端基础</a></div><div class=content><div class="ui list"><div class=item><div class=content><a href=/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/01.%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84this/ class=item>JavaScript之你不知道的this</a></div></div><div class=item><div class=content><a href=/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/02.css%E5%B7%A6%E5%8F%B3div%E5%85%83%E7%B4%A0%E8%87%AA%E9%80%82%E5%BA%94%E7%AD%89%E9%AB%98/ class=item>CSS: 左右div元素自适应等高</a></div></div></div></div><div class=title><i class="dropdown icon"></i><a href=/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6 class=item>前端框架</a></div><div class=content><div class="ui list"><div class=item><div class=content><a href=/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/02.%E5%AF%B9%E6%AF%94-react-hooks-%E5%92%8C-vue-composition-api/ class=item>对比 React Hooks 和 Vue Composition API</a></div></div><div class=item><div class=content><a href=/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/01.diff%E7%AE%97%E6%B3%95/ class=item>聊一聊Diff算法（React、Vue）</a></div></div></div></div><div class=title><i class="dropdown icon"></i><a href=/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0 class=item>开发日记</a></div><div class=content><div class="ui list"><div class=item><div class=content><a href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/01.%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%8D%9A%E5%AE%A2/ class=item>GitHub Action + Hugo 自动构建发布个人博客</a></div></div><div class=item><div class=content><a href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/08.npm-publish-%E5%8F%91%E5%B8%83npm%E5%8C%85/ class=item>Node: npm publish 发布npm包</a></div></div><div class=item><div class=content><a href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/05.nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/ class=item>nginx 反向代理配置</a></div></div><div class=item><div class=content><a href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/07.node%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84node-server/ class=item>Node: 最简单的node server</a></div></div><div class=item><div class=content><a href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/06.git%E4%B8%ADssh%E4%B8%8Ehttps/ class=item>git中ssh与https</a></div></div></div></div><div class=title><i class="dropdown icon"></i><a href=/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86 class=item>计算机原理</a></div><div class=content><div class="ui list"><div class=item><div class=content><a href=/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/03.%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/ class=item>浏览器输入url发生了什么(http)</a></div></div><div class=item><div class=content><a href=/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/01.%E5%BD%BBjavascript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6event-loop/ class=item>彻底弄懂JavaScript执行机制（Event Loop）</a></div></div><div class=item><div class=content><a href=/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/04.http%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/ class=item>http缓存机制及其原理</a></div></div><div class=item><div class=content><a href=/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/05.%E8%B0%88%E8%B0%88js%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%B3%9B%E5%9E%8B/ class=item>谈谈 JS 和 设计泛型</a></div></div><div class=item><div class=content><a href=/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/02.javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%80/ class=item>聊一聊JavaScript设计模式（一）</a></div></div></div></div></div></section><section class="ui attached segment header-socials"><nav class="ui secondary menu dream-menu dream-socials"><div class=item><a href=mailto:wanderlian@foxmail.com><i class="mail icon" title=Email></i></a></div><div class=item><a href=https://github.com/lianpf target=_blank><i class="github icon" title=GitHub></i></a></div></nav></section><section class="ui bottom attached center aligned segment"><p>© 2016 - 2020 曜灵（SUN）Site</p><p>Powered by <a href=https://gohugo.io/ target=_blank>Hugo</a> with theme <a href=https://github.com/g1eny0ung/hugo-theme-dream target=_blank>Dream</a>.</p></section></article></div></div></div></section><section class=back><div class=dream-max-width><div class="ui centered relaxed grid dream-grid dream-back"><section class="sixteen wide mobile eight wide tablet four wide computer column dream-column"><article><div class="ui top attached segment"><h3 class="ui header">关于我</h3></div><div class="ui bottom attached segment markdown-body"><p>大家好，欢迎来到“曜灵”的个人博客。</p><p>博主是中通快递集团上海总部，平台工具组的一名软件</p><p>开发工程师。涉及前端 React技术栈、Vue技术栈、设计模式、算法，webpack、node自动构建打包工程化等，以及node相关的领域。
+工作之余，也期望投入一些公关的领域为社区做一些自己的贡献，现有两个独立的开源项目</p><ul><li>react PC 组件库<a href=https://www.npmjs.com/package/react-pc-ui>react-pc-ui</a></li><li>脚手架：选择 template 快速搭建 webpack + react + vue项目 <a href=https://www.npmjs.com/package/@lianpf/create-app-cli>@lianpf/create-app-cli</a></li></ul><p>希望和大家一起成长，以下是我个人的社交类账号：</p><ul><li><a href=https://github.com/lianpf>gitHub</a></li><li>微信公众号：连先生有猫病</li><li>掘金：曜灵</li></ul><p>欢迎大家关注我的微信公众号，有好的文章可以关注公众号，获取博主个人微信投稿。文章内容不局限于技术！</p></div></article></section><section class="sixteen wide mobile eight wide tablet four wide computer column dream-column"><article><div class="ui top attached segment"><h3 class="ui header">社交链接</h3></div><div class="ui bottom attached segment"><nav class="ui secondary menu dream-menu dream-socials"><div class=item><a href=mailto:wanderlian@foxmail.com><i class="large mail icon" title=Email></i></a></div><div class=item><a href=https://github.com/lianpf target=_blank><i class="large github icon" title=GitHub></i></a></div></nav></div></article></section><section class="sixteen wide mobile eight wide tablet four wide computer column dream-column"></section></div></div></section></div></div><script>window.darkNav=true</script><script src=/js/jquery.min.js></script><script src=/js/semantic.min.js></script><script src=/js/jquery.overlayScrollbars.min.js></script><script src=/js/header.js></script><script src=/js/main.js></script><script src=/js/theme.js></script><script src=/js/html2canvas.min.js></script><script src=/js/post.js></script><script src=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js></script><script src=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/ocaml.min.js></script><script>hljs.initHighlightingOnLoad()
+setHighlightTheme()
+function setHighlightTheme(){var isDark=localStore.getItem('hugo-theme-dream-is-dark')
+var lightTheme="gruvbox-light"
+var darkTheme="gruvbox-dark"
+var theme=isDark?darkTheme:lightTheme
+$('link[data-highlight]').attr('href','https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/'+theme+'.min.css')
+$('pre').css('background',isDark?'#333':'')}</script><div class="ui inverted segment" id=dream-search><div class="ui search"><div class="ui transparent input"><input class=prompt type=text placeholder=搜索></div><div class=results></div></div></div><script>$(document).ready(function(){$.getJSON('\//index.json',function(data){$('.ui.search').search({source:data,searchFields:['title'],showNoResults:true,})})})</script><script src=/js/search.js></script></body></html>
