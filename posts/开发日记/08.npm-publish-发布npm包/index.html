@@ -63,7 +63,8 @@
 } 
 </code></pre><h5 id=publish>publish</h5><p>选择你要发布的包所在的项目, 以我的为例(包在react-pc-ui下):</p><pre><code>lianpf$ cd react-pc-ui
 [react-pc-ui] lianpf$ npm publish
-</code></pre><h3 id=4验证安装>4.验证安装</h3><pre><code>$ npm install xxx --save-dev
+</code></pre><h5 id=发布测试包>发布测试包</h5><ul><li>测试包中的<code>package.json</code>修改为 <code>"version": "1.0.0-beta.1"</code></li><li>执行 <code>npm publish --tag=beta</code></li></ul><h5 id=发布以开头命名的public公有包>发布以@开头命名的public公有包</h5><p><code>@Organization</code> 代表某个组织，类似<code>@babel</code>、<code>@angular</code>等。没有对应机构的允许，无法发布包：<code>error You must sign up for private packages：@***/***</code></p><p>解决办法：
+作为公共包发布 <code>npm publish --access public</code></p><h3 id=4验证安装>4.验证安装</h3><pre><code>$ npm install xxx --save-dev
 </code></pre><h3 id=5你可能会遇到的问题>5.你可能会遇到的问题</h3><h5 id=镜像问题>镜像问题</h5><pre><code>no_perms Private mode enable, only admin can publish this module
 </code></pre><p>或者publish成功, 但是npm.js个人信息哪里查看不到包</p><p>那么可能是你用了国内的镜像地址了，只需要重新把地址注册回npmjs即可</p><pre><code>$ npm config  // 查看所有配置相关的可用命令
 $ npm config get registry // 查看镜像
