@@ -1,0 +1,22 @@
+body {
+  background-image: url("../img-common/background-01.jpg");
+  background-size: 1545px 800px;
+}
+
+/************* START 头像区域-背景图 ****************/
+
+/* 设置标题横幅的背景图像 —— 覆盖原来的白色背景 */
+.logo--mixed {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.5)), url("../img-common/banner.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: 30% 25%;
+  position: relative;
+}
+
+/* 设置相对位置 —— 以便"添加的覆盖"不覆盖主要内容 */
+.logo--mixed .logo__link {
+  position: relative;
+}
+
+/************* END 头像区域-背景图  ****************/
