@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTML on 曜灵（SUN）Site</title>
+    <link>/tags/html/</link>
+    <description>Recent content in HTML on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 03 May 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/html/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTML5的自定义属性data-* 的用法解析-待修改</title>
+      <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/16.html5%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7data-%E7%9A%84%E7%94%A8%E6%B3%95%E8%A7%A3%E6%9E%90/</link>
+      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/16.html5%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7data-%E7%9A%84%E7%94%A8%E6%B3%95%E8%A7%A3%E6%9E%90/</guid>
+      <description>&lt;p&gt;项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
