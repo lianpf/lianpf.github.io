@@ -1,255 +1,8 @@
-<!DOCTYPE html>
-<html class="no-js" lang="zh-cn">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>vue3&#43;ts(2)：TypeScript 语法汇总 - 曜灵（SUN）Site</title>
-	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
-		<meta property="og:title" content="vue3&#43;ts(2)：TypeScript 语法汇总" />
-<meta property="og:description" content="本文是vue3&#43;ts项目系列第2篇《TypeScript 语法汇总》，关于TypeScript的基础语法，你了解&hellip;" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-03-13T17:59:58+08:00" />
-<meta property="article:modified_time" content="2021-03-13T17:59:58+08:00" />
-
-
-		<meta itemprop="name" content="vue3&#43;ts(2)：TypeScript 语法汇总">
-<meta itemprop="description" content="本文是vue3&#43;ts项目系列第2篇《TypeScript 语法汇总》，关于TypeScript的基础语法，你了解&hellip;"><meta itemprop="datePublished" content="2021-03-13T17:59:58+08:00" />
-<meta itemprop="dateModified" content="2021-03-13T17:59:58+08:00" />
-<meta itemprop="wordCount" content="7608">
-<meta itemprop="keywords" content="TypeScript," />
-		<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="vue3&#43;ts(2)：TypeScript 语法汇总"/>
-<meta name="twitter:description" content="本文是vue3&#43;ts项目系列第2篇《TypeScript 语法汇总》，关于TypeScript的基础语法，你了解&hellip;"/>
-
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
-	
-	<link rel="stylesheet" href="/js/highlight/styles/agate.css">
-
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-
-	<link rel="shortcut icon" href="/favicon.png">
-		
-  
-	
-<script>
-  var _hmt = _hmt || [];
-  (function() {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";
-    var s = document.getElementsByTagName("script")[0]; 
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
-	
-	<style type="text/css">
-		 
-		pre {
-  		padding: 0;
-		}
-	</style>
-</head>
-<body class="body">
-	<div class="container container--outer">
-		<header class="header">
-	<div class="container header__container">
-		
-	<div class="logo logo--mixed">
-		<a class="logo__link" href="/" title="曜灵（SUN）Site" rel="home">
-			<div class="logo__item logo__imagebox">
-					<img class="logo__img" src="/img-common/avatar1.jpeg">
-				</div><div class="logo__item logo__text">
-					<div class="logo__title">曜灵（SUN）Site</div>
-					<div class="logo__tagline">🌝 带着 &#34;偏见&#34; 去理解技术的世界</div>
-				</div>
-		</a>
-	</div>
-		
-<nav class="menu">
-	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
-		<span class="menu__btn-title" tabindex="-1">菜单</span>
-	</button>
-	<ul class="menu__list">
-		<li class="menu__item">
-			<a class="menu__link" href="/">
-				
-				<span class="menu__text">首页</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/about/me/">
-				
-				<span class="menu__text">博主</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/about/site/">
-				
-				<span class="menu__text">站点</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="https://github.com/lianpf/lianpf.github.io">
-				
-				<span class="menu__text">编辑</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="https://github.com/lianpf/lianpf.github.io/issues">
-				
-				<span class="menu__text">反馈</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/search/">
-				
-				<span class="menu__text">搜索</span>
-				
-			</a>
-		</li>
-	</ul>
-</nav>
-
-	</div>
-</header>
-		<div class="wrapper flex">
-			<div class="primary">
-			
-<main class="main" role="main">
-	<article class="post">
-		<header class="post__header">
-			<h1 class="post__title">vue3&#43;ts(2)：TypeScript 语法汇总</h1>
-			<div class="post__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">曜灵</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-13T17:59:58&#43;08:00">2021-03-13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" rel="category">前端基础</a>
-	</span>
-</div></div>
-		</header>
-<div class="post__toc toc">
-	<div class="toc__title">目录</div>
-	<div class="toc__menu">
-		<nav id="TableOfContents">
-  <ul>
-    <li><a href="#一背景">一、背景</a></li>
-    <li><a href="#二前言">二、前言</a>
-      <ul>
-        <li><a href="#1静态类型动态类型强类型弱类型">1、静态类型、动态类型、强类型、弱类型</a></li>
-        <li><a href="#2typescript是什么">2、Typescript是什么</a></li>
-        <li><a href="#3为什么使用-typescript">3、为什么使用 Typescript</a></li>
-      </ul>
-    </li>
-    <li><a href="#三类型">三、类型</a>
-      <ul>
-        <li><a href="#1基础类型">1、基础类型</a></li>
-        <li><a href="#2高级类型">2、高级类型</a></li>
-        <li><a href="#3类型推断">3、类型推断</a></li>
-        <li><a href="#4类型兼容性">4、类型兼容性</a></li>
-      </ul>
-    </li>
-    <li><a href="#四接口">四、接口</a>
-      <ul>
-        <li><a href="#1可选属性">1、可选属性</a></li>
-        <li><a href="#2可索引的类型">2、可索引的类型</a></li>
-      </ul>
-    </li>
-    <li><a href="#五类">五、类</a>
-      <ul>
-        <li><a href="#1继承">1、继承</a></li>
-        <li><a href="#2修饰符">2、修饰符</a></li>
-        <li><a href="#3存取器">3、存取器</a></li>
-        <li><a href="#4静态属性">4、静态属性</a></li>
-        <li><a href="#5抽象类">5、抽象类</a></li>
-        <li><a href="#6类和接口">6、类和接口</a></li>
-      </ul>
-    </li>
-    <li><a href="#六函数">六、函数</a>
-      <ul>
-        <li><a href="#1函数类型">1、函数类型</a></li>
-        <li><a href="#2函数重载">2、函数重载<code>?</code></a></li>
-      </ul>
-    </li>
-    <li><a href="#七泛型">七、泛型</a>
-      <ul>
-        <li><a href="#1什么是泛型">1、什么是泛型</a></li>
-        <li><a href="#2泛型接口">2、泛型接口</a></li>
-        <li><a href="#3泛型类">3、泛型类</a></li>
-        <li><a href="#4泛型约束">4、泛型约束</a></li>
-      </ul>
-    </li>
-    <li><a href="#八模块">八、模块</a>
-      <ul>
-        <li><a href="#1全局模块-vs-文件模块">1、全局模块 vs. 文件模块</a></li>
-        <li><a href="#2模块解析策略">2、模块解析策略</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-	</div>
-</div><div class="content post__content clearfix">
-			<p>本文是vue3+ts项目系列第2篇《TypeScript 语法汇总》，关于<code>TypeScript</code>的基础语法，你了解&hellip;</p>
-<h2 id="一背景">一、背景</h2>
-<p>在 react 和 vue 社区中也越来越多人开始使用TypeScript，使用 TS 可以增加代码的可读性和可维护性。从发布的 Vue3 正式版本来看， Vue3 的源码是用 TS 编写的，更好的 TypeScript 支持也是这次升级的一大亮点。当然，在实际开发中如何正确拥抱 TS 以及如何迁移到 Vue3 也是项目中我们不得不面对的问题，这里针对 Vue3 和 TS单独做了一个系列和大家做一下交流，本篇是 vue3+ts项目系列第2篇《TypeScript 语法汇总》。</p>
-<p>本系列其他内容如下:</p>
-<ul>
-<li>vue3+ts项目系列第1篇<a href="https://lianpf.github.io/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">《vue3项目从0到1搭建》</a></li>
-<li>vue3+ts项目系列第2篇<a href="https://lianpf.github.io/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">《TypeScript 语法汇总》</a></li>
-<li>vue3+ts项目系列第3篇<a href="https://lianpf.github.io/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/">《vue3组合式api及重要属性变更》</a></li>
-</ul>
-<h2 id="二前言">二、前言</h2>
-<h3 id="1静态类型动态类型强类型弱类型">1、静态类型、动态类型、强类型、弱类型</h3>
-<p>编译时就知道变量类型的是静态类型，运行时才知道一个变量类型的叫做动态类型。 java 是静态类型， js 是动态类型。</p>
-<p>不允许隐式转换的是强类型，允许隐式转换的是弱类型。 java 是强类型， js 是弱类型。</p>
-<p>那ts到底是什么类型的语言，很明显， ts 是静态类型语言，因为它需要经过编译。但是 ts不是强类型，因为它可以允许隐式类型转换。</p>
-<pre><code>let isBool: boolean
+<!doctype html><html class=no-js lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>vue3+ts(2)：TypeScript 语法汇总 - 曜灵（SUN）Site</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><meta property="og:title" content="vue3+ts(2)：TypeScript 语法汇总"><meta property="og:description" content="本文是vue3+ts项目系列第2篇《TypeScript 语法汇总》，关于TypeScript的基础语法，你了解&mldr;"><meta property="og:type" content="article"><meta property="og:url" content="/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"><meta property="article:published_time" content="2021-03-13T17:59:58+08:00"><meta property="article:modified_time" content="2021-03-13T17:59:58+08:00"><meta itemprop=name content="vue3+ts(2)：TypeScript 语法汇总"><meta itemprop=description content="本文是vue3+ts项目系列第2篇《TypeScript 语法汇总》，关于TypeScript的基础语法，你了解&mldr;"><meta itemprop=datePublished content="2021-03-13T17:59:58+08:00"><meta itemprop=dateModified content="2021-03-13T17:59:58+08:00"><meta itemprop=wordCount content="7608"><meta itemprop=keywords content="TypeScript,"><meta name=twitter:card content="summary"><meta name=twitter:title content="vue3+ts(2)：TypeScript 语法汇总"><meta name=twitter:description content="本文是vue3+ts项目系列第2篇《TypeScript 语法汇总》，关于TypeScript的基础语法，你了解&mldr;"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/js/highlight/styles/agate.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.png><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><style type=text/css>pre{padding:0}</style></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class="logo logo--mixed"><a class=logo__link href=/ title=曜灵（SUN）Site rel=home><div class="logo__item logo__imagebox"><img class=logo__img src=/img-common/avatar1.jpeg></div><div class="logo__item logo__text"><div class=logo__title>曜灵（SUN）Site</div><div class=logo__tagline>🌝 带着 "偏见" 去理解技术的世界</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
+<span class=menu__btn-title tabindex=-1>菜单</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>首页</span></a></li><li class=menu__item><a class=menu__link href=/about/me/><span class=menu__text>博主</span></a></li><li class=menu__item><a class=menu__link href=/about/site/><span class=menu__text>站点</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io><span class=menu__text>编辑</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io/issues><span class=menu__text>反馈</span></a></li><li class=menu__item><a class=menu__link href=/search/><span class=menu__text>搜索</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>vue3+ts(2)：TypeScript 语法汇总</h1><div class="post__meta meta"><div class="meta__item-author meta__item"><svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span></div><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2021-03-13T17:59:58+08:00>2021-03-13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/ rel=category>前端基础</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>目录</div><div class=toc__menu><nav id=TableOfContents><ul><li><a href=#一背景>一、背景</a></li><li><a href=#二前言>二、前言</a><ul><li><a href=#1静态类型动态类型强类型弱类型>1、静态类型、动态类型、强类型、弱类型</a></li><li><a href=#2typescript是什么>2、Typescript是什么</a></li><li><a href=#3为什么使用-typescript>3、为什么使用 Typescript</a></li></ul></li><li><a href=#三类型>三、类型</a><ul><li><a href=#1基础类型>1、基础类型</a></li><li><a href=#2高级类型>2、高级类型</a></li><li><a href=#3类型推断>3、类型推断</a></li><li><a href=#4类型兼容性>4、类型兼容性</a></li></ul></li><li><a href=#四接口>四、接口</a><ul><li><a href=#1可选属性>1、可选属性</a></li><li><a href=#2可索引的类型>2、可索引的类型</a></li></ul></li><li><a href=#五类>五、类</a><ul><li><a href=#1继承>1、继承</a></li><li><a href=#2修饰符>2、修饰符</a></li><li><a href=#3存取器>3、存取器</a></li><li><a href=#4静态属性>4、静态属性</a></li><li><a href=#5抽象类>5、抽象类</a></li><li><a href=#6类和接口>6、类和接口</a></li></ul></li><li><a href=#六函数>六、函数</a><ul><li><a href=#1函数类型>1、函数类型</a></li><li><a href=#2函数重载>2、函数重载<code>?</code></a></li></ul></li><li><a href=#七泛型>七、泛型</a><ul><li><a href=#1什么是泛型>1、什么是泛型</a></li><li><a href=#2泛型接口>2、泛型接口</a></li><li><a href=#3泛型类>3、泛型类</a></li><li><a href=#4泛型约束>4、泛型约束</a></li></ul></li><li><a href=#八模块>八、模块</a><ul><li><a href=#1全局模块-vs-文件模块>1、全局模块 vs. 文件模块</a></li><li><a href=#2模块解析策略>2、模块解析策略</a></li></ul></li></ul></nav></div></div><div class="content post__content clearfix"><p>本文是vue3+ts项目系列第2篇《TypeScript 语法汇总》，关于<code>TypeScript</code>的基础语法，你了解&mldr;</p><h2 id=一背景>一、背景</h2><p>在 react 和 vue 社区中也越来越多人开始使用TypeScript，使用 TS 可以增加代码的可读性和可维护性。从发布的 Vue3 正式版本来看， Vue3 的源码是用 TS 编写的，更好的 TypeScript 支持也是这次升级的一大亮点。当然，在实际开发中如何正确拥抱 TS 以及如何迁移到 Vue3 也是项目中我们不得不面对的问题，这里针对 Vue3 和 TS单独做了一个系列和大家做一下交流，本篇是 vue3+ts项目系列第2篇《TypeScript 语法汇总》。</p><p>本系列其他内容如下:</p><ul><li>vue3+ts项目系列第1篇<a href=https://lianpf.github.io/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/>《vue3项目从0到1搭建》</a></li><li>vue3+ts项目系列第2篇<a href=https://lianpf.github.io/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/>《TypeScript 语法汇总》</a></li><li>vue3+ts项目系列第3篇<a href=https://lianpf.github.io/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/>《vue3组合式api及重要属性变更》</a></li></ul><h2 id=二前言>二、前言</h2><h3 id=1静态类型动态类型强类型弱类型>1、静态类型、动态类型、强类型、弱类型</h3><p>编译时就知道变量类型的是静态类型，运行时才知道一个变量类型的叫做动态类型。 java 是静态类型， js 是动态类型。</p><p>不允许隐式转换的是强类型，允许隐式转换的是弱类型。 java 是强类型， js 是弱类型。</p><p>那ts到底是什么类型的语言，很明显， ts 是静态类型语言，因为它需要经过编译。但是 ts不是强类型，因为它可以允许隐式类型转换。</p><pre><code>let isBool: boolean
 let num: number = 10
 isBool = !num // ok
-</code></pre><h3 id="2typescript是什么">2、Typescript是什么</h3>
-<ul>
-<li>ECMAScript 的超集 (stage 3)</li>
-<li>编译期的类型检查</li>
-<li>不引入额外开销(零依赖，不扩展 js 语法，不侵入运行时)</li>
-<li>编译出通用的、易读的 js 代码</li>
-</ul>
-<p><code>Typescript = Type + ECMAScript + Babel-Lite</code></p>
-<p>Typescript 设计目标: <a href="https://github.com/Microsoft/TypeScript/wiki/TypeScript-Design-Goals">链接</a></p>
-<h3 id="3为什么使用-typescript">3、为什么使用 Typescript</h3>
-<ul>
-<li>增加了代码的可读性和可维护性</li>
-<li>减少运行时错误，写出的代码更加安全，减少 BUG</li>
-<li>享受到代码提示带来的快感</li>
-<li>重构神器</li>
-</ul>
-<h2 id="三类型">三、类型</h2>
-<h3 id="1基础类型">1、基础类型</h3>
-<p>声明了变量的类型，那么这个变量就有了静态类型的特性，ts中使用<code>:</code>操作符来声明类型:</p>
-<ul>
-<li>boolean</li>
-<li>number</li>
-<li>string</li>
-<li>array</li>
-<li>tuple（元组）</li>
-<li>enum（枚举）</li>
-<li>any &amp; unknown</li>
-<li>void</li>
-<li>null &amp; undefined</li>
-<li>never</li>
-<li>Object</li>
-</ul>
-<p>声明变量的类型:</p>
-<pre><code>let bool: boolean = false // boolean 类型
+</code></pre><h3 id=2typescript是什么>2、Typescript是什么</h3><ul><li>ECMAScript 的超集 (stage 3)</li><li>编译期的类型检查</li><li>不引入额外开销(零依赖，不扩展 js 语法，不侵入运行时)</li><li>编译出通用的、易读的 js 代码</li></ul><p><code>Typescript = Type + ECMAScript + Babel-Lite</code></p><p>Typescript 设计目标: <a href=https://github.com/Microsoft/TypeScript/wiki/TypeScript-Design-Goals>链接</a></p><h3 id=3为什么使用-typescript>3、为什么使用 Typescript</h3><ul><li>增加了代码的可读性和可维护性</li><li>减少运行时错误，写出的代码更加安全，减少 BUG</li><li>享受到代码提示带来的快感</li><li>重构神器</li></ul><h2 id=三类型>三、类型</h2><h3 id=1基础类型>1、基础类型</h3><p>声明了变量的类型，那么这个变量就有了静态类型的特性，ts中使用<code>:</code>操作符来声明类型:</p><ul><li>boolean</li><li>number</li><li>string</li><li>array</li><li>tuple（元组）</li><li>enum（枚举）</li><li>any & unknown</li><li>void</li><li>null & undefined</li><li>never</li><li>Object</li></ul><p>声明变量的类型:</p><pre><code>let bool: boolean = false // boolean 类型
 let num: number = 12 // number 类型
 let str: string = 'hello world' // string类型
 let numArr: number[] = [1, 2, 3] // number数组类型
@@ -258,14 +11,7 @@ let numArr: Array&lt;number&gt; = [1, 2, 3] // 数组泛型形式：number数组
 let unknow: any = 4 // any类型，即任一类型
 unknow = &quot;maybe a string instead&quot;
 unknow = false
-</code></pre><h4 id="11-枚举enum">1.1 枚举（<code>enum</code>）</h4>
-<ul>
-<li>数字枚举</li>
-<li>字符串枚举</li>
-<li>常量枚举</li>
-</ul>
-<p>很多编程语言都有枚举的概念，枚举就是一组常量的集合，但是和集合不同，枚举可以通过变量的值来得到变量，它是一个双向的过程:</p>
-<pre><code>enum Direction {
+</code></pre><h4 id=11-枚举enum>1.1 枚举（<code>enum</code>）</h4><ul><li>数字枚举</li><li>字符串枚举</li><li>常量枚举</li></ul><p>很多编程语言都有枚举的概念，枚举就是一组常量的集合，但是和集合不同，枚举可以通过变量的值来得到变量，它是一个双向的过程:</p><pre><code>enum Direction {
   UP,
   DOWN,
   LEFT,
@@ -274,30 +20,21 @@ unknow = false
 
 Direction.UP // 0
 Direction[0] // 'UP'
-</code></pre><p><strong>数字枚举</strong>  <br /></p>
-<p>上例中的 Direction 就是一个数字枚举，默认的，第一个变量的值是0，后面的值会在前一个值上 +1 ，所以 DOWN 的值为1， LEFT 的值为2，以此类推。
-如果想改变枚举的初始值，只需要给第一个变量赋值即可:</p>
-<pre><code>enum Direction {
+</code></pre><p><strong>数字枚举</strong><br></p><p>上例中的 Direction 就是一个数字枚举，默认的，第一个变量的值是0，后面的值会在前一个值上 +1 ，所以 DOWN 的值为1， LEFT 的值为2，以此类推。
+如果想改变枚举的初始值，只需要给第一个变量赋值即可:</p><pre><code>enum Direction {
   UP = 1,
   DOWN,
   LEFT,
   RIGHT
 }
-</code></pre><p><strong>字符串枚举</strong>  <br />
-字符串枚举的概念很简单， 在一个字符串枚举里，<strong>每个成员都必须初始化</strong>:</p>
-<blockquote>
-<p>如果某个成员没有被初始化，则会报错</p>
-</blockquote>
-<pre><code>enum Direction {
+</code></pre><p><strong>字符串枚举</strong><br>字符串枚举的概念很简单， 在一个字符串枚举里，<strong>每个成员都必须初始化</strong>:</p><blockquote><p>如果某个成员没有被初始化，则会报错</p></blockquote><pre><code>enum Direction {
   UP = 'UP',
   DOWN = 'DOWN',
   LEFT = 'LEFT',
   RIGHT = 'RIGHT',
   MIDDLE //error 枚举成员必须具有初始化表达式
 }
-</code></pre><p><strong>常量枚举</strong>  <br />
-可以用 <code>const</code> 修饰符来声明枚举，这时候编译后的js代码将不会出现额外的声明代码:</p>
-<pre><code>enum Direction {
+</code></pre><p><strong>常量枚举</strong><br>可以用 <code>const</code> 修饰符来声明枚举，这时候编译后的js代码将不会出现额外的声明代码:</p><pre><code>enum Direction {
   UP,
   DOWN,
   LEFT,
@@ -312,8 +49,7 @@ const enum Seasons {
 
 const up = Direction.UP
 const spring = Seasons.SPRING
-</code></pre><p>生成的js:</p>
-<pre><code>var Direction;
+</code></pre><p>生成的js:</p><pre><code>var Direction;
 (function (Direction) {
   Direction[Direction[&quot;UP&quot;] = 0] = &quot;UP&quot;;
   Direction[Direction[&quot;DOWN&quot;] = 1] = &quot;DOWN&quot;;
@@ -323,32 +59,21 @@ const spring = Seasons.SPRING
 
 var up = Direction.UP;
 var spring = &quot;SPRING&quot; /* SPRING */;
-</code></pre><h4 id="12-any-和-unknown-的区别">1.2 <code>any</code> 和 <code>unknown</code> 的区别</h4>
-<ul>
-<li><code>any</code> : 任意类型</li>
-<li><code>unknown</code> : 未知的类型</li>
-</ul>
-<p><strong>任何类型都能分配给 <code>unknown</code> ，但 <code>unknown</code> 不能分配给其他基本类型，而 <code>any</code> 啥都能分配和被分配</strong></p>
-<p><code>unknown</code> Demo:</p>
-<pre><code>let foo: unknown
+</code></pre><h4 id=12-any-和-unknown-的区别>1.2 <code>any</code> 和 <code>unknown</code> 的区别</h4><ul><li><code>any</code> : 任意类型</li><li><code>unknown</code> : 未知的类型</li></ul><p><strong>任何类型都能分配给 <code>unknown</code> ，但 <code>unknown</code> 不能分配给其他基本类型，而 <code>any</code> 啥都能分配和被分配</strong></p><p><code>unknown</code> Demo:</p><pre><code>let foo: unknown
 foo = true // ok
 foo = 123 //ok
 
 foo.toFixed(2) // error
 
 let foo1: string = foo // error
-</code></pre><p><code>any</code> Demo:</p>
-<pre><code>let bar: any
+</code></pre><p><code>any</code> Demo:</p><pre><code>let bar: any
 bar = true // ok
 bar = 123 //ok
 
 foo.toFixed(2) // ok
 
 let bar1:string = bar // ok
-</code></pre><p>如上，用了 <code>any</code> 就相当于完全丢失了类型检查，所以尽量少用 <code>any</code> ，对于未知类型可以用 <code>unknown</code></p>
-<p><strong><code>unknown</code> 的正确用法</strong>  <br />
-可以通过不同的方式将 <code>unknown</code> 类型缩小为更具体的类型范围:</p>
-<pre><code>function getLen(value: unknown): number {
+</code></pre><p>如上，用了 <code>any</code> 就相当于完全丢失了类型检查，所以尽量少用 <code>any</code> ，对于未知类型可以用 <code>unknown</code></p><p><strong><code>unknown</code> 的正确用法</strong><br>可以通过不同的方式将 <code>unknown</code> 类型缩小为更具体的类型范围:</p><pre><code>function getLen(value: unknown): number {
   if (typeof value === 'string') {
     // 因为类型保护的原因，此处 value 被判断为 string 类型
     return value.length
@@ -356,45 +81,22 @@ let bar1:string = bar // ok
   
   return 0
 }
-</code></pre><blockquote>
-<p>这个过程叫类型收窄(type narrowing)</p>
-</blockquote>
-<h4 id="13-never">1.3 <code>never</code></h4>
-<ul>
-<li><code>never</code> 类型表示的是那些永不存在的值的类型。</li>
-</ul>
-<blockquote>
-<p>never类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型；变量也可能是 never类型，当它们被永不为真的类型保护所约束时。</p>
-</blockquote>
-<ul>
-<li><code>never</code> 类型是任何类型的子类型，也可以赋值给任何类型</li>
-</ul>
-<blockquote>
-<p>没有类型是never的子类型或可以赋值给never类型（除了never本身之外），即使 any也不可以赋值给never</p>
-</blockquote>
-<p>在最新的 typescript 3.7 中，下面代码会报错:</p>
-<pre><code>// never 用户控制流分析
+</code></pre><blockquote><p>这个过程叫类型收窄(type narrowing)</p></blockquote><h4 id=13-never>1.3 <code>never</code></h4><ul><li><code>never</code> 类型表示的是那些永不存在的值的类型。</li></ul><blockquote><p>never类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型；变量也可能是 never类型，当它们被永不为真的类型保护所约束时。</p></blockquote><ul><li><code>never</code> 类型是任何类型的子类型，也可以赋值给任何类型</li></ul><blockquote><p>没有类型是never的子类型或可以赋值给never类型（除了never本身之外），即使 any也不可以赋值给never</p></blockquote><p>在最新的 typescript 3.7 中，下面代码会报错:</p><pre><code>// never 用户控制流分析
 function neverReach (): never {
   throw new Error('an error')
 }
 
 const x = neverReach()
 x.toFixed(2) // x is unreachable
-</code></pre><p>never 还可以用于联合类型的<a href="https://baike.baidu.com/item/%E5%8D%95%E4%BD%8D%E5%85%83/11035606?fromtitle=%E5%B9%BA%E5%85%83&amp;fromid=5122315&amp;fr=aladdin">幺元</a>:</p>
-<pre><code>type T0 = string | number | never // T0 is string | number
-</code></pre><p><a name="ts-01-02-02" id="ts-01-02-02"></a></p>
-<h3 id="2高级类型">2、高级类型</h3>
-<h4 id="21-联合类型与交叉类型">2.1 联合类型与交叉类型</h4>
-<p>联合类型(union type)表示多种类型的 “或” 关系</p>
-<pre><code>function genLen(x: string | any[]) {
+</code></pre><p>never 还可以用于联合类型的<a href="https://baike.baidu.com/item/%E5%8D%95%E4%BD%8D%E5%85%83/11035606?fromtitle=%E5%B9%BA%E5%85%83&fromid=5122315&fr=aladdin">幺元</a>:</p><pre><code>type T0 = string | number | never // T0 is string | number
+</code></pre><p><a id=ts-01-02-02></a></p><h3 id=2高级类型>2、高级类型</h3><h4 id=21-联合类型与交叉类型>2.1 联合类型与交叉类型</h4><p>联合类型(union type)表示多种类型的 “或” 关系</p><pre><code>function genLen(x: string | any[]) {
   return x.length
 }
 
 genLen('') // ok
 genLen([]) // ok
 genLen(1) // error
-</code></pre><p>交叉类型表示多种类型的 “与” 关系</p>
-<pre><code>interface Person {
+</code></pre><p>交叉类型表示多种类型的 “与” 关系</p><pre><code>interface Person {
   name: string
   age: number
 }
@@ -409,8 +111,7 @@ const x: Person &amp; Animal = {
   age: 1,
   color: 'red
 }
-</code></pre><p>使用联合类型表示枚举</p>
-<pre><code>type Position = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT'
+</code></pre><p>使用联合类型表示枚举</p><pre><code>type Position = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT'
 const position: Position = 'UP'
 </code></pre><pre><code>// 具值联合类型
 // type 关键词可以声明一个类型
@@ -424,11 +125,7 @@ let arr: (number | string)[] = []
 arr.push(1) // ok
 arr.push('hello') // ok
 arr.push(true) // error 类型“true”的参数不能赋给类型“string | number”的参数。
-</code></pre><p>可以避免使用 enum 侵入了运行时。</p>
-<p><a name="ts-01-02-03" id="ts-01-02-03"></a></p>
-<h4 id="22-类型保护和类型断言">2.2 类型保护和类型断言</h4>
-<p>ts 初学者很容易写出下面的代码:</p>
-<pre><code>function isString (value) {
+</code></pre><p>可以避免使用 enum 侵入了运行时。</p><p><a id=ts-01-02-03></a></p><h4 id=22-类型保护和类型断言>2.2 类型保护和类型断言</h4><p>ts 初学者很容易写出下面的代码:</p><pre><code>function isString (value) {
   return Object.prototype.toString.call(value) === '[object String]'
 }
 
@@ -439,9 +136,7 @@ function fn (x: string | number) {
     // .....
   }
 }
-</code></pre><p>如何让 ts 推断出来 x 是 string 类型呢?</p>
-<h5 id="221-使用ts的-is-关键词">2.2.1 使用ts的 <code>is</code> 关键词</h5>
-<pre><code>function isString (value: unknown): value is string {
+</code></pre><p>如何让 ts 推断出来 x 是 string 类型呢?</p><h5 id=221-使用ts的-is-关键词>2.2.1 使用ts的 <code>is</code> 关键词</h5><pre><code>function isString (value: unknown): value is string {
   return Object.prototype.toString.call(value) === '[object String]'
 }
 
@@ -452,10 +147,7 @@ function fn (x: string | number) {
     // .....
   }
 }
-</code></pre><h5 id="222-类型保护">2.2.2 类型保护</h5>
-<h6 id="1-js-typeof-关键词">(1) js <code>typeof</code> 关键词</h6>
-<p>typeof 关系词可以从实现 推出类型，这是一个类型关键词</p>
-<pre><code>function getLen(x: string | any[]) {
+</code></pre><h5 id=222-类型保护>2.2.2 类型保护</h5><h6 id=1-js-typeof-关键词>(1) js <code>typeof</code> 关键词</h6><p>typeof 关系词可以从实现 推出类型，这是一个类型关键词</p><pre><code>function getLen(x: string | any[]) {
   return x.length
 }
 
@@ -464,45 +156,28 @@ type GetLen = typeof getLen
 function callback(fn: GetLen) {
   fn(1) // 类型“1”的参数不能赋给类型“string | any[]”的参数
 }
-</code></pre><h6 id="2-js-instanceof-关键词">(2) js <code>instanceof</code> 关键词</h6>
-<p>在 ts 中，instanceof 关键词能够帮助 ts 判断出构造函数的类型:</p>
-<pre><code>function fn1 (x: XMLHttpRequest | string) {
+</code></pre><h6 id=2-js-instanceof-关键词>(2) js <code>instanceof</code> 关键词</h6><p>在 ts 中，instanceof 关键词能够帮助 ts 判断出构造函数的类型:</p><pre><code>function fn1 (x: XMLHttpRequest | string) {
   if (x instanceof XMLHttpRequest) { // x is XMLHttpRequest
     return x.getAllResponseHeaders()
   } else { // x is string
     return x.length
   }
 }
-</code></pre><h6 id="3-针对-null-和-undefined-的类型保护">(3) 针对 null 和 undefined 的类型保护</h6>
-<p>在条件判断中，ts 会自动对 null 和 undefined 进行类型保护:</p>
-<pre><code>function fn2 (x?: string) {
+</code></pre><h6 id=3-针对-null-和-undefined-的类型保护>(3) 针对 null 和 undefined 的类型保护</h6><p>在条件判断中，ts 会自动对 null 和 undefined 进行类型保护:</p><pre><code>function fn2 (x?: string) {
   if (x) {
     return x.length
   }
 }
-</code></pre><h5 id="223-类型断言">2.2.3 类型断言</h5>
-<h6 id="1-针对-null-和-undefined-的类型断言">(1) 针对 null 和 undefined 的类型断言</h6>
-<p>如果我们已经知道的参数不为空，可以使用<code>!</code>来手动标记:</p>
-<pre><code>function fn2 (x?: string) {
+</code></pre><h5 id=223-类型断言>2.2.3 类型断言</h5><h6 id=1-针对-null-和-undefined-的类型断言>(1) 针对 null 和 undefined 的类型断言</h6><p>如果我们已经知道的参数不为空，可以使用<code>!</code>来手动标记:</p><pre><code>function fn2 (x?: string) {
   return x!.length
 }
-</code></pre><h4 id="23-索引类型index-types">2.3 索引类型（Index types）</h4>
-<ul>
-<li>keyof</li>
-<li>in</li>
-<li><code>[]</code></li>
-</ul>
-<h5 id="1-keyof">(1) keyof</h5>
-<p>keyof 也是一个 类型关键词 ，可以用来取得一个对象接口的所有 key 值:</p>
-<pre><code>interface Person {
+</code></pre><h4 id=23-索引类型index-types>2.3 索引类型（Index types）</h4><ul><li>keyof</li><li>in</li><li><code>[]</code></li></ul><h5 id=1-keyof>(1) keyof</h5><p>keyof 也是一个 类型关键词 ，可以用来取得一个对象接口的所有 key 值:</p><pre><code>interface Person {
   name: string
   age: number
 }
 
 type PersonAttrs = keyof Person // 'name' | 'age'
-</code></pre><h5 id="2-in">(2) in</h5>
-<p>in 也是一个 类型关键词 ，可以对 联合类型 进行遍历，只可以用在 type 关键词下面。</p>
-<pre><code>type Person = {
+</code></pre><h5 id=2-in>(2) in</h5><p>in 也是一个 类型关键词 ，可以对 联合类型 进行遍历，只可以用在 type 关键词下面。</p><pre><code>type Person = {
   [key in 'name' | 'age']: number
 }
 
@@ -512,17 +187,13 @@ type Person = {
   name: number;
   age: number;
 }
-</code></pre><h5 id="3-">(3) <code>[]</code></h5>
-<p>使用 <code>[]</code> 操作符可以进行索引访问，也是一个 类型关键词</p>
-<pre><code>interface Person {
+</code></pre><h5 id=3->(3) <code>[]</code></h5><p>使用 <code>[]</code> 操作符可以进行索引访问，也是一个 类型关键词</p><pre><code>interface Person {
   name: string
   age: number
 }
 
 type x = Person['name'] // x is string
-</code></pre><p><strong>示例</strong>  <br/>
-写一个类型复制的类型工具:</p>
-<pre><code>type Copy&lt;T&gt; = {
+</code></pre><p><strong>示例</strong><br>写一个类型复制的类型工具:</p><pre><code>type Copy&lt;T&gt; = {
   [key in keyof T]: T[key]
 }
 
@@ -532,35 +203,22 @@ interface Person {
 }
 
 type Person1 = Copy&lt;Person&gt;
-</code></pre><p><a name="ts-01-02-03" id="ts-01-02-03"></a></p>
-<h3 id="3类型推断">3、类型推断</h3>
-<p>ts 中的类型推断是非常强大，而且其内部实现也是非常复杂的。</p>
-<p>基本类型推断:</p>
-<pre><code>// ts 推导出 x 是 number 类型
+</code></pre><p><a id=ts-01-02-03></a></p><h3 id=3类型推断>3、类型推断</h3><p>ts 中的类型推断是非常强大，而且其内部实现也是非常复杂的。</p><p>基本类型推断:</p><pre><code>// ts 推导出 x 是 number 类型
 let x = 10
-</code></pre><p>对象类型推断:</p>
-<pre><code>// ts 推断出 myObj 的类型: myObj: { x: number; y: string; z: boolean;
+</code></pre><p>对象类型推断:</p><pre><code>// ts 推断出 myObj 的类型: myObj: { x: number; y: string; z: boolean;
 const myObj = {
   x:1,
   y: '2',
   z: true
 }
-</code></pre><p>函数类型推断:</p>
-<pre><code>// ts 推导出函数返回值是 number 类型
+</code></pre><p>函数类型推断:</p><pre><code>// ts 推导出函数返回值是 number 类型
 function len (str: string) {
   return str.length
 }
-</code></pre><p>上下文类型推断:</p>
-<pre><code>// ts 推导出 event 是 ProgressEvent 类型
+</code></pre><p>上下文类型推断:</p><pre><code>// ts 推导出 event 是 ProgressEvent 类型
 const xhr = new XMLHttpRequest()
 xhr.onload = function (event) {}
-</code></pre><blockquote>
-<p>写 ts 代码的时候，对于基本类型我们可以不用手动声明其类型，让 ts 自己去推断</p>
-</blockquote>
-<p>知乎 - typescript上下文相关类型浅析 <a href="https://zhuanlan.zhihu.com/p/84481228">https://zhuanlan.zhihu.com/p/84481228</a></p>
-<h3 id="4类型兼容性">4、类型兼容性</h3>
-<p>typescript 的子类型是基于 结构子类型 的，只要结构可以兼容，就是子类型。(Duck Type)</p>
-<pre><code>class Point {
+</code></pre><blockquote><p>写 ts 代码的时候，对于基本类型我们可以不用手动声明其类型，让 ts 自己去推断</p></blockquote><p>知乎 - typescript上下文相关类型浅析 <a href=https://zhuanlan.zhihu.com/p/84481228>https://zhuanlan.zhihu.com/p/84481228</a></p><h3 id=4类型兼容性>4、类型兼容性</h3><p>typescript 的子类型是基于 结构子类型 的，只要结构可以兼容，就是子类型。(Duck Type)</p><pre><code>class Point {
   x: number
 }
 
@@ -574,8 +232,7 @@ class Point2 {
 
 let point2 = new Point2()
 getPointX(point2) // OK
-</code></pre><p>java 、 c++ 等传统静态类型语言是基于 名义子类型 的，必须显示声明子类型关系(继承)，才可以兼容。</p>
-<pre><code>public class Main {
+</code></pre><p>java 、 c++ 等传统静态类型语言是基于 名义子类型 的，必须显示声明子类型关系(继承)，才可以兼容。</p><pre><code>public class Main {
   public static void main (String[] args) {
     getPointX(new Point()); // ok
     getPointX(new ChildPoint()); // ok
@@ -598,9 +255,7 @@ getPointX(point2) // OK
     public int x = 3;
   }
 }
-</code></pre><h4 id="41-对象子类型">4.1 对象子类型</h4>
-<p>子类型中必须包含源类型所有的属性和方法:</p>
-<pre><code>function getPointX(point: { x: number }) {
+</code></pre><h4 id=41-对象子类型>4.1 对象子类型</h4><p>子类型中必须包含源类型所有的属性和方法:</p><pre><code>function getPointX(point: { x: number }) {
   return point.x
 }
 
@@ -610,31 +265,12 @@ const point = {
 }
 
 getPointX(point) // OK
-</code></pre><p>注意，如果直接传入一个对象字面量是会报错的:</p>
-<pre><code>function getPointX(point: { x: number }) {
+</code></pre><p>注意，如果直接传入一个对象字面量是会报错的:</p><pre><code>function getPointX(point: { x: number }) {
   return point.x
 }
 
 getPointX({ x: 1, y: '2' }) // error
-</code></pre><p>这是 ts 中的另一个特性，叫做: <code>excess property check</code> ，当传入的参数是一个对象字面量时，会进行额外属性检查。</p>
-<h4 id="42-协变与逆变">4.2 协变与逆变</h4>
-<p>介绍类型兼容和类型安全就非常有必要介绍一下逆变与协变的概念:</p>
-<p>在介绍之前，先约定如下标记:</p>
-<ul>
-<li><code>A ≼ B</code> 表示A是B的子类型，A包含B的所有属性和方法。</li>
-<li><code>A =&gt; B</code> 表示以 A 为参数，B 为返回值的方法。 (param: A) =&gt; B</li>
-</ul>
-<p><strong>一个问题</strong>  <br />
-如果我现在有三个类型 Animal 、 Dog 、 WangCai(旺财) ，那么肯定存在下面的关系: WangCai ≼ Dog ≼ Animal 即 旺财属于狗属于动物。</p>
-<p>问题:以下哪种类型是 Dog =&gt; Dog 的子类呢?</p>
-<ul>
-<li>WangCai =&gt; WangCai</li>
-<li>WangCai =&gt; Animal</li>
-<li>Animal =&gt; Animal</li>
-<li>Animal =&gt; WangCai</li>
-</ul>
-<p><strong>从代码来看</strong>  <br /></p>
-<pre><code>class Animal {
+</code></pre><p>这是 ts 中的另一个特性，叫做: <code>excess property check</code> ，当传入的参数是一个对象字面量时，会进行额外属性检查。</p><h4 id=42-协变与逆变>4.2 协变与逆变</h4><p>介绍类型兼容和类型安全就非常有必要介绍一下逆变与协变的概念:</p><p>在介绍之前，先约定如下标记:</p><ul><li><code>A ≼ B</code> 表示A是B的子类型，A包含B的所有属性和方法。</li><li><code>A => B</code> 表示以 A 为参数，B 为返回值的方法。 (param: A) => B</li></ul><p><strong>一个问题</strong><br>如果我现在有三个类型 Animal 、 Dog 、 WangCai(旺财) ，那么肯定存在下面的关系: WangCai ≼ Dog ≼ Animal 即 旺财属于狗属于动物。</p><p>问题:以下哪种类型是 Dog => Dog 的子类呢?</p><ul><li>WangCai => WangCai</li><li>WangCai => Animal</li><li>Animal => Animal</li><li>Animal => WangCai</li></ul><p><strong>从代码来看</strong><br></p><pre><code>class Animal {
   sleep: Function
 }
 
@@ -677,11 +313,7 @@ getDogName(animal =&gt; {
   animal.sleep()
   return animal
 }) // error
-</code></pre><p>可以看到只有 Animal =&gt; WangCai 才是 Dog =&gt; Dog 的子类型，可以得到一个结论，对于函数类型来说，函数参数的类型兼容是反向的，我们称之为 逆变 ，返回值的类型兼容是正向的，称之为 协变 。</p>
-<h5 id="1-函数子类型">(1) 函数子类型</h5>
-<p>上面逆变与协变的例子介绍了函数参数只有一个时的情况，如果函数参数有多个时该如何区分?</p>
-<p>其实函数的参数可以转化为 Tuple 的类型兼容性:</p>
-<pre><code>type Tuple1 = [string, number]
+</code></pre><p>可以看到只有 Animal => WangCai 才是 Dog => Dog 的子类型，可以得到一个结论，对于函数类型来说，函数参数的类型兼容是反向的，我们称之为 逆变 ，返回值的类型兼容是正向的，称之为 协变 。</p><h5 id=1-函数子类型>(1) 函数子类型</h5><p>上面逆变与协变的例子介绍了函数参数只有一个时的情况，如果函数参数有多个时该如何区分?</p><p>其实函数的参数可以转化为 Tuple 的类型兼容性:</p><pre><code>type Tuple1 = [string, number]
 type Tuple2 = [string, number, boolean]
 
 let tuple1: Tuple1 = ['1', 1]
@@ -689,19 +321,14 @@ let tuple2: Tuple2 = ['1', 1, true]
 
 let t1: Tuple1 = tuple2 // ok
 let t2: Tuple2 = tuple1 // error
-</code></pre><p>可以看到 Tuple2 =&gt; Tuple1 ，即长度大的是长度小的子类型，再由于函数参数的逆变特性，所以函数参数少的可以赋值给参数多的(参数从前往后需一一对应):</p>
-<pre><code>[1, 2].forEach((item, index) =&gt; {
+</code></pre><p>可以看到 Tuple2 => Tuple1 ，即长度大的是长度小的子类型，再由于函数参数的逆变特性，所以函数参数少的可以赋值给参数多的(参数从前往后需一一对应):</p><pre><code>[1, 2].forEach((item, index) =&gt; {
   console.log(item)
 }) // ok
 
 [1, 2].forEach((item, index, arr, other) =&gt; {
   console.log(other)
 }) // error
-</code></pre><h2 id="四接口">四、接口</h2>
-<blockquote>
-<p>写过java的同学应该都知道接口的概念，java中的接口是用来描述类的功能的</p>
-</blockquote>
-<pre><code>interface BabyInter {
+</code></pre><h2 id=四接口>四、接口</h2><blockquote><p>写过java的同学应该都知道接口的概念，java中的接口是用来描述类的功能的</p></blockquote><pre><code>interface BabyInter {
   void cry();
 }
 
@@ -711,8 +338,7 @@ class Baby implements BabyInter {
     System.out.print(&quot;crying&quot;)
   }
 }
-</code></pre><p>但是<code>ts</code>里面的接口还是有一点不一样的，同样是用来描述数据的结构，<code>ts</code>的接口不仅可以描述类，还可以描述变量，描述方法, 使用<code>interface</code>关键词来声明接口:</p>
-<pre><code>interface BabyInter {
+</code></pre><p>但是<code>ts</code>里面的接口还是有一点不一样的，同样是用来描述数据的结构，<code>ts</code>的接口不仅可以描述类，还可以描述变量，描述方法, 使用<code>interface</code>关键词来声明接口:</p><pre><code>interface BabyInter {
   name: string,
   cry () : void
 }
@@ -730,9 +356,7 @@ let getBaby = () : BabyInter =&gt; {
     cry () {}
   }
 }
-</code></pre><h3 id="1可选属性">1、可选属性</h3>
-<p>接口里的属性不全都是必需的，可以是可选的。</p>
-<pre><code>interface FontStyleOptions {
+</code></pre><h3 id=1可选属性>1、可选属性</h3><p>接口里的属性不全都是必需的，可以是可选的。</p><pre><code>interface FontStyleOptions {
   size: number;
   color?: string;
 }
@@ -745,13 +369,8 @@ const getFontStyle = (options: FontStyleOptions) =&gt; {
 const fontStyle = getFontStyle({
   size: 16
 })
-</code></pre><p>可选属性的好处之一是可以对可能存在的属性进行预定义，好处之二是在引用了不存在的属性时可以捕获错误。</p>
-<h3 id="2可索引的类型">2、可索引的类型</h3>
-<blockquote>
-<p>额外的属性检查
-如果<code>FontStyleOptions</code>接口中除了有<code>size</code>属性，还有一些不确定的其它属性，那么可以这样定义它:</p>
-</blockquote>
-<pre><code>interface FontStyleOptions {
+</code></pre><p>可选属性的好处之一是可以对可能存在的属性进行预定义，好处之二是在引用了不存在的属性时可以捕获错误。</p><h3 id=2可索引的类型>2、可索引的类型</h3><blockquote><p>额外的属性检查
+如果<code>FontStyleOptions</code>接口中除了有<code>size</code>属性，还有一些不确定的其它属性，那么可以这样定义它:</p></blockquote><pre><code>interface FontStyleOptions {
   size: number;
   [prop: string]: number;
 }
@@ -761,13 +380,11 @@ let obj: FontStyleOptions = {
 }
 obj.height = 18 // ok
 obj.background = '#ffffff' // error 不能将类型“&quot;#ffffff&quot;”分配给类型“number”
-</code></pre><p>要注意的是，对于可索引的类型来说，索引签名的参数类型必须为 &ldquo;string&rdquo; 或 &ldquo;number&rdquo;:</p>
-<pre><code>interface FontStyleOptions {
+</code></pre><p>要注意的是，对于可索引的类型来说，索引签名的参数类型必须为 &ldquo;string&rdquo; 或 &ldquo;number&rdquo;:</p><pre><code>interface FontStyleOptions {
   size: number;
   [prop: boolean]: string; // error
 }
-</code></pre><p>这也很容易理解，因为对象的键值要么是字符串要么是数字。 还要注意的是，索引的类型必须是其他属性的联合类型:</p>
-<pre><code>interface FontStyleOptions {
+</code></pre><p>这也很容易理解，因为对象的键值要么是字符串要么是数字。 还要注意的是，索引的类型必须是其他属性的联合类型:</p><pre><code>interface FontStyleOptions {
   size: number; // error 类型“number”的属性“size”不能赋给字符串索引类型“string”
   [prop: string]: string;
 }
@@ -776,9 +393,7 @@ interface FontStyleOptions {
   size: number;
   [prop: string]: string | number; // ok
 }
-</code></pre><h2 id="五类">五、类</h2>
-<h3 id="1继承">1、继承</h3>
-<pre><code>class Animal {
+</code></pre><h2 id=五类>五、类</h2><h3 id=1继承>1、继承</h3><pre><code>class Animal {
     name: string;
     constructor(theName: string) { this.name = theName; }
     move(distanceInMeters: number = 0) {
@@ -807,26 +422,11 @@ let tom: Animal = new Horse(&quot;Tommy the Palomino&quot;);
 
 sam.move();
 tom.move(34);
-</code></pre><p>输出</p>
-<pre><code>Slithering...
+</code></pre><p>输出</p><pre><code>Slithering...
 Sammy the Python moved 5m.
 Galloping...
 Tommy the Palomino moved 34m.
-</code></pre><p><strong>关键点</strong></p>
-<ul>
-<li>使用<code>extends</code>关键字创建了Animal的两个子类： Horse和 Snake</li>
-<li>派生类包含了一个构造函数，它必须调用 <code>super()</code>，它会执行基类的构造函数。 而且，在构造函数里访问 this的属性之前，一定要调用 <code>super()</code></li>
-<li><code>重写</code>从 Animal继承来的 move方法，使得 move方法根据不同的类而具有不同的功能</li>
-</ul>
-<p>ts中的类和es6的类没有什么太大的区别，主要是增加了类成员和方法的修饰符(private, protected, public)和对接口的实现。</p>
-<h3 id="2修饰符">2、修饰符</h3>
-<ul>
-<li><code>public</code> 修饰符: 类成员和方法能在该类和该类的子类中被使用，也能在外部被使用。TypeScript里，成员都默认为 public</li>
-<li><code>private</code> 修饰符: 类成员和方法只能在该类中被使用，不能在外部被使用。</li>
-<li><code>protected</code> 修饰符: 类成员和方法只能在该类和该类的子类中被使用，不能在外部被使用。</li>
-<li><code>readonly</code>关键字将属性设置为只读的，只读属性必须在声明时或构造函数里被初始化</li>
-</ul>
-<pre><code>class Person {
+</code></pre><p><strong>关键点</strong></p><ul><li>使用<code>extends</code>关键字创建了Animal的两个子类： Horse和 Snake</li><li>派生类包含了一个构造函数，它必须调用 <code>super()</code>，它会执行基类的构造函数。 而且，在构造函数里访问 this的属性之前，一定要调用 <code>super()</code></li><li><code>重写</code>从 Animal继承来的 move方法，使得 move方法根据不同的类而具有不同的功能</li></ul><p>ts中的类和es6的类没有什么太大的区别，主要是增加了类成员和方法的修饰符(private, protected, public)和对接口的实现。</p><h3 id=2修饰符>2、修饰符</h3><ul><li><code>public</code> 修饰符: 类成员和方法能在该类和该类的子类中被使用，也能在外部被使用。TypeScript里，成员都默认为 public</li><li><code>private</code> 修饰符: 类成员和方法只能在该类中被使用，不能在外部被使用。</li><li><code>protected</code> 修饰符: 类成员和方法只能在该类和该类的子类中被使用，不能在外部被使用。</li><li><code>readonly</code>关键字将属性设置为只读的，只读属性必须在声明时或构造函数里被初始化</li></ul><pre><code>class Person {
   private age: number
   protected name: string
 
@@ -847,13 +447,7 @@ class Student extends Person {
 
 let student = new Student('Lucy', 18)
 student.name // error
-</code></pre><p><strong>注意</strong>  <br />
-如果其中一个类型里包含一个 private成员，那么只有当另外一个类型中也存在这样一个 private成员， 并且它们都是来自同一处声明时，我们才认为这两个类型是兼容的。 对于 protected成员也使用这个规则</p>
-<h3 id="3存取器">3、存取器</h3>
-<blockquote>
-<p>通过getters/setters来截取对对象成员的访问。 它能帮助你有效的控制对对象成员的访问</p>
-</blockquote>
-<pre><code>let passcode = &quot;secret passcode&quot;;
+</code></pre><p><strong>注意</strong><br>如果其中一个类型里包含一个 private成员，那么只有当另外一个类型中也存在这样一个 private成员， 并且它们都是来自同一处声明时，我们才认为这两个类型是兼容的。 对于 protected成员也使用这个规则</p><h3 id=3存取器>3、存取器</h3><blockquote><p>通过getters/setters来截取对对象成员的访问。 它能帮助你有效的控制对对象成员的访问</p></blockquote><pre><code>let passcode = &quot;secret passcode&quot;;
 class Employee {
     private _fullName: string;
 
@@ -876,16 +470,7 @@ employee.fullName = &quot;Bob Smith&quot;;
 if (employee.fullName) {
     alert(employee.fullName);
 }
-</code></pre><p><strong>注意</strong></p>
-<ul>
-<li>存取器要求将编译器设置为输出ECMAScript 5或更高。 不支持降级到ECMAScript 3</li>
-<li>只带有 get不带有 set的存取器自动被推断为 readonly（这在从代码生成 .d.ts文件时是有帮助的，因为利用这个属性的用户会看到不允许够改变它的值）</li>
-</ul>
-<h3 id="4静态属性">4、静态属性</h3>
-<blockquote>
-<p>前面讨论了类的实例成员，那些仅当类被实例化的时候才会被初始化的属性。 我们也可以使用<code>static</code>关键词创建类的静态成员，这些属性存在于类本身上面而不是类的实例上</p>
-</blockquote>
-<pre><code>class Grid {
+</code></pre><p><strong>注意</strong></p><ul><li>存取器要求将编译器设置为输出ECMAScript 5或更高。 不支持降级到ECMAScript 3</li><li>只带有 get不带有 set的存取器自动被推断为 readonly（这在从代码生成 .d.ts文件时是有帮助的，因为利用这个属性的用户会看到不允许够改变它的值）</li></ul><h3 id=4静态属性>4、静态属性</h3><blockquote><p>前面讨论了类的实例成员，那些仅当类被实例化的时候才会被初始化的属性。 我们也可以使用<code>static</code>关键词创建类的静态成员，这些属性存在于类本身上面而不是类的实例上</p></blockquote><pre><code>class Grid {
     static origin = {x: 0, y: 0};
     calculateDistanceFromOrigin(point: {x: number; y: number;}) {
         let xDist = (point.x - Grid.origin.x);
@@ -900,14 +485,7 @@ let grid2 = new Grid(5.0);  // 5x scale
 
 console.log(grid1.calculateDistanceFromOrigin({x: 10, y: 10}));
 console.log(grid2.calculateDistanceFromOrigin({x: 10, y: 10}));
-</code></pre><h3 id="5抽象类">5、抽象类</h3>
-<ul>
-<li>抽象类做为其它派生类的基类使用。一般不会直接被实例化</li>
-<li>不同于接口，抽象类可以包含成员的实现细节</li>
-<li>abstract关键字是用于定义抽象类和在抽象类内部定义抽象方法</li>
-<li>抽象类中的抽象方法不包含具体实现并且必须在派生类中实现</li>
-</ul>
-<pre><code>abstract class Department {
+</code></pre><h3 id=5抽象类>5、抽象类</h3><ul><li>抽象类做为其它派生类的基类使用。一般不会直接被实例化</li><li>不同于接口，抽象类可以包含成员的实现细节</li><li>abstract关键字是用于定义抽象类和在抽象类内部定义抽象方法</li><li>抽象类中的抽象方法不包含具体实现并且必须在派生类中实现</li></ul><pre><code>abstract class Department {
 
     constructor(public name: string) {
     }
@@ -942,9 +520,7 @@ department.printMeeting();
 let department2: Department; // 允许创建一个对抽象类型的引用
 department2 = new Department(); // 错误: 不能创建一个抽象类的实例
 department2.generateReports(); // 错误: 方法在声明的抽象类中不存在
-</code></pre><h3 id="6类和接口">6、类和接口</h3>
-<p>ts中类可以使用关键词<code>implements</code>来实现接口:</p>
-<pre><code>interface BabyInter {
+</code></pre><h3 id=6类和接口>6、类和接口</h3><p>ts中类可以使用关键词<code>implements</code>来实现接口:</p><pre><code>interface BabyInter {
   name: string
   cry () : void
 }
@@ -960,8 +536,7 @@ class Baby implements BabyInter {
     console.log(this.name + 'is crying')
   }
 }
-</code></pre><p>如果 Baby 类中没有声明 cry 方法会怎样:</p>
-<pre><code>interface BabyInter {
+</code></pre><p>如果 Baby 类中没有声明 cry 方法会怎样:</p><pre><code>interface BabyInter {
   name: string
   cry () : void
 }
@@ -973,16 +548,7 @@ class Baby implements BabyInter {
     this.name = name
   }
 }
-</code></pre><blockquote>
-<p>会报一个编译错误: <code>[ts] 类“Baby”错误实现接口“BabyInter”。类型“Baby”中缺少属性“cry”。</code></p>
-</blockquote>
-<h2 id="六函数">六、函数</h2>
-<h3 id="1函数类型">1、函数类型</h3>
-<h4 id="1-几种函数类型的返回值类型写法">(1) 几种函数类型的返回值类型写法</h4>
-<blockquote>
-<p>记住在 () 后面添加返回值类型即可</p>
-</blockquote>
-<pre><code>function fn(): number {
+</code></pre><blockquote><p>会报一个编译错误: <code>[ts] 类“Baby”错误实现接口“BabyInter”。类型“Baby”中缺少属性“cry”。</code></p></blockquote><h2 id=六函数>六、函数</h2><h3 id=1函数类型>1、函数类型</h3><h4 id=1-几种函数类型的返回值类型写法>(1) 几种函数类型的返回值类型写法</h4><blockquote><p>记住在 () 后面添加返回值类型即可</p></blockquote><pre><code>function fn(): number {
   return 1
 }
 
@@ -999,11 +565,8 @@ const obj = {
     return 1
   }
 }
-</code></pre><h4 id="2-函数类型">(2) 函数类型</h4>
-<p>ts 中也有函数类型，用来描述一个函数:</p>
-<pre><code>type FnType = (x: number, y: number) =&gt; number
-</code></pre><p><strong>完整的函数写法</strong></p>
-<pre><code>let myAdd: (x: number, y: number) =&gt; number = function(x: number, y: number): number {
+</code></pre><h4 id=2-函数类型>(2) 函数类型</h4><p>ts 中也有函数类型，用来描述一个函数:</p><pre><code>type FnType = (x: number, y: number) =&gt; number
+</code></pre><p><strong>完整的函数写法</strong></p><pre><code>let myAdd: (x: number, y: number) =&gt; number = function(x: number, y: number): number {
   return x + y
 }
 
@@ -1016,10 +579,7 @@ let myAdd: FnType = function(x: number, y: number): number {
 let myAdd: FnType = function(x, y) {
   return x + y
 }
-</code></pre><h3 id="2函数重载">2、函数重载<code>?</code></h3>
-<p>js因为是动态类型，本身不需要支持重载，ts为了保证类型安全，支持了函数签名的类型重载。即:</p>
-<p>多个 <code>重载签名</code> 和一个 <code>实现签名</code></p>
-<pre><code>function len(s: string): string;
+</code></pre><h3 id=2函数重载>2、函数重载<code>?</code></h3><p>js因为是动态类型，本身不需要支持重载，ts为了保证类型安全，支持了函数签名的类型重载。即:</p><p>多个 <code>重载签名</code> 和一个 <code>实现签名</code></p><pre><code>function len(s: string): string;
 function len(arr: any[]): number;
 
 function len(x: string | any[]) {
@@ -1032,30 +592,13 @@ function len(x: string | any[]) {
 let a = len('').trim() // error
 let b = len([]).toFixed(2) // ok
 let c = len(2) // error
-</code></pre><p>ts 函数重载的其他特性:</p>
-<ul>
-<li>如果定义了 <code>重载签名</code> ，则 <code>实现签名</code> 对外不可见</li>
-<li><code>实现签名</code> 必须兼容 <code>重载签名</code></li>
-<li><code>重载签名</code> 的类型不会合并</li>
-</ul>
-<blockquote>
-<p>TS 中的函数重载其实并不是真的重载。</p>
-</blockquote>
-<p><a name="ts-01-06" id="ts-01-06"></a></p>
-<h2 id="七泛型">七、泛型</h2>
-<h3 id="1什么是泛型">1、什么是泛型</h3>
-<p>软件工程中，我们不仅要创建一致的定义良好的API，同时也要考虑代码块的重用性。 组件不仅能够支持当前的数据类型，同时也能支持未来的数据类型。</p>
-<p>通过字面意思来看，泛型有“广泛的类型”之意，即数据的类型也可以通过一个变量来动态确定，一般用 <code>&lt;&gt;</code> 操作符来声明泛型的使用。</p>
-<p><strong>小试牛刀</strong>  <br>
-// 泛型方法</p>
-<pre><code>function createList&lt;T&gt;(): T[] {
+</code></pre><p>ts 函数重载的其他特性:</p><ul><li>如果定义了 <code>重载签名</code> ，则 <code>实现签名</code> 对外不可见</li><li><code>实现签名</code> 必须兼容 <code>重载签名</code></li><li><code>重载签名</code> 的类型不会合并</li></ul><blockquote><p>TS 中的函数重载其实并不是真的重载。</p></blockquote><p><a id=ts-01-06></a></p><h2 id=七泛型>七、泛型</h2><h3 id=1什么是泛型>1、什么是泛型</h3><p>软件工程中，我们不仅要创建一致的定义良好的API，同时也要考虑代码块的重用性。 组件不仅能够支持当前的数据类型，同时也能支持未来的数据类型。</p><p>通过字面意思来看，泛型有“广泛的类型”之意，即数据的类型也可以通过一个变量来动态确定，一般用 <code>&lt;></code> 操作符来声明泛型的使用。</p><p><strong>小试牛刀</strong><br>// 泛型方法</p><pre><code>function createList&lt;T&gt;(): T[] {
   return [] as T[]
 }
 
 const numberList = createList&lt;number&gt;() // number[]
 const stringList = createList&lt;string&gt;() // string[]
-</code></pre><h3 id="2泛型接口">2、泛型接口</h3>
-<pre><code>interface GenericIdentityFn&lt;T&gt; {
+</code></pre><h3 id=2泛型接口>2、泛型接口</h3><pre><code>interface GenericIdentityFn&lt;T&gt; {
     (arg: T): T;
 }
 
@@ -1064,8 +607,7 @@ function identity&lt;T&gt;(arg: T): T {
 }
 
 let myIdentity: GenericIdentityFn&lt;number&gt; = identity;
-</code></pre><h3 id="3泛型类">3、泛型类</h3>
-<pre><code>// 泛型类的定义
+</code></pre><h3 id=3泛型类>3、泛型类</h3><pre><code>// 泛型类的定义
 class ArrayList&lt;T&gt; {
   list: T[]
 
@@ -1082,18 +624,7 @@ class ArrayList&lt;T&gt; {
 const list = new ArrayList&lt;string&gt;()
 list.push('hello') // ok
 list.push(1) //error
-</code></pre><p>小知识:K，V，T，E等泛型名称不是固定写死了，是可以随意定义的，为了语义化，是有特殊含义的:</p>
-<ul>
-<li><code>T</code>表示 <code>type</code> 类型。</li>
-<li><code>K、V</code>:分别代表键值中的 <code>Key、Value</code>。</li>
-<li><code>E</code>:表示 enum 枚举。</li>
-</ul>
-<h3 id="4泛型约束">4、泛型约束</h3>
-<p>如果我们只希望 createList 函数只能生成指定的类型数组，该如何做，可以使用 <code>extends</code> 关键词来约束泛型的范围和形状。</p>
-<blockquote>
-<p>此时 extends 约束的是输入值</p>
-</blockquote>
-<pre><code>interface Lengthwise {
+</code></pre><p>小知识:K，V，T，E等泛型名称不是固定写死了，是可以随意定义的，为了语义化，是有特殊含义的:</p><ul><li><code>T</code>表示 <code>type</code> 类型。</li><li><code>K、V</code>:分别代表键值中的 <code>Key、Value</code>。</li><li><code>E</code>:表示 enum 枚举。</li></ul><h3 id=4泛型约束>4、泛型约束</h3><p>如果我们只希望 createList 函数只能生成指定的类型数组，该如何做，可以使用 <code>extends</code> 关键词来约束泛型的范围和形状。</p><blockquote><p>此时 extends 约束的是输入值</p></blockquote><pre><code>interface Lengthwise {
   length: number
 }
 
@@ -1107,18 +638,11 @@ const stringList = createList&lt;boolean&gt;() // error
 
 console.log(numberList) // []
 console.log(arrayList) // []
-</code></pre><h4 id="41-条件控制">4.1 条件控制</h4>
-<p><code>extends</code> 除了做约束类型，还可以做条件控制，相当于与一个三元运算符，只不过是针对类型的。</p>
-<pre><code>T extends U ? X : Y
-</code></pre><p>如果 T 可以被分配给 U，则返回 X，否则返回 Y。</p>
-<pre><code>type IsNumber&lt;T&gt; = T extends number ? true : false
+</code></pre><h4 id=41-条件控制>4.1 条件控制</h4><p><code>extends</code> 除了做约束类型，还可以做条件控制，相当于与一个三元运算符，只不过是针对类型的。</p><pre><code>T extends U ? X : Y
+</code></pre><p>如果 T 可以被分配给 U，则返回 X，否则返回 Y。</p><pre><code>type IsNumber&lt;T&gt; = T extends number ? true : false
 
 type x = IsNumber&lt;string&gt; // false
-</code></pre><p><a name="ts-02-03" id="ts-02-03"></a></p>
-<h4 id="42-类型映射">4.2 类型映射</h4>
-<p>类型映射相当与一个类型的函数，可以做一些类型运算，输入一个类型，输出另一个类型，前文我们举了个 <code>Copy</code> 的例子。</p>
-<h5 id="1-内置的映射类型">(1) 内置的映射类型</h5>
-<pre><code>// 每一个属性都变成可选
+</code></pre><p><a id=ts-02-03></a></p><h4 id=42-类型映射>4.2 类型映射</h4><p>类型映射相当与一个类型的函数，可以做一些类型运算，输入一个类型，输出另一个类型，前文我们举了个 <code>Copy</code> 的例子。</p><h5 id=1-内置的映射类型>(1) 内置的映射类型</h5><pre><code>// 每一个属性都变成可选
 type Partial&lt;T&gt; = {
   [P in keyof T]?: T[P]
 }
@@ -1134,310 +658,73 @@ type Pick&lt;T, K extends keyof T&gt; = {
 }
 
 // ......
-</code></pre><p>typescript 2.8 在 lib.d.ts 中内置了几个映射类型:</p>
-<ul>
-<li><code>Exclude&lt;T, U&gt;</code> &ndash; 从 T 中剔除可以赋值给 U 的类型。</li>
-<li><code>Extract&lt;T, U&gt;</code> &ndash; 提取 T 中可以赋值给 U 的类型。</li>
-<li><code>NonNullable&lt;T&gt;</code> &ndash; 从 T 中剔除 null 和 undefined 。</li>
-<li><code>ReturnType&lt;T&gt;</code> &ndash; 获取函数返回值类型。</li>
-<li><code>InstanceType&lt;T&gt;</code> &ndash; 获取构造函数类型的实例类型。</li>
-</ul>
-<h5 id="2-extends-条件分发">(2) extends 条件分发</h5>
-<p>对于 <code>T extends U ? X : Y</code> 来说，还存在一个特性，当 T 是一个联合类型时，会进行条件分发。</p>
-<pre><code>type Union = string | number
+</code></pre><p>typescript 2.8 在 lib.d.ts 中内置了几个映射类型:</p><ul><li><code>Exclude&lt;T, U></code> &ndash; 从 T 中剔除可以赋值给 U 的类型。</li><li><code>Extract&lt;T, U></code> &ndash; 提取 T 中可以赋值给 U 的类型。</li><li><code>NonNullable&lt;T></code> &ndash; 从 T 中剔除 null 和 undefined 。</li><li><code>ReturnType&lt;T></code> &ndash; 获取函数返回值类型。</li><li><code>InstanceType&lt;T></code> &ndash; 获取构造函数类型的实例类型。</li></ul><h5 id=2-extends-条件分发>(2) extends 条件分发</h5><p>对于 <code>T extends U ? X : Y</code> 来说，还存在一个特性，当 T 是一个联合类型时，会进行条件分发。</p><pre><code>type Union = string | number
 type ParamType&lt;T&gt; = T extends number ? 'isNumber' : 'isString'
 
 type UnionType = ParamType&lt;Union&gt; // 'isNumber' | 'isString'
-</code></pre><p>实际上，extends 运算会变成如下形式:</p>
-<pre><code> (string extends number ? 'number' : 'string') | (number extends number ? 'number' : 'string')
-</code></pre><p><code>Extract</code> 就是基于此特性实现的，再配合 never 幺元的特性:</p>
-<pre><code>type Exclude&lt;T, K&gt; = T extends K ? never : T
+</code></pre><p>实际上，extends 运算会变成如下形式:</p><pre><code> (string extends number ? 'number' : 'string') | (number extends number ? 'number' : 'string')
+</code></pre><p><code>Extract</code> 就是基于此特性实现的，再配合 never 幺元的特性:</p><pre><code>type Exclude&lt;T, K&gt; = T extends K ? never : T
 
 type T1 = Exclude&lt;string | number | boolean, string | boolean&gt; // number
-</code></pre><h5 id="3-infer-关键词">(3) infer 关键词</h5>
-<blockquote>
-<p>infer 关键词常在条件类型中和 extends 关键词一同出现，表示将要推断的类型，作为类型变量可以在三元表达式的 True 部分引用</p>
-</blockquote>
-<p>ts 中内置的一个映射类型 <code>ReturnType</code> ，用于获取函数类型的返回值:</p>
-<pre><code>function len (str: string) {
+</code></pre><h5 id=3-infer-关键词>(3) infer 关键词</h5><blockquote><p>infer 关键词常在条件类型中和 extends 关键词一同出现，表示将要推断的类型，作为类型变量可以在三元表达式的 True 部分引用</p></blockquote><p>ts 中内置的一个映射类型 <code>ReturnType</code> ，用于获取函数类型的返回值:</p><pre><code>function len (str: string) {
   return str.length
 }
 
 type LenFn = typeof len // (str: string) =&gt; number
 
 type LenFnReturn = ReturnType&lt;LenFn&gt; // number
-</code></pre><p>ReturnType 的实现:</p>
-<pre><code>type ReturnType&lt;T extends (...args: any) =&gt; any&gt; = T extends (...args: any) =&gt; infer R ? R : any;
-</code></pre><h2 id="八模块">八、模块</h2>
-<h3 id="1全局模块-vs-文件模块">1、全局模块 vs. 文件模块</h3>
-<p>默认情况下，我们所写的代码是位于全局模块下的:</p>
-<pre><code>const foo = 2
-</code></pre><p>此时，如果我们创建了另一个文件，并写下如下代码，ts 认为是正常的:</p>
-<pre><code>const bar = foo // ok
-</code></pre><p>如果要打破这种限制，只要文件中有 import 或者 export 表达式即可:</p>
-<pre><code>export const bar = foo // error
-</code></pre><h3 id="2模块解析策略">2、模块解析策略</h3>
-<p>Tpescript 有两种模块的解析策略: <a href="https://www.tslang.cn/docs/handbook/module-resolution.html#node">Node</a> 和 <a href="https://www.tslang.cn/docs/handbook/module-resolution.html#classic">Classic</a> 。</p>
-<p>当 <code>tsconfig.json</code> 中 <code>module</code> 设置成 <code>AMD</code>、<code>System</code>、<code>ES2015</code> 时，默认为 <code>classic</code> ，否则为 <code>Node</code> ，也可以使用 <code>moduleResolution</code> 手动指定模块解析策略。</p>
-<p>两种模块解析策略的区别在于:</p>
-<pre><code>import { a } from 'moduleB'
-</code></pre><p><code>Classic</code>:</p>
-<ul>
-<li><code>/root/src/folder/moduleB.ts</code></li>
-<li><code>/root/src/folder/moduleB.d.ts</code></li>
-<li><code>/root/src/moduleB.ts</code></li>
-<li><code>/root/src/moduleB.d.ts</code></li>
-<li><code>/root/moduleB.ts</code></li>
-<li><code>/root/moduleB.d.ts</code></li>
-<li><code>/moduleB.ts</code></li>
-<li><code>/moduleB.d.ts</code></li>
-</ul>
-<p><code>Node</code>:</p>
-<ul>
-<li><code>/root/src/node_modules/moduleB.ts</code></li>
-<li><code>/root/src/node_modules/moduleB.tsx</code></li>
-<li><code>/root/src/node_modules/moduleB.d.ts</code></li>
-<li><code>/root/src/node_modules/moduleB/package.json</code> (如果指定了&quot;types&quot;属性)</li>
-<li><code>/root/src/node_modules/moduleB/index.ts</code></li>
-<li><code>/root/src/node_modules/moduleB/index.tsx</code></li>
-<li><code>/root/src/node_modules/moduleB/index.d.ts</code></li>
-<li><code>/root/node_modules/moduleB.ts</code></li>
-<li><code>/root/node_modules/moduleB.tsx</code></li>
-<li><code>/root/node_modules/moduleB.d.ts</code></li>
-<li><code>/root/node_modules/moduleB/package.json</code> (如果指定了&quot;types&quot;属性)</li>
-<li><code>/root/node_modules/moduleB/index.ts</code></li>
-<li><code>/root/node_modules/moduleB/index.tsx</code></li>
-<li><code>/root/node_modules/moduleB/index.d.ts</code></li>
-<li><code>/node_modules/moduleB.ts</code></li>
-<li><code>/node_modules/moduleB.tsx</code></li>
-<li><code>/node_modules/moduleB.d.ts</code></li>
-<li><code>/node_modules/moduleB/package.json</code> (如果指定了&quot;types&quot;属性)</li>
-<li><code>/node_modules/moduleB/index.ts</code></li>
-<li><code>/node_modules/moduleB/index.tsx</code></li>
-<li><code>/node_modules/moduleB/index.d.ts</code></li>
-</ul>
-<hr>
-<p>参考:</p>
-<ul>
-<li><a href="https://www.yuque.com/fed/share/eggmow">可参考文章-语雀</a></li>
-<li><a href="https://www.tslang.cn/docs/handbook/typescript-in-5-minutes.html">TypeScript官方文档</a></li>
-</ul>
-<hr>
-<p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>  <br>
-<strong>欢迎交流~</strong></p>
-<p><img src="/img-common/weChatPublic.jpg" alt="微信公众号" width="600" height="286" /></p>
-<p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong>  <br/>
-<strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p>
-		</div>
-		<footer class="post__footer">
-			
-<div class="post__tags tags clearfix">
-	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-	<ul class="tags__list">
-		<li class="tags__item">
-			<a class="tags__link btn" href="/tags/typescript/" rel="tag">TypeScript</a>
-		</li>
-	</ul>
-</div>
-		</footer>
-	</article>
-</main>
-
-<div class="authorbox clearfix">
-	<figure class="authorbox__avatar">
-		<img alt="曜灵 avatar" src="/img-common/avatar1.jpeg" class="avatar" height="90" width="90">
-	</figure>
-	<div class="authorbox__header">
-		<span class="authorbox__name">关于 曜灵</span>
-	</div>
-	<div class="authorbox__description">
-		博主目前就职于X集团上海研发中心-平台工具组，是一名Web开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目
-	</div>
-</div>
-
-<nav class="pager flex">
-	<div class="pager__item pager__item--prev">
-		<a class="pager__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/" rel="prev">
-			<span class="pager__subtitle">«&thinsp;上一篇</span>
-			<p class="pager__title">vue3&#43;ts(1)：vue3项目从0到1搭建</p>
-		</a>
-	</div>
-	<div class="pager__item pager__item--next">
-		<a class="pager__link" href="/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/" rel="next">
-			<span class="pager__subtitle">下一篇&thinsp;»</span>
-			<p class="pager__title">vue3&#43;ts(3)：vue3组合式api及重要属性变更</p>
-		</a>
-	</div>
-</nav>
-<script src="https://utteranc.es/client.js"
-        repo="lianpf/lianpf.github.io"
-        issue-term="title"
-        label="comments"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
-			</div>
-			<aside class="sidebar">
-<div class="widget-recent widget">
-	<h4 class="widget__title">近期文章</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/13.apr%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/">Node之Apr框架使用文档</a></li>
-			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/12.apr%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91/">Node之Apr框架开发</a></li>
-			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/11.mysql-gui/">MySQL 8.0问题排查</a></li>
-			<li class="widget__item"><a class="widget__link" href="/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/">vue3&#43;ts(3)：vue3组合式api及重要属性变更</a></li>
-			<li class="widget__item"><a class="widget__link" href="/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">vue3&#43;ts(2)：TypeScript 语法汇总</a></li>
-			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">vue3&#43;ts(1)：vue3项目从0到1搭建</a></li>
-		</ul>
-	</div>
-</div>
-<div class="widget-categories widget">
-	<h4 class="widget__title">分类</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/server/">Server</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/">前端基础</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/">开发日记</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</a>
-			</li>
-		</ul>
-	</div>
-</div>
-<div class="widget-taglist widget">
-	<h4 class="widget__title">标签</h4>
-	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/apr/" title="apr">apr (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/bridge/" title="Bridge">Bridge (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/css/" title="CSS">CSS (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/egg/" title="egg">egg (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github-action/" title="GitHub Action">GitHub Action (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gui/" title="GUI">GUI (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/http/" title="http">http (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="Hugo">Hugo (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/immutable/" title="immutable">immutable (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/java/" title="Java">Java (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="JavaScript">JavaScript (7)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/koa2/" title="koa2">koa2 (3)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/markdown/" title="markdown">markdown (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mvc/" title="MVC">MVC (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="MVVM">MVVM (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/native/" title="Native">Native (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node (9)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/npm/" title="npm">npm (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/profile/" title="profile">profile (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/" title="React技术栈">React技术栈 (6)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequel-pro/" title="Sequel Pro">Sequel Pro (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/terminal/" title="terminal">terminal (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/tree/" title="Tree">Tree (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ts/" title="ts">ts (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="TypeScript">TypeScript (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vsCode">vsCode (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue-cli/" title="vue-cli">vue-cli (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue3/" title="vue3">vue3 (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue%E6%8A%80%E6%9C%AF%E6%A0%88/" title="Vue技术栈">Vue技术栈 (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webstorm/" title="webstorm">webstorm (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%9B%A2%E9%98%9F%E8%A7%84%E8%8C%83/" title="团队规范">团队规范 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="快捷键">快捷键 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">数据库 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A1%86%E6%9E%B6/" title="框架">框架 (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (4)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="生命周期">生命周期 (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%AE%97%E6%B3%95/" title="算法">算法 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%88%E7%AB%AF/" title="终端">终端 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BC%93%E5%AD%98/" title="缓存">缓存 (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BC%96%E7%A0%81%E5%B7%A5%E5%85%B7/" title="编码工具">编码工具 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/" title="编程工具">编程工具 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/" title="网络原理">网络原理 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%84%9A%E6%89%8B%E6%9E%B6/" title="脚手架">脚手架 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/" title="自动化">自动化 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式">设计模式 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%AE%BE%E8%AE%A1%E6%B3%9B%E5%9E%8B/" title="设计泛型">设计泛型 (1)</a>
-	</div>
-</div>
-<div class="widget-social widget">
-	<h4 class="widget-social__title widget__title">社交</h4>
-	<div class="widget-social__content widget__content">
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/lianpf" target="_blank">
-				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
-				<span>GitHub</span>
-			</a>
-		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Email" href="mailto:wanderlian@foxmail.com">
-				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
-				<span>wanderlian@foxmail.com</span>
-			</a>
-		</div>
-
-		
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="微信公众号：连先生有猫病" rel="noopener noreferrer" href="https://mp.weixin.qq.com/mp/profile_ext?action=home&amp;__biz=MzAwNDk2OTI1Mg==&amp;scene=124#wechat_redirect" target="_blank">
-					<svg t="1613746391336" class="widget-social__link-icon  icon" width="24" height="24" viewBox="0 0 1030 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1661" width="200" height="200"><path d="M697.6 275.2C620.8 179.2 499.2 121.6 371.2 128 166.4 128 0 256 0 422.4c0 83.2 44.8 160 115.2 211.2l-57.6 172.8L262.4 704c38.4 6.4 76.8 12.8 115.2 12.8h51.2c-32-38.4-44.8-89.6-51.2-140.8-6.4-160 134.4-281.6 320-300.8zM448 275.2c0-19.2 12.8-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6c0 19.2-12.8 32-32 32h-25.6c-19.2 0-32-12.8-32-32v-25.6z m-166.4 12.8c0 19.2-12.8 32-32 32h-25.6c-19.2 0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1662"></path><path d="M1024 556.8c0-121.6-128-224-288-224S448 435.2 448 556.8c0 128 128 224 288 224 38.4 0 76.8-6.4 115.2-19.2l179.2 83.2-64-160c32-25.6 57.6-76.8 57.6-128z m-390.4-51.2c0 19.2-12.8 32-32 32H576c-19.2 0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6z m268.8 0c0 19.2-12.8 32-32 32h-25.6c-19.2 0-32-12.8-32-32v-25.6c0-19.2 19.2-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1663"></path></svg>
-				<span>微信公众号：连先生有猫病</span>
-			</a>
-		</div>
-		
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="知乎" rel="noopener noreferrer" href="https://www.zhihu.com/people/liu-lang-zhe-51-90/posts" target="_blank">
-					<svg t="1613712910226" class="widget-social__link-icon  icon" width="24" height="24" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8513" width="200" height="200"><path d="M544.949 561.422s0-71.387-34.779-75.050c-34.779-3.663-142.775 0-142.775 0v-219.654h161.078s-1.83-73.219-32.949-73.219h-261.755l43.93-117.148s-65.897 3.663-89.692 45.761-98.844 252.604-98.844 252.604 25.627 10.983 67.726-20.134c42.101-31.116 56.743-86.033 56.743-86.033l76.879-3.663 1.83 223.316s-133.621-1.83-161.078 0c-27.457 1.83-42.101 75.050-42.101 75.050h203.182s-18.307 124.47-69.557 214.164c-53.085 89.692-151.929 161.078-151.929 161.078s71.387 29.287 140.947-10.983c69.557-42.101 120.811-223.316 120.811-223.316l162.912 203.182s14.643-97.013-1.83-124.47c-18.307-27.457-113.49-137.283-113.49-137.283l-42.101 36.607 29.287-120.811h177.552zM587.050 188.010l-1.83 660.793h65.897l23.795 82.37 115.321-82.37h162.912v-660.793h-366.091zM879.92 775.584h-76.879l-97.013 75.050-21.965-75.050h-20.134v-512.527h215.991v512.527z" fill="" p-id="8514"></path></svg>
-				<span>知乎</span>
-			</a>
-		</div>
-		
-	</div>
-</div>
-</aside>
-		</div>
-		
-		
-
-<footer class="footer">
-	<div class="container footer__container flex">
-		
-		<div class="footer__copyright">
-			&copy; 2016 - 2021 曜灵（SUN）Site.
-			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> 主题</span>
-		</div>
-	</div>
-</footer>
-
-
-<script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script>
-<script>addBackToTop({
-  cornerOffset: 100,
-  diameter: 56,
-  backgroundColor: '#63B8FF',
-  innerHTML: '<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',
-  textColor: '#fff'
-})</script>
-	</div>
-<script async defer src="/js/menu.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
-
-<script src="/js/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-</body>
-</html>
+</code></pre><p>ReturnType 的实现:</p><pre><code>type ReturnType&lt;T extends (...args: any) =&gt; any&gt; = T extends (...args: any) =&gt; infer R ? R : any;
+</code></pre><h2 id=八模块>八、模块</h2><h3 id=1全局模块-vs-文件模块>1、全局模块 vs. 文件模块</h3><p>默认情况下，我们所写的代码是位于全局模块下的:</p><pre><code>const foo = 2
+</code></pre><p>此时，如果我们创建了另一个文件，并写下如下代码，ts 认为是正常的:</p><pre><code>const bar = foo // ok
+</code></pre><p>如果要打破这种限制，只要文件中有 import 或者 export 表达式即可:</p><pre><code>export const bar = foo // error
+</code></pre><h3 id=2模块解析策略>2、模块解析策略</h3><p>Tpescript 有两种模块的解析策略: <a href=https://www.tslang.cn/docs/handbook/module-resolution.html#node>Node</a> 和 <a href=https://www.tslang.cn/docs/handbook/module-resolution.html#classic>Classic</a> 。</p><p>当 <code>tsconfig.json</code> 中 <code>module</code> 设置成 <code>AMD</code>、<code>System</code>、<code>ES2015</code> 时，默认为 <code>classic</code> ，否则为 <code>Node</code> ，也可以使用 <code>moduleResolution</code> 手动指定模块解析策略。</p><p>两种模块解析策略的区别在于:</p><pre><code>import { a } from 'moduleB'
+</code></pre><p><code>Classic</code>:</p><ul><li><code>/root/src/folder/moduleB.ts</code></li><li><code>/root/src/folder/moduleB.d.ts</code></li><li><code>/root/src/moduleB.ts</code></li><li><code>/root/src/moduleB.d.ts</code></li><li><code>/root/moduleB.ts</code></li><li><code>/root/moduleB.d.ts</code></li><li><code>/moduleB.ts</code></li><li><code>/moduleB.d.ts</code></li></ul><p><code>Node</code>:</p><ul><li><code>/root/src/node_modules/moduleB.ts</code></li><li><code>/root/src/node_modules/moduleB.tsx</code></li><li><code>/root/src/node_modules/moduleB.d.ts</code></li><li><code>/root/src/node_modules/moduleB/package.json</code> (如果指定了"types"属性)</li><li><code>/root/src/node_modules/moduleB/index.ts</code></li><li><code>/root/src/node_modules/moduleB/index.tsx</code></li><li><code>/root/src/node_modules/moduleB/index.d.ts</code></li><li><code>/root/node_modules/moduleB.ts</code></li><li><code>/root/node_modules/moduleB.tsx</code></li><li><code>/root/node_modules/moduleB.d.ts</code></li><li><code>/root/node_modules/moduleB/package.json</code> (如果指定了"types"属性)</li><li><code>/root/node_modules/moduleB/index.ts</code></li><li><code>/root/node_modules/moduleB/index.tsx</code></li><li><code>/root/node_modules/moduleB/index.d.ts</code></li><li><code>/node_modules/moduleB.ts</code></li><li><code>/node_modules/moduleB.tsx</code></li><li><code>/node_modules/moduleB.d.ts</code></li><li><code>/node_modules/moduleB/package.json</code> (如果指定了"types"属性)</li><li><code>/node_modules/moduleB/index.ts</code></li><li><code>/node_modules/moduleB/index.tsx</code></li><li><code>/node_modules/moduleB/index.d.ts</code></li></ul><hr><p>参考:</p><ul><li><a href=https://www.yuque.com/fed/share/eggmow>可参考文章-语雀</a></li><li><a href=https://www.tslang.cn/docs/handbook/typescript-in-5-minutes.html>TypeScript官方文档</a></li></ul><hr><p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong><br><strong>欢迎交流~</strong></p><p><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286></p><p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong><br><strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/typescript/ rel=tag>TypeScript</a></li></ul></div></footer></article></main><div class="authorbox clearfix"><figure class=authorbox__avatar><img alt="曜灵 avatar" src=/img-common/avatar1.jpeg class=avatar height=90 width=90></figure><div class=authorbox__header><span class=authorbox__name>关于 曜灵</span></div><div class=authorbox__description>博主目前就职于X集团上海研发中心-平台工具组，是一名Web开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目</div></div><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/ rel=prev><span class=pager__subtitle>«&#8201;上一篇</span><p class=pager__title>vue3+ts(1)：vue3项目从0到1搭建</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/ rel=next><span class=pager__subtitle>下一篇&#8201;»</span><p class=pager__title>vue3+ts(3)：vue3组合式api及重要属性变更</p></a></div></nav><script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=title label=comments theme=github-light crossorigin=anonymous async></script></div><aside class=sidebar><div class="widget-recent widget"><h4 class=widget__title>近期文章</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/13.apr%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/>Node之Apr框架使用文档</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/12.apr%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91/>Node之Apr框架开发</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/11.mysql-gui/>MySQL 8.0问题排查</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/>vue3+ts(3)：vue3组合式api及重要属性变更</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/>vue3+ts(2)：TypeScript 语法汇总</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/>vue3+ts(1)：vue3项目从0到1搭建</a></li></ul></div></div><div class="widget-categories widget"><h4 class=widget__title>分类</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/categories/server/>Server</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%85%B6%E4%BB%96/>其他</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/>前端基础</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/>前端框架</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/>开发日记</a></li><li class=widget__item><a class=widget__link href=/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/>计算机原理</a></li></ul></div></div><div class="widget-taglist widget"><h4 class=widget__title>标签</h4><div class=widget__content><a class="widget-taglist__link widget__link btn" href=/tags/apr/ title=apr>apr (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/bridge/ title=Bridge>Bridge (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/css/ title=CSS>CSS (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/egg/ title=egg>egg (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/git/ title=Git>Git (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/github-action/ title="GitHub Action">GitHub Action (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/gui/ title=GUI>GUI (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/http/ title=http>http (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/hugo/ title=Hugo>Hugo (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/immutable/ title=immutable>immutable (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/java/ title=Java>Java (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/javascript/ title=JavaScript>JavaScript (7)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/koa2/ title=koa2>koa2 (3)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/markdown/ title=markdown>markdown (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/mongodb/ title=mongodb>mongodb (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/mysql/ title=mysql>mysql (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/native/ title=Native>Native (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/nginx/ title=nginx>nginx (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/node/ title=node>node (5)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/npm/ title=npm>npm (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/profile/ title=profile>profile (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/ title=React技术栈>React技术栈 (4)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/sequel-pro/ title="Sequel Pro">Sequel Pro (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/terminal/ title=terminal>terminal (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/tree/ title=Tree>Tree (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/ts/ title=ts>ts (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/typescript/ title=TypeScript>TypeScript (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/vscode/ title=vsCode>vsCode (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/vue/ title=vue>vue (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/vue-cli/ title=vue-cli>vue-cli (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/vue3/ title=vue3>vue3 (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/vue%E6%8A%80%E6%9C%AF%E6%A0%88/ title=Vue技术栈>Vue技术栈 (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/webstorm/ title=webstorm>webstorm (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E5%9B%A2%E9%98%9F%E8%A7%84%E8%8C%83/ title=团队规范>团队规范 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/ title=快捷键>快捷键 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/ title=数据库>数据库 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E6%A1%86%E6%9E%B6/ title=框架>框架 (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/ title=浏览器>浏览器 (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/ title=生命周期>生命周期 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%AE%97%E6%B3%95/ title=算法>算法 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%BB%88%E7%AB%AF/ title=终端>终端 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%BC%93%E5%AD%98/ title=缓存>缓存 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%BC%96%E7%A0%81%E5%B7%A5%E5%85%B7/ title=编码工具>编码工具 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/ title=编程工具>编程工具 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/ title=网络原理>网络原理 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E8%84%9A%E6%89%8B%E6%9E%B6/ title=脚手架>脚手架 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/ title=自动化>自动化 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/ title=设计模式>设计模式 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E8%AE%BE%E8%AE%A1%E6%B3%9B%E5%9E%8B/ title=设计泛型>设计泛型 (1)</a></div></div><div class="widget-social widget"><h4 class="widget-social__title widget__title">社交</h4><div class="widget-social__content widget__content"><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=GitHub rel="noopener noreferrer" href=https://github.com/lianpf target=_blank><svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0C85.9.0.0 85.8.0 191.7c0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2.0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8.0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7.0.0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4.0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5.0 25.6-.2 46.3-.2 52.6.0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg><span>GitHub</span></a></div><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=Email href=mailto:wanderlian@foxmail.com><svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16V16 0h-16H16 0zm347 16-139 92.5L69 32zM199 157.5l9 5.5 9-5.5L384 46v210H32V46z"/></svg><span>wanderlian@foxmail.com</span></a></div><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=微信公众号：连先生有猫病 rel="noopener noreferrer" href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwNDk2OTI1Mg==&scene=124#wechat_redirect" target=_blank><svg t="1613746391336" class="widget-social__link-icon icon" width="24" height="24" viewBox="0 0 1030 1024" xmlns="http://www.w3.org/2000/svg" p-id="1661" width="200" height="200"><path d="M697.6 275.2C620.8 179.2 499.2 121.6 371.2 128 166.4 128 0 256 0 422.4c0 83.2 44.8 160 115.2 211.2l-57.6 172.8L262.4 704c38.4 6.4 76.8 12.8 115.2 12.8h51.2c-32-38.4-44.8-89.6-51.2-140.8-6.4-160 134.4-281.6 320-300.8zM448 275.2c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6c0 19.2-12.8 32-32 32H480c-19.2.0-32-12.8-32-32v-25.6zM281.6 288c0 19.2-12.8 32-32 32h-25.6c-19.2.0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32V288z" fill="#e6e6e6" p-id="1662"/><path d="M1024 556.8c0-121.6-128-224-288-224S448 435.2 448 556.8c0 128 128 224 288 224 38.4.0 76.8-6.4 115.2-19.2l179.2 83.2-64-160c32-25.6 57.6-76.8 57.6-128zm-390.4-51.2c0 19.2-12.8 32-32 32H576c-19.2.0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6zm268.8.0c0 19.2-12.8 32-32 32h-25.6c-19.2.0-32-12.8-32-32v-25.6c0-19.2 19.2-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1663"/></svg><span>微信公众号：连先生有猫病</span></a></div><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=知乎 rel="noopener noreferrer" href=https://www.zhihu.com/people/liu-lang-zhe-51-90/posts target=_blank><svg t="1613712910226" class="widget-social__link-icon icon" width="24" height="24" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" p-id="8513" width="200" height="200"><path d="M544.949 561.422s0-71.387-34.779-75.05-142.775.0-142.775.0V266.718h161.078s-1.83-73.219-32.949-73.219h-261.755l43.93-117.148s-65.897 3.663-89.692 45.761-98.844 252.604-98.844 252.604 25.627 10.983 67.726-20.134c42.101-31.116 56.743-86.033 56.743-86.033l76.879-3.663 1.83 223.316s-133.621-1.83-161.078.0-42.101 75.05-42.101 75.05h203.182s-18.307 124.47-69.557 214.164c-53.085 89.692-151.929 161.078-151.929 161.078s71.387 29.287 140.947-10.983c69.557-42.101 120.811-223.316 120.811-223.316l162.912 203.182s14.643-97.013-1.83-124.47c-18.307-27.457-113.49-137.283-113.49-137.283l-42.101 36.607 29.287-120.811h177.552zM587.05 188.01l-1.83 660.793h65.897l23.795 82.37 115.321-82.37h162.912V188.01H587.054zM879.92 775.584h-76.879l-97.013 75.05-21.965-75.05h-20.134v-512.527h215.991v512.527z" p-id="8514"/></svg><span>知乎</span></a></div></div></div></aside></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2016 - 2021 曜灵（SUN）Site.
+<span class=footer__copyright-credits>基于 <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> 引擎和 <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> 主题</span></div></div></footer><script src=https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js></script><script>addBackToTop({cornerOffset:100,diameter:56,backgroundColor:'#63B8FF',innerHTML:'<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',textColor:'#fff'})</script></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script><script src=/js/highlight/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script></body></html>

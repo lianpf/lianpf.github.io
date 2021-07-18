@@ -1,208 +1,30 @@
-<!DOCTYPE html>
-<html class="no-js" lang="zh-cn">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>对React children 的深入理解 - 曜灵（SUN）Site</title>
-	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
-		<meta property="og:title" content="对React children 的深入理解" />
-<meta property="og:description" content="react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样&hellip;" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/06.%E5%AF%B9react-children-%E7%9A%84%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-1/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2018-05-29T00:00:00+00:00" />
-<meta property="article:modified_time" content="2018-05-29T00:00:00+00:00" />
-
-
-		<meta itemprop="name" content="对React children 的深入理解">
-<meta itemprop="description" content="react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样&hellip;"><meta itemprop="datePublished" content="2018-05-29T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2018-05-29T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2120">
-<meta itemprop="keywords" content="React技术栈,immutable," />
-		<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="对React children 的深入理解"/>
-<meta name="twitter:description" content="react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样&hellip;"/>
-
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
-	
-	<link rel="stylesheet" href="/js/highlight/styles/agate.css">
-
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-
-	<link rel="shortcut icon" href="/favicon.png">
-		
-  
-	
-<script>
-  var _hmt = _hmt || [];
-  (function() {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";
-    var s = document.getElementsByTagName("script")[0]; 
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
-	
-	<style type="text/css">
-		 
-		pre {
-  		padding: 0;
-		}
-	</style>
-</head>
-<body class="body">
-	<div class="container container--outer">
-		<header class="header">
-	<div class="container header__container">
-		
-	<div class="logo logo--mixed">
-		<a class="logo__link" href="/" title="曜灵（SUN）Site" rel="home">
-			<div class="logo__item logo__imagebox">
-					<img class="logo__img" src="/img-common/avatar1.jpeg">
-				</div><div class="logo__item logo__text">
-					<div class="logo__title">曜灵（SUN）Site</div>
-					<div class="logo__tagline">🌝 带着 &#34;偏见&#34; 去理解技术的世界</div>
-				</div>
-		</a>
-	</div>
-		
-<nav class="menu">
-	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
-		<span class="menu__btn-title" tabindex="-1">菜单</span>
-	</button>
-	<ul class="menu__list">
-		<li class="menu__item">
-			<a class="menu__link" href="/">
-				
-				<span class="menu__text">首页</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/about/me/">
-				
-				<span class="menu__text">博主</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/about/site/">
-				
-				<span class="menu__text">站点</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="https://github.com/lianpf/lianpf.github.io">
-				
-				<span class="menu__text">编辑</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="https://github.com/lianpf/lianpf.github.io/issues">
-				
-				<span class="menu__text">反馈</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/search/">
-				
-				<span class="menu__text">搜索</span>
-				
-			</a>
-		</li>
-	</ul>
-</nav>
-
-	</div>
-</header>
-		<div class="wrapper flex">
-			<div class="primary">
-			
-<main class="main" role="main">
-	<article class="post">
-		<header class="post__header">
-			<h1 class="post__title">对React children 的深入理解</h1>
-			<div class="post__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">曜灵</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-05-29T00:00:00Z">2018-05-29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="category">前端框架</a>
-	</span>
-</div></div>
-		</header>
-<div class="post__toc toc">
-	<div class="toc__title">目录</div>
-	<div class="toc__menu">
-		<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#1-child-components">1. Child components</a></li>
-        <li><a href="#2child-可以是任何东西">2.child 可以是任何东西</a></li>
-        <li><a href="#3-reactchildrenmap">3. <code>React.Children.map</code></a></li>
-        <li><a href="#4-reactchildrenforeach">4. React.Children.forEach</a></li>
-        <li><a href="#5-reactchildrencount">5. React.Children.count</a></li>
-        <li><a href="#6-reactchildrentoarray">6. React.Children.toArray</a></li>
-        <li><a href="#7-reactchildrenonly">7. React.Children.only</a></li>
-        <li><a href="#8-renderchildren">8. renderChildren</a></li>
-        <li><a href="#9-reactcloneelement">9. React.cloneElement</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-	</div>
-</div><div class="content post__content clearfix">
-			<p>react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样&hellip;</p>
-<hr>
-<p>react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样去使用这些组件。
+<!doctype html><html class=no-js lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>对React children 的深入理解 - 曜灵（SUN）Site</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><meta property="og:title" content="对React children 的深入理解"><meta property="og:description" content="react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样&mldr;"><meta property="og:type" content="article"><meta property="og:url" content="/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/06.%E5%AF%B9react-children-%E7%9A%84%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-1/"><meta property="article:published_time" content="2018-05-29T00:00:00+00:00"><meta property="article:modified_time" content="2018-05-29T00:00:00+00:00"><meta itemprop=name content="对React children 的深入理解"><meta itemprop=description content="react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样&mldr;"><meta itemprop=datePublished content="2018-05-29T00:00:00+00:00"><meta itemprop=dateModified content="2018-05-29T00:00:00+00:00"><meta itemprop=wordCount content="2120"><meta itemprop=keywords content="React技术栈,immutable,"><meta name=twitter:card content="summary"><meta name=twitter:title content="对React children 的深入理解"><meta name=twitter:description content="react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样&mldr;"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/js/highlight/styles/agate.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.png><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><style type=text/css>pre{padding:0}</style></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class="logo logo--mixed"><a class=logo__link href=/ title=曜灵（SUN）Site rel=home><div class="logo__item logo__imagebox"><img class=logo__img src=/img-common/avatar1.jpeg></div><div class="logo__item logo__text"><div class=logo__title>曜灵（SUN）Site</div><div class=logo__tagline>🌝 带着 "偏见" 去理解技术的世界</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
+<span class=menu__btn-title tabindex=-1>菜单</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>首页</span></a></li><li class=menu__item><a class=menu__link href=/about/me/><span class=menu__text>博主</span></a></li><li class=menu__item><a class=menu__link href=/about/site/><span class=menu__text>站点</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io><span class=menu__text>编辑</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io/issues><span class=menu__text>反馈</span></a></li><li class=menu__item><a class=menu__link href=/search/><span class=menu__text>搜索</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>对React children 的深入理解</h1><div class="post__meta meta"><div class="meta__item-author meta__item"><svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span></div><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2018-05-29T00:00:00Z>2018-05-29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/ rel=category>前端框架</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>目录</div><div class=toc__menu><nav id=TableOfContents><ul><li><ul><li><a href=#1-child-components>1. Child components</a></li><li><a href=#2child-可以是任何东西>2.child 可以是任何东西</a></li><li><a href=#3-reactchildrenmap>3. <code>React.Children.map</code></a></li><li><a href=#4-reactchildrenforeach>4. React.Children.forEach</a></li><li><a href=#5-reactchildrencount>5. React.Children.count</a></li><li><a href=#6-reactchildrentoarray>6. React.Children.toArray</a></li><li><a href=#7-reactchildrenonly>7. React.Children.only</a></li><li><a href=#8-renderchildren>8. renderChildren</a></li><li><a href=#9-reactcloneelement>9. React.cloneElement</a></li></ul></li></ul></nav></div></div><div class="content post__content clearfix"><p>react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样&mldr;</p><hr><p>react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样去使用这些组件。
 然而在包含jsx的表达式中, <code>props.children</code>一直贯穿其中。
-当你开始使用React时, 你一定认为<code>props.children</code>也就那么回事, 但是你错了</p>
-<h3 id="1-child-components">1. Child components</h3>
-<blockquote>
-<p>子组件</p>
-</blockquote>
-<p>父组件 <code>&lt;MyContainer /&gt;</code> 包含了几个子组件 <code>&lt;MyComponent /&gt;</code></p>
-<pre><code>&lt;MyContainer&gt;
+当你开始使用React时, 你一定认为<code>props.children</code>也就那么回事, 但是你错了</p><h3 id=1-child-components>1. Child components</h3><blockquote><p>子组件</p></blockquote><p>父组件 <code>&lt;MyContainer /></code> 包含了几个子组件 <code>&lt;MyComponent /></code></p><pre><code>&lt;MyContainer&gt;
   &lt;MyFirstComponent /&gt;
   &lt;MySecondComponent /&gt;
 &lt;/MyContainer&gt;
 </code></pre><p>这三个 <code>Component</code> 组件都成为了 <code>MyContainer</code> 的 props.children 。
-使用一个表达式容器，父组件就能够渲染它们的子组件：</p>
-<pre><code>class MyContainer extends React.Component {
+使用一个表达式容器，父组件就能够渲染它们的子组件：</p><pre><code>class MyContainer extends React.Component {
   render() {
     return &lt;div&gt;{this.props.children}&lt;/div&gt;
   }
 }
-</code></pre><p>当然, 父组件可以决定不渲染任何的子组件或者在渲染之前对它们进行操作</p>
-<pre><code>// 不管你将什么子组件传递给这个组件，它都只会显示“Hello world!”
+</code></pre><p>当然, 父组件可以决定不渲染任何的子组件或者在渲染之前对它们进行操作</p><pre><code>// 不管你将什么子组件传递给这个组件，它都只会显示“Hello world!”
 class OnlySayHellow extends React.Component {
   render() {
     return &lt;h1&gt;Hello world!&lt;/h1&gt;
   }
 }
-</code></pre><h3 id="2child-可以是任何东西">2.child 可以是任何东西</h3>
-<p>React 中的 Children不一定是组件，它们可以是任何东西</p>
-<blockquote>
-<p>JSX表达式、JavaScript Expressions、Functions、Booleans, Null, and Undefined</p>
-</blockquote>
-<h4 id="jsx表达式">JSX表达式</h4>
-<pre><code>// component + string
+</code></pre><h3 id=2child-可以是任何东西>2.child 可以是任何东西</h3><p>React 中的 Children不一定是组件，它们可以是任何东西</p><blockquote><p>JSX表达式、JavaScript Expressions、Functions、Booleans, Null, and Undefined</p></blockquote><h4 id=jsx表达式>JSX表达式</h4><pre><code>// component + string
 &lt;MyContainer&gt;
   Here is a component:
   &lt;MyFirstComponent /&gt;
   Here is another component:
   &lt;MySecondComponent /&gt;
 &lt;/MyContainer&gt;
-</code></pre><p><strong>注意</strong> JSX将会自动删除每行开头和结尾的空格，以及空行。它还会把字符串中间的空白行压缩为一个空格</p>
-<pre><code>// 如下代码结果一致
+</code></pre><p><strong>注意</strong> JSX将会自动删除每行开头和结尾的空格，以及空行。它还会把字符串中间的空白行压缩为一个空格</p><pre><code>// 如下代码结果一致
 
 // code 1
 &lt;MyComponent&gt;say hellow!&lt;/MyComponent&gt;
@@ -223,8 +45,7 @@ class OnlySayHellow extends React.Component {
 
     say hellow!
 &lt;/MyComponent&gt;
-</code></pre><h4 id="javascript-expressions">JavaScript Expressions</h4>
-<pre><code>function Item(props) {
+</code></pre><h4 id=javascript-expressions>JavaScript Expressions</h4><pre><code>function Item(props) {
   return &lt;li&gt;{props.message}&lt;/li&gt;;
 }
 
@@ -236,11 +57,7 @@ function TodoList() {
     &lt;/ul&gt;
   );
 }
-</code></pre><h4 id="functions">Functions</h4>
-<blockquote>
-<p>例如，如果你有一个自定义组件，你可以把它当作回调来做。</p>
-</blockquote>
-<pre><code>// Calls the children callback numTimes to produce a repeated component
+</code></pre><h4 id=functions>Functions</h4><blockquote><p>例如，如果你有一个自定义组件，你可以把它当作回调来做。</p></blockquote><pre><code>// Calls the children callback numTimes to produce a repeated component
 function Repeat(props) {
   let items = [];
   for (let i = 0; i &lt; props.numTimes; i++) {
@@ -256,20 +73,11 @@ function ListOfTenThings() {
     &lt;/Repeat&gt;
   );
 }
-</code></pre><blockquote>
-<p>Children passed to a custom component can be anything, as long as that
+</code></pre><blockquote><p>Children passed to a custom component can be anything, as long as that
 component transforms them into something React can understand before rendering.
-This usage is not common, but it works if you want to stretch what JSX is capable of.</p>
-</blockquote>
-<p>传递给自定义组件的孩子可以是任何东西，只要组件将它们转换成某种反应就可以在呈现之前理解。
-这种用法并不常见，但如果您想拉伸JSX所能使用的，它就可以工作</p>
-<h4 id="booleans-null-and-undefined-are-ignored">Booleans, Null, and Undefined Are Ignored</h4>
-<blockquote>
-<p>false, null, undefined, and true are valid children. They simply don’t render.</p>
-</blockquote>
-<p>false, null, undefined, 和 true都是有效的子代。他们只是不渲染。这些JSX表达式将全部呈现为
-同一事物</p>
-<pre><code>// bad code
+This usage is not common, but it works if you want to stretch what JSX is capable of.</p></blockquote><p>传递给自定义组件的孩子可以是任何东西，只要组件将它们转换成某种反应就可以在呈现之前理解。
+这种用法并不常见，但如果您想拉伸JSX所能使用的，它就可以工作</p><h4 id=booleans-null-and-undefined-are-ignored>Booleans, Null, and Undefined Are Ignored</h4><blockquote><p>false, null, undefined, and true are valid children. They simply don’t render.</p></blockquote><p>false, null, undefined, 和 true都是有效的子代。他们只是不渲染。这些JSX表达式将全部呈现为
+同一事物</p><pre><code>// bad code
 &lt;div&gt;
   {props.messages.length &amp;&amp;
     &lt;MessageList messages={props.messages} /&gt;
@@ -282,20 +90,11 @@ This usage is not common, but it works if you want to stretch what JSX is capabl
     &lt;MessageList messages={props.messages} /&gt;
   }
 &lt;/div&gt;
-</code></pre><blockquote>
-<p>One caveat is that some “falsy” values, such as the 0 number, are still
+</code></pre><blockquote><p>One caveat is that some “falsy” values, such as the 0 number, are still
 rendered by React. For example, this code will not behave as you might
 expect because 0 will be printed when props.messages is an empty array.
-To fix this, make sure that the expression before &amp;&amp; is always bool</p>
-</blockquote>
-<p>为了处理 this.props.children 这个封闭的数据结构, React提供了一个顶层的API.</p>
-<h3 id="3-reactchildrenmap">3. <code>React.Children.map</code></h3>
-<blockquote>
-<p>循环</p>
-</blockquote>
-<p>在对应数组的情况下能起作用，除此之外，当函数、对象或者任何东西作为children传递时，
-也会起作用</p>
-<pre><code>object React.Children.map(object children, function fn [, object context])
+To fix this, make sure that the expression before && is always bool</p></blockquote><p>为了处理 this.props.children 这个封闭的数据结构, React提供了一个顶层的API.</p><h3 id=3-reactchildrenmap>3. <code>React.Children.map</code></h3><blockquote><p>循环</p></blockquote><p>在对应数组的情况下能起作用，除此之外，当函数、对象或者任何东西作为children传递时，
+也会起作用</p><pre><code>object React.Children.map(object children, function fn [, object context])
 
 // 使用方法：
 React.Children.map(this.props.children, function (child) {
@@ -306,14 +105,9 @@ React.Children.map(this.props.children, function (child) {
 this.props.children.forEach(function (child) {
     return &lt;li&gt;{child}&lt;/li&gt;
 })
-</code></pre><p><strong>注意</strong></p>
-<blockquote>
-<p>this.props.children 的值有三种可能：如果当前组件没有子节点，它就是 undefined ;
+</code></pre><p><strong>注意</strong></p><blockquote><p>this.props.children 的值有三种可能：如果当前组件没有子节点，它就是 undefined ;
 如果有一个子节点，数据类型是 object ；如果有多个子节点，数据类型就是 array 。
-所以，处理 this.props.children 的时候要小心</p>
-</blockquote>
-<p><strong>demo</strong>  <br></p>
-<pre><code>&lt;IgnoreFirstChild /&gt;  组件在这里会遍历所有的children，忽略第一个child然后返回其他的
+所以，处理 this.props.children 的时候要小心</p></blockquote><p><strong>demo</strong><br></p><pre><code>&lt;IgnoreFirstChild /&gt;  组件在这里会遍历所有的children，忽略第一个child然后返回其他的
 </code></pre><pre><code>class IgnoreFirstChild extends React.Component {
   render() {
     const children = this.props.children
@@ -333,28 +127,12 @@ this.props.children.forEach(function (child) {
   &lt;h1&gt;First&lt;/h1&gt;
   &lt;h1&gt;Second&lt;/h1&gt; // &lt;- Only this is rendered
 &lt;/IgnoreFirstChild&gt;
-</code></pre><blockquote>
-<p>在这种情况下，我们也可以使用 this.props.children.map 的方法。但是假如 this.props.children 是一个函数而不是一个数组，接着我们就会产生一个error！ &ldquo;this.props.children.map is not a function&rdquo;</p>
-</blockquote>
-<p>React 提供一个工具方法 React.Children 来处理 this.props.children 。我们可以用
+</code></pre><blockquote><p>在这种情况下，我们也可以使用 this.props.children.map 的方法。但是假如 this.props.children 是一个函数而不是一个数组，接着我们就会产生一个error！ &ldquo;this.props.children.map is not a function&rdquo;</p></blockquote><p>React 提供一个工具方法 React.Children 来处理 this.props.children 。我们可以用
 React.Children.map 来遍历子节点，而不用担心 this.props.children 的数据类型是
-undefined 还是 object, 甚至是function. 使用 React.Children.map 函数，无论什么都不会报错</p>
-<h3 id="4-reactchildrenforeach">4. React.Children.forEach</h3>
-<blockquote>
-<p>循环 类似于 React.Children.map(), 但是不返回对象</p>
-</blockquote>
-<pre><code>React.Children.forEach(object children, function fn [, object context])
-</code></pre><h3 id="5-reactchildrencount">5. React.Children.count</h3>
-<blockquote>
-<p>计数 因为this.props.children 可以是任何类型的，检查一个组件有多少个children是非常困难的</p>
-</blockquote>
-<pre><code>object React.Children.only(object children)
+undefined 还是 object, 甚至是function. 使用 React.Children.map 函数，无论什么都不会报错</p><h3 id=4-reactchildrenforeach>4. React.Children.forEach</h3><blockquote><p>循环 类似于 React.Children.map(), 但是不返回对象</p></blockquote><pre><code>React.Children.forEach(object children, function fn [, object context])
+</code></pre><h3 id=5-reactchildrencount>5. React.Children.count</h3><blockquote><p>计数 因为this.props.children 可以是任何类型的，检查一个组件有多少个children是非常困难的</p></blockquote><pre><code>object React.Children.only(object children)
 </code></pre><p>不要天真的以为, 可以使用<code>this.props.children.length</code>, 当传递的是字符串或者
-函数时程序中断可能会让你哭！</p>
-<blockquote>
-<p>假设我们有个child：<code>&quot;say hello!&quot;</code> ，但是使用 <code>.length</code> 的方法将会显示为10。</p>
-</blockquote>
-<pre><code>class ChildrenCounter extends React.Component {
+函数时程序中断可能会让你哭！</p><blockquote><p>假设我们有个child：<code>"say hello!"</code> ，但是使用 <code>.length</code> 的方法将会显示为10。</p></blockquote><pre><code>class ChildrenCounter extends React.Component {
   render() {
     console.log(React.Children.count(this.props.children));
     return &lt;p&gt;{this.props.children}&lt;/p&gt;
@@ -366,16 +144,9 @@ undefined 还是 object, 甚至是function. 使用 React.Children.map 函数，�
     &lt;p&gt;Second!&lt;/p&gt;
     &lt;p&gt;Third!&lt;/p&gt;
 &lt;/ChildrenCounter&gt;
-</code></pre><blockquote>
-<p>注意: 此处console结果可能为2或者3, 有的地方会报错 &ldquo;Functions are not valid as a React child&rdquo;,
-此时count为2, 若不报错, 则为3</p>
-</blockquote>
-<h3 id="6-reactchildrentoarray">6. React.Children.toArray</h3>
-<blockquote>
-<p>转换为数组 可以通过 React.Children.toArray 方法将children转换为数组, 如果你
-需要对它们进行排序，这个方法是非常有用的</p>
-</blockquote>
-<pre><code>class Sort extends React.Component {
+</code></pre><blockquote><p>注意: 此处console结果可能为2或者3, 有的地方会报错 &ldquo;Functions are not valid as a React child&rdquo;,
+此时count为2, 若不报错, 则为3</p></blockquote><h3 id=6-reactchildrentoarray>6. React.Children.toArray</h3><blockquote><p>转换为数组 可以通过 React.Children.toArray 方法将children转换为数组, 如果你
+需要对它们进行排序，这个方法是非常有用的</p></blockquote><pre><code>class Sort extends React.Component {
   render() {
     const children = React.Children.toArray(this.props.children)
     // Sort and render the children
@@ -390,27 +161,15 @@ undefined 还是 object, 甚至是function. 使用 React.Children.map 函数，�
 &lt;/Sort&gt;
 // 渲染为三个排好序的字符串
 apples bananas oranges
-</code></pre><h3 id="7-reactchildrenonly">7. React.Children.only</h3>
-<blockquote>
-<p>执行单一child</p>
-</blockquote>
-<pre><code>object React.Children.only(object children)
+</code></pre><h3 id=7-reactchildrenonly>7. React.Children.only</h3><blockquote><p>执行单一child</p></blockquote><pre><code>object React.Children.only(object children)
 </code></pre><p>返回 children 中 仅有的子级, 否则抛出异常。这里仅有的子级, only方法接受的参数只能
-是一个对象，不能是多个对象（数组）</p>
-<pre><code>class Executioner extends React.Component {
+是一个对象，不能是多个对象（数组）</p><pre><code>class Executioner extends React.Component {
   render() {
     return React.Children.only(this.props.children)()
   }
 }
-</code></pre><blockquote>
-<p>这样只会返回一个child。如果不止一个child，它就会抛出错误，让整个程序陷入中断——完美
-的避开了试图破坏组件的懒惰的开发者</p>
-</blockquote>
-<h3 id="8-renderchildren">8. renderChildren</h3>
-<blockquote>
-<p>改变children的属性</p>
-</blockquote>
-<pre><code>class RadioGroup extends React.Component {
+</code></pre><blockquote><p>这样只会返回一个child。如果不止一个child，它就会抛出错误，让整个程序陷入中断——完美
+的避开了试图破坏组件的懒惰的开发者</p></blockquote><h3 id=8-renderchildren>8. renderChildren</h3><blockquote><p>改变children的属性</p></blockquote><pre><code>class RadioGroup extends React.Component {
   constructor() {
     super()
     // Bind the method to the component context
@@ -432,252 +191,64 @@ apples bananas oranges
     )
   }
 }
-</code></pre><h3 id="9-reactcloneelement">9. React.cloneElement</h3>
-<blockquote>
-<p>永恒地克隆元素</p>
-</blockquote>
-<p>给每一个child增加一个name属性</p>
-<pre><code>renderChildren() {
+</code></pre><h3 id=9-reactcloneelement>9. React.cloneElement</h3><blockquote><p>永恒地克隆元素</p></blockquote><p>给每一个child增加一个name属性</p><pre><code>renderChildren() {
   return React.Children.map(this.props.children, child =&gt; {
     return React.cloneElement(child, {
       name: this.props.name
     })
   })
 }
-</code></pre><p>这个场景就是RadioGroup的实现原理</p>
-<pre><code>&lt;RadioGroup name=&quot;sex&quot;&gt;
+</code></pre><p>这个场景就是RadioGroup的实现原理</p><pre><code>&lt;RadioGroup name=&quot;sex&quot;&gt;
   &lt;Radio value=&quot;boy&quot;&gt;First&lt;/Radio&gt;
   &lt;Radio value=&quot;girl&quot;&gt;Second&lt;/Radio&gt;
 &lt;/RadioGroup&gt;
-</code></pre><p>传递一个唯一的 name 给RadioGroup, 相当于给其内每一个radio增加name属性, 属于同一组</p>
-<hr>
-<h4 id="参考">参考</h4>
-<ul>
-<li><a href="https://reactjs.org/docs/jsx-in-depth.html#children-in-jsx">react官方文档</a>  <br /></li>
-<li><a href="https://mxstbr.blog/2017/02/react-children-deepdive/#child-components">A deep dive into children in React</a></li>
-</ul>
-<hr>
-<p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>  <br>
-<strong>欢迎交流~</strong></p>
-<figure><img src="/img-common/weChatPublic.jpg"
-         alt="微信公众号" width="600" height="286"/>
-</figure>
-
-<p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong>  <br/>
-<strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p>
-		</div>
-		<footer class="post__footer">
-			
-<div class="post__tags tags clearfix">
-	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-	<ul class="tags__list">
-		<li class="tags__item">
-			<a class="tags__link btn" href="/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/" rel="tag">React技术栈</a>
-		</li>
-		<li class="tags__item">
-			<a class="tags__link btn" href="/tags/immutable/" rel="tag">immutable</a>
-		</li>
-	</ul>
-</div>
-		</footer>
-	</article>
-</main>
-
-<div class="authorbox clearfix">
-	<figure class="authorbox__avatar">
-		<img alt="曜灵 avatar" src="/img-common/avatar1.jpeg" class="avatar" height="90" width="90">
-	</figure>
-	<div class="authorbox__header">
-		<span class="authorbox__name">关于 曜灵</span>
-	</div>
-	<div class="authorbox__description">
-		博主目前就职于X集团上海研发中心-平台工具组，是一名Web开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目
-	</div>
-</div>
-
-<nav class="pager flex">
-	<div class="pager__item pager__item--prev">
-		<a class="pager__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/08.npm-publish-%E5%8F%91%E5%B8%83npm%E5%8C%85/" rel="prev">
-			<span class="pager__subtitle">«&thinsp;上一篇</span>
-			<p class="pager__title">Node: npm publish 发布npm包</p>
-		</a>
-	</div>
-	<div class="pager__item pager__item--next">
-		<a class="pager__link" href="/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/01.%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84this/" rel="next">
-			<span class="pager__subtitle">下一篇&thinsp;»</span>
-			<p class="pager__title">JavaScript之你不知道的this</p>
-		</a>
-	</div>
-</nav>
-<script src="https://utteranc.es/client.js"
-        repo="lianpf/lianpf.github.io"
-        issue-term="title"
-        label="comments"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
-			</div>
-			<aside class="sidebar">
-<div class="widget-recent widget">
-	<h4 class="widget__title">近期文章</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/13.apr%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/">Node之Apr框架使用文档</a></li>
-			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/12.apr%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91/">Node之Apr框架开发</a></li>
-			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/11.mysql-gui/">MySQL 8.0问题排查</a></li>
-			<li class="widget__item"><a class="widget__link" href="/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/">vue3&#43;ts(3)：vue3组合式api及重要属性变更</a></li>
-			<li class="widget__item"><a class="widget__link" href="/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">vue3&#43;ts(2)：TypeScript 语法汇总</a></li>
-			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">vue3&#43;ts(1)：vue3项目从0到1搭建</a></li>
-		</ul>
-	</div>
-</div>
-<div class="widget-categories widget">
-	<h4 class="widget__title">分类</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/server/">Server</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/">前端基础</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/">开发日记</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</a>
-			</li>
-		</ul>
-	</div>
-</div>
-<div class="widget-taglist widget">
-	<h4 class="widget__title">标签</h4>
-	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/apr/" title="apr">apr (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/bridge/" title="Bridge">Bridge (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/css/" title="CSS">CSS (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/egg/" title="egg">egg (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github-action/" title="GitHub Action">GitHub Action (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gui/" title="GUI">GUI (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/http/" title="http">http (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="Hugo">Hugo (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/immutable/" title="immutable">immutable (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/java/" title="Java">Java (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="JavaScript">JavaScript (7)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/koa2/" title="koa2">koa2 (3)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/markdown/" title="markdown">markdown (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mvc/" title="MVC">MVC (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="MVVM">MVVM (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (5)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/native/" title="Native">Native (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node (9)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/npm/" title="npm">npm (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/profile/" title="profile">profile (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/" title="React技术栈">React技术栈 (6)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequel-pro/" title="Sequel Pro">Sequel Pro (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/terminal/" title="terminal">terminal (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/tree/" title="Tree">Tree (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ts/" title="ts">ts (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="TypeScript">TypeScript (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vsCode">vsCode (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue-cli/" title="vue-cli">vue-cli (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue3/" title="vue3">vue3 (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue%E6%8A%80%E6%9C%AF%E6%A0%88/" title="Vue技术栈">Vue技术栈 (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webstorm/" title="webstorm">webstorm (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%9B%A2%E9%98%9F%E8%A7%84%E8%8C%83/" title="团队规范">团队规范 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="快捷键">快捷键 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">数据库 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A1%86%E6%9E%B6/" title="框架">框架 (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (4)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="生命周期">生命周期 (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%AE%97%E6%B3%95/" title="算法">算法 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%88%E7%AB%AF/" title="终端">终端 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BC%93%E5%AD%98/" title="缓存">缓存 (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BC%96%E7%A0%81%E5%B7%A5%E5%85%B7/" title="编码工具">编码工具 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/" title="编程工具">编程工具 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/" title="网络原理">网络原理 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%84%9A%E6%89%8B%E6%9E%B6/" title="脚手架">脚手架 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/" title="自动化">自动化 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式">设计模式 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%AE%BE%E8%AE%A1%E6%B3%9B%E5%9E%8B/" title="设计泛型">设计泛型 (1)</a>
-	</div>
-</div>
-<div class="widget-social widget">
-	<h4 class="widget-social__title widget__title">社交</h4>
-	<div class="widget-social__content widget__content">
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/lianpf" target="_blank">
-				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
-				<span>GitHub</span>
-			</a>
-		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Email" href="mailto:wanderlian@foxmail.com">
-				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
-				<span>wanderlian@foxmail.com</span>
-			</a>
-		</div>
-
-		
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="微信公众号：连先生有猫病" rel="noopener noreferrer" href="https://mp.weixin.qq.com/mp/profile_ext?action=home&amp;__biz=MzAwNDk2OTI1Mg==&amp;scene=124#wechat_redirect" target="_blank">
-					<svg t="1613746391336" class="widget-social__link-icon  icon" width="24" height="24" viewBox="0 0 1030 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1661" width="200" height="200"><path d="M697.6 275.2C620.8 179.2 499.2 121.6 371.2 128 166.4 128 0 256 0 422.4c0 83.2 44.8 160 115.2 211.2l-57.6 172.8L262.4 704c38.4 6.4 76.8 12.8 115.2 12.8h51.2c-32-38.4-44.8-89.6-51.2-140.8-6.4-160 134.4-281.6 320-300.8zM448 275.2c0-19.2 12.8-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6c0 19.2-12.8 32-32 32h-25.6c-19.2 0-32-12.8-32-32v-25.6z m-166.4 12.8c0 19.2-12.8 32-32 32h-25.6c-19.2 0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1662"></path><path d="M1024 556.8c0-121.6-128-224-288-224S448 435.2 448 556.8c0 128 128 224 288 224 38.4 0 76.8-6.4 115.2-19.2l179.2 83.2-64-160c32-25.6 57.6-76.8 57.6-128z m-390.4-51.2c0 19.2-12.8 32-32 32H576c-19.2 0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6z m268.8 0c0 19.2-12.8 32-32 32h-25.6c-19.2 0-32-12.8-32-32v-25.6c0-19.2 19.2-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1663"></path></svg>
-				<span>微信公众号：连先生有猫病</span>
-			</a>
-		</div>
-		
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="知乎" rel="noopener noreferrer" href="https://www.zhihu.com/people/liu-lang-zhe-51-90/posts" target="_blank">
-					<svg t="1613712910226" class="widget-social__link-icon  icon" width="24" height="24" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8513" width="200" height="200"><path d="M544.949 561.422s0-71.387-34.779-75.050c-34.779-3.663-142.775 0-142.775 0v-219.654h161.078s-1.83-73.219-32.949-73.219h-261.755l43.93-117.148s-65.897 3.663-89.692 45.761-98.844 252.604-98.844 252.604 25.627 10.983 67.726-20.134c42.101-31.116 56.743-86.033 56.743-86.033l76.879-3.663 1.83 223.316s-133.621-1.83-161.078 0c-27.457 1.83-42.101 75.050-42.101 75.050h203.182s-18.307 124.47-69.557 214.164c-53.085 89.692-151.929 161.078-151.929 161.078s71.387 29.287 140.947-10.983c69.557-42.101 120.811-223.316 120.811-223.316l162.912 203.182s14.643-97.013-1.83-124.47c-18.307-27.457-113.49-137.283-113.49-137.283l-42.101 36.607 29.287-120.811h177.552zM587.050 188.010l-1.83 660.793h65.897l23.795 82.37 115.321-82.37h162.912v-660.793h-366.091zM879.92 775.584h-76.879l-97.013 75.050-21.965-75.050h-20.134v-512.527h215.991v512.527z" fill="" p-id="8514"></path></svg>
-				<span>知乎</span>
-			</a>
-		</div>
-		
-	</div>
-</div>
-</aside>
-		</div>
-		
-		
-
-<footer class="footer">
-	<div class="container footer__container flex">
-		
-		<div class="footer__copyright">
-			&copy; 2016 - 2021 曜灵（SUN）Site.
-			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> 主题</span>
-		</div>
-	</div>
-</footer>
-
-
-<script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script>
-<script>addBackToTop({
-  cornerOffset: 100,
-  diameter: 56,
-  backgroundColor: '#63B8FF',
-  innerHTML: '<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',
-  textColor: '#fff'
-})</script>
-	</div>
-<script async defer src="/js/menu.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
-
-<script src="/js/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-</body>
-</html>
+</code></pre><p>传递一个唯一的 name 给RadioGroup, 相当于给其内每一个radio增加name属性, 属于同一组</p><hr><h4 id=参考>参考</h4><ul><li><a href=https://reactjs.org/docs/jsx-in-depth.html#children-in-jsx>react官方文档</a><br></li><li><a href=https://mxstbr.blog/2017/02/react-children-deepdive/#child-components>A deep dive into children in React</a></li></ul><hr><p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong><br><strong>欢迎交流~</strong></p><figure><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286></figure><p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong><br><strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/ rel=tag>React技术栈</a></li><li class=tags__item><a class="tags__link btn" href=/tags/immutable/ rel=tag>immutable</a></li></ul></div></footer></article></main><div class="authorbox clearfix"><figure class=authorbox__avatar><img alt="曜灵 avatar" src=/img-common/avatar1.jpeg class=avatar height=90 width=90></figure><div class=authorbox__header><span class=authorbox__name>关于 曜灵</span></div><div class=authorbox__description>博主目前就职于X集团上海研发中心-平台工具组，是一名Web开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目</div></div><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/08.npm-publish-%E5%8F%91%E5%B8%83npm%E5%8C%85/ rel=prev><span class=pager__subtitle>«&#8201;上一篇</span><p class=pager__title>Node: npm publish 发布npm包</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/01.%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84this/ rel=next><span class=pager__subtitle>下一篇&#8201;»</span><p class=pager__title>JavaScript之你不知道的this</p></a></div></nav><script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=title label=comments theme=github-light crossorigin=anonymous async></script></div><aside class=sidebar><div class="widget-recent widget"><h4 class=widget__title>近期文章</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/13.apr%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/>Node之Apr框架使用文档</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/12.apr%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91/>Node之Apr框架开发</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/11.mysql-gui/>MySQL 8.0问题排查</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/>vue3+ts(3)：vue3组合式api及重要属性变更</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/>vue3+ts(2)：TypeScript 语法汇总</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/>vue3+ts(1)：vue3项目从0到1搭建</a></li></ul></div></div><div class="widget-categories widget"><h4 class=widget__title>分类</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/categories/server/>Server</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%85%B6%E4%BB%96/>其他</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/>前端基础</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/>前端框架</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/>开发日记</a></li><li class=widget__item><a class=widget__link href=/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/>计算机原理</a></li></ul></div></div><div class="widget-taglist widget"><h4 class=widget__title>标签</h4><div class=widget__content><a class="widget-taglist__link widget__link btn" href=/tags/apr/ title=apr>apr (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/bridge/ title=Bridge>Bridge (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/css/ title=CSS>CSS (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/egg/ title=egg>egg (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/git/ title=Git>Git (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/github-action/ title="GitHub Action">GitHub Action (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/gui/ title=GUI>GUI (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/http/ title=http>http (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/hugo/ title=Hugo>Hugo (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/immutable/ title=immutable>immutable (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/java/ title=Java>Java (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/javascript/ title=JavaScript>JavaScript (7)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/koa2/ title=koa2>koa2 (3)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/markdown/ title=markdown>markdown (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/mongodb/ title=mongodb>mongodb (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/mysql/ title=mysql>mysql (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/native/ title=Native>Native (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/nginx/ title=nginx>nginx (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/node/ title=node>node (5)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/npm/ title=npm>npm (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/profile/ title=profile>profile (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/ title=React技术栈>React技术栈 (4)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/sequel-pro/ title="Sequel Pro">Sequel Pro (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/terminal/ title=terminal>terminal (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/tree/ title=Tree>Tree (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/ts/ title=ts>ts (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/typescript/ title=TypeScript>TypeScript (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/vscode/ title=vsCode>vsCode (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/vue/ title=vue>vue (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/vue-cli/ title=vue-cli>vue-cli (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/vue3/ title=vue3>vue3 (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/vue%E6%8A%80%E6%9C%AF%E6%A0%88/ title=Vue技术栈>Vue技术栈 (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/webstorm/ title=webstorm>webstorm (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E5%9B%A2%E9%98%9F%E8%A7%84%E8%8C%83/ title=团队规范>团队规范 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/ title=快捷键>快捷键 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/ title=数据库>数据库 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E6%A1%86%E6%9E%B6/ title=框架>框架 (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/ title=浏览器>浏览器 (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/ title=生命周期>生命周期 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%AE%97%E6%B3%95/ title=算法>算法 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%BB%88%E7%AB%AF/ title=终端>终端 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%BC%93%E5%AD%98/ title=缓存>缓存 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%BC%96%E7%A0%81%E5%B7%A5%E5%85%B7/ title=编码工具>编码工具 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/ title=编程工具>编程工具 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/ title=网络原理>网络原理 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E8%84%9A%E6%89%8B%E6%9E%B6/ title=脚手架>脚手架 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/ title=自动化>自动化 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/ title=设计模式>设计模式 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E8%AE%BE%E8%AE%A1%E6%B3%9B%E5%9E%8B/ title=设计泛型>设计泛型 (1)</a></div></div><div class="widget-social widget"><h4 class="widget-social__title widget__title">社交</h4><div class="widget-social__content widget__content"><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=GitHub rel="noopener noreferrer" href=https://github.com/lianpf target=_blank><svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0C85.9.0.0 85.8.0 191.7c0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2.0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8.0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7.0.0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4.0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5.0 25.6-.2 46.3-.2 52.6.0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg><span>GitHub</span></a></div><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=Email href=mailto:wanderlian@foxmail.com><svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16V16 0h-16H16 0zm347 16-139 92.5L69 32zM199 157.5l9 5.5 9-5.5L384 46v210H32V46z"/></svg><span>wanderlian@foxmail.com</span></a></div><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=微信公众号：连先生有猫病 rel="noopener noreferrer" href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwNDk2OTI1Mg==&scene=124#wechat_redirect" target=_blank><svg t="1613746391336" class="widget-social__link-icon icon" width="24" height="24" viewBox="0 0 1030 1024" xmlns="http://www.w3.org/2000/svg" p-id="1661" width="200" height="200"><path d="M697.6 275.2C620.8 179.2 499.2 121.6 371.2 128 166.4 128 0 256 0 422.4c0 83.2 44.8 160 115.2 211.2l-57.6 172.8L262.4 704c38.4 6.4 76.8 12.8 115.2 12.8h51.2c-32-38.4-44.8-89.6-51.2-140.8-6.4-160 134.4-281.6 320-300.8zM448 275.2c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6c0 19.2-12.8 32-32 32H480c-19.2.0-32-12.8-32-32v-25.6zM281.6 288c0 19.2-12.8 32-32 32h-25.6c-19.2.0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32V288z" fill="#e6e6e6" p-id="1662"/><path d="M1024 556.8c0-121.6-128-224-288-224S448 435.2 448 556.8c0 128 128 224 288 224 38.4.0 76.8-6.4 115.2-19.2l179.2 83.2-64-160c32-25.6 57.6-76.8 57.6-128zm-390.4-51.2c0 19.2-12.8 32-32 32H576c-19.2.0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6zm268.8.0c0 19.2-12.8 32-32 32h-25.6c-19.2.0-32-12.8-32-32v-25.6c0-19.2 19.2-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1663"/></svg><span>微信公众号：连先生有猫病</span></a></div><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=知乎 rel="noopener noreferrer" href=https://www.zhihu.com/people/liu-lang-zhe-51-90/posts target=_blank><svg t="1613712910226" class="widget-social__link-icon icon" width="24" height="24" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" p-id="8513" width="200" height="200"><path d="M544.949 561.422s0-71.387-34.779-75.05-142.775.0-142.775.0V266.718h161.078s-1.83-73.219-32.949-73.219h-261.755l43.93-117.148s-65.897 3.663-89.692 45.761-98.844 252.604-98.844 252.604 25.627 10.983 67.726-20.134c42.101-31.116 56.743-86.033 56.743-86.033l76.879-3.663 1.83 223.316s-133.621-1.83-161.078.0-42.101 75.05-42.101 75.05h203.182s-18.307 124.47-69.557 214.164c-53.085 89.692-151.929 161.078-151.929 161.078s71.387 29.287 140.947-10.983c69.557-42.101 120.811-223.316 120.811-223.316l162.912 203.182s14.643-97.013-1.83-124.47c-18.307-27.457-113.49-137.283-113.49-137.283l-42.101 36.607 29.287-120.811h177.552zM587.05 188.01l-1.83 660.793h65.897l23.795 82.37 115.321-82.37h162.912V188.01H587.054zM879.92 775.584h-76.879l-97.013 75.05-21.965-75.05h-20.134v-512.527h215.991v512.527z" p-id="8514"/></svg><span>知乎</span></a></div></div></div></aside></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2016 - 2021 曜灵（SUN）Site.
+<span class=footer__copyright-credits>基于 <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> 引擎和 <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> 主题</span></div></div></footer><script src=https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js></script><script>addBackToTop({cornerOffset:100,diameter:56,backgroundColor:'#63B8FF',innerHTML:'<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',textColor:'#fff'})</script></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script><script src=/js/highlight/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script></body></html>
