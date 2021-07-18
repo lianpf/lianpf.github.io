@@ -10,22 +10,16 @@
 		<meta property="og:title" content="聊一聊Diff算法（React、Vue）" />
 <meta property="og:description" content="你了解传统的diff算法么？了解 react 优化的diff算法么？了解 Vue2.x和Vue3.x 渲染器的diff算法&hellip;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/01.diff%E7%AE%97%E6%B3%95/" />
+<meta property="og:url" content="/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/01.diff%E7%AE%97%E6%B3%95/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-12-14T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-09-04T01:12:37+08:00" />
 
+
 		<meta itemprop="name" content="聊一聊Diff算法（React、Vue）">
-<meta itemprop="description" content="你了解传统的diff算法么？了解 react 优化的diff算法么？了解 Vue2.x和Vue3.x 渲染器的diff算法&hellip;">
-
-
-<meta itemprop="datePublished" content="2019-12-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-09-04T01:12:37&#43;08:00" />
-<meta itemprop="wordCount" content="2439">
-
-
-
+<meta itemprop="description" content="你了解传统的diff算法么？了解 react 优化的diff算法么？了解 Vue2.x和Vue3.x 渲染器的diff算法&hellip;"><meta itemprop="datePublished" content="2019-12-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-09-04T01:12:37+08:00" />
+<meta itemprop="wordCount" content="2433">
 <meta itemprop="keywords" content="JavaScript,React技术栈,Vue技术栈,算法," />
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="聊一聊Diff算法（React、Vue）"/>
 <meta name="twitter:description" content="你了解传统的diff算法么？了解 react 优化的diff算法么？了解 Vue2.x和Vue3.x 渲染器的diff算法&hellip;"/>
@@ -149,231 +143,159 @@
 	<div class="toc__title">目录</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#场景">场景</a></li>
-<li><a href="#传统diff算法">传统Diff算法</a></li>
-<li><a href="#优化的diff算法">优化的Diff算法</a>
-<ul>
-<li><a href="#react优化diff算法">React优化Diff算法</a>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#tree-diff">tree diff</a></li>
-<li><a href="#component-diff">component diff</a></li>
-<li><a href="#element-diff">element diff</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li><a href="#vue优化diff">Vue优化Diff</a>
-<ul>
-<li><a href="#vue-2-x-vs-vue-3-x">Vue 2.x vs Vue 3.x</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#参考">参考</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#场景">场景</a></li>
+    <li><a href="#传统diff算法">传统Diff算法</a></li>
+    <li><a href="#优化的diff算法">优化的Diff算法</a>
+      <ul>
+        <li><a href="#react优化diff算法">React优化Diff算法</a></li>
+        <li><a href="#vue优化diff">Vue优化Diff</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
 			<p>你了解传统的diff算法么？了解 react 优化的diff算法么？了解 Vue2.x和Vue3.x 渲染器的diff算法&hellip;</p>
-
 <h2 id="场景">场景</h2>
-
-<p>计算两颗树形结构差异并进行转换
-&gt; 文中, 所提及n均代表节点的个数</p>
-
+<p>计算两颗树形结构差异并进行转换</p>
+<blockquote>
+<p>文中, 所提及n均代表节点的个数</p>
+</blockquote>
 <h2 id="传统diff算法">传统Diff算法</h2>
-
 <blockquote>
 <p>处理方案: 循环递归每一个节点</p>
 </blockquote>
-
-<figure>
-    <img src="/img-blogs/20191214-001.jpg"
-         alt="传统diff" width="647" height="290"/> 
+<figure><img src="/img-blogs/20191214-001.jpg"
+         alt="传统diff" width="647" height="290"/>
 </figure>
 
-
-<p>如上所示, 左侧树a节点依次进行如下对比:
-&gt; a-&gt;e、a-&gt;d、a-&gt;b、a-&gt;c、a-&gt;a</p>
-
+<p>如上所示, 左侧树a节点依次进行如下对比:</p>
+<blockquote>
+<p>a-&gt;e、a-&gt;d、a-&gt;b、a-&gt;c、a-&gt;a</p>
+</blockquote>
 <p>之后左侧树其它节点b、c、d、e亦是与右侧树每个节点对比, 算法复杂度能达到O(n^2)</p>
-
-<p>查找完差异后还需计算最小转换方式，这其中的原理我没仔细去看，最终达到的算法复杂度是O(n^3)
-&gt; 将两颗树中所有的节点一一对比需要O(n²)的复杂度，在对比过程中发现旧节点在新的树中未找到，那么就需要把旧节点删除，删除一棵树的一个节点(找到一个合适的节点放到被删除的位置)的时间复杂度为O(n),同理添加新节点的复杂度也是O(n),合起来diff两个树的复杂度就是O(n³)</p>
-
+<p>查找完差异后还需计算最小转换方式，这其中的原理我没仔细去看，最终达到的算法复杂度是O(n^3)</p>
+<blockquote>
+<p>将两颗树中所有的节点一一对比需要O(n²)的复杂度，在对比过程中发现旧节点在新的树中未找到，那么就需要把旧节点删除，删除一棵树的一个节点(找到一个合适的节点放到被删除的位置)的时间复杂度为O(n),同理添加新节点的复杂度也是O(n),合起来diff两个树的复杂度就是O(n³)</p>
+</blockquote>
 <h2 id="优化的diff算法">优化的Diff算法</h2>
-
 <p>vue和react的虚拟DOM的diff算法大致相同，其核心是基于两个简单的假设:</p>
-
 <ol>
 <li>两个相同的组件产生类似的DOM结构，不同的组件产生不同的DOM结构</li>
 <li>同一层级的一组节点，他们可以通过唯一的id进行区分</li>
 </ol>
-
 <p><strong>(优化的)diff三点策略:</strong>  <br /></p>
-
 <ul>
 <li>web UI中DOM节点跨层级的移动操作特别少，可以忽略不计。</li>
 <li>拥有相同类型的两个组件将会生成相似的树形结构，拥有不同类型的两个组件将会生成不同树形结构。</li>
-<li>对于同一层级的一组自节点，他们可以通过唯一id进行区分。
-&gt; 即, 比较只会在同层级进行, 不会跨层级比较</li>
+<li>对于同一层级的一组自节点，他们可以通过唯一id进行区分。</li>
 </ul>
-
+<blockquote>
+<p>即, 比较只会在同层级进行, 不会跨层级比较</p>
+</blockquote>
 <h3 id="react优化diff算法">React优化Diff算法</h3>
-
 <blockquote>
 <p>基于以上优化的diff三点策略，react分别进行以下算法优化</p>
 </blockquote>
-
 <ul>
 <li>tree diff</li>
 <li>component diff</li>
 <li>element diff</li>
 </ul>
-
 <h6 id="tree-diff">tree diff</h6>
-
 <p>react对树的算法进行了分层比较。react 通过 updateDepth对Virtual Dom树进行层级控制，只会对相同颜色框内的节点进行比较，即同一个父节点下的所有子节点。当发现节点不存在，则该节点和其子节点都会被删除。这样是需要遍历一次dom树，就完成了整个dom树的对比</p>
-
-<figure>
-    <img src="/img-blogs/20191214-002.jpg"
-         alt="分层比较" width="549" height="327"/> 
+<figure><img src="/img-blogs/20191214-002.jpg"
+         alt="分层比较" width="549" height="327"/>
 </figure>
-
 
 <p>如果是跨层级的移动操作，如图</p>
-
-<figure>
-    <img src="/img-blogs/20191214-003.jpg"
-         alt="跨层级操作" width="520" height="360"/> 
+<figure><img src="/img-blogs/20191214-003.jpg"
+         alt="跨层级操作" width="520" height="360"/>
 </figure>
 
-
 <p>当根结点发现A消失了，会删除掉A以及他的子节点。当发现D上多了一个A节点，会创建A（包括其子节点）节点作为子节点</p>
-
 <p>所以：当进行跨层级的移动操作，react并不是简单的进行移动，而是进行了删除和创建的操作，这会影响到react性能。所以要尽量避免跨层级的操作。（例如：控制display来达到显示和隐藏，而不是真的添加和删除dom）</p>
-
 <h6 id="component-diff">component diff</h6>
-
 <ul>
 <li>如果是同类型的组件，则直接对比virtual Dom tree</li>
 <li>如果不是同类型的组件，会直接替换掉组件下的所有子组件</li>
 <li>如果类型相同，但是可能virtual DOM 没有变化，这种情况下我们可以使用shouldComponentUpdate() 来判断是否需要进行diff</li>
 </ul>
-
-<figure>
-    <img src="/img-blogs/20191214-004.jpg"
-         alt="component vs" width="526" height="223"/> 
+<figure><img src="/img-blogs/20191214-004.jpg"
+         alt="component vs" width="526" height="223"/>
 </figure>
-
 
 <p>如果组件D和组件G，如果类型不同，但是结构类似。这种情况下，因为类型不同，所以react会删除D，创建G。所以我们可以使用shouldComponentUpdate()返回false不进行diff。</p>
-
-<p>针对react15, 16出了新的生命周期
-&gt; todo: ???</p>
-
+<p>针对react15, 16出了新的生命周期</p>
+<blockquote>
+<p>todo: ???</p>
+</blockquote>
 <p>所以：component diff 主要是使用shouldComponentUpdate() 来进行优化</p>
-
 <h6 id="element-diff">element diff</h6>
-
 <p>element diff 涉及三种操作：插入，移动，删除</p>
-
-<figure>
-    <img src="/img-blogs/20191214-005.jpg"
-         alt="不使用key的情况" width="484" height="330"/> 
+<figure><img src="/img-blogs/20191214-005.jpg"
+         alt="不使用key的情况" width="484" height="330"/>
 </figure>
-
 
 <p>不使用key的话，react对新老集合对比，发现新集合中B不等于老集合中的A，于是删除了A，创建了B，依此类推直到删除了老集合中的D，创建了C于新集合。=</p>
-
 <p>酱紫会产生渲染性能瓶颈，于是react允许添加key进行区分</p>
-
-<figure>
-    <img src="/img-blogs/20191214-006.jpg"
-         alt="使用key的情况" width="488" height="375"/> 
+<figure><img src="/img-blogs/20191214-006.jpg"
+         alt="使用key的情况" width="488" height="375"/>
 </figure>
 
-
 <p>react首先对新集合进行遍历，for( name in nextChildren),通过唯一key来判断老集合中是否存在相同的节点，如果没有的话创建，如果有的话，if (preChild === nextChild ) 进行移动操作</p>
-
 <p><strong>移动优化</strong>  <br />
 在移动前，会将节点在新集合中的位置和在老集合中lastIndex进行比较，如果if (child._mountIndex &lt; lastIndex) 进行移动操作，否则不进行移动操作。这是一种顺序移动优化。只有在新集合的位置 小于 在老集合中的位置  才进行移动。</p>
-
 <p>如果遍历的过程中，发现在新集合中没有，但是在老集合中的节点，会进行删除操作</p>
-
 <p>所以：element diff 通过唯一key 进行diff 优化。</p>
-
 <p>总结：</p>
-
 <ol>
 <li>react中尽量减少跨层级的操作。</li>
 <li>可以使用shouldComponentUpdate() 来避免react重复渲染。</li>
 <li>添加唯一key，减少不必要的重渲染</li>
 </ol>
-
 <h3 id="vue优化diff">Vue优化Diff</h3>
-
 <blockquote>
 <p>vue2.x 加入了virtual dom，和react拥有相同的 diff 优化原则</p>
 </blockquote>
-
-<figure>
-    <img src="/img-blogs/20191214-007.jpg" width="405" height="215"/> 
+<figure><img src="/img-blogs/20191214-007.jpg" width="405" height="215"/>
 </figure>
-
 
 <blockquote>
 <p>参考: <a href="https://juejin.im/post/5da9789f51882529d1528c3e">https://juejin.im/post/5da9789f51882529d1528c3e</a></p>
 </blockquote>
-
 <p>差异就在于, diff的过程就是调用patch函数，就像打补丁一样修改真实dom</p>
-
 <ul>
 <li>patchVnode</li>
 <li>updateChildren</li>
 </ul>
-
-<p>updateChildren是vue diff的核心<br />
+<p>updateChildren是vue diff的核心<br>
 过程可以概括为：oldCh和newCh各有两个头尾的变量StartIdx和EndIdx，它们的2个变量相互比较，一共有4种比较方式。如果4种比较都没匹配，如果设置了key，就会用key进行比较，在比较的过程中，变量会往中间靠，一旦StartIdx&gt;EndIdx表明oldCh和newCh至少有一个已经遍历完了，就会结束比较</p>
-
-<figure>
-    <img src="/img-blogs/20191214-008.jpg" width="666" height="490"/> 
+<figure><img src="/img-blogs/20191214-008.jpg" width="666" height="490"/>
 </figure>
 
-
-<h4 id="vue-2-x-vs-vue-3-x">Vue 2.x vs Vue 3.x</h4>
-
+<h4 id="vue-2x-vs-vue-3x">Vue 2.x vs Vue 3.x</h4>
 <p>Vue2的核心Diff算法采用了双端比较的算法，同时从新旧children的两端开始进行比较，借助key值找到可复用的节点，再进行相关操作。相比React的Diff算法，同样情况下可以减少移动节点次数，减少不必要的性能损耗，更加的优雅</p>
-
-<p>Vue3.x借鉴了 ivi算法和 inferno算法。在创建VNode时就确定其类型，以及在mount/patch的过程中采用位运算来判断一个VNode的类型，在这个基础之上再配合核心的Diff算法，使得性能上较Vue2.x有了提升。(实际的实现可以结合Vue3.x源码看
-&gt; 该算法中还运用了动态规划的思想求解最长递归子序列</p>
-
-<hr />
-
+<p>Vue3.x借鉴了 ivi算法和 inferno算法。在创建VNode时就确定其类型，以及在mount/patch的过程中采用位运算来判断一个VNode的类型，在这个基础之上再配合核心的Diff算法，使得性能上较Vue2.x有了提升。(实际的实现可以结合Vue3.x源码看</p>
+<blockquote>
+<p>该算法中还运用了动态规划的思想求解最长递归子序列</p>
+</blockquote>
+<hr>
 <h2 id="参考">参考</h2>
-
 <ul>
 <li><a href="https://reactjs.org/docs/jsx-in-depth.html#children-in-jsx">react官方文档</a>  <br /></li>
 <li><a href="https://www.jianshu.com/p/398e63dc1969">https://www.jianshu.com/p/398e63dc1969</a></li>
 <li><a href="https://www.jianshu.com/p/21eb0cea85d8">https://www.jianshu.com/p/21eb0cea85d8</a></li>
 <li><a href="https://segmentfault.com/a/1190000008782928">https://segmentfault.com/a/1190000008782928</a></li>
 </ul>
-
-<hr />
-
+<hr>
 <p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>  <br>
 <strong>欢迎交流~</strong></p>
-
-<figure>
-    <img src="/img-common/weChatPublic.jpg"
-         alt="微信公众号" width="600" height="286"/> 
+<figure><img src="/img-common/weChatPublic.jpg"
+         alt="微信公众号" width="600" height="286"/>
 </figure>
-
 
 <p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong>  <br/>
 <strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p>
@@ -497,7 +419,7 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvc/" title="MVC">MVC (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="MVVM">MVVM (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/native/" title="Native">Native (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node (9)</a>

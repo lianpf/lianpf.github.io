@@ -10,22 +10,16 @@
 		<meta property="og:title" content="H5和native利用JsBridge交互" />
 <meta property="og:description" content="H5和native利用JSBridge交互，其中涉及到了一些和ios交互的callHandler框架，WebViewJavascriptBridge相关的原理还待补充&hellip;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/34.h5%E5%92%8Cnative%E5%88%A9%E7%94%A8jsbridge%E4%BA%A4%E4%BA%92/" />
+<meta property="og:url" content="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/34.h5%E5%92%8Cnative%E5%88%A9%E7%94%A8jsbridge%E4%BA%A4%E4%BA%92/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2017-09-17T00:00:00+00:00" />
 <meta property="article:modified_time" content="2017-09-17T00:00:00+00:00" />
 
+
 		<meta itemprop="name" content="H5和native利用JsBridge交互">
-<meta itemprop="description" content="H5和native利用JSBridge交互，其中涉及到了一些和ios交互的callHandler框架，WebViewJavascriptBridge相关的原理还待补充&hellip;">
-
-
-<meta itemprop="datePublished" content="2017-09-17T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2017-09-17T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1066">
-
-
-
+<meta itemprop="description" content="H5和native利用JSBridge交互，其中涉及到了一些和ios交互的callHandler框架，WebViewJavascriptBridge相关的原理还待补充&hellip;"><meta itemprop="datePublished" content="2017-09-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2017-09-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1065">
 <meta itemprop="keywords" content="JavaScript,Native,Bridge," />
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="H5和native利用JsBridge交互"/>
 <meta name="twitter:description" content="H5和native利用JSBridge交互，其中涉及到了一些和ios交互的callHandler框架，WebViewJavascriptBridge相关的原理还待补充&hellip;"/>
@@ -148,41 +142,33 @@
 	<div class="toc__title">目录</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#一-基本用法使用">一.基本用法使用</a>
-<ul>
-<li><a href="#bridge文件">bridge文件</a></li>
-<li><a href="#js调用文件">js调用文件</a></li>
-</ul></li>
-<li><a href="#二-重点">二.重点</a>
-<ul>
-<li><a href="#数据">数据</a></li>
-<li><a href="#js端调用native需要native回传数据">js端调用native需要native回传数据</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#一基本用法使用">一.基本用法使用</a>
+      <ul>
+        <li><a href="#bridge文件">bridge文件</a></li>
+        <li><a href="#js调用文件">js调用文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#二重点">二.重点</a>
+      <ul>
+        <li><a href="#数据">数据</a></li>
+        <li><a href="#js端调用native需要native回传数据">js端调用native需要native回传数据</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
 			<p>H5和native利用JSBridge交互，其中涉及到了一些和ios交互的callHandler框架，WebViewJavascriptBridge相关的原理还待补充&hellip;</p>
-
-<h2 id="一-基本用法使用">一.基本用法使用</h2>
-
+<h2 id="一基本用法使用">一.基本用法使用</h2>
 <h3 id="bridge文件">bridge文件</h3>
-
 <p>bridge文件是原生调用native的基础，大致需要这么几步完成:
 1.建立AppClient对象</p>
-
 <pre><code>function AppClient(appObj, isAndroid) {
 	this.appObj = appObj;
 	this.isAndroid = isAndroid;
 };
-</code></pre>
-
-<p>2.建立js文件调用native的方法</p>
-
+</code></pre><p>2.建立js文件调用native的方法</p>
 <pre><code>AppClient.prototype.closePage = function() {
   if (this.isAndroid) {
     this.appObj.closePageAction();
@@ -190,15 +176,10 @@
     this.appObj.callHandler(&quot;closePageAction&quot;);
   }
 }
-</code></pre>
-
-<p>注：closePage()就是js文件调用native关闭页面的方法，&rdquo;closePageAction&rdquo;是native端暴露给js端关闭
+</code></pre><p>注：closePage()就是js文件调用native关闭页面的方法，&ldquo;closePageAction&quot;是native端暴露给js端关闭
 页面的操作。</p>
-
 <h3 id="js调用文件">js调用文件</h3>
-
 <p>1.init AppClient对象</p>
-
 <pre><code>if(window.android) {
     appClient = new AppClient(window.android, true);
     // 此处可以调用一些init的方法
@@ -219,22 +200,14 @@
       // 此处可以调用一些init的方法
     });
   }
-</code></pre>
-
-<p>2.调用，依旧closePage()为例：</p>
-
+</code></pre><p>2.调用，依旧closePage()为例：</p>
 <pre><code>appClient.closePage();
-</code></pre>
-
-<h2 id="二-重点">二.重点</h2>
-
+</code></pre><h2 id="二重点">二.重点</h2>
 <h3 id="数据">数据</h3>
-
 <p>1.native存在多线程，所以在js端h5页面在获取接口数据时，需要设置ajax异步(以jQuery为例：async：true)
 2.js实现异步的几种途径：
 (1) 在异步获取数据成功之后，再去继续下一步操作，以jQuery为例：
 在success回调函数里面，执行接下来的操作</p>
-
 <pre><code>$.ajax({
     headers: {
       Accept: &quot;application/json; charset=utf-8&quot;,
@@ -255,10 +228,7 @@
       console.log(&quot;---出现错误---&quot;+ JSON.stringify(data));
     }
   });
-</code></pre>
-
-<p>(2)ES6原生提供的Promise对象，将异步操作以同步操作的流程表达出来</p>
-
+</code></pre><p>(2)ES6原生提供的Promise对象，将异步操作以同步操作的流程表达出来</p>
 <pre><code>var promise = new Promise(function(resolve, reject) {
  if (/* 异步操作成功 */){
  resolve(value);
@@ -273,33 +243,22 @@ promise.then(function(value) {
  // failure
 });
 
-</code></pre>
-
-<h3 id="js端调用native需要native回传数据">js端调用native需要native回传数据</h3>
-
+</code></pre><h3 id="js端调用native需要native回传数据">js端调用native需要native回传数据</h3>
 <p>1.定义native回调js端的函数
 (1)invokeJsPassCompanyCodeAndName()即native调用js的函数，必须放在window全局对象下,
 否则native可能会调不到；
 (2)ios端利用callHandler框架回传的数据只能是json对象的形式</p>
-
 <pre><code>window.invokeJsPassCompanyCodeAndName = function(_params) {
   companyCode = _params.companyCode;
   companyName = _params.companyName;
   var jsonStr = &quot;&quot;;
   getSign(jsonStr);
 }
-</code></pre>
-
-<p>2.js端调用native</p>
-
+</code></pre><p>2.js端调用native</p>
 <pre><code>appClient.getSignedParams(&quot;jsDataAction&quot;, jsDataAction, ajaxRequestStr);
 
-</code></pre>
-
-<p>注：三个参数（callbackName, callback, params）回调函数名称，回调函数，给native传的参数</p>
-
+</code></pre><p>注：三个参数（callbackName, callback, params）回调函数名称，回调函数，给native传的参数</p>
 <p>3.bridge文件</p>
-
 <pre><code>AppClient.prototype.getSignedParams = function (callbackName, callback, jsonStr) {
   var dataParams = &quot;&quot;;
   if(isJson(jsonStr)){
@@ -317,18 +276,12 @@ promise.then(function(value) {
   }
 };
 
-</code></pre>
-
-<p>注：利用callHandler给native传参数时，iOSData必须是一个json对象</p>
-
-<hr />
-
+</code></pre><p>注：利用callHandler给native传参数时，iOSData必须是一个json对象</p>
+<hr>
 <p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>  <br>
 <strong>欢迎交流~</strong></p>
-
-<figure>
-    <img src="/img-common/weChatPublic.jpg"
-         alt="微信公众号" width="600" height="286"/> 
+<figure><img src="/img-common/weChatPublic.jpg"
+         alt="微信公众号" width="600" height="286"/>
 </figure>
 		</div>
 		<footer class="post__footer">
@@ -447,7 +400,7 @@ promise.then(function(value) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvc/" title="MVC">MVC (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="MVVM">MVVM (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/native/" title="Native">Native (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node (9)</a>

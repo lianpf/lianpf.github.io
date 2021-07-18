@@ -10,22 +10,16 @@
 		<meta property="og:title" content="Hugo语法纪要" />
 <meta property="og:description" content="关于使用hugo搭建博客过程中，遇到的一些小问题的解决方案&hellip;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/09.hugo%E8%AF%AD%E6%B3%95%E7%BA%AA%E8%A6%81/" />
+<meta property="og:url" content="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/09.hugo%E8%AF%AD%E6%B3%95%E7%BA%AA%E8%A6%81/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-02-21T17:17:47+08:00" />
 <meta property="article:modified_time" content="2021-02-21T17:17:47+08:00" />
 
+
 		<meta itemprop="name" content="Hugo语法纪要">
-<meta itemprop="description" content="关于使用hugo搭建博客过程中，遇到的一些小问题的解决方案&hellip;">
-
-
-<meta itemprop="datePublished" content="2021-02-21T17:17:47&#43;08:00" />
-<meta itemprop="dateModified" content="2021-02-21T17:17:47&#43;08:00" />
-<meta itemprop="wordCount" content="1772">
-
-
-
+<meta itemprop="description" content="关于使用hugo搭建博客过程中，遇到的一些小问题的解决方案&hellip;"><meta itemprop="datePublished" content="2021-02-21T17:17:47+08:00" />
+<meta itemprop="dateModified" content="2021-02-21T17:17:47+08:00" />
+<meta itemprop="wordCount" content="1767">
 <meta itemprop="keywords" content="hugo," />
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hugo语法纪要"/>
 <meta name="twitter:description" content="关于使用hugo搭建博客过程中，遇到的一些小问题的解决方案&hellip;"/>
@@ -148,84 +142,60 @@
 	<div class="toc__title">目录</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#一-配置项">一、配置项</a>
-<ul>
-<li><a href="#1-高亮问题">1、高亮问题</a></li>
-<li><a href="#2-菜单问题">2、菜单问题</a></li>
-</ul></li>
-<li><a href="#二-语法问题">二、语法问题</a>
-<ul>
-<li><a href="#1-定制-head-footer">1、定制 head / footer</a></li>
-<li><a href="#2-锚点-back-to-top-按钮">2、锚点：“back to top”按钮</a></li>
-<li><a href="#3-站内搜索">3、站内搜索</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#一配置项">一、配置项</a>
+      <ul>
+        <li><a href="#1高亮问题">1、高亮问题</a></li>
+        <li><a href="#2菜单问题">2、菜单问题</a></li>
+      </ul>
+    </li>
+    <li><a href="#二语法问题">二、语法问题</a>
+      <ul>
+        <li><a href="#1定制-head--footer">1、定制 head / footer</a></li>
+        <li><a href="#2锚点back-to-top按钮">2、锚点：“back to top”按钮</a></li>
+        <li><a href="#3站内搜索">3、站内搜索</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
 			<p>关于使用hugo搭建博客过程中，遇到的一些小问题的解决方案&hellip;</p>
-
 <p><a href="https://gohugo.io/getting-started/quick-start/">官方使用文档</a></p>
-
-<h2 id="一-配置项">一、配置项</h2>
-
-<h3 id="1-高亮问题">1、高亮问题</h3>
-
+<h2 id="一配置项">一、配置项</h2>
+<h3 id="1高亮问题">1、高亮问题</h3>
 <ul>
 <li>插件：<a href="https://highlightjs.org/">highlight</a></li>
 <li>解决方案: <a href="https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/">参考</a></li>
 </ul>
-
 <p><strong>关键步骤</strong></p>
-
 <blockquote>
 <p>将下载解压的 <code>highlight</code> 文件夹放置于 <code>static/js/</code> 下</p>
 </blockquote>
-
 <ul>
 <li><code>highlight.pack.js</code> 决定那些语言的代码会根据语法进行高亮</li>
 <li><code>style</code>文件夹中选择喜欢的css样式文件，css文件决定代码高亮的颜色</li>
 </ul>
-
 <p>最后我选择了 <code>agate.css</code></p>
-
 <p>然后需要在<code>&lt;head&gt;</code>中增加：</p>
-
 <pre><code>// 主题可根据列表选择 - agate
 &lt;link rel=&quot;stylesheet&quot; href=&quot;/js/highlight/styles/agate.css&quot;&gt;
-</code></pre>
-
-<p>在<code>&lt;body&gt;</code>结束前增加：</p>
-
+</code></pre><p>在<code>&lt;body&gt;</code>结束前增加：</p>
 <pre><code>&lt;script src=&quot;/js/highlight/highlight.pack.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
-</code></pre>
-
-<h3 id="2-菜单问题">2、菜单问题</h3>
-
+</code></pre><h3 id="2菜单问题">2、菜单问题</h3>
 <p>增加权重</p>
-
-<h2 id="二-语法问题">二、语法问题</h2>
-
-<h3 id="1-定制-head-footer">1、定制 head / footer</h3>
-
+<h2 id="二语法问题">二、语法问题</h2>
+<h3 id="1定制-head--footer">1、定制 head / footer</h3>
 <ul>
 <li>基本布局页：<code>layouts/_default/baseof.html</code></li>
 <li>个性化配置页：<code>layouts/partials/head.html、layouts/partials/zhihu.svg</code>等</li>
 </ul>
-
-<h3 id="2-锚点-back-to-top-按钮">2、锚点：“back to top”按钮</h3>
-
+<h3 id="2锚点back-to-top按钮">2、锚点：“back to top”按钮</h3>
 <ul>
 <li>插件：<a href="https://github.com/vfeskov/vanilla-back-to-top">vanilla-back-to-top</a></li>
 </ul>
-
 <p><strong>个性化配置页 —— <code>layouts/partials/footer.html</code>页面嵌入如下代码：</strong></p>
-
 <pre><code>&lt;script src=&quot;https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
   addBackToTop({
@@ -234,10 +204,7 @@
     textColor: '#fff'
   })
 &lt;/script&gt;
-</code></pre>
-
-<h3 id="3-站内搜索">3、站内搜索</h3>
-
+</code></pre><h3 id="3站内搜索">3、站内搜索</h3>
 <ul>
 <li>DuckDuckGo search</li>
 <li>google search</li>
@@ -245,19 +212,14 @@
 <li>手动<code>Coding</code>解决</li>
 <li><code>golang</code> 暴力解法</li>
 </ul>
-
 <p><strong>手动<code>Coding</code>解决核心思想</strong>  <br />
 (1) 搜索框触发 <code>search function</code></p>
-
 <pre><code>function search () {
   $.getJSON(baseUrl + 'search.json', function(result){
     // 拿到搜索结果
   })
 }
-</code></pre>
-
-<p>(2) <code>search.json</code></p>
-
+</code></pre><p>(2) <code>search.json</code></p>
 <pre><code>{ &quot;results&quot;: [
     {
     &quot;url&quot;: &quot;http://example.com/article3/&quot;,
@@ -275,24 +237,23 @@
     &quot;content&quot;: &quot;word1a word1b word1c&quot;
     }
 ]}
-</code></pre>
-
-<p>(3) 需要考虑的点</p>
-
+</code></pre><p>(3) 需要考虑的点</p>
 <ul>
 <li>如何根据现有文章，执行HUGO命令，自动生成 <code>search.json</code> 文件</li>
 <li>拿到搜索结果，以什么形式展示搜索拿到的文章列表（新的search page 或 下拉面板）</li>
 </ul>
-
-<p><code>golang</code> 暴力解法思路:
-* 利用hugo生成的index.xml文件进行内容搜索
-* hugo的content目录下的html文件会被编译到模板中去
-* 利用以上特性使用js实现功能
-  + html 转文本
-  + 时间格式转换</p>
-
+<p><code>golang</code> 暴力解法思路:</p>
+<ul>
+<li>利用hugo生成的index.xml文件进行内容搜索</li>
+<li>hugo的content目录下的html文件会被编译到模板中去</li>
+<li>利用以上特性使用js实现功能
+<ul>
+<li>html 转文本</li>
+<li>时间格式转换</li>
+</ul>
+</li>
+</ul>
 <p>实现代码</p>
-
 <pre><code>+++
 title = &quot;搜索&quot;
 menu = &quot;main&quot;
@@ -503,15 +464,10 @@ weight = 30
     return y+'年'+isZero(m)+'月'+isZero(d)+'日';    
   }
 &lt;/script&gt;
-</code></pre>
-
-<hr />
-
+</code></pre><hr>
 <p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>  <br>
 <strong>欢迎交流~</strong></p>
-
 <p><img src="/img-common/weChatPublic.jpg" alt="微信公众号" width="600" height="286" /></p>
-
 <p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong>  <br/>
 <strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p>
 		</div>
@@ -625,7 +581,7 @@ weight = 30
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvc/" title="MVC">MVC (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="MVVM">MVVM (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/native/" title="Native">Native (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node (9)</a>

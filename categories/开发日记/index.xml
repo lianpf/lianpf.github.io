@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>开发日记 on 曜灵（SUN）Site</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 开发日记 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 13 Apr 2021 17:37:29 +0800</lastBuildDate>
-    
-	<atom:link href="/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 13 Apr 2021 17:37:29 +0800</lastBuildDate><atom:link href="/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Node之Apr框架使用文档</title>
       <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/13.apr%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</link>
@@ -143,7 +139,7 @@
       <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
       
       <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/08.npm-publish-%E5%8F%91%E5%B8%83npm%E5%8C%85/</guid>
-      <description>&lt;p&gt;node 作为当前最受欢迎的&amp;rdquo;js版&amp;rdquo;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
+      <description>&lt;p&gt;node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -161,7 +157,7 @@
       <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/07.node%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84node-server/</guid>
-      <description>&lt;p&gt;node 作为当前最受欢迎的&amp;rdquo;js版&amp;rdquo;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
+      <description>&lt;p&gt;node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>前端框架 on 曜灵（SUN）Site</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 前端框架 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 18 Mar 2021 20:22:41 +0800</lastBuildDate>
-    
-	<atom:link href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 18 Mar 2021 20:22:41 +0800</lastBuildDate><atom:link href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>vue3&#43;ts(3)：vue3组合式api及重要属性变更</title>
       <link>/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/</link>

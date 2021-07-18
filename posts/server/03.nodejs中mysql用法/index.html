@@ -8,27 +8,21 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		<meta property="og:title" content="nodejs中mysql用法" />
-<meta property="og:description" content="node 作为当前最受欢迎的&rdquo;js版&rdquo;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&hellip;" />
+<meta property="og:description" content="node 作为当前最受欢迎的&quot;js版&quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&hellip;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/server/03.nodejs%E4%B8%ADmysql%E7%94%A8%E6%B3%95/" />
+<meta property="og:url" content="/posts/server/03.nodejs%E4%B8%ADmysql%E7%94%A8%E6%B3%95/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2016-04-14T00:00:00+00:00" />
 <meta property="article:modified_time" content="2016-04-14T00:00:00+00:00" />
 
+
 		<meta itemprop="name" content="nodejs中mysql用法">
-<meta itemprop="description" content="node 作为当前最受欢迎的&rdquo;js版&rdquo;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&hellip;">
-
-
-<meta itemprop="datePublished" content="2016-04-14T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2016-04-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2840">
-
-
-
+<meta itemprop="description" content="node 作为当前最受欢迎的&quot;js版&quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&hellip;"><meta itemprop="datePublished" content="2016-04-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2016-04-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2838">
 <meta itemprop="keywords" content="node,mySql," />
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="nodejs中mysql用法"/>
-<meta name="twitter:description" content="node 作为当前最受欢迎的&rdquo;js版&rdquo;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&hellip;"/>
+<meta name="twitter:description" content="node 作为当前最受欢迎的&quot;js版&quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&hellip;"/>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -144,52 +138,48 @@
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
-			<p>node 作为当前最受欢迎的&rdquo;js版&rdquo;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&hellip;</p>
-
+			<p>node 作为当前最受欢迎的&quot;js版&quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&hellip;</p>
 <p>1、建立数据库连接：createConnection(Object)方法
-      该方法接受一个对象作为参数，该对象有四个常用的属性host，user，password，database。与php中链接数据库的参数相同。属性列表如下：
-        host: 连接数据库所在的主机名. (默认: localhost)
-    port: 连接端口. (默认: 3306)
-    localAddress: 用于TCP连接的IP地址. (可选)
-    socketPath: 链接到unix域的路径。在使用host和port时该参数会被忽略.
-    user: MySQL用户的用户名.
-    password: MySQL用户的密码.
-    database: 链接到的数据库名称 (可选).
-    charset: 连接的字符集. (默认: &lsquo;UTF8_GENERAL_CI&rsquo;.设置该值要使用大写!)
-    timezone: 储存本地时间的时区. (默认: &lsquo;local&rsquo;)
-    stringifyObjects: 是否序列化对象. See issue #501. (默认: &lsquo;false&rsquo;)
-    insecureAuth: 是否允许旧的身份验证方法连接到数据库实例. (默认: false)
-    typeCast: 确定是否讲column值转换为本地JavaScript类型列值. (默认: true)
-    queryFormat: 自定义的查询语句格式化函数.
-    supportBigNumbers: 数据库处理大数字(长整型和含小数),时应该启用 (默认: false).
-    bigNumberStrings: 启用 supportBigNumbers和bigNumberStrings 并强制这些数字以字符串的方式返回(默认: false).
-    dateStrings: 强制日期类型(TIMESTAMP, DATETIME, DATE)以字符串返回，而不是一javascript Date对象返回. (默认: false)
-    debug: 是否开启调试. (默认: false)
-    multipleStatements: 是否允许在一个query中传递多个查询语句. (Default: false)
-    flags: 链接标志.
+该方法接受一个对象作为参数，该对象有四个常用的属性host，user，password，database。与php中链接数据库的参数相同。属性列表如下：
+host: 连接数据库所在的主机名. (默认: localhost)
+port: 连接端口. (默认: 3306)
+localAddress: 用于TCP连接的IP地址. (可选)
+socketPath: 链接到unix域的路径。在使用host和port时该参数会被忽略.
+user: MySQL用户的用户名.
+password: MySQL用户的密码.
+database: 链接到的数据库名称 (可选).
+charset: 连接的字符集. (默认: &lsquo;UTF8_GENERAL_CI&rsquo;.设置该值要使用大写!)
+timezone: 储存本地时间的时区. (默认: &lsquo;local&rsquo;)
+stringifyObjects: 是否序列化对象. See issue #501. (默认: &lsquo;false&rsquo;)
+insecureAuth: 是否允许旧的身份验证方法连接到数据库实例. (默认: false)
+typeCast: 确定是否讲column值转换为本地JavaScript类型列值. (默认: true)
+queryFormat: 自定义的查询语句格式化函数.
+supportBigNumbers: 数据库处理大数字(长整型和含小数),时应该启用 (默认: false).
+bigNumberStrings: 启用 supportBigNumbers和bigNumberStrings 并强制这些数字以字符串的方式返回(默认: false).
+dateStrings: 强制日期类型(TIMESTAMP, DATETIME, DATE)以字符串返回，而不是一javascript Date对象返回. (默认: false)
+debug: 是否开启调试. (默认: false)
+multipleStatements: 是否允许在一个query中传递多个查询语句. (Default: false)
+flags: 链接标志.
 还可以使用字符串连接数据库例如：
 var connection = mysql.createConnection(&lsquo;mysql://user:pass@host/db?debug=true&amp;charset=BIG5_CHINESE_CI&amp;timezone=-0700&rsquo;);
 2、结束数据库连接end()和destroy()
 end()接受一个回调函数，并且会在query结束之后才触发，如果query出错，仍然会终止链接，错误会传递到回调函数中处理。
 destroy()立即终止数据库连接，即使还有query没有完成，之后的回调函数也不会在触发。</p>
-
 <p>3、创建连接池 createPool(Object)  Object和createConnection参数相同。
 可以监听connection事件，并设置session值</p>
-
 <p>pool.on(&lsquo;connection&rsquo;, function(connection) {
-        connection.query(&lsquo;SET SESSION auto_increment_increment=1&rsquo;)
-    });
+connection.query(&lsquo;SET SESSION auto_increment_increment=1&rsquo;)
+});
 connection.release()释放链接到连接池。如果需要关闭连接并且删除，需要使用connection.destroy()
 pool除了接受和connection相同的参数外，还接受几个扩展的参数
 createConnection: 用于创建链接的函数. (Default: mysql.createConnection)
-    waitForConnections: 决定当没有连接池或者链接数打到最大值时pool的行为. 为true时链接会被放入队列中在可用是调用，为false时会立即返回error. (Default: true)
-    connectionLimit: 最大连接数. (Default: 10)
-    queueLimit: 连接池中连接请求的烈的最大长度，超过这个长度就会报错，值为0时没有限制. (Default: 0)
+waitForConnections: 决定当没有连接池或者链接数打到最大值时pool的行为. 为true时链接会被放入队列中在可用是调用，为false时会立即返回error. (Default: true)
+connectionLimit: 最大连接数. (Default: 10)
+queueLimit: 连接池中连接请求的烈的最大长度，超过这个长度就会报错，值为0时没有限制. (Default: 0)
 4、连接池集群
 允许不同的host链接
 // create
-    var poolCluster = mysql.createPoolCluster();</p>
-
+var poolCluster = mysql.createPoolCluster();</p>
 <pre><code>poolCluster.add(config); // anonymous group
 poolCluster.add('MASTER', masterConfig);
 poolCluster.add('SLAVE1', slave1Config);
@@ -219,34 +209,30 @@ pool.getConnection(function (err, connection) {});
 // destroy
 poolCluster.end();
 </code></pre>
-
 <p>链接集群的可选参数
 canRetry: 值为true时，允许连接失败时重试(Default: true)
-    removeNodeErrorCount: 当连接失败时 errorCount 值会增加. 当errorCount 值大于 removeNodeErrorCount 将会从PoolCluster中删除一个节点. (Default: 5)
-    defaultSelector: 默认选择器. (Default: RR)
-        RR: 循环. (Round-Robin)
-        RANDOM: 通过随机函数选择节点.
-        ORDER: 无条件地选择第一个可用节点.</p>
-
+removeNodeErrorCount: 当连接失败时 errorCount 值会增加. 当errorCount 值大于 removeNodeErrorCount 将会从PoolCluster中删除一个节点. (Default: 5)
+defaultSelector: 默认选择器. (Default: RR)
+RR: 循环. (Round-Robin)
+RANDOM: 通过随机函数选择节点.
+ORDER: 无条件地选择第一个可用节点.</p>
 <p>5、切换用户/改变连接状态
 Mysql允许在比断开连接的的情况下切换用户
-    connection.changeUser({user : &lsquo;john&rsquo;}, function(err) {
-        if (err) throw err;
-    });
+connection.changeUser({user : &lsquo;john&rsquo;}, function(err) {
+if (err) throw err;
+});
 参数
-    user: 新的用户 (默认为早前的一个).
-    password: 新用户的新密码 (默认为早前的一个).
-    charset: 新字符集 (默认为早前的一个).
-    database: 新数据库名称 (默认为早前的一个).</p>
-
+user: 新的用户 (默认为早前的一个).
+password: 新用户的新密码 (默认为早前的一个).
+charset: 新字符集 (默认为早前的一个).
+database: 新数据库名称 (默认为早前的一个).</p>
 <p>6、处理服务器连接断开
 var db_config = {
-        host: &lsquo;localhost&rsquo;,
-        user: &lsquo;root&rsquo;,
-        password: &ldquo;,
-        database: &lsquo;example&rsquo;
-    };</p>
-
+host: &lsquo;localhost&rsquo;,
+user: &lsquo;root&rsquo;,
+password: &lsquo;&rsquo;,
+database: &lsquo;example&rsquo;
+};</p>
 <pre><code>var connection;
 
 function handleDisconnect() {
@@ -272,48 +258,43 @@ function handleDisconnect() {
 
 handleDisconnect();
 </code></pre>
-
 <p>7、转义查询值
 为了避免SQL注入攻击，需要转义用户提交的数据。可以使用connection.escape() 或者 pool.escape()
 例如：</p>
-
 <p>var userId = &lsquo;some user provided value&rsquo;;
-    var sql    = &lsquo;SELECT * FROM users WHERE id = &lsquo; + connection.escape(userId);
-    connection.query(sql, function(err, results) {
-      // &hellip;
-    });
-    或者使用？作为占位符
-    connection.query(&lsquo;SELECT * FROM users WHERE id = ?&lsquo;, [userId], function(err, results) {
-      // &hellip;
-    });
-    不同类型值的转换结果
-    Numbers 不变
-    Booleans 转换为字符串 &lsquo;true&rsquo; / &lsquo;false&rsquo;
-    Date 对象转换为字符串 &lsquo;YYYY-mm-dd HH:ii:ss&rsquo;
-    Buffers 转换为是6进制字符串
-    Strings 不变
-    Arrays =&gt; [&lsquo;a&rsquo;, &lsquo;b&rsquo;] 转换为 &lsquo;a&rsquo;, &lsquo;b&rsquo;
-    嵌套数组 [[&lsquo;a&rsquo;, &lsquo;b&rsquo;], [&lsquo;c&rsquo;, &rsquo;d&rsquo;]] 转换为 (&lsquo;a&rsquo;, &lsquo;b&rsquo;), (&lsquo;c&rsquo;, &rsquo;d&rsquo;)
-    Objects 转换为 key = &lsquo;val&rsquo; pairs. 嵌套对象转换为字符串.
-    undefined / null ===&gt; NULL
-    NaN / Infinity 不变. MySQL 不支持这些值,  除非有工具支持，否则插入这些值会引起错误.
-    转换实例：
-    var post  = {id: 1, title: &lsquo;Hello MySQL&rsquo;};
-    var query = connection.query(&lsquo;INSERT INTO posts SET ?&rsquo;, post, function(err, result) {
-      // Neat!
-    });
-    console.log(query.sql); // INSERT INTO posts SET <code>id</code> = 1, <code>title</code> = &lsquo;Hello MySQL&rsquo;
-    或者手动转换
-    var query = &ldquo;SELECT * FROM posts WHERE title=&rdquo; + mysql.escape(&ldquo;Hello MySQL&rdquo;);</p>
-
+var sql    = &lsquo;SELECT * FROM users WHERE id = ' + connection.escape(userId);
+connection.query(sql, function(err, results) {
+// &hellip;
+});
+或者使用？作为占位符
+connection.query(&lsquo;SELECT * FROM users WHERE id = ?&rsquo;, [userId], function(err, results) {
+// &hellip;
+});
+不同类型值的转换结果
+Numbers 不变
+Booleans 转换为字符串 &lsquo;true&rsquo; / &lsquo;false&rsquo;
+Date 对象转换为字符串 &lsquo;YYYY-mm-dd HH:ii:ss&rsquo;
+Buffers 转换为是6进制字符串
+Strings 不变
+Arrays =&gt; [&lsquo;a&rsquo;, &lsquo;b&rsquo;] 转换为 &lsquo;a&rsquo;, &lsquo;b&rsquo;
+嵌套数组 [[&lsquo;a&rsquo;, &lsquo;b&rsquo;], [&lsquo;c&rsquo;, &rsquo;d&rsquo;]] 转换为 (&lsquo;a&rsquo;, &lsquo;b&rsquo;), (&lsquo;c&rsquo;, &rsquo;d')
+Objects 转换为 key = &lsquo;val&rsquo; pairs. 嵌套对象转换为字符串.
+undefined / null ===&gt; NULL
+NaN / Infinity 不变. MySQL 不支持这些值,  除非有工具支持，否则插入这些值会引起错误.
+转换实例：
+var post  = {id: 1, title: &lsquo;Hello MySQL&rsquo;};
+var query = connection.query(&lsquo;INSERT INTO posts SET ?&rsquo;, post, function(err, result) {
+// Neat!
+});
+console.log(query.sql); // INSERT INTO posts SET <code>id</code> = 1, <code>title</code> = &lsquo;Hello MySQL&rsquo;
+或者手动转换
+var query = &ldquo;SELECT * FROM posts WHERE title=&rdquo; + mysql.escape(&ldquo;Hello MySQL&rdquo;);</p>
 <pre><code>console.log(query); // SELECT * FROM posts WHERE title='Hello MySQL'
 </code></pre>
-
 <p>8、转换查询标识符
 如果不能信任SQL标识符(数据库名、表名、列名)，可以使用转换方法mysql.escapeId(identifier)；
 var sorter = &lsquo;date&rsquo;;
-    var query = &lsquo;SELECT * FROM posts ORDER BY &lsquo; + mysql.escapeId(sorter);</p>
-
+var query = &lsquo;SELECT * FROM posts ORDER BY ' + mysql.escapeId(sorter);</p>
 <pre><code>console.log(query); // SELECT * FROM posts ORDER BY `date`
 支持转义多个
 var sorter = 'date';
@@ -329,49 +310,43 @@ var query = connection.query('SELECT ?? FROM ?? WHERE id = ?', [columns, 'users'
 
 console.log(query.sql); // SELECT `username`, `email` FROM `users` WHERE id = 1
 </code></pre>
-
 <p>9、准备查询
 可以使用mysql.format来准备查询语句，该函数会自动的选择合适的方法转义参数。
-var sql = &ldquo;SELECT * FROM ?? WHERE ?? = ?&ldquo;;
-    var inserts = [&lsquo;users&rsquo;, &lsquo;id&rsquo;, userId];
-    sql = mysql.format(sql, inserts);
-    10、自定义格式化函数
-    connection.config.queryFormat = function (query, values) {
-      if (!values) return query;
-      return query.replace(/:(\w+)/g, function (txt, key) {
-        if (values.hasOwnProperty(key)) {
-          return this.escape(values[key]);
-        }
-        return txt;
-      }.bind(this));
-    };</p>
-
+var sql = &ldquo;SELECT * FROM ?? WHERE ?? = ?&quot;;
+var inserts = [&lsquo;users&rsquo;, &lsquo;id&rsquo;, userId];
+sql = mysql.format(sql, inserts);
+10、自定义格式化函数
+connection.config.queryFormat = function (query, values) {
+if (!values) return query;
+return query.replace(/:(\w+)/g, function (txt, key) {
+if (values.hasOwnProperty(key)) {
+return this.escape(values[key]);
+}
+return txt;
+}.bind(this));
+};</p>
 <pre><code>connection.query(&quot;UPDATE posts SET title = :title&quot;, { title: &quot;Hello MySQL&quot; });
 </code></pre>
-
 <p>11、获取插入行的id
 当使用自增主键时获取插入行id，如：
 connection.query(&lsquo;INSERT INTO posts SET ?&rsquo;, {title: &lsquo;test&rsquo;}, function(err, result) {
-      if (err) throw err;</p>
-
+if (err) throw err;</p>
 <pre><code>  console.log(result.insertId);
 });
 </code></pre>
-
 <p>12、流处理
 有时你希望选择大量的行并且希望在数据到达时就处理他们，你就可以使用这个方法
 var query = connection.query(&lsquo;SELECT * FROM posts&rsquo;);
-    query
-      .on(&lsquo;error&rsquo;, function(err) {
-        // Handle error, an &lsquo;end&rsquo; event will be emitted after this as well
-      })
-      .on(&lsquo;fields&rsquo;, function(fields) {
-        // the field packets for the rows to follow
-      })
-      .on(&lsquo;result&rsquo;, function(row) {
-        // Pausing the connnection is useful if your processing involves I/O
-        connection.pause();</p>
-
+query
+.on(&lsquo;error&rsquo;, function(err) {
+// Handle error, an &lsquo;end&rsquo; event will be emitted after this as well
+})
+.on(&lsquo;fields&rsquo;, function(fields) {
+// the field packets for the rows to follow
+})
+.on(&lsquo;result&rsquo;, function(row) {
+// Pausing the connnection is useful if your processing involves I/O
+connection.pause();</p>
 <pre><code>    processRow(row, function() {
       connection.resume();
     });
@@ -380,22 +355,18 @@ var query = connection.query(&lsquo;SELECT * FROM posts&rsquo;);
     // all rows have been received
   });
 </code></pre>
-
 <p>13、混合查询语句（多语句查询）
- 因为混合查询容易被SQL注入攻击，默认是不允许的，可以使用var connection = mysql.createConnection({multipleStatements: true});开启该功能。
- 混合查询实例：
+因为混合查询容易被SQL注入攻击，默认是不允许的，可以使用var connection = mysql.createConnection({multipleStatements: true});开启该功能。
+混合查询实例：
 connection.query(&lsquo;SELECT 1; SELECT 2&rsquo;, function(err, results) {
-      if (err) throw err;</p>
-
+if (err) throw err;</p>
 <pre><code>  // `results` is an array with one element for every statement in the query:
   console.log(results[0]); // [{1: 1}]
   console.log(results[1]); // [{2: 2}]
 });
 </code></pre>
-
 <p>同样可以使用流处理混合查询结果：
 var query = connection.query(&lsquo;SELECT 1; SELECT 2&rsquo;);</p>
-
 <pre><code>query
   .on('fields', function(fields, index) {
     // the fields for the result rows that follow
@@ -404,21 +375,18 @@ var query = connection.query(&lsquo;SELECT 1; SELECT 2&rsquo;);</p>
     // index refers to the statement this result belongs to (starts at 0)
   });
 </code></pre>
-
 <p>如果其中一个查询语句出错，Error对象会包含err.index指示错误语句的id，整个查询也会终止。
 混合查询结果的流处理方式是做实验性的，不稳定。</p>
-
 <p>14、事务处理
 connection级别的简单事务处理
 connection.beginTransaction(function(err) {
-      if (err) { throw err; }
-      connection.query(&lsquo;INSERT INTO posts SET title=?&rsquo;, title, function(err, result) {
-        if (err) {
-          connection.rollback(function() {
-            throw err;
-          });
-        }</p>
-
+if (err) { throw err; }
+connection.query(&lsquo;INSERT INTO posts SET title=?&rsquo;, title, function(err, result) {
+if (err) {
+connection.rollback(function() {
+throw err;
+});
+}</p>
 <pre><code>    var log = 'Post ' + result.insertId + ' added';
 
     connection.query('INSERT INTO log SET data=?', log, function(err, result) {
@@ -439,21 +407,15 @@ connection.beginTransaction(function(err) {
   });
 });
 </code></pre>
-
 <p>15、错误处理
 err.code = string
 err.fatal =&gt; boolean</p>
-
-<p>更详细的说明请查看：<a href="https://github.com/felixge/node-mysql">https://github.com/felixge/node-mysql</a></p>
-
-<hr />
-
+<p>更详细的说明请查看：https://github.com/felixge/node-mysql</p>
+<hr>
 <p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>  <br>
 <strong>欢迎交流~</strong></p>
-
-<figure>
-    <img src="/img-common/weChatPublic.jpg"
-         alt="微信公众号" width="600" height="286"/> 
+<figure><img src="/img-common/weChatPublic.jpg"
+         alt="微信公众号" width="600" height="286"/>
 </figure>
 		</div>
 		<footer class="post__footer">
@@ -569,7 +531,7 @@ err.fatal =&gt; boolean</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvc/" title="MVC">MVC (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="MVVM">MVVM (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/native/" title="Native">Native (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node (9)</a>

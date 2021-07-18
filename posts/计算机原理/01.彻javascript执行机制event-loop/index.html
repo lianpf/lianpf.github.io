@@ -10,22 +10,16 @@
 		<meta property="og:title" content="彻底弄懂JavaScript执行机制（Event Loop）" />
 <meta property="og:description" content="背景 作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到一个" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/01.%E5%BD%BBjavascript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6event-loop/" />
+<meta property="og:url" content="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/01.%E5%BD%BBjavascript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6event-loop/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-01-18T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-01-18T00:00:00+00:00" />
 
+
 		<meta itemprop="name" content="彻底弄懂JavaScript执行机制（Event Loop）">
-<meta itemprop="description" content="背景 作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到一个">
-
-
-<meta itemprop="datePublished" content="2020-01-18T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-01-18T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1581">
-
-
-
+<meta itemprop="description" content="背景 作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到一个"><meta itemprop="datePublished" content="2020-01-18T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-01-18T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1571">
 <meta itemprop="keywords" content="JavaScript,浏览器," />
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="彻底弄懂JavaScript执行机制（Event Loop）"/>
 <meta name="twitter:description" content="背景 作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到一个"/>
@@ -148,35 +142,24 @@
 	<div class="toc__title">目录</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#背景">背景</a></li>
-<li><a href="#同步和异步">同步和异步</a></li>
-<li><a href="#宏任务和微任务-时间循环">宏任务和微任务、时间循环</a></li>
-<li><a href="#常见的宏任务-微任务">常见的宏任务、微任务</a>
-<ul>
-<li><a href="#宏任务">宏任务</a></li>
-<li><a href="#微任务">微任务</a></li>
-<li><a href="#requestanimationframe-web">requestAnimationFrame(web)</a></li>
-</ul></li>
-<li><a href="#总结">总结</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#背景">背景</a></li>
+        <li><a href="#同步和异步">同步和异步</a></li>
+        <li><a href="#宏任务和微任务时间循环">宏任务和微任务、时间循环</a></li>
+        <li><a href="#常见的宏任务微任务">常见的宏任务、微任务</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
-			
-
-<h3 id="背景">背景</h3>
-
+			<h3 id="背景">背景</h3>
 <blockquote>
 <p>作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到一个令人深省的问题，既然js 是单线程执行的，是按照语句出现的顺序执行的，那么异步的代码 js 是怎么处理的呢？下面的代码是如何进行输出的？</p>
 </blockquote>
-
 <pre><code>console.log(1);
 setTimeout(function() {
     console.log(2);
@@ -196,23 +179,15 @@ setTimeout(function() {
         console.log(7);
     });
 }, 0);
-</code></pre>
-
-<p>好了，小伙子们可以尽情发挥你的想象力，如果你的答案不是”1, 3, 5, 4, 2, 6, 7“，那你就要认认真真接着往下看了。什么？你竟然答对了。那你更要接着往下看，后面还有好看的彩蛋哦~</p>
-
-<hr />
-
+</code></pre><p>好了，小伙子们可以尽情发挥你的想象力，如果你的答案不是”1, 3, 5, 4, 2, 6, 7“，那你就要认认真真接着往下看了。什么？你竟然答对了。那你更要接着往下看，后面还有好看的彩蛋哦~</p>
+<hr>
 <h3 id="同步和异步">同步和异步</h3>
-
 <blockquote>
 <p>首先通过一张导图来看一下javascript事件循环中，同步和异步的关系：</p>
 </blockquote>
-
-<figure>
-    <img src="/img-blogs/20200118-001.png"
-         alt="同步和异步" width="656" height="664"/> 
+<figure><img src="/img-blogs/20200118-001.png"
+         alt="同步和异步" width="656" height="664"/>
 </figure>
-
 
 <ul>
 <li>同步和异步任务分别进入不同的执行 process，同步的进入主线程，异步的进入Event Table并注册函数。</li>
@@ -220,36 +195,25 @@ setTimeout(function() {
 <li>主线程内的任务执行完毕为空，会去Event Queue读取对应的函数，进入主线程执行。</li>
 <li>上述过程会不断重复，也就是常说的Event Loop(事件循环)</li>
 </ul>
-
-<p>那么还有一个问题：<br />
+<p>那么还有一个问题：<br>
 那怎么知道主线程执行栈为空啊？js引擎存在monitoring process进程，会持续不断的检查主线程执行栈是否为空，一旦为空，就会去Event Queue那里检查是否有等待被调用的函数</p>
-
-<hr />
-
-<h3 id="宏任务和微任务-时间循环">宏任务和微任务、时间循环</h3>
-
+<hr>
+<h3 id="宏任务和微任务时间循环">宏任务和微任务、时间循环</h3>
 <p>然而，仅仅理解到此，当然是还不够的：
 除了广义的同步任务和异步任务，我们对任务有更精细的定义：</p>
-
 <ul>
 <li>macro-task(宏任务)：包括整体代码script，setTimeout，setInterval</li>
 <li>micro-task(微任务)：Promise，process.nextTick</li>
 </ul>
-
 <p>事件循环，宏任务，微任务的关系如图所示：</p>
-
-<figure>
-    <img src="/img-blogs/20200118-002.png"
-         alt="宏任务和微任务" width="621" height="590"/> 
+<figure><img src="/img-blogs/20200118-002.png"
+         alt="宏任务和微任务" width="621" height="590"/>
 </figure>
-
 
 <blockquote>
 <p>事件循环的顺序，决定js代码的执行顺序。进入整体代码(宏任务)后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务</p>
 </blockquote>
-
 <p>回到我们上面说的实例代码:</p>
-
 <pre><code>console.log(1);
 setTimeout(function() {
     console.log(2);
@@ -269,72 +233,54 @@ setTimeout(function() {
         console.log(7);
     });
 }, 0);
-</code></pre>
-
-<p>执行步骤如下：
-1. 执行 log(1)，输出 1；
-2. 遇到 setTimeout，将回调的代码 log(2)添加到宏任务中等待执行；
-3. 执行 console.log(3)，将 then 中的 log(4)添加到微任务中；
-4. 执行 log(5)，输出 5；
-5. 遇到 setTimeout，将回调的代码 log(6, 7)添加到宏任务中；
-6. 宏任务的一个任务执行完毕，查看微任务队列中是否存在任务，存在一个微任务 log(4)（在步骤 3 中添加的），执行输出 4；
-7. 取出下一个宏任务 log(2)执行，输出 2；
-8. 宏任务的一个任务执行完毕，查看微任务队列中是否存在任务，不存在；
-9. 取出下一个宏任务执行，执行 log(6)，将 then 中的 log(7)添加到微任务中；
-10. 宏任务执行完毕，存在一个微任务 log(7)（在步骤 9 中添加的），执行输出 7；</p>
-
+</code></pre><p>执行步骤如下：</p>
+<ol>
+<li>执行 log(1)，输出 1；</li>
+<li>遇到 setTimeout，将回调的代码 log(2)添加到宏任务中等待执行；</li>
+<li>执行 console.log(3)，将 then 中的 log(4)添加到微任务中；</li>
+<li>执行 log(5)，输出 5；</li>
+<li>遇到 setTimeout，将回调的代码 log(6, 7)添加到宏任务中；</li>
+<li>宏任务的一个任务执行完毕，查看微任务队列中是否存在任务，存在一个微任务 log(4)（在步骤 3 中添加的），执行输出 4；</li>
+<li>取出下一个宏任务 log(2)执行，输出 2；</li>
+<li>宏任务的一个任务执行完毕，查看微任务队列中是否存在任务，不存在；</li>
+<li>取出下一个宏任务执行，执行 log(6)，将 then 中的 log(7)添加到微任务中；</li>
+<li>宏任务执行完毕，存在一个微任务 log(7)（在步骤 9 中添加的），执行输出 7；</li>
+</ol>
 <p>因此，最终的输出顺序为：1, 3, 5, 4, 2, 6, 7;</p>
-
 <blockquote>
 <p>当然，你可以在Promise.then实现一个稍微耗时的操作(比如 1~1000的for循环)，这个步骤看起来会更加地明显。马上会输出1，稍等一会儿才会输出3，然后再输出2。不论等待多长时间输出3，2一定会在3的后面输出。这也就印证了eventloop中的第3步操作，必须等所有的微任务执行完毕后，才开始下一个宏任务</p>
 </blockquote>
-
-<hr />
-
-<h3 id="常见的宏任务-微任务">常见的宏任务、微任务</h3>
-
+<hr>
+<h3 id="常见的宏任务微任务">常见的宏任务、微任务</h3>
 <h4 id="宏任务">宏任务</h4>
-
 <ul>
 <li>setTimeout、setInterval</li>
 <li>setImmediate(node.js)</li>
 <li>渲染任务、JS脚本执行</li>
 <li>IO操作（网络请求、文件读写）</li>
 </ul>
-
 <h4 id="微任务">微任务</h4>
-
 <ul>
 <li>Promise.resolve()</li>
 <li>MutationObserver(web)</li>
 <li>process.nextTick(node.js)</li>
 </ul>
-
-<h4 id="requestanimationframe-web">requestAnimationFrame(web)</h4>
-
+<h4 id="requestanimationframeweb">requestAnimationFrame(web)</h4>
 <blockquote>
 <p>也属于异步执行的方法，但该方法既不属于宏任务，也不属于微任务, 具体参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame">MDN</a>中的定义</p>
 </blockquote>
-
-<hr />
-
+<hr>
 <h3 id="总结">总结</h3>
-
 <ul>
 <li>javascript是一门单线程语言</li>
 <li>Event Loop是 javascript的执行机制</li>
 </ul>
-
-<hr />
-
+<hr>
 <p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>  <br>
 <strong>欢迎交流~</strong></p>
-
-<figure>
-    <img src="/img-common/weChatPublic.jpg"
-         alt="微信公众号" width="600" height="286"/> 
+<figure><img src="/img-common/weChatPublic.jpg"
+         alt="微信公众号" width="600" height="286"/>
 </figure>
-
 
 <p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong>  <br/>
 <strong>若需转载，请联系微信公众号：连先生有猫病，可添加作者微信！</strong></p>
@@ -453,7 +399,7 @@ setTimeout(function() {
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvc/" title="MVC">MVC (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="MVVM">MVVM (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/native/" title="Native">Native (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node (9)</a>

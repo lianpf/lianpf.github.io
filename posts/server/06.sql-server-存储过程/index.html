@@ -10,22 +10,16 @@
 		<meta property="og:title" content="SQL Server 存储过程-待修改" />
 <meta property="og:description" content="项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&hellip;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/server/06.sql-server-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" />
+<meta property="og:url" content="/posts/server/06.sql-server-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2016-04-19T00:00:00+00:00" />
 <meta property="article:modified_time" content="2016-04-19T00:00:00+00:00" />
 
+
 		<meta itemprop="name" content="SQL Server 存储过程-待修改">
-<meta itemprop="description" content="项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&hellip;">
-
-
-<meta itemprop="datePublished" content="2016-04-19T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2016-04-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2679">
-
-
-
+<meta itemprop="description" content="项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&hellip;"><meta itemprop="datePublished" content="2016-04-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2016-04-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2675">
 <meta itemprop="keywords" content="node,mySql," />
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SQL Server 存储过程-待修改"/>
 <meta name="twitter:description" content="项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&hellip;"/>
@@ -148,21 +142,31 @@
 	<div class="toc__title">目录</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#exec-pro-page-1-4">exec pro_page 1, 4</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#exec-pro_page-1-4">&mdash;存储过程、row_number完成分页
+if (object_id(&lsquo;pro_page&rsquo;, &lsquo;P&rsquo;) is not null)
+drop proc proc_cursor
+go
+create proc pro_page
+@startIndex int,
+@endIndex int
+as
+select count(*) from product
+; <br>
+select * from (
+select row_number() over(order by pid) as rowId, * from product
+) temp
+where temp.rowId between @startIndex and @endIndex
+go
+&ndash;drop proc pro_page
+exec pro_page 1, 4</a></li>
+  </ul>
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
 			<p>项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&hellip;</p>
-
 <p>存储过程，非常类似于Java中的方法，它可以重复调用。当存储过程执行一次后，可以将语句缓存中，这样下次执行的时候直接使用缓存中的语句。这样就可以提高存储过程的性能。</p>
-
 <p>存储过程的概念</p>
-
 <pre><code>存储过程Procedure是一组为了完成特定功能的SQL语句集合，经编译后存储在数据库中，用户通过指定存储过程的名称并给出参数来执行。
 
 存储过程中可以包含逻辑控制语句和数据操纵语句，它可以接受参数、输出参数、返回单个或多个结果集以及返回值。
@@ -189,14 +193,11 @@
 
     系统管理员可以对执行的某一个存储过程进行权限限制，从而能够实现对某些数据访问的限制，避免非授权用户对数据的访问，保证数据的安全。
 </code></pre>
-
 <p>Ø 系统存储过程</p>
-
 <pre><code>系统存储过程是系统创建的存储过程，目的在于能够方便的从系统表中查询信息或完成与更新数据库表相关的管理任务或其他的系统管理任务。系统存储过程主要存储在master数据库中，以“sp”下划线开头的存储过程。尽管这些系统存储过程在master数据库中，但我们在其他数据库还是可以调用系统存储过程。有一些系统存储过程会在创建新的数据库的时候被自动创建在当前数据库中。
 
 常用系统存储过程有：
 </code></pre>
-
 <p>exec sp_databases; &ndash;查看数据库
 exec sp_tables;        &ndash;查看表
 exec sp_columns student;&ndash;查看列
@@ -209,10 +210,8 @@ exec sp_renamedb myTempDB, myDB;&ndash;更改数据库名称
 exec sp_defaultdb &lsquo;master&rsquo;, &lsquo;myDB&rsquo;;&ndash;更改登录名的默认数据库
 exec sp_helpdb;&ndash;数据库帮助，查询数据库信息
 exec sp_helpdb master;</p>
-
 <pre><code>系统存储过程示例：
 </code></pre>
-
 <p>&ndash;表重命名
 exec sp_rename &lsquo;stu&rsquo;, &lsquo;stud&rsquo;;
 select * from stud;
@@ -220,230 +219,185 @@ select * from stud;
 exec sp_rename &lsquo;stud.name&rsquo;, &lsquo;sName&rsquo;, &lsquo;column&rsquo;;
 exec sp_help &lsquo;stud&rsquo;;
 &ndash;重命名索引
-exec sp_rename N&rsquo;student.idx_cid&rsquo;, N&rsquo;idx_cidd&rsquo;, N&rsquo;index&rsquo;;
+exec sp_rename N&rsquo;student.idx_cid', N&rsquo;idx_cidd', N&rsquo;index';
 exec sp_help &lsquo;student&rsquo;;</p>
-
 <p>&ndash;查询所有存储过程
 select * from sys.objects where type = &lsquo;P&rsquo;;
-select * from sys.objects where type_desc like &lsquo;%pro%&rsquo; and name like &lsquo;sp%&rsquo;;</p>
-
+select * from sys.objects where type_desc like &lsquo;%pro%&rsquo; and name like &lsquo;sp%';</p>
 <p>Ø 用户自定义存储过程</p>
-
 <p>1、 创建语法</p>
-
 <p>create proc | procedure pro_name
-    [{@参数数据类型} [=默认值] [output],
-     {@参数数据类型} [=默认值] [output],
-     &hellip;.
-    ]
+[{@参数数据类型} [=默认值] [output],
+{@参数数据类型} [=默认值] [output],
+&hellip;.
+]
 as
-    SQL_statements</p>
-
+SQL_statements</p>
 <p>2、 创建不带参数存储过程</p>
-
 <p>&ndash;创建存储过程
 if (exists (select * from sys.objects where name = &lsquo;proc_get_student&rsquo;))
-    drop proc proc_get_student
+drop proc proc_get_student
 go
 create proc proc_get_student
 as
-    select * from student;</p>
-
+select * from student;</p>
 <p>&ndash;调用、执行存储过程
 exec proc_get_student;</p>
-
 <p>3、 修改存储过程</p>
-
 <p>&ndash;修改存储过程
 alter proc proc_get_student
 as
 select * from student;</p>
-
 <p>4、 带参存储过程</p>
-
 <p>&ndash;带参存储过程
 if (object_id(&lsquo;proc_find_stu&rsquo;, &lsquo;P&rsquo;) is not null)
-    drop proc proc_find_stu
+drop proc proc_find_stu
 go
 create proc proc_find_stu(@startId int, @endId int)
 as
-    select * from student where id between @startId and @endId
+select * from student where id between @startId and @endId
 go</p>
-
 <p>exec proc_find_stu 2, 4;</p>
-
 <p>5、 带通配符参数存储过程</p>
-
 <p>&ndash;带通配符参数存储过程
 if (object_id(&lsquo;proc_findStudentByName&rsquo;, &lsquo;P&rsquo;) is not null)
-    drop proc proc_findStudentByName
+drop proc proc_findStudentByName
 go
-create proc proc_findStudentByName(@name varchar(20) = &lsquo;%j%&rsquo;, @nextName varchar(20) = &lsquo;%&rsquo;)
+create proc proc_findStudentByName(@name varchar(20) = &lsquo;%j%&rsquo;, @nextName varchar(20) = &lsquo;%')
 as
-    select * from student where name like @name and name like @nextName;
+select * from student where name like @name and name like @nextName;
 go</p>
-
 <p>exec proc_findStudentByName;
-exec proc_findStudentByName &lsquo;%o%&rsquo;, &rsquo;t%&lsquo;;</p>
-
+exec proc_findStudentByName &lsquo;%o%&rsquo;, &rsquo;t%';</p>
 <p>6、 带输出参数存储过程</p>
-
 <p>if (object_id(&lsquo;proc_getStudentRecord&rsquo;, &lsquo;P&rsquo;) is not null)
-    drop proc proc_getStudentRecord
+drop proc proc_getStudentRecord
 go
 create proc proc_getStudentRecord(
-    @id int, &ndash;默认输入参数
-    @name varchar(20) out, &ndash;输出参数
-    @age varchar(20) output&ndash;输入输出参数
+@id int, &ndash;默认输入参数
+@name varchar(20) out, &ndash;输出参数
+@age varchar(20) output&ndash;输入输出参数
 )
 as
-    select @name = name, @age = age  from student where id = @id and sex = @age;
+select @name = name, @age = age  from student where id = @id and sex = @age;
 go</p>
-
 <p>&ndash;
 declare @id int,
-        @name varchar(20),
-        @temp varchar(20);
+@name varchar(20),
+@temp varchar(20);
 set @id = 7;
 set @temp = 1;
 exec proc_getStudentRecord @id, @name out, @temp output;
 select @name, @temp;
 print @name + &lsquo;#&rsquo; + @temp;</p>
-
 <p>7、 不缓存存储过程</p>
-
 <p>&ndash;WITH RECOMPILE 不缓存
 if (object_id(&lsquo;proc_temp&rsquo;, &lsquo;P&rsquo;) is not null)
-    drop proc proc_temp
+drop proc proc_temp
 go
 create proc proc_temp
 with recompile
 as
-    select * from student;
+select * from student;
 go</p>
-
 <p>exec proc_temp;</p>
-
 <p>8、 加密存储过程</p>
-
 <p>&ndash;加密WITH ENCRYPTION
 if (object_id(&lsquo;proc_temp_encryption&rsquo;, &lsquo;P&rsquo;) is not null)
-    drop proc proc_temp_encryption
+drop proc proc_temp_encryption
 go
 create proc proc_temp_encryption
 with encryption
 as
-    select * from student;
+select * from student;
 go</p>
-
 <p>exec proc_temp_encryption;
 exec sp_helptext &lsquo;proc_temp&rsquo;;
 exec sp_helptext &lsquo;proc_temp_encryption&rsquo;;</p>
-
 <p>9、 带游标参数存储过程</p>
-
 <p>if (object_id(&lsquo;proc_cursor&rsquo;, &lsquo;P&rsquo;) is not null)
-    drop proc proc_cursor
+drop proc proc_cursor
 go
 create proc proc_cursor
-    @cur cursor varying output
+@cur cursor varying output
 as
-    set @cur = cursor forward_only static for
-    select id, name, age from student;
-    open @cur;
+set @cur = cursor forward_only static for
+select id, name, age from student;
+open @cur;
 go
 &ndash;调用
 declare @exec_cur cursor;
 declare @id int,
-        @name varchar(20),
-        @age int;
+@name varchar(20),
+@age int;
 exec proc_cursor @cur = @exec_cur output;&ndash;调用存储过程
 fetch next from @exec_cur into @id, @name, @age;
 while (@@fetch_status = 0)
 begin
-    fetch next from @exec_cur into @id, @name, @age;
-    print &lsquo;id: &lsquo; + convert(varchar, @id) + &lsquo;, name: &lsquo; + @name + &lsquo;, age: &lsquo; + convert(char, @age);
+fetch next from @exec_cur into @id, @name, @age;
+print &lsquo;id: ' + convert(varchar, @id) + &lsquo;, name: ' + @name + &lsquo;, age: ' + convert(char, @age);
 end
 close @exec_cur;
 deallocate @exec_cur;&ndash;删除游标</p>
-
 <p>10、 分页存储过程</p>
-
-<p>&mdash;存储过程、row_number完成分页
+<h2 id="exec-pro_page-1-4">&mdash;存储过程、row_number完成分页
 if (object_id(&lsquo;pro_page&rsquo;, &lsquo;P&rsquo;) is not null)
-    drop proc proc_cursor
+drop proc proc_cursor
 go
 create proc pro_page
-    @startIndex int,
-    @endIndex int
+@startIndex int,
+@endIndex int
 as
-    select count(*) from product
-;<br />
-    select * from (
-        select row_number() over(order by pid) as rowId, * from product
-    ) temp
-    where temp.rowId between @startIndex and @endIndex
+select count(*) from product
+; <br>
+select * from (
+select row_number() over(order by pid) as rowId, * from product
+) temp
+where temp.rowId between @startIndex and @endIndex
 go
-&ndash;drop proc pro_page</p>
-
-<h2 id="exec-pro-page-1-4">exec pro_page 1, 4</h2>
-
+&ndash;drop proc pro_page
+exec pro_page 1, 4</h2>
 <p>&ndash;分页存储过程
 if (object_id(&lsquo;pro_page&rsquo;, &lsquo;P&rsquo;) is not null)
-    drop proc pro_stu
+drop proc pro_stu
 go
 create procedure pro_stu(
-    @pageIndex int,
-    @pageSize int
+@pageIndex int,
+@pageSize int
 )
 as
-    declare @startRow int, @endRow int
-    set @startRow = (@pageIndex - 1) * @pageSize +1
-    set @endRow = @startRow + @pageSize -1
-    select * from (
-        select *, row_number() over (order by id asc) as number from student
-    ) t
-    where t.number between @startRow and @endRow;</p>
-
+declare @startRow int, @endRow int
+set @startRow = (@pageIndex - 1) * @pageSize +1
+set @endRow = @startRow + @pageSize -1
+select * from (
+select *, row_number() over (order by id asc) as number from student
+) t
+where t.number between @startRow and @endRow;</p>
 <p>exec pro_stu 2, 2;</p>
-
 <p>Ø Raiserror</p>
-
 <p>Raiserror返回用户定义的错误信息，可以指定严重级别，设置系统变量记录所发生的错误。</p>
-
 <p>语法如下：</p>
-
 <p>Raiserror({msg_id | msg_str | @local_variable}
-  {, severity, state}
-  [,argument[,…n]]
-  [with option[,…n]]
+{, severity, state}
+[,argument[,…n]]
+[with option[,…n]]
 )</p>
-
-<p># msg_id:在sysmessages系统表中指定的用户定义错误信息</p>
-
-<p># msg_str:用户定义的信息，信息最大长度在2047个字符。</p>
-
-<p># severity：用户定义与该消息关联的严重级别。当使用msg_id引发使用sp_addmessage创建的用户定义消息时，raiserror上指定严重性将覆盖sp_addmessage中定义的严重性。</p>
-
+<h1 id="msg_id在sysmessages系统表中指定的用户定义错误信息">msg_id:在sysmessages系统表中指定的用户定义错误信息</h1>
+<h1 id="msg_str用户定义的信息信息最大长度在2047个字符">msg_str:用户定义的信息，信息最大长度在2047个字符。</h1>
+<h1 id="severity用户定义与该消息关联的严重级别当使用msg_id引发使用sp_addmessage创建的用户定义消息时raiserror上指定严重性将覆盖sp_addmessage中定义的严重性">severity：用户定义与该消息关联的严重级别。当使用msg_id引发使用sp_addmessage创建的用户定义消息时，raiserror上指定严重性将覆盖sp_addmessage中定义的严重性。</h1>
 <pre><code>任何用户可以指定0-18直接的严重级别。只有sysadmin固定服务器角色常用或具有alter trace权限的用户才能指定19-25直接的严重级别。19-25之间的安全级别需要使用with log选项。
 </code></pre>
-
-<p># state：介于1至127直接的任何整数。State默认值是1。</p>
-
+<h1 id="state介于1至127直接的任何整数state默认值是1">state：介于1至127直接的任何整数。State默认值是1。</h1>
 <p>raiserror(&lsquo;is error&rsquo;, 16, 1);
 select * from sys.messages;
 &ndash;使用sysmessages中定义的消息
 raiserror(33003, 16, 1);
 raiserror(33006, 16, 1);</p>
-
-<hr />
-
+<hr>
 <p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>  <br>
 <strong>欢迎交流~</strong></p>
-
-<figure>
-    <img src="/img-common/weChatPublic.jpg"
-         alt="微信公众号" width="600" height="286"/> 
+<figure><img src="/img-common/weChatPublic.jpg"
+         alt="微信公众号" width="600" height="286"/>
 </figure>
 		</div>
 		<footer class="post__footer">
@@ -559,7 +513,7 @@ raiserror(33006, 16, 1);</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvc/" title="MVC">MVC (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="MVVM">MVVM (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/native/" title="Native">Native (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node (9)</a>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mongodb on 曜灵（SUN）Site</title>
@@ -6,11 +6,7 @@
     <description>Recent content in mongodb on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 01 Mar 2021 12:08:54 +0800</lastBuildDate>
-    
-	<atom:link href="/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 01 Mar 2021 12:08:54 +0800</lastBuildDate><atom:link href="/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Koa2 &#43; Mongodb(从0到1)搭建项目</title>
       <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/03.koa2-mongodb%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/</link>

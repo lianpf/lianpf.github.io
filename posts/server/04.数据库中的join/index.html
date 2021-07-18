@@ -10,22 +10,16 @@
 		<meta property="og:title" content="数据库中的join-待修改" />
 <meta property="og:description" content="项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&hellip;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/server/04.%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84join/" />
+<meta property="og:url" content="/posts/server/04.%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84join/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2016-04-19T00:00:00+00:00" />
 <meta property="article:modified_time" content="2016-04-19T00:00:00+00:00" />
 
+
 		<meta itemprop="name" content="数据库中的join-待修改">
-<meta itemprop="description" content="项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&hellip;">
-
-
-<meta itemprop="datePublished" content="2016-04-19T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2016-04-19T00:00:00&#43;00:00" />
+<meta itemprop="description" content="项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&hellip;"><meta itemprop="datePublished" content="2016-04-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2016-04-19T00:00:00+00:00" />
 <meta itemprop="wordCount" content="852">
-
-
-
 <meta itemprop="keywords" content="node,mySql," />
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="数据库中的join-待修改"/>
 <meta name="twitter:description" content="项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&hellip;"/>
@@ -145,46 +139,32 @@
 </div></div>
 		</header><div class="content post__content clearfix">
 			<p>项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&hellip;</p>
-
 <p>对于SQL的Join，在学习起来可能是比较乱的。我们知道，SQL的Join语法有很多inner的，有outer的，有left的，有时候，对于Select出来的结果集是什么样子有点不是很清楚。Coding Horror上有一篇文章（实在不清楚为什么Coding Horror也被墙）通过 文氏图 Venn diagrams 解释了SQL的Join。我觉得清楚易懂，转过来。</p>
-
 <p>假设我们有两张表。</p>
-
 <p>Table A 是左边的表。
 Table B 是右边的表。
 其各有四条记录，其中有两条记录是相同的，如下所示：</p>
-
 <p>id name       id  name</p>
-
-<hr />
-
+<hr>
 <p>1  Pirate     1   Rutabaga
 2  Monkey     2   Pirate
 3  Ninja      3   Darth Vader
 4  Spaghetti  4   Ninja
 下面让我们来看看不同的Join会产生什么样的结果。</p>
-
 <p>SELECT * FROM TableA
 INNER JOIN TableB
 ON TableA.name = TableB.name</p>
-
 <p>id name id name</p>
-
-<hr />
-
+<hr>
 <p>1 Pirate 2 Pirate
 3 Ninja 4 Ninja
 Inner join
 产生的结果集中，是A和B的交集。</p>
-
 <p>SELECT * FROM TableA
 FULL OUTER JOIN TableB
 ON TableA.name = TableB.name</p>
-
 <p>id name id name</p>
-
-<hr />
-
+<hr>
 <p>1 Pirate 2 Pirate
 2 Monkey null null
 3 Ninja 4 Ninja
@@ -192,21 +172,16 @@ ON TableA.name = TableB.name</p>
 null null 1 Rutabaga
 null null 3 Darth Vader
 Full outer join 产生A和B的并集。但是需要注意的是，对于没有匹配的记录，则会以null做为值。</p>
-
 <p>SELECT * FROM TableA
 LEFT OUTER JOIN TableB
 ON TableA.name = TableB.name</p>
-
 <p>id name id name</p>
-
-<hr />
-
+<hr>
 <p>1 Pirate 2 Pirate
 2 Monkey null null
 3 Ninja 4 Ninja
 4 Spaghetti null null
 Left outer join 产生表A的完全集，而B表中匹配的则有值，没有匹配的则以null值取代。</p>
-
 <p>转存失败
 重新上传
 取消
@@ -214,15 +189,11 @@ SELECT * FROM TableA
 LEFT OUTER JOIN TableB
 ON TableA.name = TableB.name
 WHERE TableB.id IS null</p>
-
 <p>id name id name</p>
-
-<hr />
-
+<hr>
 <p>2 Monkey null null
 4 Spaghetti null null
 产生在A表中有而在B表中没有的集合。</p>
-
 <p>转存失败
 重新上传
 取消
@@ -231,34 +202,25 @@ FULL OUTER JOIN TableB
 ON TableA.name = TableB.name
 WHERE TableA.id IS null
 OR TableB.id IS null</p>
-
 <p>id name id name</p>
-
-<hr />
-
+<hr>
 <p>2 Monkey null null
 4 Spaghetti null null
 null null 1 Rutabaga
 null null 3 Darth Vader
 产生A表和B表都没有出现的数据集。</p>
-
 <p>转存失败
 重新上传
 取消
 还需要注册的是我们还有一个是“交差集” cross join, 这种Join没有办法用文式图表示，因为其就是把表A和表B的数据进行一个N*M的组合，即笛卡尔积。表达式如下：</p>
-
 <p>SELECT * FROM TableA
 CROSS JOIN TableB
 这个笛卡尔乘积会产生 4 x 4 = 16 条记录，一般来说，我们很少用到这个语法。但是我们得小心，如果不是使用嵌套的select语句，一般系统都会产生笛卡尔乘积然再做过滤。这是对于性能来说是非常危险的，尤其是表很大的时候。</p>
-
-<hr />
-
+<hr>
 <p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>  <br>
 <strong>欢迎交流~</strong></p>
-
-<figure>
-    <img src="/img-common/weChatPublic.jpg"
-         alt="微信公众号" width="600" height="286"/> 
+<figure><img src="/img-common/weChatPublic.jpg"
+         alt="微信公众号" width="600" height="286"/>
 </figure>
 		</div>
 		<footer class="post__footer">
@@ -374,7 +336,7 @@ CROSS JOIN TableB
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvc/" title="MVC">MVC (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="MVVM">MVVM (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/native/" title="Native">Native (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node (9)</a>

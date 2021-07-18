@@ -10,22 +10,16 @@
 		<meta property="og:title" content="vue3&#43;ts(1)：vue3项目从0到1搭建" />
 <meta property="og:description" content="本文是vue3&#43;ts项目系列第1篇《vue3项目从0到1搭建》，主要涉及到&hellip;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/" />
+<meta property="og:url" content="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-10T16:19:18+08:00" />
 <meta property="article:modified_time" content="2021-03-10T16:19:18+08:00" />
 
+
 		<meta itemprop="name" content="vue3&#43;ts(1)：vue3项目从0到1搭建">
-<meta itemprop="description" content="本文是vue3&#43;ts项目系列第1篇《vue3项目从0到1搭建》，主要涉及到&hellip;">
-
-
-<meta itemprop="datePublished" content="2021-03-10T16:19:18&#43;08:00" />
-<meta itemprop="dateModified" content="2021-03-10T16:19:18&#43;08:00" />
-<meta itemprop="wordCount" content="1139">
-
-
-
+<meta itemprop="description" content="本文是vue3&#43;ts项目系列第1篇《vue3项目从0到1搭建》，主要涉及到&hellip;"><meta itemprop="datePublished" content="2021-03-10T16:19:18+08:00" />
+<meta itemprop="dateModified" content="2021-03-10T16:19:18+08:00" />
+<meta itemprop="wordCount" content="1137">
 <meta itemprop="keywords" content="vue,vue-cli,vue3,ts," />
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="vue3&#43;ts(1)：vue3项目从0到1搭建"/>
 <meta name="twitter:description" content="本文是vue3&#43;ts项目系列第1篇《vue3项目从0到1搭建》，主要涉及到&hellip;"/>
@@ -148,120 +142,87 @@
 	<div class="toc__title">目录</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#一-背景">一、背景</a></li>
-<li><a href="#二-官方-quickstart-介绍">二、官方 Quickstart 介绍</a>
-<ul>
-<li><a href="#1-vite">1、<code>vite</code></a></li>
-<li><a href="#2-vue-cli">2、<code>vue-cli</code></a></li>
-</ul></li>
-<li><a href="#三-项目搭建">三、项目搭建</a>
-<ul>
-<li><a href="#1-安装">1、安装</a></li>
-<li><a href="#2-创建项目">2、创建项目</a></li>
-<li><a href="#3-进入-vue3-ts-安装依赖">3、进入<code>vue3-ts</code>，安装依赖</a></li>
-</ul></li>
-<li><a href="#四-项目结构">四、项目结构</a></li>
-<li><a href="#五-源码">五、源码</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#一背景">一、背景</a></li>
+    <li><a href="#二官方-quickstart-介绍">二、官方 Quickstart 介绍</a>
+      <ul>
+        <li><a href="#1vite">1、<code>vite</code></a></li>
+        <li><a href="#2vue-cli">2、<code>vue-cli</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#三项目搭建">三、项目搭建</a>
+      <ul>
+        <li><a href="#1安装">1、安装</a></li>
+        <li><a href="#2创建项目">2、创建项目</a></li>
+        <li><a href="#3进入vue3-ts安装依赖">3、进入<code>vue3-ts</code>，安装依赖</a></li>
+      </ul>
+    </li>
+    <li><a href="#四项目结构">四、项目结构</a></li>
+    <li><a href="#五源码">五、源码</a></li>
+  </ul>
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
 			<p>本文是vue3+ts项目系列第1篇《vue3项目从0到1搭建》，主要涉及到&hellip;</p>
-
-<h2 id="一-背景">一、背景</h2>
-
+<h2 id="一背景">一、背景</h2>
 <p>在 react 和 vue 社区中也越来越多人开始使用TypeScript，使用 TS 可以增加代码的可读性和可维护性。从发布的 Vue3 正式版本来看， Vue3 的源码是用 TS 编写的，更好的 TypeScript 支持也是这次升级的一大亮点。当然，在实际开发中如何正确拥抱 TS 以及如何迁移到 Vue3 也是项目中我们不得不面对的问题，这里针对 Vue3 和 TS单独做了一个系列和大家做一下交流，本篇是 vue3+ts项目系列第1篇《vue3项目从0到1搭建》</p>
-
 <p>本系列其他内容如下:</p>
-
 <ul>
 <li>vue3+ts项目系列第1篇<a href="https://lianpf.github.io/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">《vue3项目从0到1搭建》</a></li>
 <li>vue3+ts项目系列第2篇<a href="https://lianpf.github.io/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">《TypeScript 语法汇总》</a></li>
 <li>vue3+ts项目系列第3篇<a href="https://lianpf.github.io/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/">《vue3组合式api及重要属性变更》</a></li>
 </ul>
-
-<h2 id="二-官方-quickstart-介绍">二、官方 Quickstart 介绍</h2>
-
+<h2 id="二官方-quickstart-介绍">二、官方 Quickstart 介绍</h2>
 <p>准备： <a href="https://github.com/vuejs/vue-next">vue3</a></p>
-
-<p>官方仓库 <code>Quickstart</code> 中推荐用两种方式方式来构建我们的 SPA 项目:
-* <code>vite</code>
-* <code>vue-cli</code></p>
-
-<h3 id="1-vite">1、<code>vite</code></h3>
-
+<p>官方仓库 <code>Quickstart</code> 中推荐用两种方式方式来构建我们的 SPA 项目:</p>
+<ul>
+<li><code>vite</code></li>
+<li><code>vue-cli</code></li>
+</ul>
+<h3 id="1vite">1、<code>vite</code></h3>
 <p><code>vite</code> 示例</p>
-
 <pre><code>npm init vite-app vue3-ts
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>打开 vite 依赖的 package.json 发现在 devDependencies 开发依赖里面已经引入了TypeScript ，甚至 vuex、vue-router、less、sass 这些经常需要用到的开发工具。</p>
 </blockquote>
-
 <p>vite 轻量，开箱即用的特点，满足了大部分开发场景的需求，作为快速启动本地 Vue 项目来说，可以说非常完美。</p>
-
-<h3 id="2-vue-cli">2、<code>vue-cli</code></h3>
-
+<h3 id="2vue-cli">2、<code>vue-cli</code></h3>
 <blockquote>
 <p>官方文档<a href="https://cli.vuejs.org/zh/guide/installation.html"><code>vue-cli</code></a></p>
 </blockquote>
-
 <p>vue-cli 强调用 cli 的方式进行交互式的配置，选择起来更加灵活可控: 丰富的官方插件适配、GUI的创建管理界面、标准化开发流程。</p>
-
 <p><code>vue-cli</code>示例</p>
-
 <pre><code>npm install -g @vue/cli
 vue create vue3-ts
-</code></pre>
-
-<h2 id="三-项目搭建">三、项目搭建</h2>
-
+</code></pre><h2 id="三项目搭建">三、项目搭建</h2>
 <blockquote>
 <p>本项目使用 <code>vue-cli</code> 搭建</p>
 </blockquote>
-
-<h3 id="1-安装">1、安装</h3>
-
+<h3 id="1安装">1、安装</h3>
 <pre><code>npm install -g @vue/cli
 // 查看版本确认安装success
 vue --version
-</code></pre>
-
-<h3 id="2-创建项目">2、创建项目</h3>
-
+</code></pre><h3 id="2创建项目">2、创建项目</h3>
 <blockquote>
 <p>也可以选择使用 <a href="https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create"><code>vue ui</code></a> 命令以图形化界面创建和管理项目</p>
 </blockquote>
-
 <pre><code>// 创建 &amp; 选择自定义模板、插件等
 vue create vue3-ts
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>可以选择默认设置或者手动选择特性（这里选择手动选择特性）。</p>
 </blockquote>
-
 <p>默认设置
-<img src="https://cli.vuejs.org/cli-new-project.png" alt="`默认设置`" /></p>
-
+<img src="https://cli.vuejs.org/cli-new-project.png" alt="默认设置"></p>
 <p>默认的设置非常适合快速创建一个新项目的原型，而手动设置则提供了更多的选项，它们是面向生产的项目更加需要的
-<img src="https://cli.vuejs.org/cli-select-features.png" alt="`手动选择特性`" /></p>
-
-<h3 id="3-进入-vue3-ts-安装依赖">3、进入<code>vue3-ts</code>，安装依赖</h3>
-
+<img src="https://cli.vuejs.org/cli-select-features.png" alt="手动选择特性"></p>
+<h3 id="3进入vue3-ts安装依赖">3、进入<code>vue3-ts</code>，安装依赖</h3>
 <ul>
 <li><code>ts</code></li>
 <li><code>vuex</code></li>
 <li><code>vue-router</code></li>
 <li><code>vue3-lazy</code></li>
-
-<li><p><code>stylus</code></p>
-
+<li><code>stylus</code></li>
+</ul>
 <pre><code>// 安装 ts，会提示你选择 babel、styles等插件
 cd vue3-ts
 vue add typescript
@@ -272,11 +233,7 @@ vue add router
 npm install vue3-lazy -S
 
 npm install stylus stylus-loader --save-dev
-</code></pre></li>
-</ul>
-
-<h2 id="四-项目结构">四、项目结构</h2>
-
+</code></pre><h2 id="四项目结构">四、项目结构</h2>
 <pre><code>├── README.md
 ├── babel.config.js
 ├── package-lock.json
@@ -310,21 +267,14 @@ npm install stylus stylus-loader --save-dev
 │           ├── ListItem.vue
 │           └── TestInject.vue
 └── tsconfig.json
-</code></pre>
-
-<h2 id="五-源码">五、源码</h2>
-
+</code></pre><h2 id="五源码">五、源码</h2>
 <blockquote>
 <p>example源码地址: <a href="https://github.com/lianpf/examples/tree/master/vue/vue3-ts">vue3-ts</a></p>
 </blockquote>
-
-<hr />
-
+<hr>
 <p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>  <br>
 <strong>欢迎交流~</strong></p>
-
 <p><img src="/img-common/weChatPublic.jpg" alt="微信公众号" width="600" height="286" /></p>
-
 <p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong>  <br/>
 <strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p>
 		</div>
@@ -447,7 +397,7 @@ npm install stylus stylus-loader --save-dev
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvc/" title="MVC">MVC (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="MVVM">MVVM (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/native/" title="Native">Native (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node (9)</a>

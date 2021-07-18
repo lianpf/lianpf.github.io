@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MVC on 曜灵（SUN）Site</title>
@@ -6,11 +6,7 @@
     <description>Recent content in MVC on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 22 Jul 2016 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/mvc/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 22 Jul 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/mvc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MVC、MVP 和MVVM区别-待修改</title>
       <link>/posts/server/07.mvcmvp-%E5%92%8Cmvvm%E5%8C%BA%E5%88%AB/</link>
