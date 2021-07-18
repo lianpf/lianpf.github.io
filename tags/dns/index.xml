@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DNS on 曜灵（SUN）Site</title>
+    <link>/tags/dns/</link>
+    <description>Recent content in DNS on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 14 Jun 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/dns/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Google免费DNS服务器IP及全国主要DNS-待修改</title>
+      <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/21.google%E5%85%8D%E8%B4%B9dns%E6%9C%8D%E5%8A%A1%E5%99%A8ip%E5%8F%8A%E5%85%A8%E5%9B%BD%E4%B8%BB%E8%A6%81dns/</link>
+      <pubDate>Tue, 14 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/21.google%E5%85%8D%E8%B4%B9dns%E6%9C%8D%E5%8A%A1%E5%99%A8ip%E5%8F%8A%E5%85%A8%E5%9B%BD%E4%B8%BB%E8%A6%81dns/</guid>
+      <description>&lt;p&gt;项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

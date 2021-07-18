@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sencha Touch on 曜灵（SUN）Site</title>
+    <link>/tags/sencha-touch/</link>
+    <description>Recent content in sencha Touch on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 17 Jun 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/sencha-touch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sencha Touch项目常见命令-待修改</title>
+      <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/22.sencha-touch%E9%A1%B9%E7%9B%AE%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Fri, 17 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/22.sencha-touch%E9%A1%B9%E7%9B%AE%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</guid>
+      <description>&lt;p&gt;地址：&lt;a href=&#34;https://blog.csdn.net/lpf1215/article/details/51699992&#34;&gt;https://blog.csdn.net/lpf1215/article/details/51699992&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

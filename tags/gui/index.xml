@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GUI on 曜灵（SUN）Site</title>
+    <link>/tags/gui/</link>
+    <description>Recent content in GUI on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 05 Apr 2021 10:27:21 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/gui/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MySQL 8.0问题排查</title>
+      <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/11.mysql-gui/</link>
+      <pubDate>Mon, 05 Apr 2021 10:27:21 +0800</pubDate>
+      
+      <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/11.mysql-gui/</guid>
+      <description>&lt;p&gt;开发项目电脑中装上了mysql8.0数据库，在使用数据库时遇见未知的意外错误，下面来记录下问题解决的过程&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

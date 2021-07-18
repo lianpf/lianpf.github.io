@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PS on 曜灵（SUN）Site</title>
+    <link>/tags/ps/</link>
+    <description>Recent content in PS on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 25 Jul 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/ps/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PS快捷方式.md-待修改</title>
+      <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/24.ps%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Mon, 25 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/24.ps%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/lpf1215/article/details/52026686&#34;&gt;https://blog.csdn.net/lpf1215/article/details/52026686&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

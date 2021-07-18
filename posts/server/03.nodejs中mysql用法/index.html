@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>nodejs中mysql用法 - 曜灵（SUN）Site</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="nodejs中mysql用法" />
+<meta property="og:description" content="node 作为当前最受欢迎的&rdquo;js版&rdquo;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&hellip;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/server/03.nodejs%E4%B8%ADmysql%E7%94%A8%E6%B3%95/" />
+<meta property="article:published_time" content="2016-04-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-04-14T00:00:00+00:00" />
+
+		<meta itemprop="name" content="nodejs中mysql用法">
+<meta itemprop="description" content="node 作为当前最受欢迎的&rdquo;js版&rdquo;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&hellip;">
+
+
+<meta itemprop="datePublished" content="2016-04-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2016-04-14T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2840">
+
+
+
+<meta itemprop="keywords" content="node,mySql," />
+
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="nodejs中mysql用法"/>
+<meta name="twitter:description" content="node 作为当前最受欢迎的&rdquo;js版&rdquo;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&hellip;"/>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	
+	<link rel="stylesheet" href="/js/highlight/styles/agate.css">
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.png">
+		
+  
+	
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+	
+	<style type="text/css">
+		 
+		pre {
+  		padding: 0;
+		}
+	</style>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo logo--mixed">
+		<a class="logo__link" href="/" title="曜灵（SUN）Site" rel="home">
+			<div class="logo__item logo__imagebox">
+					<img class="logo__img" src="/img-common/avatar1.jpeg">
+				</div><div class="logo__item logo__text">
+					<div class="logo__title">曜灵（SUN）Site</div>
+					<div class="logo__tagline">🌝 带着 &#34;偏见&#34; 去理解技术的世界</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">菜单</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">首页</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/me/">
+				
+				<span class="menu__text">博主</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/site/">
+				
+				<span class="menu__text">站点</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://github.com/lianpf/lianpf.github.io">
+				
+				<span class="menu__text">编辑</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://github.com/lianpf/lianpf.github.io/issues">
+				
+				<span class="menu__text">反馈</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/search/">
+				
+				<span class="menu__text">搜索</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">nodejs中mysql用法</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">曜灵</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-04-14T00:00:00Z">2016-04-14</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/server/" rel="category">Server</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<p>node 作为当前最受欢迎的&rdquo;js版&rdquo;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&hellip;</p>
+
+<p>1、建立数据库连接：createConnection(Object)方法
+      该方法接受一个对象作为参数，该对象有四个常用的属性host，user，password，database。与php中链接数据库的参数相同。属性列表如下：
+        host: 连接数据库所在的主机名. (默认: localhost)
+    port: 连接端口. (默认: 3306)
+    localAddress: 用于TCP连接的IP地址. (可选)
+    socketPath: 链接到unix域的路径。在使用host和port时该参数会被忽略.
+    user: MySQL用户的用户名.
+    password: MySQL用户的密码.
+    database: 链接到的数据库名称 (可选).
+    charset: 连接的字符集. (默认: &lsquo;UTF8_GENERAL_CI&rsquo;.设置该值要使用大写!)
+    timezone: 储存本地时间的时区. (默认: &lsquo;local&rsquo;)
+    stringifyObjects: 是否序列化对象. See issue #501. (默认: &lsquo;false&rsquo;)
+    insecureAuth: 是否允许旧的身份验证方法连接到数据库实例. (默认: false)
+    typeCast: 确定是否讲column值转换为本地JavaScript类型列值. (默认: true)
+    queryFormat: 自定义的查询语句格式化函数.
+    supportBigNumbers: 数据库处理大数字(长整型和含小数),时应该启用 (默认: false).
+    bigNumberStrings: 启用 supportBigNumbers和bigNumberStrings 并强制这些数字以字符串的方式返回(默认: false).
+    dateStrings: 强制日期类型(TIMESTAMP, DATETIME, DATE)以字符串返回，而不是一javascript Date对象返回. (默认: false)
+    debug: 是否开启调试. (默认: false)
+    multipleStatements: 是否允许在一个query中传递多个查询语句. (Default: false)
+    flags: 链接标志.
+还可以使用字符串连接数据库例如：
+var connection = mysql.createConnection(&lsquo;mysql://user:pass@host/db?debug=true&amp;charset=BIG5_CHINESE_CI&amp;timezone=-0700&rsquo;);
+2、结束数据库连接end()和destroy()
+end()接受一个回调函数，并且会在query结束之后才触发，如果query出错，仍然会终止链接，错误会传递到回调函数中处理。
+destroy()立即终止数据库连接，即使还有query没有完成，之后的回调函数也不会在触发。</p>
+
+<p>3、创建连接池 createPool(Object)  Object和createConnection参数相同。
+可以监听connection事件，并设置session值</p>
+
+<p>pool.on(&lsquo;connection&rsquo;, function(connection) {
+        connection.query(&lsquo;SET SESSION auto_increment_increment=1&rsquo;)
+    });
+connection.release()释放链接到连接池。如果需要关闭连接并且删除，需要使用connection.destroy()
+pool除了接受和connection相同的参数外，还接受几个扩展的参数
+createConnection: 用于创建链接的函数. (Default: mysql.createConnection)
+    waitForConnections: 决定当没有连接池或者链接数打到最大值时pool的行为. 为true时链接会被放入队列中在可用是调用，为false时会立即返回error. (Default: true)
+    connectionLimit: 最大连接数. (Default: 10)
+    queueLimit: 连接池中连接请求的烈的最大长度，超过这个长度就会报错，值为0时没有限制. (Default: 0)
+4、连接池集群
+允许不同的host链接
+// create
+    var poolCluster = mysql.createPoolCluster();</p>
+
+<pre><code>poolCluster.add(config); // anonymous group
+poolCluster.add('MASTER', masterConfig);
+poolCluster.add('SLAVE1', slave1Config);
+poolCluster.add('SLAVE2', slave2Config);
+
+// Target Group : ALL(anonymous, MASTER, SLAVE1-2), Selector : round-robin(default)
+poolCluster.getConnection(function (err, connection) {});
+
+// Target Group : MASTER, Selector : round-robin
+poolCluster.getConnection('MASTER', function (err, connection) {});
+
+// Target Group : SLAVE1-2, Selector : order
+// If can't connect to SLAVE1, return SLAVE2. (remove SLAVE1 in the cluster)
+poolCluster.on('remove', function (nodeId) {
+  console.log('REMOVED NODE : ' + nodeId); // nodeId = SLAVE1 
+});
+
+poolCluster.getConnection('SLAVE*', 'ORDER', function (err, connection) {});
+
+// of namespace : of(pattern, selector)
+poolCluster.of('*').getConnection(function (err, connection) {});
+
+var pool = poolCluster.of('SLAVE*', 'RANDOM');
+pool.getConnection(function (err, connection) {});
+pool.getConnection(function (err, connection) {});
+
+// destroy
+poolCluster.end();
+</code></pre>
+
+<p>链接集群的可选参数
+canRetry: 值为true时，允许连接失败时重试(Default: true)
+    removeNodeErrorCount: 当连接失败时 errorCount 值会增加. 当errorCount 值大于 removeNodeErrorCount 将会从PoolCluster中删除一个节点. (Default: 5)
+    defaultSelector: 默认选择器. (Default: RR)
+        RR: 循环. (Round-Robin)
+        RANDOM: 通过随机函数选择节点.
+        ORDER: 无条件地选择第一个可用节点.</p>
+
+<p>5、切换用户/改变连接状态
+Mysql允许在比断开连接的的情况下切换用户
+    connection.changeUser({user : &lsquo;john&rsquo;}, function(err) {
+        if (err) throw err;
+    });
+参数
+    user: 新的用户 (默认为早前的一个).
+    password: 新用户的新密码 (默认为早前的一个).
+    charset: 新字符集 (默认为早前的一个).
+    database: 新数据库名称 (默认为早前的一个).</p>
+
+<p>6、处理服务器连接断开
+var db_config = {
+        host: &lsquo;localhost&rsquo;,
+        user: &lsquo;root&rsquo;,
+        password: &ldquo;,
+        database: &lsquo;example&rsquo;
+    };</p>
+
+<pre><code>var connection;
+
+function handleDisconnect() {
+  connection = mysql.createConnection(db_config); // Recreate the connection, since
+                                                  // the old one cannot be reused.
+
+  connection.connect(function(err) {              // The server is either down
+    if(err) {                                     // or restarting (takes a while sometimes).
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+    }                                     // to avoid a hot loop, and to allow our node script to
+  });                                     // process asynchronous requests in the meantime.
+                                          // If you're also serving http, display a 503 error.
+  connection.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+      handleDisconnect();                         // lost due to either server restart, or a
+    } else {                                      // connnection idle timeout (the wait_timeout
+      throw err;                                  // server variable configures this)
+    }
+  });
+}
+
+handleDisconnect();
+</code></pre>
+
+<p>7、转义查询值
+为了避免SQL注入攻击，需要转义用户提交的数据。可以使用connection.escape() 或者 pool.escape()
+例如：</p>
+
+<p>var userId = &lsquo;some user provided value&rsquo;;
+    var sql    = &lsquo;SELECT * FROM users WHERE id = &lsquo; + connection.escape(userId);
+    connection.query(sql, function(err, results) {
+      // &hellip;
+    });
+    或者使用？作为占位符
+    connection.query(&lsquo;SELECT * FROM users WHERE id = ?&lsquo;, [userId], function(err, results) {
+      // &hellip;
+    });
+    不同类型值的转换结果
+    Numbers 不变
+    Booleans 转换为字符串 &lsquo;true&rsquo; / &lsquo;false&rsquo;
+    Date 对象转换为字符串 &lsquo;YYYY-mm-dd HH:ii:ss&rsquo;
+    Buffers 转换为是6进制字符串
+    Strings 不变
+    Arrays =&gt; [&lsquo;a&rsquo;, &lsquo;b&rsquo;] 转换为 &lsquo;a&rsquo;, &lsquo;b&rsquo;
+    嵌套数组 [[&lsquo;a&rsquo;, &lsquo;b&rsquo;], [&lsquo;c&rsquo;, &rsquo;d&rsquo;]] 转换为 (&lsquo;a&rsquo;, &lsquo;b&rsquo;), (&lsquo;c&rsquo;, &rsquo;d&rsquo;)
+    Objects 转换为 key = &lsquo;val&rsquo; pairs. 嵌套对象转换为字符串.
+    undefined / null ===&gt; NULL
+    NaN / Infinity 不变. MySQL 不支持这些值,  除非有工具支持，否则插入这些值会引起错误.
+    转换实例：
+    var post  = {id: 1, title: &lsquo;Hello MySQL&rsquo;};
+    var query = connection.query(&lsquo;INSERT INTO posts SET ?&rsquo;, post, function(err, result) {
+      // Neat!
+    });
+    console.log(query.sql); // INSERT INTO posts SET <code>id</code> = 1, <code>title</code> = &lsquo;Hello MySQL&rsquo;
+    或者手动转换
+    var query = &ldquo;SELECT * FROM posts WHERE title=&rdquo; + mysql.escape(&ldquo;Hello MySQL&rdquo;);</p>
+
+<pre><code>console.log(query); // SELECT * FROM posts WHERE title='Hello MySQL'
+</code></pre>
+
+<p>8、转换查询标识符
+如果不能信任SQL标识符(数据库名、表名、列名)，可以使用转换方法mysql.escapeId(identifier)；
+var sorter = &lsquo;date&rsquo;;
+    var query = &lsquo;SELECT * FROM posts ORDER BY &lsquo; + mysql.escapeId(sorter);</p>
+
+<pre><code>console.log(query); // SELECT * FROM posts ORDER BY `date`
+支持转义多个
+var sorter = 'date';
+var query = 'SELECT * FROM posts ORDER BY ' + mysql.escapeId('posts.' + sorter);
+
+console.log(query); // SELECT * FROM posts ORDER BY `posts`.`date`
+可以使用??作为标识符的占位符
+var userId = 1;
+var columns = ['username', 'email'];
+var query = connection.query('SELECT ?? FROM ?? WHERE id = ?', [columns, 'users', userId], function(err, results) {
+  // ...
+});
+
+console.log(query.sql); // SELECT `username`, `email` FROM `users` WHERE id = 1
+</code></pre>
+
+<p>9、准备查询
+可以使用mysql.format来准备查询语句，该函数会自动的选择合适的方法转义参数。
+var sql = &ldquo;SELECT * FROM ?? WHERE ?? = ?&ldquo;;
+    var inserts = [&lsquo;users&rsquo;, &lsquo;id&rsquo;, userId];
+    sql = mysql.format(sql, inserts);
+    10、自定义格式化函数
+    connection.config.queryFormat = function (query, values) {
+      if (!values) return query;
+      return query.replace(/:(\w+)/g, function (txt, key) {
+        if (values.hasOwnProperty(key)) {
+          return this.escape(values[key]);
+        }
+        return txt;
+      }.bind(this));
+    };</p>
+
+<pre><code>connection.query(&quot;UPDATE posts SET title = :title&quot;, { title: &quot;Hello MySQL&quot; });
+</code></pre>
+
+<p>11、获取插入行的id
+当使用自增主键时获取插入行id，如：
+connection.query(&lsquo;INSERT INTO posts SET ?&rsquo;, {title: &lsquo;test&rsquo;}, function(err, result) {
+      if (err) throw err;</p>
+
+<pre><code>  console.log(result.insertId);
+});
+</code></pre>
+
+<p>12、流处理
+有时你希望选择大量的行并且希望在数据到达时就处理他们，你就可以使用这个方法
+var query = connection.query(&lsquo;SELECT * FROM posts&rsquo;);
+    query
+      .on(&lsquo;error&rsquo;, function(err) {
+        // Handle error, an &lsquo;end&rsquo; event will be emitted after this as well
+      })
+      .on(&lsquo;fields&rsquo;, function(fields) {
+        // the field packets for the rows to follow
+      })
+      .on(&lsquo;result&rsquo;, function(row) {
+        // Pausing the connnection is useful if your processing involves I/O
+        connection.pause();</p>
+
+<pre><code>    processRow(row, function() {
+      connection.resume();
+    });
+  })
+  .on('end', function() {
+    // all rows have been received
+  });
+</code></pre>
+
+<p>13、混合查询语句（多语句查询）
+ 因为混合查询容易被SQL注入攻击，默认是不允许的，可以使用var connection = mysql.createConnection({multipleStatements: true});开启该功能。
+ 混合查询实例：
+connection.query(&lsquo;SELECT 1; SELECT 2&rsquo;, function(err, results) {
+      if (err) throw err;</p>
+
+<pre><code>  // `results` is an array with one element for every statement in the query:
+  console.log(results[0]); // [{1: 1}]
+  console.log(results[1]); // [{2: 2}]
+});
+</code></pre>
+
+<p>同样可以使用流处理混合查询结果：
+var query = connection.query(&lsquo;SELECT 1; SELECT 2&rsquo;);</p>
+
+<pre><code>query
+  .on('fields', function(fields, index) {
+    // the fields for the result rows that follow
+  })
+  .on('result', function(row, index) {
+    // index refers to the statement this result belongs to (starts at 0)
+  });
+</code></pre>
+
+<p>如果其中一个查询语句出错，Error对象会包含err.index指示错误语句的id，整个查询也会终止。
+混合查询结果的流处理方式是做实验性的，不稳定。</p>
+
+<p>14、事务处理
+connection级别的简单事务处理
+connection.beginTransaction(function(err) {
+      if (err) { throw err; }
+      connection.query(&lsquo;INSERT INTO posts SET title=?&rsquo;, title, function(err, result) {
+        if (err) {
+          connection.rollback(function() {
+            throw err;
+          });
+        }</p>
+
+<pre><code>    var log = 'Post ' + result.insertId + ' added';
+
+    connection.query('INSERT INTO log SET data=?', log, function(err, result) {
+      if (err) { 
+        connection.rollback(function() {
+          throw err;
+        });
+      }  
+      connection.commit(function(err) {
+        if (err) { 
+          connection.rollback(function() {
+            throw err;
+          });
+        }
+        console.log('success!');
+      });
+    });
+  });
+});
+</code></pre>
+
+<p>15、错误处理
+err.code = string
+err.fatal =&gt; boolean</p>
+
+<p>更详细的说明请查看：<a href="https://github.com/felixge/node-mysql">https://github.com/felixge/node-mysql</a></p>
+
+<hr />
+
+<p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>  <br>
+<strong>欢迎交流~</strong></p>
+
+<figure>
+    <img src="/img-common/weChatPublic.jpg"
+         alt="微信公众号" width="600" height="286"/> 
+</figure>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/node/" rel="tag">node</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/mysql/" rel="tag">mySql</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="曜灵 avatar" src="/img-common/avatar1.jpeg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">关于 曜灵</span>
+	</div>
+	<div class="authorbox__description">
+		博主目前就职于X集团上海研发中心-平台工具组，是一名Web开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/posts/server/01.gui-%E5%85%B3%E4%BA%8Ejcombobox%E7%9A%84%E7%94%A8%E6%B3%95-1/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">GUI 关于JComboBox的用法</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/posts/server/04.%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84join/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">数据库中的join-待修改</p>
+		</a>
+	</div>
+</nav>
+<script src="https://utteranc.es/client.js"
+        repo="lianpf/lianpf.github.io"
+        issue-term="title"
+        label="comments"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+			</div>
+			<aside class="sidebar">
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/13.apr%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/">Node之Apr框架使用文档</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/12.apr%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91/">Node之Apr框架开发</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/11.mysql-gui/">MySQL 8.0问题排查</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/">vue3&#43;ts(3)：vue3组合式api及重要属性变更</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">vue3&#43;ts(2)：TypeScript 语法汇总</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">vue3&#43;ts(1)：vue3项目从0到1搭建</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">分类</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/server/">Server</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/">前端基础</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/">开发日记</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/apr/" title="apr">apr (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bridge/" title="Bridge">Bridge (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/css/" title="CSS">CSS (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/egg/" title="egg">egg (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github-action/" title="GitHub Action">GitHub Action (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gui/" title="GUI">GUI (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/http/" title="http">http (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="Hugo">Hugo (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/immutable/" title="immutable">immutable (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/java/" title="Java">Java (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="JavaScript">JavaScript (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/koa2/" title="koa2">koa2 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/markdown/" title="markdown">markdown (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mvc/" title="MVC">MVC (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="MVVM">MVVM (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mySql">mySql (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/native/" title="Native">Native (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/npm/" title="npm">npm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/profile/" title="profile">profile (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/" title="React技术栈">React技术栈 (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequel-pro/" title="Sequel Pro">Sequel Pro (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/terminal/" title="terminal">terminal (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tree/" title="Tree">Tree (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ts/" title="ts">ts (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="TypeScript">TypeScript (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vsCode">vsCode (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue-cli/" title="vue-cli">vue-cli (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue3/" title="vue3">vue3 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue%E6%8A%80%E6%9C%AF%E6%A0%88/" title="Vue技术栈">Vue技术栈 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webstorm/" title="webstorm">webstorm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%9B%A2%E9%98%9F%E8%A7%84%E8%8C%83/" title="团队规范">团队规范 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="快捷键">快捷键 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">数据库 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A1%86%E6%9E%B6/" title="框架">框架 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="生命周期">生命周期 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%AE%97%E6%B3%95/" title="算法">算法 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%88%E7%AB%AF/" title="终端">终端 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BC%93%E5%AD%98/" title="缓存">缓存 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BC%96%E7%A0%81%E5%B7%A5%E5%85%B7/" title="编码工具">编码工具 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/" title="编程工具">编程工具 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/" title="网络原理">网络原理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%84%9A%E6%89%8B%E6%9E%B6/" title="脚手架">脚手架 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/" title="自动化">自动化 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式">设计模式 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%AE%BE%E8%AE%A1%E6%B3%9B%E5%9E%8B/" title="设计泛型">设计泛型 (1)</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">社交</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/lianpf" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Email" href="mailto:wanderlian@foxmail.com">
+				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
+				<span>wanderlian@foxmail.com</span>
+			</a>
+		</div>
+
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="微信公众号：连先生有猫病" rel="noopener noreferrer" href="https://mp.weixin.qq.com/mp/profile_ext?action=home&amp;__biz=MzAwNDk2OTI1Mg==&amp;scene=124#wechat_redirect" target="_blank">
+					<svg t="1613746391336" class="widget-social__link-icon  icon" width="24" height="24" viewBox="0 0 1030 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1661" width="200" height="200"><path d="M697.6 275.2C620.8 179.2 499.2 121.6 371.2 128 166.4 128 0 256 0 422.4c0 83.2 44.8 160 115.2 211.2l-57.6 172.8L262.4 704c38.4 6.4 76.8 12.8 115.2 12.8h51.2c-32-38.4-44.8-89.6-51.2-140.8-6.4-160 134.4-281.6 320-300.8zM448 275.2c0-19.2 12.8-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6c0 19.2-12.8 32-32 32h-25.6c-19.2 0-32-12.8-32-32v-25.6z m-166.4 12.8c0 19.2-12.8 32-32 32h-25.6c-19.2 0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1662"></path><path d="M1024 556.8c0-121.6-128-224-288-224S448 435.2 448 556.8c0 128 128 224 288 224 38.4 0 76.8-6.4 115.2-19.2l179.2 83.2-64-160c32-25.6 57.6-76.8 57.6-128z m-390.4-51.2c0 19.2-12.8 32-32 32H576c-19.2 0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6z m268.8 0c0 19.2-12.8 32-32 32h-25.6c-19.2 0-32-12.8-32-32v-25.6c0-19.2 19.2-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1663"></path></svg>
+				<span>微信公众号：连先生有猫病</span>
+			</a>
+		</div>
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="知乎" rel="noopener noreferrer" href="https://www.zhihu.com/people/liu-lang-zhe-51-90/posts" target="_blank">
+					<svg t="1613712910226" class="widget-social__link-icon  icon" width="24" height="24" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8513" width="200" height="200"><path d="M544.949 561.422s0-71.387-34.779-75.050c-34.779-3.663-142.775 0-142.775 0v-219.654h161.078s-1.83-73.219-32.949-73.219h-261.755l43.93-117.148s-65.897 3.663-89.692 45.761-98.844 252.604-98.844 252.604 25.627 10.983 67.726-20.134c42.101-31.116 56.743-86.033 56.743-86.033l76.879-3.663 1.83 223.316s-133.621-1.83-161.078 0c-27.457 1.83-42.101 75.050-42.101 75.050h203.182s-18.307 124.47-69.557 214.164c-53.085 89.692-151.929 161.078-151.929 161.078s71.387 29.287 140.947-10.983c69.557-42.101 120.811-223.316 120.811-223.316l162.912 203.182s14.643-97.013-1.83-124.47c-18.307-27.457-113.49-137.283-113.49-137.283l-42.101 36.607 29.287-120.811h177.552zM587.050 188.010l-1.83 660.793h65.897l23.795 82.37 115.321-82.37h162.912v-660.793h-366.091zM879.92 775.584h-76.879l-97.013 75.050-21.965-75.050h-20.134v-512.527h215.991v512.527z" fill="" p-id="8514"></path></svg>
+				<span>知乎</span>
+			</a>
+		</div>
+		
+	</div>
+</div>
+</aside>
+		</div>
+		
+		
+
+<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2016 - 2021 曜灵（SUN）Site.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> 主题</span>
+		</div>
+	</div>
+</footer>
+
+
+<script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script>
+<script>addBackToTop({
+  cornerOffset: 100,
+  diameter: 56,
+  backgroundColor: '#63B8FF',
+  innerHTML: '<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',
+  textColor: '#fff'
+})</script>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+<script src="/js/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
