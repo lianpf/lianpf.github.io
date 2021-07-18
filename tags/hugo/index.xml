@@ -1,1 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo on 曜灵（SUN）Site</title><link>/tags/hugo/</link><description>Recent content in Hugo on 曜灵（SUN）Site</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 21 Feb 2021 17:17:47 +0800</lastBuildDate><atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo语法纪要</title><link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/09.hugo%E8%AF%AD%E6%B3%95%E7%BA%AA%E8%A6%81/</link><pubDate>Sun, 21 Feb 2021 17:17:47 +0800</pubDate><guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/09.hugo%E8%AF%AD%E6%B3%95%E7%BA%AA%E8%A6%81/</guid><description>&lt;p>关于使用hugo搭建博客过程中，遇到的一些小问题的解决方案&amp;hellip;&lt;/p></description></item><item><title>GitHub Action + Hugo 自动构建发布个人博客</title><link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/01.%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/01.%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid><description>一、整个流程及原理 1.物料 xxx.github.io public 仓库 A 存放个人源码(博客文稿)</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on 曜灵（SUN）Site</title>
+    <link>/tags/hugo/</link>
+    <description>Recent content in Hugo on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 21 Feb 2021 17:17:47 +0800</lastBuildDate><atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo语法纪要</title>
+      <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/09.hugo%E8%AF%AD%E6%B3%95%E7%BA%AA%E8%A6%81/</link>
+      <pubDate>Sun, 21 Feb 2021 17:17:47 +0800</pubDate>
+      
+      <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/09.hugo%E8%AF%AD%E6%B3%95%E7%BA%AA%E8%A6%81/</guid>
+      <description>&lt;p&gt;关于使用hugo搭建博客过程中，遇到的一些小问题的解决方案&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GitHub Action &#43; Hugo 自动构建发布个人博客</title>
+      <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/01.%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/01.%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>一、整个流程及原理 1.物料 xxx.github.io public 仓库 A 存放个人源码(博客文稿)</description>
+    </item>
+    
+  </channel>
+</rss>

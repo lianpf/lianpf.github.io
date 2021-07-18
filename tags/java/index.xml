@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Java on 曜灵（SUN）Site</title><link>/tags/java/</link><description>Recent content in Java on 曜灵（SUN）Site</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 01 Mar 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/java/index.xml" rel="self" type="application/rss+xml"/><item><title>GUI 关于JComboBox的用法</title><link>/posts/server/01.gui-%E5%85%B3%E4%BA%8Ejcombobox%E7%9A%84%E7%94%A8%E6%B3%95-1/</link><pubDate>Tue, 01 Mar 2016 00:00:00 +0000</pubDate><guid>/posts/server/01.gui-%E5%85%B3%E4%BA%8Ejcombobox%E7%9A%84%E7%94%A8%E6%B3%95-1/</guid><description>&lt;p>JList和ComboBox很相似，因为这两个组件都显示一个项列表。因此，它们都有扩展ListModel接口的模型&amp;hellip;&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on 曜灵（SUN）Site</title>
+    <link>/tags/java/</link>
+    <description>Recent content in Java on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 01 Mar 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GUI 关于JComboBox的用法</title>
+      <link>/posts/server/01.gui-%E5%85%B3%E4%BA%8Ejcombobox%E7%9A%84%E7%94%A8%E6%B3%95-1/</link>
+      <pubDate>Tue, 01 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/server/01.gui-%E5%85%B3%E4%BA%8Ejcombobox%E7%9A%84%E7%94%A8%E6%B3%95-1/</guid>
+      <description>&lt;p&gt;JList和ComboBox很相似，因为这两个组件都显示一个项列表。因此，它们都有扩展ListModel接口的模型&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

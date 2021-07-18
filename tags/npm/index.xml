@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>npm on 曜灵（SUN）Site</title><link>/tags/npm/</link><description>Recent content in npm on 曜灵（SUN）Site</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 11 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="/tags/npm/index.xml" rel="self" type="application/rss+xml"/><item><title>Node: npm publish 发布npm包</title><link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/08.npm-publish-%E5%8F%91%E5%B8%83npm%E5%8C%85/</link><pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate><guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/08.npm-publish-%E5%8F%91%E5%B8%83npm%E5%8C%85/</guid><description>&lt;p>node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>npm on 曜灵（SUN）Site</title>
+    <link>/tags/npm/</link>
+    <description>Recent content in npm on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 11 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="/tags/npm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node: npm publish 发布npm包</title>
+      <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/08.npm-publish-%E5%8F%91%E5%B8%83npm%E5%8C%85/</link>
+      <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/08.npm-publish-%E5%8F%91%E5%B8%83npm%E5%8C%85/</guid>
+      <description>&lt;p&gt;node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

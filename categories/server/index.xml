@@ -1,1 +1,74 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Server on 曜灵（SUN）Site</title><link>/categories/server/</link><description>Recent content in Server on 曜灵（SUN）Site</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 09 Feb 2018 00:00:00 +0000</lastBuildDate><atom:link href="/categories/server/index.xml" rel="self" type="application/rss+xml"/><item><title>nginx能做什么</title><link>/posts/server/02.nginx%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88/</link><pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate><guid>/posts/server/02.nginx%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88/</guid><description>&lt;p>node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p></description></item><item><title>GUI 关于JComboBox的用法</title><link>/posts/server/01.gui-%E5%85%B3%E4%BA%8Ejcombobox%E7%9A%84%E7%94%A8%E6%B3%95-1/</link><pubDate>Tue, 01 Mar 2016 00:00:00 +0000</pubDate><guid>/posts/server/01.gui-%E5%85%B3%E4%BA%8Ejcombobox%E7%9A%84%E7%94%A8%E6%B3%95-1/</guid><description>&lt;p>JList和ComboBox很相似，因为这两个组件都显示一个项列表。因此，它们都有扩展ListModel接口的模型&amp;hellip;&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Server on 曜灵（SUN）Site</title>
+    <link>/categories/server/</link>
+    <description>Recent content in Server on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 09 Feb 2018 00:00:00 +0000</lastBuildDate><atom:link href="/categories/server/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nginx能做什么</title>
+      <link>/posts/server/02.nginx%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88/</link>
+      <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/server/02.nginx%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88/</guid>
+      <description>&lt;p&gt;node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MVC、MVP 和MVVM区别-待修改</title>
+      <link>/posts/server/07.mvcmvp-%E5%92%8Cmvvm%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Fri, 22 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/server/07.mvcmvp-%E5%92%8Cmvvm%E5%8C%BA%E5%88%AB/</guid>
+      <description>&lt;p&gt;项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQL Server 存储过程-待修改</title>
+      <link>/posts/server/06.sql-server-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Tue, 19 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/server/06.sql-server-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</guid>
+      <description>&lt;p&gt;项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>常用SQL查询语句-待修改</title>
+      <link>/posts/server/05.%E5%B8%B8%E7%94%A8sql%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5/</link>
+      <pubDate>Tue, 19 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/server/05.%E5%B8%B8%E7%94%A8sql%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5/</guid>
+      <description>&lt;p&gt;项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据库中的join-待修改</title>
+      <link>/posts/server/04.%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84join/</link>
+      <pubDate>Tue, 19 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/server/04.%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84join/</guid>
+      <description>&lt;p&gt;项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>nodejs中mysql用法</title>
+      <link>/posts/server/03.nodejs%E4%B8%ADmysql%E7%94%A8%E6%B3%95/</link>
+      <pubDate>Thu, 14 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/server/03.nodejs%E4%B8%ADmysql%E7%94%A8%E6%B3%95/</guid>
+      <description>&lt;p&gt;node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GUI 关于JComboBox的用法</title>
+      <link>/posts/server/01.gui-%E5%85%B3%E4%BA%8Ejcombobox%E7%9A%84%E7%94%A8%E6%B3%95-1/</link>
+      <pubDate>Tue, 01 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/server/01.gui-%E5%85%B3%E4%BA%8Ejcombobox%E7%9A%84%E7%94%A8%E6%B3%95-1/</guid>
+      <description>&lt;p&gt;JList和ComboBox很相似，因为这两个组件都显示一个项列表。因此，它们都有扩展ListModel接口的模型&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
