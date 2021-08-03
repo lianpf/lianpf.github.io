@@ -15,7 +15,7 @@
 <meta itemprop=name content="常用npm package使用">
 <meta itemprop=description content="使用npm package过程中，积累的一些依赖解决方案&mldr;"><meta itemprop=datePublished content="2021-07-21T17:17:47+08:00">
 <meta itemprop=dateModified content="2021-07-21T17:17:47+08:00">
-<meta itemprop=wordCount content="182">
+<meta itemprop=wordCount content="449">
 <meta itemprop=keywords content="npm+package,node,">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="常用npm package使用">
@@ -103,9 +103,12 @@
 <div class=toc__menu>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#一常规>一、常规</a>
-<ul>
 <li><a href=#1node-sass>1、<code>node-sass</code></a></li>
+</ul>
+<ul>
+<li><a href=#1vue>1.vue</a>
+<ul>
+<li><a href=#1vue-fragment>1.vue-fragment</a></li>
 </ul>
 </li>
 </ul>
@@ -114,8 +117,8 @@
 </div>
 <div class="content post__content clearfix">
 <p>使用npm package过程中，积累的一些依赖解决方案&mldr;</p>
-<h2 id=一常规>一、常规</h2>
-<h3 id=1node-sass>1、<code>node-sass</code></h3>
+<h1 id=一常规>一、常规</h1>
+<h2 id=1node-sass>1、<code>node-sass</code></h2>
 <ul>
 <li>安装 <code>Python 2.7</code> 且配置环境变量</li>
 <li>配置<a href=https://github.com/sass/node-sass#node-version-support-policy>国内镜像</a></li>
@@ -123,6 +126,71 @@
 <pre><code>npm install -g mirror-config-china --registry=http://registry.npm.taobao.org
 npm install node-sass
 </code></pre><hr>
+<h1 id=二前端框架>二、前端框架</h1>
+<h2 id=1vue>1.vue</h2>
+<h3 id=1vue-fragment>1.vue-fragment</h3>
+<p>问题：Element中 菜单导航折叠后文字不隐藏</p>
+<p>解决思路：</p>
+<ul>
+<li>项目安装vue-fragment</li>
+</ul>
+<pre><code>npm install --save vue-fragment
+</code></pre><ul>
+<li>在main.js中引入</li>
+</ul>
+<pre><code>// main.js
+import Fragment from 'vue-fragment'
+Vue.use(Fragment.Plugin)
+</code></pre><ul>
+<li>将<code>zMenu.vue</code>中的<code>&lt;div></code>修改为<code>&lt;fragment></code>即可</li>
+</ul>
+<pre><code>&lt;!-- 视图层 --&gt;
+&lt;el-menu style=&quot;width: 100%;&quot; :collapse=&quot;isCollapse&quot; :collapse-transition=&quot;false&quot; background-color=&quot;#333&quot; text-color=&quot;#fff&quot;&gt;
+	&lt;z-menu :menus=&quot;menus&quot;&gt;&lt;/z-menu&gt;
+&lt;/el-menu&gt;
+
+&lt;!-- zMenu.vue --&gt;
+&lt;template&gt;
+  &lt;fragment&gt;
+    &lt;template v-for=&quot;menu in menus&quot;&gt;
+      &lt;el-submenu v-if=&quot;menu.children &amp;&amp; menu.children.length &gt;= 1&quot; :index=&quot;menu.menuId + ''&quot; :key=&quot;menu.menuId&quot;&gt;
+        &lt;template slot=&quot;title&quot;&gt;
+          &lt;i :class=&quot;menu.icon&quot;&gt;&lt;/i&gt;
+          &lt;span slot=&quot;title&quot;&gt;{{menu.menuName}}&lt;/span&gt;
+        &lt;/template&gt;
+        &lt;z-menu :menus=&quot;menu.children&quot;&gt;&lt;/z-menu&gt;
+      &lt;/el-submenu&gt;
+      &lt;el-menu-item v-else :index=&quot;menu.menuId + ''&quot; @click=&quot;handleRouter(menu)&quot; :key=&quot;menu.menuId&quot;&gt;
+        &lt;i :class=&quot;menu.icon&quot;&gt;&lt;/i&gt;
+        &lt;span slot=&quot;title&quot;&gt;{{menu.menuName}}&lt;/span&gt;
+      &lt;/el-menu-item&gt;
+    &lt;/template&gt;
+  &lt;/fragment&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  name: 'zMenu', // 至关重要，就靠这个名字递归了
+  props: {
+    menus: {
+      type: Array,
+      default: function () {
+        return [];
+      },
+      required: false
+    }
+  },
+  methods: {
+    handleRouter(menu) {
+      // 跳转路由
+      this.$router.push(menu.route);
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre><blockquote>
+<p>参考：<a href=https://segmentfault.com/a/1190000022621321>element-ui 中 NavMenu 菜单导航折叠后文字不隐藏</a>、<a href=https://www.npmjs.com/package/vue-fragment>fragment - npm</a></p>
+</blockquote>
+<hr>
 <p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong> <br>
 <strong>欢迎交流~</strong></p>
 <p><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286></p>
