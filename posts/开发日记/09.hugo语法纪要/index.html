@@ -15,7 +15,7 @@
 <meta itemprop=name content="Hugo语法纪要">
 <meta itemprop=description content="关于使用hugo搭建博客过程中，遇到的一些小问题的解决方案&mldr;"><meta itemprop=datePublished content="2021-02-21T17:17:47+08:00">
 <meta itemprop=dateModified content="2021-02-21T17:17:47+08:00">
-<meta itemprop=wordCount content="1767">
+<meta itemprop=wordCount content="1849">
 <meta itemprop=keywords content="文档工具,">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="Hugo语法纪要">
@@ -107,6 +107,7 @@
 <ul>
 <li><a href=#1高亮问题>1、高亮问题</a></li>
 <li><a href=#2菜单问题>2、菜单问题</a></li>
+<li><a href=#3目录toc问题>3、目录(toc)问题</a></li>
 </ul>
 </li>
 <li><a href=#二语法问题>二、语法问题</a>
@@ -145,6 +146,16 @@
 &lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
 </code></pre><h3 id=2菜单问题>2、菜单问题</h3>
 <p>增加权重</p>
+<h3 id=3目录toc问题>3、目录(toc)问题</h3>
+<p>描述：<a href=https://github.com/olOwOlo/hugo-theme-even/issues/240>最新版似乎有个bug：文章目录无法支持3级标题以下的显示 #240</a></p>
+<p>Hugo (>=0.60.0) uses Goldmark as default renderer.
+You may add the following settings to your config.toml.</p>
+<pre><code>[markup]
+  [markup.tableOfContents]
+    endLevel = 3 # 最小标题
+    ordered = false
+    startLevel = 2 # 最大标题
+</code></pre><p>See <a href=https://gohugo.io/getting-started/configuration-markup/#table-of-contents>https://gohugo.io/getting-started/configuration-markup/#table-of-contents</a></p>
 <h2 id=二语法问题>二、语法问题</h2>
 <h3 id=1定制-head--footer>1、定制 head / footer</h3>
 <ul>
