@@ -3,23 +3,23 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
-<title>nginx能做什么 - 曜灵（SUN）Site</title>
+<title>常用正则表达式汇总 - 曜灵（SUN）Site</title>
 <script>(function(a,b){a[b]=a[b].replace("no-js","js")})(document.documentElement,"className")</script>
 <meta name=description content>
-<meta property="og:title" content="nginx能做什么">
-<meta property="og:description" content="node 作为当前最受欢迎的&#34;js版&#34;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;">
+<meta property="og:title" content="常用正则表达式汇总">
+<meta property="og:description" content="摘要&mldr;">
 <meta property="og:type" content="article">
-<meta property="og:url" content="/posts/server/02.nginx%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2018-02-09T00:00:00+00:00">
-<meta property="article:modified_time" content="2018-02-09T00:00:00+00:00">
-<meta itemprop=name content="nginx能做什么">
-<meta itemprop=description content="node 作为当前最受欢迎的&#34;js版&#34;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;"><meta itemprop=datePublished content="2018-02-09T00:00:00+00:00">
-<meta itemprop=dateModified content="2018-02-09T00:00:00+00:00">
-<meta itemprop=wordCount content="2581">
-<meta itemprop=keywords content="nginx,">
+<meta property="og:url" content="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%87%E6%80%BB/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-08-23T10:59:19+08:00">
+<meta property="article:modified_time" content="2021-08-23T10:59:19+08:00">
+<meta itemprop=name content="常用正则表达式汇总">
+<meta itemprop=description content="摘要&mldr;"><meta itemprop=datePublished content="2021-08-23T10:59:19+08:00">
+<meta itemprop=dateModified content="2021-08-23T10:59:19+08:00">
+<meta itemprop=wordCount content="132">
+<meta itemprop=keywords content="JavaScript,">
 <meta name=twitter:card content="summary">
-<meta name=twitter:title content="nginx能做什么">
-<meta name=twitter:description content="node 作为当前最受欢迎的&#34;js版&#34;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;">
+<meta name=twitter:title content="常用正则表达式汇总">
+<meta name=twitter:description content="摘要&mldr;">
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <link rel=dns-prefetch href=//fonts.googleapis.com>
 <link rel=dns-prefetch href=//fonts.gstatic.com>
@@ -89,12 +89,12 @@
 <main class=main role=main>
 <article class=post>
 <header class=post__header>
-<h1 class=post__title>nginx能做什么</h1>
+<h1 class=post__title>常用正则表达式汇总</h1>
 <div class="post__meta meta"><div class="meta__item-author meta__item">
 <svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span>
 </div>
 <div class="meta__item-datetime meta__item">
-<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2018-02-09T00:00:00Z>2018-02-09</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/server/ rel=category>Server</a>
+<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2021-08-23T10:59:19+08:00>2021-08-23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/ rel=category>开发日记</a>, <a class=meta__link href=/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/ rel=category>前端基础</a>
 </span>
 </div></div>
 </header>
@@ -105,183 +105,32 @@
 <ul>
 <li>
 <ul>
-<li><a href=#能做什么>能做什么</a></li>
-<li><a href=#反向代理>反向代理</a></li>
-<li><a href=#负载均衡>负载均衡</a>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href=#1rr默认>1、RR（默认）</a></li>
-<li><a href=#2权重>2、权重</a></li>
-<li><a href=#3ip_hash>3、ip_hash</a></li>
-<li><a href=#4fair第三方>4、fair（第三方）</a></li>
-<li><a href=#5url_hash第三方>5、url_hash（第三方）</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href=#http服务器>HTTP服务器</a></li>
-<li><a href=#动静分离>动静分离</a></li>
-<li><a href=#正向代理>正向代理</a></li>
+<li><a href=#一基础语法>一、基础语法</a></li>
+<li><a href=#二常用示例>二、常用示例</a></li>
 </ul>
 </li>
 </ul>
 </nav>
 </div>
 </div><div class="content post__content clearfix">
-<p>node 作为当前最受欢迎的"js版"后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;</p>
-<h2 id=能做什么>能做什么</h2>
-<ol>
-<li>反向代理</li>
-<li>负载均衡</li>
-<li>HTTP服务器（包含动静分离）</li>
-<li>正向代理</li>
-</ol>
-<h2 id=反向代理>反向代理</h2>
-<p>反向代理应该是Nginx做的最多的一件事了，什么是反向代理呢，以下是百度百科的说法：反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已。 下面贴上一段简单的实现反向代理的代码</p>
-<pre><code>server { 
-  listen 80; 
-  server_name localhost; 
-  client_max_body_size 1024M;
-  location / {
-        proxy_pass http://localhost:8080;
-        proxy_set_header Host $host:$server_port;
-    }
-}
-</code></pre><p>保存配置文件后启动Nginx，这样当我们访问localhost的时候，就相当于访问localhost:8080了</p>
-<h2 id=负载均衡>负载均衡</h2>
-<p>负载均衡也是Nginx常用的一个功能，负载均衡其意思就是分摊到多个操作单元上进行执行，例如Web服务器、FTP服务器、企业关键应用服务器和其它关键任务服务器等，从而共同完成工作任务。简单而言就是当有2台或以上服务器时，根据规则随机的将请求分发到指定的服务器上处理，负载均衡配置一般都需要同时配置反向代理，通过反向代理跳转到负载均衡。而Nginx目前支持自带3种负载均衡策略，还有2种常用的第三方策略。</p>
-<h5 id=1rr默认>1、RR（默认）</h5>
-<p>每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除<br>
-简单配置</p>
-<pre><code>upstream test {
-    server localhost:8080;
-    server localhost:8081;
-}
-server {
-    listen       81;                                                        
-    server_name  localhost;                                              
-    client_max_body_size 1024M;
-
-    location / {
-        proxy_pass http://test;
-        proxy_set_header Host $host:$server_port;
-    }
-}
-</code></pre><p>负载均衡的核心代码为</p>
-<pre><code>upstream test {
-    server localhost:8080;
-    server localhost:8081;
-}
-</code></pre><p>这里我配置了2台服务器，当然实际上是一台，只是端口不一样而已，而8081的服务器是不存在的,也就是说访问不到，但是我们访问<a href=http://localhost/>http://localhost</a> 的时候,也不会有问题，会默认跳转到<a href=http://localhost:8080/>http://localhost:8080</a> 具体是因为Nginx会自动判断服务器的状态，如果服务器处于不能访问（服务器挂了），就不会跳转到这台服务器，所以也避免了一台服务器挂了影响使用的情况，由于Nginx默认是RR策略，所以我们不需要其他更多的设置</p>
-<h5 id=2权重>2、权重</h5>
-<p>指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。 例如</p>
-<pre><code>upstream test {
-    server localhost:8080 weight=9;
-    server localhost:8081 weight=1;
-}
-</code></pre><p>那么10次一般只会有1次会访问到8081，而有9次会访问到8080</p>
-<h5 id=3ip_hash>3、ip_hash</h5>
-<p>上面的2种方式都有一个问题，那就是下一个请求来的时候请求可能分发到另外一个服务器，当我们的程序不是无状态的时候（采用了session保存数据），这时候就有一个很大的很问题了，比如把登录信息保存到了session中，那么跳转到另外一台服务器的时候就需要重新登录了，所以很多时候我们需要一个客户只访问一个服务器，那么就需要用iphash了，iphash的每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题</p>
-<pre><code>upstream test {
-    ip_hash;
-    server localhost:8080;
-    server localhost:8081;
-}
-</code></pre><h5 id=4fair第三方>4、fair（第三方）</h5>
-<p>按后端服务器的响应时间来分配请求，响应时间短的优先分配</p>
-<pre><code>upstream backend {
-    fair;
-    server localhost:8080;
-    server localhost:8081;
-}
-</code></pre><h5 id=5url_hash第三方>5、url_hash（第三方）</h5>
-<p>按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。 在upstream中加入hash语句，server语句中不能写入weight等其他的参数，hash_method是使用的hash算法</p>
-<pre><code>upstream backend {
-    hash $request_uri;
-    hash_method crc32;
-    server localhost:8080;
-    server localhost:8081;
-}
-</code></pre><p>以上5种负载均衡各自适用不同情况下使用，所以可以根据实际情况选择使用哪种策略模式,不过fair和url_hash需要安装第三方模块才能使用，由于本文主要介绍Nginx能做的事情，所以Nginx安装第三方模块不会再本文介绍</p>
-<h2 id=http服务器>HTTP服务器</h2>
-<p>Nginx本身也是一个静态资源的服务器，当只有静态资源的时候，就可以使用Nginx来做服务器，同时现在也很流行动静分离，就可以通过Nginx来实现，首先看看Nginx做静态资源服务器</p>
-<pre><code>server {
-    listen       80;                                                        
-    server_name  localhost;                                              
-    client_max_body_size 1024M;
-
-
-    location / {
-           root   e:wwwroot;
-           index  index.html;
-       }
-}
-</code></pre><p>这样如果访问<a href=http://localhost/>http://localhost</a> 就会默认访问到E盘wwwroot目录下面的index.html，如果一个网站只是静态页面的话，那么就可以通过这种方式来实现部署</p>
-<h2 id=动静分离>动静分离</h2>
-<p>动静分离是让动态网站里的动态网页根据一定规则把不变的资源和经常变的资源区分开来，动静资源做好了拆分以后，我们就可以根据静态资源的特点将其做缓存操作，这就是网站静态化处理的核心思路</p>
-<pre><code>upstream test{ 
-  server localhost:8080; 
-  server localhost:8081; 
-}
-
-server {  
-    listen       80;  
-    server_name  localhost;  
-
-    location / {  
-        root   e:wwwroot;  
-        index  index.html;  
-    }  
-
-    # 所有静态请求都由nginx处理，存放目录为html  
-    location ~ .(gif|jpg|jpeg|png|bmp|swf|css|js)$ {  
-        root    e:wwwroot;  
-    }  
-
-    # 所有动态请求都转发给tomcat处理  
-    location ~ .(jsp|do)$ {  
-        proxy_pass  http://test;  
-    }  
-
-    error_page   500 502 503 504  /50x.html;  
-    location = /50x.html {  
-        root   e:wwwroot;  
-    }  
-}  
-</code></pre><p>这样我们就可以吧HTML以及图片和css以及js放到wwwroot目录下，而tomcat只负责处理jsp和请求，例如当我们后缀为gif的时候，Nginx默认会从wwwroot获取到当前请求的动态图文件返回，当然这里的静态文件跟Nginx是同一台服务器，我们也可以在另外一台服务器，然后通过反向代理和负载均衡配置过去就好了，只要搞清楚了最基本的流程，很多配置就很简单了，另外localtion后面其实是一个正则表达式，所以非常灵活</p>
-<h2 id=正向代理>正向代理</h2>
-<p>正向代理，意思是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端才能使用正向代理。当你需要把你的服务器作为代理服务器的时候，可以用Nginx来实现正向代理，但是目前Nginx有一个问题，那么就是不支持HTTPS，虽然我百度到过配置HTTPS的正向代理，但是到最后发现还是代理不了，当然可能是我配置的不对，所以也希望有知道正确方法的同志们留言说明一下</p>
-<pre><code>resolver 114.114.114.114 8.8.8.8;
-server {
-
-    resolver_timeout 5s;
-
-    listen 81;
-
-    access_log  e:wwwrootproxy.access.log;
-    error_log   e:wwwrootproxy.error.log;
-
-    location / {
-        proxy_pass http://$host$request_uri;
-    }
-}
-</code></pre><p>resolver是配置正向代理的DNS服务器，listen 是正向代理的端口，配置好了就可以在ie上面或者其他代理插件上面使用服务器ip+端口号进行代理了</p>
+<p>摘要&mldr;</p>
+<h2 id=一基础语法>一、基础语法</h2>
+<h2 id=二常用示例>二、常用示例</h2>
+<ul>
+<li>非空 <code>/\S/</code></li>
+</ul>
 <hr>
 <p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong> <br>
 <strong>欢迎交流~</strong></p>
-<figure><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286>
-</figure>
+<p><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286></p>
+<p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong> <br>
+<strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p>
 </div>
 <footer class=post__footer>
 <div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg>
 <ul class=tags__list>
 <li class=tags__item>
-<a class="tags__link btn" href=/tags/nginx/ rel=tag>nginx</a>
+<a class="tags__link btn" href=/tags/javascript/ rel=tag>JavaScript</a>
 </li>
 </ul>
 </div>
@@ -301,15 +150,9 @@ server {
 </div>
 <nav class="pager flex">
 <div class="pager__item pager__item--prev">
-<a class=pager__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/07.node%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84node-server/ rel=prev>
+<a class=pager__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/ rel=prev>
 <span class=pager__subtitle>«&#8201;上一篇</span>
-<p class=pager__title>Node: 最简单的node server</p>
-</a>
-</div>
-<div class="pager__item pager__item--next">
-<a class=pager__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/05.nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/ rel=next>
-<span class=pager__subtitle>下一篇&#8201;»</span>
-<p class=pager__title>nginx 反向代理配置</p>
+<p class=pager__title>Vue开发问题汇总</p>
 </a>
 </div>
 </nav>
