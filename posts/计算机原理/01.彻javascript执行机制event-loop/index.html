@@ -7,19 +7,19 @@
 <script>(function(a,b){a[b]=a[b].replace("no-js","js")})(document.documentElement,"className")</script>
 <meta name=description content>
 <meta property="og:title" content="彻底弄懂JavaScript执行机制（Event Loop）">
-<meta property="og:description" content="背景 作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到一个">
+<meta property="og:description" content="一、背景 作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到">
 <meta property="og:type" content="article">
 <meta property="og:url" content="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/01.%E5%BD%BBjavascript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6event-loop/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2020-01-18T00:00:00+00:00">
 <meta property="article:modified_time" content="2020-01-18T00:00:00+00:00">
 <meta itemprop=name content="彻底弄懂JavaScript执行机制（Event Loop）">
-<meta itemprop=description content="背景 作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到一个"><meta itemprop=datePublished content="2020-01-18T00:00:00+00:00">
+<meta itemprop=description content="一、背景 作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到"><meta itemprop=datePublished content="2020-01-18T00:00:00+00:00">
 <meta itemprop=dateModified content="2020-01-18T00:00:00+00:00">
-<meta itemprop=wordCount content="1571">
+<meta itemprop=wordCount content="1582">
 <meta itemprop=keywords content="JavaScript,浏览器,">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="彻底弄懂JavaScript执行机制（Event Loop）">
-<meta name=twitter:description content="背景 作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到一个">
+<meta name=twitter:description content="一、背景 作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到">
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <link rel=dns-prefetch href=//fonts.googleapis.com>
 <link rel=dns-prefetch href=//fonts.gstatic.com>
@@ -107,14 +107,14 @@
 <ul>
 <li>
 <ul>
-<li><a href=#背景>背景</a></li>
-<li><a href=#同步和异步>同步和异步</a></li>
-<li><a href=#宏任务和微任务时间循环>宏任务和微任务、时间循环</a></li>
-<li><a href=#常见的宏任务微任务>常见的宏任务、微任务</a>
+<li><a href=#一背景>一、背景</a></li>
+<li><a href=#二同步和异步>二、同步和异步</a></li>
+<li><a href=#三宏任务和微任务事件循环>三、宏任务和微任务、事件循环</a></li>
+<li><a href=#四常见的宏任务微任务>四、常见的宏任务、微任务</a>
 <ul>
-<li><a href=#宏任务>宏任务</a></li>
-<li><a href=#微任务>微任务</a></li>
-<li><a href=#requestanimationframeweb>requestAnimationFrame(web)</a></li>
+<li><a href=#1-宏任务>1. 宏任务</a></li>
+<li><a href=#2-微任务>2. 微任务</a></li>
+<li><a href=#3-requestanimationframeweb>3. requestAnimationFrame(web)</a></li>
 </ul>
 </li>
 <li><a href=#总结>总结</a></li>
@@ -126,7 +126,7 @@
 </nav>
 </div>
 </div><div class="content post__content clearfix">
-<h3 id=背景>背景</h3>
+<h3 id=一背景>一、背景</h3>
 <blockquote>
 <p>作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到一个令人深省的问题，既然js 是单线程执行的，是按照语句出现的顺序执行的，那么异步的代码 js 是怎么处理的呢？下面的代码是如何进行输出的？</p>
 </blockquote>
@@ -151,7 +151,7 @@ setTimeout(function() {
 }, 0);
 </code></pre><p>好了，小伙子们可以尽情发挥你的想象力，如果你的答案不是”1, 3, 5, 4, 2, 6, 7“，那你就要认认真真接着往下看了。什么？你竟然答对了。那你更要接着往下看，后面还有好看的彩蛋哦~</p>
 <hr>
-<h3 id=同步和异步>同步和异步</h3>
+<h3 id=二同步和异步>二、同步和异步</h3>
 <blockquote>
 <p>首先通过一张导图来看一下javascript事件循环中，同步和异步的关系：</p>
 </blockquote>
@@ -166,7 +166,7 @@ setTimeout(function() {
 <p>那么还有一个问题：<br>
 那怎么知道主线程执行栈为空啊？js引擎存在monitoring process进程，会持续不断的检查主线程执行栈是否为空，一旦为空，就会去Event Queue那里检查是否有等待被调用的函数</p>
 <hr>
-<h3 id=宏任务和微任务时间循环>宏任务和微任务、时间循环</h3>
+<h3 id=三宏任务和微任务事件循环>三、宏任务和微任务、事件循环</h3>
 <p>然而，仅仅理解到此，当然是还不够的：
 除了广义的同步任务和异步任务，我们对任务有更精细的定义：</p>
 <ul>
@@ -217,21 +217,21 @@ setTimeout(function() {
 <p>当然，你可以在Promise.then实现一个稍微耗时的操作(比如 1~1000的for循环)，这个步骤看起来会更加地明显。马上会输出1，稍等一会儿才会输出3，然后再输出2。不论等待多长时间输出3，2一定会在3的后面输出。这也就印证了eventloop中的第3步操作，必须等所有的微任务执行完毕后，才开始下一个宏任务</p>
 </blockquote>
 <hr>
-<h3 id=常见的宏任务微任务>常见的宏任务、微任务</h3>
-<h4 id=宏任务>宏任务</h4>
+<h3 id=四常见的宏任务微任务>四、常见的宏任务、微任务</h3>
+<h4 id=1-宏任务>1. 宏任务</h4>
 <ul>
 <li>setTimeout、setInterval</li>
 <li>setImmediate(node.js)</li>
 <li>渲染任务、JS脚本执行</li>
 <li>IO操作（网络请求、文件读写）</li>
 </ul>
-<h4 id=微任务>微任务</h4>
+<h4 id=2-微任务>2. 微任务</h4>
 <ul>
 <li>Promise.resolve()</li>
 <li>MutationObserver(web)</li>
 <li>process.nextTick(node.js)</li>
 </ul>
-<h4 id=requestanimationframeweb>requestAnimationFrame(web)</h4>
+<h4 id=3-requestanimationframeweb>3. requestAnimationFrame(web)</h4>
 <blockquote>
 <p>也属于异步执行的方法，但该方法既不属于宏任务，也不属于微任务, 具体参考<a href=https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame>MDN</a>中的定义</p>
 </blockquote>
