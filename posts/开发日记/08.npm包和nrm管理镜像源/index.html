@@ -1,155 +1,8 @@
-<!doctype html><html class=no-js lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<title>Node: npm包&nrm管理镜像源 - 曜灵（SUN）Site</title>
-<script>(function(a,b){a[b]=a[b].replace("no-js","js")})(document.documentElement,"className")</script>
-<meta name=description content>
-<meta property="og:title" content="Node: npm包&nrm管理镜像源">
-<meta property="og:description" content="node 作为当前最受欢迎的&#34;js版&#34;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;">
-<meta property="og:type" content="article">
-<meta property="og:url" content="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/08.npm%E5%8C%85%E5%92%8Cnrm%E7%AE%A1%E7%90%86%E9%95%9C%E5%83%8F%E6%BA%90/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2018-05-11T00:00:00+00:00">
-<meta property="article:modified_time" content="2018-05-11T00:00:00+00:00">
-<meta itemprop=name content="Node: npm包&nrm管理镜像源">
-<meta itemprop=description content="node 作为当前最受欢迎的&#34;js版&#34;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;"><meta itemprop=datePublished content="2018-05-11T00:00:00+00:00">
-<meta itemprop=dateModified content="2018-05-11T00:00:00+00:00">
-<meta itemprop=wordCount content="1878">
-<meta itemprop=keywords content="Node,npm+package,">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="Node: npm包&nrm管理镜像源">
-<meta name=twitter:description content="node 作为当前最受欢迎的&#34;js版&#34;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;">
-<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-<link rel=dns-prefetch href=//fonts.googleapis.com>
-<link rel=dns-prefetch href=//fonts.gstatic.com>
-<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
-<link rel=stylesheet href=/js/highlight/styles/agate.css>
-<link rel=stylesheet href=/css/style.css>
-<link rel=stylesheet href=/css/custom.css>
-<link rel="shortcut icon" href=/favicon.png>
-<script>var _hmt=_hmt||[];(function(){var a=document.createElement("script"),b;a.src="https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
-<style type=text/css>pre{padding:0}</style>
-</head>
-<body class=body>
-<div class="container container--outer">
-<header class=header>
-<div class="container header__container">
-<div class="logo logo--mixed">
-<a class=logo__link href=/ title=曜灵（SUN）Site rel=home>
-<div class="logo__item logo__imagebox">
-<img class=logo__img src=/img-common/avatar1.jpeg>
-</div><div class="logo__item logo__text">
-<div class=logo__title>曜灵（SUN）Site</div>
-<div class=logo__tagline>🌝 带着 "偏见" 去理解技术的世界</div>
-</div>
-</a>
-</div>
-<nav class=menu>
-<button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
-<span class=menu__btn-title tabindex=-1>菜单</span>
-</button>
-<ul class=menu__list>
-<li class=menu__item>
-<a class=menu__link href=/>
-<span class=menu__text>首页</span>
-</a>
-</li>
-<li class=menu__item>
-<a class=menu__link href=/about/me/>
-<span class=menu__text>博主</span>
-</a>
-</li>
-<li class=menu__item>
-<a class=menu__link href=/about/site/>
-<span class=menu__text>站点</span>
-</a>
-</li>
-<li class=menu__item>
-<a class=menu__link href=https://github.com/lianpf/lianpf.github.io>
-<span class=menu__text>编辑</span>
-</a>
-</li>
-<li class=menu__item>
-<a class=menu__link href=https://github.com/lianpf/lianpf.github.io/issues>
-<span class=menu__text>反馈</span>
-</a>
-</li>
-<li class=menu__item>
-<a class=menu__link href=/search/>
-<span class=menu__text>搜索</span>
-</a>
-</li>
-</ul>
-</nav>
-</div>
-</header>
-<div class="wrapper flex">
-<div class=primary>
-<main class=main role=main>
-<article class=post>
-<header class=post__header>
-<h1 class=post__title>Node: npm包&nrm管理镜像源</h1>
-<div class="post__meta meta"><div class="meta__item-author meta__item">
-<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span>
-</div>
-<div class="meta__item-datetime meta__item">
-<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2018-05-11T00:00:00Z>2018-05-11</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/ rel=category>开发日记</a>
-</span>
-</div></div>
-</header>
-<div class="post__toc toc">
-<div class=toc__title>目录</div>
-<div class=toc__menu>
-<nav id=TableOfContents>
-<ul>
-<li>
-<ul>
-<li><a href=#一镜像源>一、镜像源</a>
-<ul>
-<li><a href=#1-管理常用镜像源>1. 管理常用镜像源</a></li>
-<li><a href=#2nrm>2.<code>nrm</code></a></li>
-</ul>
-</li>
-<li><a href=#二npm包管理>二、npm包管理</a>
-<ul>
-<li><a href=#1发布流程>1.发布流程</a>
-<ul>
-<li><a href=#11-初始化-packagejson>1.1 初始化 package.json</a></li>
-<li><a href=#12-验证登录npmjs账号>1.2 验证/登录npmjs账号</a></li>
-<li><a href=#13-发布普通包测试包开头命名公有包和验证>1.3 发布（普通包、测试包、@开头命名公有包）和验证</a></li>
-<li><a href=#14-可能遇到的问题>1.4 可能遇到的问题</a></li>
-</ul>
-</li>
-<li><a href=#2-撤回npm包>2. 撤回npm包</a></li>
-<li><a href=#3-版本号规范>3. 版本号规范</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-</div><div class="content post__content clearfix">
-<p>node 作为当前最受欢迎的"js版"后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;</p>
-<hr>
-<h2 id=一镜像源>一、镜像源</h2>
-<h3 id=1-管理常用镜像源>1. 管理常用镜像源</h3>
-<ul>
-<li>官方: <code>http://registry.npmjs.org</code></li>
-<li>淘宝: <code>https://registry.npm.taobao.org</code></li>
-<li>zto: <code>http://npm.ztosys.com/</code></li>
-</ul>
-<pre><code>$ npm config get registry // 查看
+<!doctype html><html class=no-js lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Node: npm包&nrm管理镜像源 - 曜灵（SUN）Site</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><meta property="og:title" content="Node: npm包&nrm管理镜像源"><meta property="og:description" content="node 作为当前最受欢迎的&#34;js版&#34;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;"><meta property="og:type" content="article"><meta property="og:url" content="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/08.npm%E5%8C%85%E5%92%8Cnrm%E7%AE%A1%E7%90%86%E9%95%9C%E5%83%8F%E6%BA%90/"><meta property="article:published_time" content="2018-05-11T00:00:00+00:00"><meta property="article:modified_time" content="2018-05-11T00:00:00+00:00"><meta itemprop=name content="Node: npm包&nrm管理镜像源"><meta itemprop=description content="node 作为当前最受欢迎的&#34;js版&#34;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;"><meta itemprop=datePublished content="2018-05-11T00:00:00+00:00"><meta itemprop=dateModified content="2018-05-11T00:00:00+00:00"><meta itemprop=wordCount content="1878"><meta itemprop=keywords content="Node,npm+package,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Node: npm包&nrm管理镜像源"><meta name=twitter:description content="node 作为当前最受欢迎的&#34;js版&#34;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/js/highlight/styles/agate.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.png><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><style type=text/css>pre{padding:0}</style></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class="logo logo--mixed"><a class=logo__link href=/ title=曜灵（SUN）Site rel=home><div class="logo__item logo__imagebox"><img class=logo__img src=/img-common/avatar1.jpeg></div><div class="logo__item logo__text"><div class=logo__title>曜灵（SUN）Site</div><div class=logo__tagline>🌝 带着 "偏见" 去理解技术的世界</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
+<span class=menu__btn-title tabindex=-1>菜单</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>首页</span></a></li><li class=menu__item><a class=menu__link href=/about/me/><span class=menu__text>博主</span></a></li><li class=menu__item><a class=menu__link href=/about/site/><span class=menu__text>站点</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io><span class=menu__text>编辑</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io/issues><span class=menu__text>反馈</span></a></li><li class=menu__item><a class=menu__link href=/search/><span class=menu__text>搜索</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Node: npm包&nrm管理镜像源</h1><div class="post__meta meta"><div class="meta__item-author meta__item"><svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span></div><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2018-05-11T00:00:00Z>2018-05-11</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/ rel=category>开发日记</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>目录</div><div class=toc__menu><nav id=TableOfContents><ul><li><ul><li><a href=#一镜像源>一、镜像源</a><ul><li><a href=#1-管理常用镜像源>1. 管理常用镜像源</a></li><li><a href=#2nrm>2.<code>nrm</code></a></li></ul></li><li><a href=#二npm包管理>二、npm包管理</a><ul><li><a href=#1发布流程>1.发布流程</a><ul><li><a href=#11-初始化-packagejson>1.1 初始化 package.json</a></li><li><a href=#12-验证登录npmjs账号>1.2 验证/登录npmjs账号</a></li><li><a href=#13-发布普通包测试包开头命名公有包和验证>1.3 发布（普通包、测试包、@开头命名公有包）和验证</a></li><li><a href=#14-可能遇到的问题>1.4 可能遇到的问题</a></li></ul></li><li><a href=#2-撤回npm包>2. 撤回npm包</a></li><li><a href=#3-版本号规范>3. 版本号规范</a></li></ul></li></ul></li></ul></nav></div></div><div class="content post__content clearfix"><p>node 作为当前最受欢迎的"js版"后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&mldr;</p><hr><h2 id=一镜像源>一、镜像源</h2><h3 id=1-管理常用镜像源>1. 管理常用镜像源</h3><ul><li>官方: <code>http://registry.npmjs.org</code></li><li>淘宝: <code>https://registry.npm.taobao.org</code></li><li>zto: <code>http://npm.ztosys.com/</code></li></ul><pre><code>$ npm config get registry // 查看
 $ npm config set registry &lt;镜像源&gt; // 查看
-</code></pre><h3 id=2nrm>2.<code>nrm</code></h3>
-<blockquote>
-<p>优势：传统方法切回官方源的话要重写设置源的地址指向，执行 <code>npm config set registry https://registry.npmjs.org</code>；<code>nrm</code> 可以让我们快速切换源，更便于管理，下文中介绍了一些常用命令:</p>
-</blockquote>
-<p>nrm 安装</p>
-<pre><code>$ npm install nrm -g
-</code></pre><p>nrm 常用命令：</p>
-<pre><code>$ nrm ls // 列出可用的源，带*号即为当前使用的配置
+</code></pre><h3 id=2nrm>2.<code>nrm</code></h3><blockquote><p>优势：传统方法切回官方源的话要重写设置源的地址指向，执行 <code>npm config set registry https://registry.npmjs.org</code>；<code>nrm</code> 可以让我们快速切换源，更便于管理，下文中介绍了一些常用命令:</p></blockquote><p>nrm 安装</p><pre><code>$ npm install nrm -g
+</code></pre><p>nrm 常用命令：</p><pre><code>$ nrm ls // 列出可用的源，带*号即为当前使用的配置
 $ nrm current // 查看当前使用的源
 
 $ nrm use [源的别名] // 切到源，例如我们要使用淘宝源：nrm use taobao
@@ -157,12 +10,8 @@ $ nrm add [源的别名] [源的地址] // 添加私有 npm 源，例如添加�
 
 $ nrm test [源的别名] // 测试速度
 $ nrm del [源的别名] // 删除源，例如：nrm del zto
-</code></pre><h2 id=二npm包管理>二、npm包管理</h2>
-<h3 id=1发布流程>1.发布流程</h3>
-<h4 id=11-初始化-packagejson>1.1 初始化 package.json</h4>
-<pre><code>$ npm init
-</code></pre><p>结果:</p>
-<pre><code>{
+</code></pre><h2 id=二npm包管理>二、npm包管理</h2><h3 id=1发布流程>1.发布流程</h3><h4 id=11-初始化-packagejson>1.1 初始化 package.json</h4><pre><code>$ npm init
+</code></pre><p>结果:</p><pre><code>{
   &quot;name&quot;: &quot;react-pc-ui&quot;, // 包名
   &quot;version&quot;: &quot;1.0.1&quot;, // 版本号
   &quot;description&quot;: &quot;\&quot;React PC 组件库(React pc component library)\&quot;&quot;,
@@ -197,169 +46,27 @@ $ nrm del [源的别名] // 删除源，例如：nrm del zto
     ...
   }
 }
-</code></pre><ul>
-<li>name：填写你这个包的名字，默认是你这个文件夹的名字。不过这里要着重说一下，最好先去npm上找一下有没有同名的包。最好的测试方式就是，在命令行里面输入npm install 你要取的名字，如果报错，那么很好，npm上没有跟你同名的包，你可以放心大胆地把包发布出去。如果成功下载下来了。那么很不幸，改名字吧。</li>
-<li>version：你这个包的版本，默认是1.0.0</li>
-<li>description：描述你的包是干嘛用的</li>
-<li>main：入口文件，默认是Index.js，你也可以自己填写你自己的文件名</li>
-<li>test command：测试命令，这个直接回车就好了，目前还不需要</li>
-<li>git repository：这个是git仓库地址, 如果没有的话，直接回车继续。</li>
-<li>keyword：这个是一个重点，这个关系到有多少人会搜到你的npm包。尽量使用贴切的关键字作为这个包的索引</li>
-<li>author：写你的账号或者你的github账号吧</li>
-<li>license：开源文件, 直接回车</li>
-</ul>
-<h4 id=12-验证登录npmjs账号>1.2 验证/登录npmjs账号</h4>
-<blockquote>
-<p>切换到官方源 或 要发布到的私有源</p>
-</blockquote>
-<p>初次</p>
-<pre><code>$ npm adduser
-</code></pre><p>非初次</p>
-<pre><code>$ npm login
-</code></pre><h4 id=13-发布普通包测试包开头命名公有包和验证>1.3 发布（普通包、测试包、@开头命名公有包）和验证</h4>
-<p><strong>1.3.1 publish之前</strong> <br>
-你需要在你package.json文件的入口文件(我的是index.js)增加一段代码:</p>
-<pre><code>module.exports = require('./lib')
-</code></pre><p>不要问我为什么要这么做，因为你npm install其他包的时候，其他包里面的也是这样写</p>
-<p>还有如果你这次仅仅是想测试这个流程, 包里没有什么实质性的内容的话, 那么这个文件里可以直接写这么一句 <code>hello world</code></p>
-<pre><code>exports.sayHello = function() {
+</code></pre><ul><li>name：填写你这个包的名字，默认是你这个文件夹的名字。不过这里要着重说一下，最好先去npm上找一下有没有同名的包。最好的测试方式就是，在命令行里面输入npm install 你要取的名字，如果报错，那么很好，npm上没有跟你同名的包，你可以放心大胆地把包发布出去。如果成功下载下来了。那么很不幸，改名字吧。</li><li>version：你这个包的版本，默认是1.0.0</li><li>description：描述你的包是干嘛用的</li><li>main：入口文件，默认是Index.js，你也可以自己填写你自己的文件名</li><li>test command：测试命令，这个直接回车就好了，目前还不需要</li><li>git repository：这个是git仓库地址, 如果没有的话，直接回车继续。</li><li>keyword：这个是一个重点，这个关系到有多少人会搜到你的npm包。尽量使用贴切的关键字作为这个包的索引</li><li>author：写你的账号或者你的github账号吧</li><li>license：开源文件, 直接回车</li></ul><h4 id=12-验证登录npmjs账号>1.2 验证/登录npmjs账号</h4><blockquote><p>切换到官方源 或 要发布到的私有源</p></blockquote><p>初次</p><pre><code>$ npm adduser
+</code></pre><p>非初次</p><pre><code>$ npm login
+</code></pre><h4 id=13-发布普通包测试包开头命名公有包和验证>1.3 发布（普通包、测试包、@开头命名公有包）和验证</h4><p><strong>1.3.1 publish之前</strong><br>你需要在你package.json文件的入口文件(我的是index.js)增加一段代码:</p><pre><code>module.exports = require('./lib')
+</code></pre><p>不要问我为什么要这么做，因为你npm install其他包的时候，其他包里面的也是这样写</p><p>还有如果你这次仅仅是想测试这个流程, 包里没有什么实质性的内容的话, 那么这个文件里可以直接写这么一句 <code>hello world</code></p><pre><code>exports.sayHello = function() {
   return 'Hello World'; 
 } 
-</code></pre><p><strong>1.3.2 publish</strong> <br>
-选择你要发布的包所在的项目, 以我的为例(包在react-pc-ui下):</p>
-<pre><code>lianpf$ cd react-pc-ui
+</code></pre><p><strong>1.3.2 publish</strong><br>选择你要发布的包所在的项目, 以我的为例(包在react-pc-ui下):</p><pre><code>lianpf$ cd react-pc-ui
 [react-pc-ui] lianpf$ npm publish
-</code></pre><p><strong>1.3.3 发布测试包</strong> <br></p>
-<ul>
-<li>测试包中的<code>package.json</code>修改为 <code>"version": "1.0.0-beta.1"</code></li>
-<li>执行 <code>npm publish --tag=beta</code></li>
-</ul>
-<p><strong>1.3.4 发布以@开头命名的public公有包</strong> <br>
-<code>@Organization</code> 代表某个组织，类似<code>@babel</code>、<code>@angular</code>等。没有对应机构的允许，无法发布包：<code>error You must sign up for private packages：@***/***</code></p>
-<p>解决办法： <br>
-作为公共包发布 <code>npm publish --access public</code></p>
-<p><strong>1.3.5 验证安装</strong> <br></p>
-<pre><code>$ npm install xxx --save-dev
-</code></pre><h4 id=14-可能遇到的问题>1.4 可能遇到的问题</h4>
-<p><strong>1.4.1 镜像问题</strong> <br></p>
-<pre><code>no_perms Private mode enable, only admin can publish this module
-</code></pre><p>或者publish成功, 但是npm.js个人信息哪里查看不到包</p>
-<p>那么可能是你用了国内的镜像地址了，只需要重新把地址注册回npmjs即可</p>
-<pre><code>$ npm config  // 查看所有配置相关的可用命令
+</code></pre><p><strong>1.3.3 发布测试包</strong><br></p><ul><li>测试包中的<code>package.json</code>修改为 <code>"version": "1.0.0-beta.1"</code></li><li>执行 <code>npm publish --tag=beta</code></li></ul><p><strong>1.3.4 发布以@开头命名的public公有包</strong><br><code>@Organization</code> 代表某个组织，类似<code>@babel</code>、<code>@angular</code>等。没有对应机构的允许，无法发布包：<code>error You must sign up for private packages：@***/***</code></p><p>解决办法：<br>作为公共包发布 <code>npm publish --access public</code></p><p><strong>1.3.5 验证安装</strong><br></p><pre><code>$ npm install xxx --save-dev
+</code></pre><h4 id=14-可能遇到的问题>1.4 可能遇到的问题</h4><p><strong>1.4.1 镜像问题</strong><br></p><pre><code>no_perms Private mode enable, only admin can publish this module
+</code></pre><p>或者publish成功, 但是npm.js个人信息哪里查看不到包</p><p>那么可能是你用了国内的镜像地址了，只需要重新把地址注册回npmjs即可</p><pre><code>$ npm config  // 查看所有配置相关的可用命令
 $ npm config get registry // 查看镜像
 $ npm config set registry http://registry.npmjs.org // 重新把地址注册回npmjs
-</code></pre><p>发布之后, 再重新设置为淘宝镜像或者你们公司自己的镜像</p>
-<p><strong>1.4.2 命名问题</strong> <br></p>
-<pre><code>npm ERR! you do not have permission to publish &quot;your module name&quot;. Are you logged in as the correct user?
+</code></pre><p>发布之后, 再重新设置为淘宝镜像或者你们公司自己的镜像</p><p><strong>1.4.2 命名问题</strong><br></p><pre><code>npm ERR! you do not have permission to publish &quot;your module name&quot;. Are you logged in as the correct user?
 </code></pre><p>提示没有权限，其实就是你的module名在npm上已经被占用啦，这时候你就去需要去https://www.npmjs.com搜索你的模块名称，如果搜索不到，就可以用，
-并且把package.json里的name修改过来，重新npm publish，看到如下信息就表示安装完成了，rc-fullpage就是我的模块名</p>
-<h3 id=2-撤回npm包>2. 撤回npm包</h3>
-<blockquote>
-<p>官方可撤回publish操作24h内的包，私有源视自行判断。但撤回操作均<code>不可逆</code>，请谨慎为之。</p>
-</blockquote>
-<ul>
-<li>撤回指定版本模块</li>
-</ul>
-<pre><code>$ npm unpublish [@已发布的完整包名@版本号] --force // 例： npm unpublish @zto/xxx@1.0.0 --force
-</code></pre><ul>
-<li>删除整个模块</li>
-</ul>
-<pre><code>$ npm unpublish [@已发布的完整包名]--force // 例： npm unpublish @zto/xxx --force
-</code></pre><h3 id=3-版本号规范>3. 版本号规范</h3>
-<p>主要规则版本格式：主版本号.次版本号.修订号，版本号递增规则如下</p>
-<pre><code>主版本号：当你做了不兼容的 API 修改，
+并且把package.json里的name修改过来，重新npm publish，看到如下信息就表示安装完成了，rc-fullpage就是我的模块名</p><h3 id=2-撤回npm包>2. 撤回npm包</h3><blockquote><p>官方可撤回publish操作24h内的包，私有源视自行判断。但撤回操作均<code>不可逆</code>，请谨慎为之。</p></blockquote><ul><li>撤回指定版本模块</li></ul><pre><code>$ npm unpublish [@已发布的完整包名@版本号] --force // 例： npm unpublish @zto/xxx@1.0.0 --force
+</code></pre><ul><li>删除整个模块</li></ul><pre><code>$ npm unpublish [@已发布的完整包名]--force // 例： npm unpublish @zto/xxx --force
+</code></pre><h3 id=3-版本号规范>3. 版本号规范</h3><p>主要规则版本格式：主版本号.次版本号.修订号，版本号递增规则如下</p><pre><code>主版本号：当你做了不兼容的 API 修改，
 次版本号：当你做了向下兼容的功能性新增，
 修订号：当你做了向下兼容的问题修正
-</code></pre><hr>
-<p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong> <br>
-<strong>欢迎交流~</strong></p>
-<figure><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286>
-</figure>
-</div>
-<footer class=post__footer>
-<div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg>
-<ul class=tags__list>
-<li class=tags__item>
-<a class="tags__link btn" href=/tags/node/ rel=tag>Node</a>
-</li>
-<li class=tags__item>
-<a class="tags__link btn" href=/tags/npm+package/ rel=tag>npm+package</a>
-</li>
-</ul>
-</div>
-</footer>
-</article>
-</main>
-<div class="authorbox clearfix">
-<figure class=authorbox__avatar>
-<img alt="曜灵 avatar" src=/img-common/avatar1.jpeg class=avatar height=90 width=90>
-</figure>
-<div class=authorbox__header>
-<span class=authorbox__name>关于 曜灵</span>
-</div>
-<div class=authorbox__description>
-博主目前就职于X集团上海研发中心-平台工具组，是一名Web开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目
-</div>
-</div>
-<nav class="pager flex">
-<div class="pager__item pager__item--prev">
-<a class=pager__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/05.nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/ rel=prev>
-<span class=pager__subtitle>«&#8201;上一篇</span>
-<p class=pager__title>nginx 反向代理配置</p>
-</a>
-</div>
-<div class="pager__item pager__item--next">
-<a class=pager__link href=/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/06.%E5%AF%B9react-children-%E7%9A%84%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-1/ rel=next>
-<span class=pager__subtitle>下一篇&#8201;»</span>
-<p class=pager__title>对React children 的深入理解</p>
-</a>
-</div>
-</nav>
-<script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=title label=comments theme=github-light crossorigin=anonymous async></script>
-</div>
-<aside class=sidebar>
-<div class="widget-recent widget">
-<h4 class=widget__title>近期文章</h4>
-<div class=widget__content>
-<ul class=widget__list>
-<li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%87%E6%80%BB/>常用正则表达式汇总</a></li>
-<li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/>Vue开发问题汇总</a></li>
-<li class=widget__item><a class=widget__link href=/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/%E5%85%B3%E4%BA%8Ecookie/>关于cookie</a></li>
-<li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/git%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/>Git使用常见问题汇总</a></li>
-<li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/>常用npm package使用</a></li>
-<li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/13.apr%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/>Node之Apr框架使用文档</a></li>
-</ul>
-</div>
-</div>
-<div class="widget-categories widget">
-<h4 class=widget__title>分类</h4>
-<div class=widget__content>
-<ul class=widget__list>
-<li class=widget__item>
-<a class=widget__link href=/categories/server/>Server</a>
-</li>
-<li class=widget__item>
-<a class=widget__link href=/categories/%E5%85%B6%E4%BB%96/>其他</a>
-</li>
-<li class=widget__item>
-<a class=widget__link href=/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/>前端基础</a>
-</li>
-<li class=widget__item>
-<a class=widget__link href=/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/>前端框架</a>
-</li>
-<li class=widget__item>
-<a class=widget__link href=/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/>开发日记</a>
-</li>
-<li class=widget__item>
-<a class=widget__link href=/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/>计算机原理</a>
-</li>
-</ul>
-</div>
-</div>
-<div class="widget-taglist widget">
-<h4 class=widget__title>标签</h4>
-<div class=widget__content>
-<a class="widget-taglist__link widget__link btn" href=/tags/database/ title=Database>Database (2)</a>
+</code></pre><hr><p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong><br><strong>欢迎交流~</strong></p><figure><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286></figure></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/node/ rel=tag>Node</a></li><li class=tags__item><a class="tags__link btn" href=/tags/npm+package/ rel=tag>npm+package</a></li></ul></div></footer></article></main><div class="authorbox clearfix"><figure class=authorbox__avatar><img alt="曜灵 avatar" src=/img-common/avatar1.jpeg class=avatar height=90 width=90></figure><div class=authorbox__header><span class=authorbox__name>关于 曜灵</span></div><div class=authorbox__description>博主目前就职于X集团上海研发中心-平台工具组，是一名Web开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目</div></div><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/05.nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/ rel=prev><span class=pager__subtitle>«&#8201;上一篇</span><p class=pager__title>nginx 反向代理配置</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/06.%E5%AF%B9react-children-%E7%9A%84%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-1/ rel=next><span class=pager__subtitle>下一篇&#8201;»</span><p class=pager__title>对React children 的深入理解</p></a></div></nav><script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=title label=comments theme=github-light crossorigin=anonymous async></script></div><aside class=sidebar><div class="widget-recent widget"><h4 class=widget__title>近期文章</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%87%E6%80%BB/>常用正则表达式汇总</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/>Vue开发问题汇总</a></li><li class=widget__item><a class=widget__link href=/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/%E5%85%B3%E4%BA%8Ecookie/>关于cookie</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/git%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/>Git使用常见问题汇总</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/>常用npm package使用</a></li><li class=widget__item><a class=widget__link href=/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/13.apr%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/>Node之Apr框架使用文档</a></li></ul></div></div><div class="widget-categories widget"><h4 class=widget__title>分类</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/categories/server/>Server</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%85%B6%E4%BB%96/>其他</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/>前端基础</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/>前端框架</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/>开发日记</a></li><li class=widget__item><a class=widget__link href=/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/>计算机原理</a></li></ul></div></div><div class="widget-taglist widget"><h4 class=widget__title>标签</h4><div class=widget__content><a class="widget-taglist__link widget__link btn" href=/tags/database/ title=Database>Database (2)</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/git/ title=Git>Git (3)</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/html+css/ title=HTML+CSS>HTML+CSS (1)</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/hybrid/ title=Hybrid>Hybrid (1)</a>
@@ -379,50 +86,5 @@ $ npm config set registry http://registry.npmjs.org // 重新把地址注册回n
 <a class="widget-taglist__link widget__link btn" href=/tags/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/ title=编程工具>编程工具 (2)</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/ title=网络原理>网络原理 (3)</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/ title=设计模式>设计模式 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/ title=软件架构>软件架构 (1)</a>
-</div>
-</div>
-<div class="widget-social widget">
-<h4 class="widget-social__title widget__title">社交</h4>
-<div class="widget-social__content widget__content">
-<div class="widget-social__item widget__item">
-<a class="widget-social__link widget__link btn" title=GitHub rel="noopener noreferrer" href=https://github.com/lianpf target=_blank><svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0C85.9.0.0 85.8.0 191.7c0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2.0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8.0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7.0.0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4.0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5.0 25.6-.2 46.3-.2 52.6.0 5.1 3.5 11.1 13.2 9.2C329 348.2 384 276.4 384 191.7 384 85.8 298 0 192 0z"/></svg>
-<span>GitHub</span>
-</a>
-</div>
-<div class="widget-social__item widget__item">
-<a class="widget-social__link widget__link btn" title=Email href=mailto:wanderlian@foxmail.com><svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16V16 0h-16H16 0zm347 16-139 92.5L69 32zM199 157.5l9 5.5 9-5.5L384 46v210H32V46z"/></svg>
-<span>wanderlian@foxmail.com</span>
-</a>
-</div>
-<div class="widget-social__item widget__item">
-<a class="widget-social__link widget__link btn" title=微信公众号：连先生有猫病 rel="noopener noreferrer" href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwNDk2OTI1Mg==&scene=124#wechat_redirect" target=_blank><svg t="1613746391336" class="widget-social__link-icon icon" width="24" height="24" viewBox="0 0 1030 1024" xmlns="http://www.w3.org/2000/svg" p-id="1661" width="200" height="200"><path d="M697.6 275.2C620.8 179.2 499.2 121.6 371.2 128 166.4 128 0 256 0 422.4c0 83.2 44.8 160 115.2 211.2L57.6 806.4 262.4 704c38.4 6.4 76.8 12.8 115.2 12.8h51.2c-32-38.4-44.8-89.6-51.2-140.8-6.4-160 134.4-281.6 320-300.8zm-249.6.0c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6c0 19.2-12.8 32-32 32H480c-19.2.0-32-12.8-32-32v-25.6zM281.6 288c0 19.2-12.8 32-32 32H224c-19.2.0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32V288z" fill="#e6e6e6" p-id="1662"/><path d="M1024 556.8c0-121.6-128-224-288-224s-288 102.4-288 224c0 128 128 224 288 224 38.4.0 76.8-6.4 115.2-19.2l179.2 83.2-64-160c32-25.6 57.6-76.8 57.6-128zm-390.4-51.2c0 19.2-12.8 32-32 32H576c-19.2.0-32-12.8-32-32V480c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6zm268.8.0c0 19.2-12.8 32-32 32h-25.6c-19.2.0-32-12.8-32-32V480c0-19.2 19.2-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1663"/></svg>
-<span>微信公众号：连先生有猫病</span>
-</a>
-</div>
-<div class="widget-social__item widget__item">
-<a class="widget-social__link widget__link btn" title=知乎 rel="noopener noreferrer" href=https://www.zhihu.com/people/liu-lang-zhe-51-90/posts target=_blank><svg t="1613712910226" class="widget-social__link-icon icon" width="24" height="24" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" p-id="8513" width="200" height="200"><path d="M544.949 561.422s0-71.387-34.779-75.05-142.775.0-142.775.0V266.718h161.078s-1.83-73.219-32.949-73.219H233.769l43.93-117.148s-65.897 3.663-89.692 45.761-98.844 252.604-98.844 252.604 25.627 10.983 67.726-20.134c42.101-31.116 56.743-86.033 56.743-86.033l76.879-3.663 1.83 223.316s-133.621-1.83-161.078.0-42.101 75.05-42.101 75.05h203.182s-18.307 124.47-69.557 214.164c-53.085 89.692-151.929 161.078-151.929 161.078s71.387 29.287 140.947-10.983c69.557-42.101 120.811-223.316 120.811-223.316l162.912 203.182s14.643-97.013-1.83-124.47c-18.307-27.457-113.49-137.283-113.49-137.283l-42.101 36.607 29.287-120.811h177.552zM587.05 188.01l-1.83 660.793h65.897l23.795 82.37 115.321-82.37h162.912V188.01H587.054zM879.92 775.584h-76.879l-97.013 75.05-21.965-75.05h-20.134V263.057H879.92v512.527z" p-id="8514"/></svg>
-<span>知乎</span>
-</a>
-</div>
-</div>
-</div>
-</aside>
-</div>
-<footer class=footer>
-<div class="container footer__container flex">
-<div class=footer__copyright>
-&copy; 2016 - 2021 曜灵（SUN）Site.
-<span class=footer__copyright-credits>基于 <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> 引擎和 <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> 主题</span>
-</div>
-</div>
-</footer>
-<script src=https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js></script>
-<script>addBackToTop({cornerOffset:100,diameter:56,backgroundColor:'#63B8FF',innerHTML:'<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',textColor:'#fff'})</script>
-</div>
-<script async defer src=/js/menu.js></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
-<script src=/js/highlight/highlight.pack.js></script>
-<script>hljs.initHighlightingOnLoad()</script>
-</body>
-</html>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/ title=软件架构>软件架构 (1)</a></div></div><div class="widget-social widget"><h4 class="widget-social__title widget__title">社交</h4><div class="widget-social__content widget__content"><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=GitHub rel="noopener noreferrer" href=https://github.com/lianpf target=_blank><svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0C85.9.0.0 85.8.0 191.7c0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2.0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8.0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7.0.0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4.0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5.0 25.6-.2 46.3-.2 52.6.0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg><span>GitHub</span></a></div><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=Email href=mailto:wanderlian@foxmail.com><svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16V16 0h-16H16 0zm347 16-139 92.5L69 32zM199 157.5l9 5.5 9-5.5L384 46v210H32V46z"/></svg><span>wanderlian@foxmail.com</span></a></div><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=微信公众号：连先生有猫病 rel="noopener noreferrer" href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwNDk2OTI1Mg==&scene=124#wechat_redirect" target=_blank><svg t="1613746391336" class="widget-social__link-icon icon" width="24" height="24" viewBox="0 0 1030 1024" xmlns="http://www.w3.org/2000/svg" p-id="1661" width="200" height="200"><path d="M697.6 275.2C620.8 179.2 499.2 121.6 371.2 128 166.4 128 0 256 0 422.4c0 83.2 44.8 160 115.2 211.2l-57.6 172.8L262.4 704c38.4 6.4 76.8 12.8 115.2 12.8h51.2c-32-38.4-44.8-89.6-51.2-140.8-6.4-160 134.4-281.6 320-300.8zM448 275.2c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6c0 19.2-12.8 32-32 32H480c-19.2.0-32-12.8-32-32v-25.6zM281.6 288c0 19.2-12.8 32-32 32h-25.6c-19.2.0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32V288z" fill="#e6e6e6" p-id="1662"/><path d="M1024 556.8c0-121.6-128-224-288-224S448 435.2 448 556.8c0 128 128 224 288 224 38.4.0 76.8-6.4 115.2-19.2l179.2 83.2-64-160c32-25.6 57.6-76.8 57.6-128zm-390.4-51.2c0 19.2-12.8 32-32 32H576c-19.2.0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6zm268.8.0c0 19.2-12.8 32-32 32h-25.6c-19.2.0-32-12.8-32-32v-25.6c0-19.2 19.2-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1663"/></svg><span>微信公众号：连先生有猫病</span></a></div><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=知乎 rel="noopener noreferrer" href=https://www.zhihu.com/people/liu-lang-zhe-51-90/posts target=_blank><svg t="1613712910226" class="widget-social__link-icon icon" width="24" height="24" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" p-id="8513" width="200" height="200"><path d="M544.949 561.422s0-71.387-34.779-75.05-142.775.0-142.775.0V266.718h161.078s-1.83-73.219-32.949-73.219h-261.755l43.93-117.148s-65.897 3.663-89.692 45.761-98.844 252.604-98.844 252.604 25.627 10.983 67.726-20.134c42.101-31.116 56.743-86.033 56.743-86.033l76.879-3.663 1.83 223.316s-133.621-1.83-161.078.0-42.101 75.05-42.101 75.05h203.182s-18.307 124.47-69.557 214.164c-53.085 89.692-151.929 161.078-151.929 161.078s71.387 29.287 140.947-10.983c69.557-42.101 120.811-223.316 120.811-223.316l162.912 203.182s14.643-97.013-1.83-124.47c-18.307-27.457-113.49-137.283-113.49-137.283l-42.101 36.607 29.287-120.811h177.552zM587.05 188.01l-1.83 660.793h65.897l23.795 82.37 115.321-82.37h162.912V188.01H587.054zM879.92 775.584h-76.879l-97.013 75.05-21.965-75.05h-20.134v-512.527h215.991v512.527z" p-id="8514"/></svg><span>知乎</span></a></div></div></div></aside></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2016 - 2021 曜灵（SUN）Site.
+<span class=footer__copyright-credits>基于 <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> 引擎和 <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> 主题</span></div></div></footer><script src=https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js></script><script>addBackToTop({cornerOffset:100,diameter:56,backgroundColor:'#63B8FF',innerHTML:'<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',textColor:'#fff'})</script></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script><script src=/js/highlight/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script></body></html>
