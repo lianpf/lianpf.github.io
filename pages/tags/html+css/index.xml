@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTML&#43;CSS on 曜灵（SUN）Site</title>
+    <link>/tags/html&#43;css/</link>
+    <description>Recent content in HTML&#43;CSS on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 17 Sep 2021 22:18:27 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/html+css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DOM树和虚拟DOM树</title>
+      <link>/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/dom%E6%A0%91%E5%92%8C%E8%99%9A%E6%8B%9Fdom%E6%A0%91/</link>
+      <pubDate>Fri, 17 Sep 2021 22:18:27 +0800</pubDate>
+      
+      <guid>/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/dom%E6%A0%91%E5%92%8C%E8%99%9A%E6%8B%9Fdom%E6%A0%91/</guid>
+      <description>&lt;p&gt;渲染流水线中，DOM树本身的缺陷很容易引起重排、重绘等性能问题，后来有了虚拟DOM的&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CSS: 左右div元素自适应等高</title>
+      <link>/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/02.css%E5%B7%A6%E5%8F%B3div%E5%85%83%E7%B4%A0%E8%87%AA%E9%80%82%E5%BA%94%E7%AD%89%E9%AB%98-1/</link>
+      <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/02.css%E5%B7%A6%E5%8F%B3div%E5%85%83%E7%B4%A0%E8%87%AA%E9%80%82%E5%BA%94%E7%AD%89%E9%AB%98-1/</guid>
+      <description>&lt;p&gt;项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

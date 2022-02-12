@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>apr on 曜灵（SUN）Site</title>
+    <link>/tags/apr/</link>
+    <description>Recent content in apr on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 13 Apr 2021 17:37:29 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/apr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Node之Apr框架使用文档</title>
+      <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/13.apr%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</link>
+      <pubDate>Tue, 13 Apr 2021 17:37:29 +0800</pubDate>
+      
+      <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/13.apr%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</guid>
+      <description>&lt;p&gt;整个团队依赖初版Apr作为统一的Node方案，随着业务场景越来越丰富，一些插件、middle等公共配置成为最佳实践后，逐渐下沉到Apr框架中，让Apr越来越&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Node之Apr框架开发</title>
+      <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/12.apr%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Mon, 12 Apr 2021 17:37:09 +0800</pubDate>
+      
+      <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/12.apr%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91/</guid>
+      <description>&lt;p&gt;在低代码平台开发过程，由于物料管理系统以及Node Server 中间层的搭建使用过程中，发现很多通用的库和配置可以&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
