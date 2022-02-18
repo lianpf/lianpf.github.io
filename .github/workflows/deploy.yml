@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - master  # 设置部署分支
+    paths-ignore: # 忽略文件
+      - 'README.md'
+      - '.env'
+      - '.gitignore'
+      - 'bin'
 
 jobs:
   deploy:
