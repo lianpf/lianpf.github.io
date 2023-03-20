@@ -1,0 +1,177 @@
+<!doctype html><html class=no-js lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>设计模式: 聊一聊JavaScript设计模式（一） - 曜灵（SUN）Site</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><meta property="og:title" content="设计模式: 聊一聊JavaScript设计模式（一）"><meta property="og:description" content="一个模式就是一个可重用的方案。当代码是建立在行之有效的模式上时,我们可以花更少的时间去关心我们的代码结构,从而能花&mldr;"><meta property="og:type" content="article"><meta property="og:url" content="/posts/computer-basics/02.javascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%80/"><meta property="article:published_time" content="2019-03-20T00:00:00+00:00"><meta property="article:modified_time" content="2019-03-20T00:00:00+00:00"><meta itemprop=name content="设计模式: 聊一聊JavaScript设计模式（一）"><meta itemprop=description content="一个模式就是一个可重用的方案。当代码是建立在行之有效的模式上时,我们可以花更少的时间去关心我们的代码结构,从而能花&mldr;"><meta itemprop=datePublished content="2019-03-20T00:00:00+00:00"><meta itemprop=dateModified content="2019-03-20T00:00:00+00:00"><meta itemprop=wordCount content="2004"><meta itemprop=keywords content="JavaScript,设计模式,"><meta name=twitter:card content="summary"><meta name=twitter:title content="设计模式: 聊一聊JavaScript设计模式（一）"><meta name=twitter:description content="一个模式就是一个可重用的方案。当代码是建立在行之有效的模式上时,我们可以花更少的时间去关心我们的代码结构,从而能花&mldr;"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/js/highlight/styles/agate.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.png><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><style type=text/css>pre{padding:0}</style></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class="logo logo--mixed"><a class=logo__link href=/ title=曜灵（SUN）Site rel=home><div class="logo__item logo__imagebox"><img class=logo__img src=/img-common/avatar1.jpeg></div><div class="logo__item logo__text"><div class=logo__title>曜灵（SUN）Site</div><div class=logo__tagline>🌝 带着 "偏见" 去理解技术的世界</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
+<span class=menu__btn-title tabindex=-1>菜单</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>首页</span></a></li><li class=menu__item><a class=menu__link href=/about/me/><span class=menu__text>博主</span></a></li><li class=menu__item><a class=menu__link href=/about/site/><span class=menu__text>站点</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io><span class=menu__text>编辑</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io/issues><span class=menu__text>反馈</span></a></li><li class=menu__item><a class=menu__link href=/search/><span class=menu__text>搜索</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>设计模式: 聊一聊JavaScript设计模式（一）</h1><div class="post__meta meta"><div class="meta__item-author meta__item"><svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span></div><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2019-03-20T00:00:00Z>2019-03-20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/ rel=category>计算机原理</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>目录</div><div class=toc__menu><nav id=TableOfContents><ul><li><ul><li><a href=#引言>引言</a><ul><li><a href=#设计模式分类>设计模式分类</a></li><li><a href=#常见设计模式>常见设计模式</a><ul><li><a href=#1-单例模式-singleton-pattern>1. 单例模式 Singleton Pattern:</a></li><li><a href=#2-发布订阅观察者模式>2. 发布订阅(观察者模式)</a></li><li><a href=#3-工厂模式>3. 工厂模式</a></li><li><a href=#4-策略模式>4. 策略模式</a></li><li><a href=#5-代理模式>5. 代理模式</a></li></ul></li></ul></li></ul></li></ul></nav></div></div><div class="content post__content clearfix"><p>一个模式就是一个可重用的方案。当代码是建立在行之有效的模式上时,我们可以花更少的时间去关心我们的代码结构,从而能花&mldr;</p><p><img src=/img-blogs/20190320-001.png alt=聊一聊JavaScript设计模式（一）></p><ul><li>引言</li><li>设计模式分类</li><li>常见设计模式<ul><li>单例模式</li><li>观察者模式</li><li>工厂模式</li><li>策略模式</li><li>代理模式</li></ul></li></ul><h2 id=引言>引言</h2><p>JavaScript 设计模式，一个模式就是一个可重用的方案。当代码是建立在行之有效的模式上时,我们可以花更少的时间去关心我们的代码结构,从而能花更多的时间关注我们的解决方案的整体质量。</p><hr><h3 id=设计模式分类>设计模式分类</h3><blockquote><p>三大类</p></blockquote><p><strong>「创建型模式」</strong> 5种</p><ul><li>单例模式</li><li>工厂方法模式</li><li>抽象工厂模式</li><li>建造者模式</li><li>原型模式</li></ul><p><strong>「结构型模式」</strong> 7种</p><ul><li>代理模式</li><li>适配器模式</li><li>装饰器模式</li><li>外观模式</li><li>桥接模式</li><li>组合模式</li><li>享元模式</li></ul><p><strong>「行为型模式」</strong> 11种</p><ul><li>观察者模式</li><li>策略模式</li><li>模板方法模式</li><li>迭代子模式</li><li>责任链模式</li><li>命令模式</li><li>备忘录模式</li><li>状态模式</li><li>访问者模式</li><li>中介者模式</li><li>解释器模式</li></ul><hr><h3 id=常见设计模式>常见设计模式</h3><h4 id=1-单例模式-singleton-pattern>1. 单例模式 Singleton Pattern:</h4><h5 id=1-1-原理>1-1 原理</h5><p>顾名思义就是保证每个类都只有一个实例对象（调用一个类，任何时候返回的都是同一个实例）</p><h5 id=1-2-实现方法>1-2 实现方法</h5><p>使用一个变量来标志当前是否已经为某个类创建过对象，如果创建了，则在下一次获取该类的实例时， 直接返回之前创建的对象，否则就创建一个对象</p><h5 id=1-3-coding>1-3 coding</h5><pre><code>var Universe;
+
+(function () {
+    var instance;
+    Universe = function Universe() {
+        if (instance) {
+            return instance;
+        }
+        instance = this;
+
+        // 其它内容
+        this.start_time = 0;
+        this.bang = &quot;Big&quot;;
+    };
+} ());
+
+//测试代码
+var a = new Universe();
+var b = new Universe();
+alert(a === b); // true
+
+</code></pre><h5 id=1-4-场景>1-4 场景</h5><blockquote><p>用于: 一个全局使用的类频繁地创建与销毁</p></blockquote><ul><li>要求生产唯一序列号</li><li>WEB 中的计数器，不用每次刷新都在数据库里加一次，用单例先缓存起来</li><li>创建的一个对象需要消耗的资源过多，比如 I/O 与数据库的连接等</li></ul><h4 id=2-发布订阅观察者模式>2. 发布订阅(观察者模式)</h4><h5 id=2-1-原理>2-1 原理</h5><p>当对象间存在一对多关系时，则使用观察者模式. 比如，当一个对象被修改时，则会自动通知它的依赖对象</p><h5 id=2-2-实现方法>2-2 实现方法</h5><blockquote><p>订阅，就是把几个函数推入数组中待用； 发布，就是把缓存在数组中的那一坨函数列队执行</p></blockquote><h5 id=2-3-coding>2-3 coding</h5><pre><code>var event = {
+  eventList:{},
+  listen:function(key,fn){
+    if(!this.eventList[key]){
+      this.eventList[key] = [];
+    }
+    this.eventList[key].push(fn);
+  },
+  remove:function(key,fn){
+    var fns = this.eventList[key];
+    if(!fns){
+      return false;
+    }
+    if(!fn){
+      // 如果没有回调，表示取消此key下所有方法
+      fns &amp;&amp; (fns.length=0); // 这是一种快速清空数组的方法哦！
+    }else{
+      for(var i=0;i&lt;fns.length;i++){
+        //遍历方法列表,剔除需要取消的方法
+        //要注意fns是引用型变量，实际是去除了this.eventList[key]下的方法。
+        if(fns[i] === fn){
+          fns.splice(i,1);
+        }
+      }
+    }
+  },
+  //trigger('loginSuccess',参数1,参数2)
+  trigger:function(){
+    //出列第一个数据：'loginSuccess'
+    var key = Array.prototype.shift.call(arguments);
+    var fns = this.eventList[key];//拿到一组函数
+    if(!fns || fns.length === 0){
+      //没有要执行的函数，就返回
+      return false;
+    }
+    for(var i=0;i&lt;fns.length;i++){
+      //arguments已经出列了一个数据，目前全是参数列表了
+      fns[i].apply(this,arguments);
+    }
+  }
+};
+
+var installEvent = function(obj){
+  for(var i in event){
+    obj[i] = event[i];
+  }
+}
+
+var login = {};
+installEvent(login);
+
+//显示头像
+function showAvatar(){
+  console.log('显示用户头像');
+}
+//显示消息列表
+function showMessage(){
+  console.log('显示消息列表');
+}
+
+//订阅
+login.listen('loginSuccess',showAvatar);
+login.listen('loginSuccess',showMessage);
+
+//发布
+login.trigger('loginSuccess');
+
+//取消订阅
+login.remove('loginSuccess',showAvatar);
+
+//再次发布
+login.trigger('loginSuccess');
+
+</code></pre><h5 id=2-4-场景>2-4 场景</h5><ul><li>按钮上绑定click事件</li><li>ajax解耦</li></ul><h4 id=3-工厂模式>3. 工厂模式</h4><h5 id=3-1-实现原理>3-1 实现原理</h5><p>工厂模式定义一个用于创建对象的接口，这个接口由子类决定实例化哪一个类。该模式使一个类的实例化延迟到了子类。 而子类可以重写接口方法以便创建的时候指定自己的对象类型</p><h5 id=3-2-分类>3-2 分类</h5><ul><li>简单工厂模式</li><li>工厂方法模式</li><li>抽象工厂模式</li></ul><blockquote><p>分别是在各自基础上有一定的改进: 简单工厂模式解决了入口不统一的问题; 工厂模式解决了修改地点不统一的问题; 抽象工厂模式解决了子类实现不规范的问题</p></blockquote><h5 id=3-3-coding>3-3 coding</h5><pre><code>function Animal(opts){
+    var obj = new Object();
+    obj.name = opts.name;
+    obj.color = opts.color;
+    obj.getInfo = function(){
+        return '名称：'+obj.name +'， 颜色：'+ obj.color;
+    }
+    return obj;
+}
+var cat = Animal({name: '波斯猫', color: '白色'});
+cat.getInfo();
+
+</code></pre><h5 id=3-4-场景>3-4 场景</h5><p>简单说：假如我们想在网页面里插入一些元素，而这些元素类型不固定，可能是图片、链接、文本， 根据工厂模式的定义，在工厂模式下，工厂函数只需接受我们要创建的元素的类型，其他的工厂函数帮我们处理</p><h4 id=4-策略模式>4. 策略模式</h4><h5 id=4-1-原理>4-1 原理</h5><p>俗话说，条条大路(策略)通罗马(result)。在现实生活中，我们可以采用很多方法实现同一个目标。 比如我们先定个小目标，先挣它一个亿。我们可以根据具体的实际情况(按照对应的策略)来完成这个目标</p><h5 id=4-2-coding>4-2 coding</h5><pre><code>// 某公司年终奖计算方式
+var Strategies = {
+ &quot;A&quot;:function(salary){
+  return salary * 5;
+ },
+ &quot;B&quot;:function(salary){
+  return salary * 4;
+ },
+ &quot;C&quot;:function(salary){
+  return salary * 3;
+ }
+};
+var caculateBonus = function(level,salary){
+ return Strategies[level](salary);
+};
+console.log(caculateBonus(&quot;A&quot;,2000));
+
+</code></pre><h5 id=4-3-场景>4-3 场景</h5><ul><li>antd 中的message组件有info、success、error</li><li>表单校验</li></ul><h4 id=5-代理模式>5. 代理模式</h4><h5 id=5-1-原理>5-1 原理</h5><p>为其他对象提供一种代理以控制对这个对象的访问</p><h5 id=5-2-分类>5-2 分类</h5><ul><li>保护代理模式</li><li>虚拟代理模式</li><li>缓存代理模式</li></ul><h5 id=5-3-coding>5-3 coding</h5><pre><code>var Flower = function(){
+    this.price = 150
+}
+var xiaoming = {
+  sendflower: function(target){
+        var flower = new Flower()
+        target.receiveFlower(flower )
+    }
+}
+var B = {
+    receiveFlower: function(flower){
+        if(flower.price &lt; 100){
+          console.log(&quot;太便宜了，女神表示一脸嫌弃&quot;)
+          return false
+        }else{
+            A.receiveFlower(flower)
+        }
+    },
+}
+var A = {
+    receiveFlower: function(){
+        console.log(&quot;接受了鲜花&quot;)
+    }
+}
+
+xiaoming.sendFlower(B);
+
+</code></pre><h5 id=5-4-场景>5-4 场景</h5><ul><li>保护过滤</li><li>缓存代理 - 一些开销比较大的运算结果提供暂时的存储</li><li>虚拟代理(一些开销很大的对象，延迟到真正需要它的时候才去创建) - 图片上传</li></ul><hr><p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong><br><strong>欢迎交流~</strong></p><figure><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286></figure><p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong><br><strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/javascript/ rel=tag>JavaScript</a></li><li class=tags__item><a class="tags__link btn" href=/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/ rel=tag>设计模式</a></li></ul></div></footer></article></main><div class="authorbox clearfix"><figure class=authorbox__avatar><img alt="曜灵 avatar" src=/img-common/avatar1.jpeg class=avatar height=90 width=90></figure><div class=authorbox__header><span class=authorbox__name>关于 曜灵</span></div><div class=authorbox__description>博主目前就职于X集团上海研发中心-平台工具组，是一名Web开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目</div></div><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/front-end-basics/01.%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84this/ rel=prev><span class=pager__subtitle>«&#8201;上一篇</span><p class=pager__title>JavaScript之你不知道的this</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/posts/computer-basics/05.%E8%B0%88%E8%B0%88js%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%B3%9B%E5%9E%8B/ rel=next><span class=pager__subtitle>下一篇&#8201;»</span><p class=pager__title>谈谈 JS 和 设计泛型</p></a></div></nav><script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=title label=comments theme=github-light crossorigin=anonymous async></script></div><aside class=sidebar><div class="widget-recent widget"><h4 class=widget__title>近期文章</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/posts/backend-develop/10.golang-work/>Go: 多模块工作区 go work</a></li><li class=widget__item><a class=widget__link href=/posts/develop-diary/30.homebrew/>工具: Homebrew</a></li><li class=widget__item><a class=widget__link href=/posts/develop-diary/29.chatgpt%E6%B3%A8%E5%86%8C%E4%BD%BF%E7%94%A8/>ChatGPT（OpenAI）注册及使用</a></li><li class=widget__item><a class=widget__link href=/posts/develop-diary/28.%E4%BD%BF%E7%94%A8github%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/>使用GitHub搭建图床</a></li><li class=widget__item><a class=widget__link href=/posts/develop-diary/27.github%E6%98%8E%E6%98%9F%E9%A1%B9%E7%9B%AE%E5%8F%8A%E7%BB%84%E7%BB%87/>GitHub和Gitee明星项目及组织</a></li><li class=widget__item><a class=widget__link href=/posts/develop-diary/26.npm%E5%8C%85%E7%AE%A1%E7%90%86%E4%B9%8Bpnpm/>npm包管理之pnpm</a></li></ul></div></div><div class="widget-categories widget"><h4 class=widget__title>分类</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/categories/%E5%85%B6%E4%BB%96/>其他</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/>前端基础</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/>前端框架</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/>后端开发</a></li><li class=widget__item><a class=widget__link href=/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/>开发日记</a></li><li class=widget__item><a class=widget__link href=/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/>计算机原理</a></li></ul></div></div><div class="widget-taglist widget"><h4 class=widget__title>标签</h4><div class=widget__content><a class="widget-taglist__link widget__link btn" href=/tags/database/ title=Database>Database (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/git/ title=Git>Git (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/golang/ title=Golang>Golang (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/html+css/ title=HTML+CSS>HTML+CSS (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/hybrid/ title=Hybrid>Hybrid (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/javascript/ title=JavaScript>JavaScript (10)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/linux/ title=Linux>Linux (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/ms/ title=MS>MS (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/nginx/ title=nginx>nginx (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/node/ title=Node>Node (9)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/npm/ title=npm>npm (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/npm+package/ title=npm+package>npm+package (4)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/ title=React技术栈>React技术栈 (4)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/ssr/ title=SSR>SSR (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/typescript/ title=TypeScript>TypeScript (3)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/vue%E6%8A%80%E6%9C%AF%E6%A0%88/ title=Vue技术栈>Vue技术栈 (5)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BDai/ title=人工智能(AI)>人工智能(AI) (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E5%B7%A5%E5%85%B7/ title=工具>工具 (13)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/ title=工程化>工程化 (4)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/ title=异步编程>异步编程 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/ title=数据结构与算法>数据结构与算法 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/ title=浏览器>浏览器 (7)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/ title=网络原理>网络原理 (4)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/ title=设计模式>设计模式 (1)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/ title=软件架构>软件架构 (1)</a></div></div><div class="widget-social widget"><h4 class="widget-social__title widget__title">社交</h4><div class="widget-social__content widget__content"><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=GitHub rel="noopener noreferrer" href=https://github.com/lianpf target=_blank><svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0C85.9.0.0 85.8.0 191.7c0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2.0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8.0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7.0.0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4.0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5.0 25.6-.2 46.3-.2 52.6.0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg><span>GitHub</span></a></div><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=Email href=mailto:wanderlian@outlook.com><svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16V16 0h-16H16 0zm347 16-139 92.5L69 32zM199 157.5l9 5.5 9-5.5L384 46v210H32V46z"/></svg><span>wanderlian@outlook.com</span></a></div><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=微信公众号：连先生有猫病 rel="noopener noreferrer" href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwNDk2OTI1Mg==&scene=124#wechat_redirect" target=_blank><svg t="1613746391336" class="widget-social__link-icon icon" width="24" height="24" viewBox="0 0 1030 1024" xmlns="http://www.w3.org/2000/svg" p-id="1661" width="200" height="200"><path d="M697.6 275.2C620.8 179.2 499.2 121.6 371.2 128 166.4 128 0 256 0 422.4c0 83.2 44.8 160 115.2 211.2l-57.6 172.8L262.4 704c38.4 6.4 76.8 12.8 115.2 12.8h51.2c-32-38.4-44.8-89.6-51.2-140.8-6.4-160 134.4-281.6 320-300.8zM448 275.2c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6c0 19.2-12.8 32-32 32H480c-19.2.0-32-12.8-32-32v-25.6zM281.6 288c0 19.2-12.8 32-32 32h-25.6c-19.2.0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32V288z" fill="#e6e6e6" p-id="1662"/><path d="M1024 556.8c0-121.6-128-224-288-224S448 435.2 448 556.8c0 128 128 224 288 224 38.4.0 76.8-6.4 115.2-19.2l179.2 83.2-64-160c32-25.6 57.6-76.8 57.6-128zm-390.4-51.2c0 19.2-12.8 32-32 32H576c-19.2.0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6zm268.8.0c0 19.2-12.8 32-32 32h-25.6c-19.2.0-32-12.8-32-32v-25.6c0-19.2 19.2-32 32-32h25.6c19.2.0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1663"/></svg><span>微信公众号：连先生有猫病</span></a></div><div class="widget-social__item widget__item"><a class="widget-social__link widget__link btn" title=知乎 rel="noopener noreferrer" href=https://www.zhihu.com/people/liu-lang-zhe-51-90/posts target=_blank><svg t="1613712910226" class="widget-social__link-icon icon" width="24" height="24" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" p-id="8513" width="200" height="200"><path d="M544.949 561.422s0-71.387-34.779-75.05-142.775.0-142.775.0V266.718h161.078s-1.83-73.219-32.949-73.219h-261.755l43.93-117.148s-65.897 3.663-89.692 45.761-98.844 252.604-98.844 252.604 25.627 10.983 67.726-20.134c42.101-31.116 56.743-86.033 56.743-86.033l76.879-3.663 1.83 223.316s-133.621-1.83-161.078.0-42.101 75.05-42.101 75.05h203.182s-18.307 124.47-69.557 214.164c-53.085 89.692-151.929 161.078-151.929 161.078s71.387 29.287 140.947-10.983c69.557-42.101 120.811-223.316 120.811-223.316l162.912 203.182s14.643-97.013-1.83-124.47c-18.307-27.457-113.49-137.283-113.49-137.283l-42.101 36.607 29.287-120.811h177.552zM587.05 188.01l-1.83 660.793h65.897l23.795 82.37 115.321-82.37h162.912V188.01H587.054zM879.92 775.584h-76.879l-97.013 75.05-21.965-75.05h-20.134v-512.527h215.991v512.527z" p-id="8514"/></svg><span>知乎</span></a></div></div></div></aside></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2016 - 2023 曜灵（SUN）Site.
+<span class=footer__copyright-credits>基于 <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> 引擎和 <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> 主题</span></div></div></footer><script src=https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js></script><script>addBackToTop({cornerOffset:100,diameter:56,backgroundColor:'#63B8FF',innerHTML:'<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',textColor:'#fff'})</script></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script><script src=/js/highlight/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script></body></html>
