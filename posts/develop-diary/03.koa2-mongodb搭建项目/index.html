@@ -1,8 +1,8 @@
-<!doctype html><html class=no-js lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Node: Koa2 + Mongodb(从0到1)搭建项目 - 曜灵（SUN）Site</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><meta property="og:title" content="Node: Koa2 + Mongodb(从0到1)搭建项目"><meta property="og:description" content="自己搭建项目让我们不仅仅关注于开发本身，知其然知其所以然，收获更多&mldr;"><meta property="og:type" content="article"><meta property="og:url" content="/posts/develop-diary/03.koa2-mongodb%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"><meta property="article:published_time" content="2021-03-01T12:08:54+08:00"><meta property="article:modified_time" content="2021-03-01T12:08:54+08:00"><meta itemprop=name content="Node: Koa2 + Mongodb(从0到1)搭建项目"><meta itemprop=description content="自己搭建项目让我们不仅仅关注于开发本身，知其然知其所以然，收获更多&mldr;"><meta itemprop=datePublished content="2021-03-01T12:08:54+08:00"><meta itemprop=dateModified content="2021-03-01T12:08:54+08:00"><meta itemprop=wordCount content="1749"><meta itemprop=keywords content="Node,DB,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Node: Koa2 + Mongodb(从0到1)搭建项目"><meta name=twitter:description content="自己搭建项目让我们不仅仅关注于开发本身，知其然知其所以然，收获更多&mldr;"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/js/highlight/styles/agate.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.png><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><style type=text/css>pre{padding:0}</style></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class="logo logo--mixed"><a class=logo__link href=/ title=曜灵（SUN）Site rel=home><div class="logo__item logo__imagebox"><img class=logo__img src=/img-common/avatar1.jpeg></div><div class="logo__item logo__text"><div class=logo__title>曜灵（SUN）Site</div><div class=logo__tagline>🌝 带着 "偏见" 去理解技术的世界</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
-<span class=menu__btn-title tabindex=-1>菜单</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>首页</span></a></li><li class=menu__item><a class=menu__link href=/about/me/><span class=menu__text>博主</span></a></li><li class=menu__item><a class=menu__link href=/about/site/><span class=menu__text>站点</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io><span class=menu__text>编辑</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io/issues><span class=menu__text>反馈</span></a></li><li class=menu__item><a class=menu__link href=/search/><span class=menu__text>搜索</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Node: Koa2 + Mongodb(从0到1)搭建项目</h1><div class="post__meta meta"><div class="meta__item-author meta__item"><svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span></div><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2021-03-01T12:08:54+08:00>2021-03-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/ rel=category>开发日记</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>目录</div><div class=toc__menu><nav id=TableOfContents><ul><li><ul><li><a href=#一前言>一、前言</a></li><li><a href=#二创建项目--安装依赖>二、创建项目 & 安装依赖</a><ul><li><a href=#1创建文件且初始化项目>1、创建文件且初始化项目</a></li><li><a href=#2安装依赖>2、安装依赖</a></li></ul></li><li><a href=#三配置>三、配置</a><ul><li><a href=#1基础配置>1、基础配置</a></li><li><a href=#2配置路由>2、配置路由</a></li><li><a href=#3热重启处理>3、热重启处理</a></li><li><a href=#4node-支持-import模块引入可忽略>4、node 支持 import模块引入（可忽略）</a><ul><li></li></ul></li><li><a href=#5连接数据库>5、连接数据库</a><ul><li></li></ul></li><li><a href=#6解决跨域>6、解决跨域</a></li></ul></li><li><a href=#四ts--eslint>四、TS & ESLint</a></li><li><a href=#五project-结构图>五、<code>Project</code> 结构图</a></li><li><a href=#源码参考>源码参考</a><ul><li><ul><li></li></ul></li></ul></li></ul></li></ul></nav></div></div><div class="content post__content clearfix"><p>自己搭建项目让我们不仅仅关注于开发本身，知其然知其所以然，收获更多&mldr;</p><h2 id=一前言>一、前言</h2><p>虽然，对于新手来说，我们选择类似于koa-generator之类的脚手架，可以最快的入手koa2或者node项目。但是，自己搭建项目，更加适用于实际开发中前后端分离的定制化业务场景，且能让我们不仅仅关注于开发本身，知其然知其所以然，收获更多的东西。</p><p>在全局中安装koa依赖包 (保持项目版本的统一性)或在本地项目中安装</p><pre><code>npm install -g koa 
+<!doctype html><html class=no-js lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Node: Koa2 + Mongodb(从0到1)搭建项目 - 曜灵（SUN）Site</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><meta property="og:title" content="Node: Koa2 + Mongodb(从0到1)搭建项目"><meta property="og:description" content="自己搭建项目让我们不仅仅关注于开发本身，知其然知其所以然，收获更多&mldr;"><meta property="og:type" content="article"><meta property="og:url" content="/posts/develop-diary/03.koa2-mongodb%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"><meta property="article:published_time" content="2021-03-01T12:08:54+08:00"><meta property="article:modified_time" content="2021-03-01T12:08:54+08:00"><meta itemprop=name content="Node: Koa2 + Mongodb(从0到1)搭建项目"><meta itemprop=description content="自己搭建项目让我们不仅仅关注于开发本身，知其然知其所以然，收获更多&mldr;"><meta itemprop=datePublished content="2021-03-01T12:08:54+08:00"><meta itemprop=dateModified content="2021-03-01T12:08:54+08:00"><meta itemprop=wordCount content="1747"><meta itemprop=keywords content="Node,DB,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Node: Koa2 + Mongodb(从0到1)搭建项目"><meta name=twitter:description content="自己搭建项目让我们不仅仅关注于开发本身，知其然知其所以然，收获更多&mldr;"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/js/highlight/styles/agate.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.png><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><style type=text/css>pre{padding:0}</style></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class="logo logo--mixed"><a class=logo__link href=/ title=曜灵（SUN）Site rel=home><div class="logo__item logo__imagebox"><img class=logo__img src=/img-common/avatar1.jpeg></div><div class="logo__item logo__text"><div class=logo__title>曜灵（SUN）Site</div><div class=logo__tagline>🌝 带着 "偏见" 去理解技术的世界</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
+<span class=menu__btn-title tabindex=-1>菜单</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>首页</span></a></li><li class=menu__item><a class=menu__link href=/about/me/><span class=menu__text>博主</span></a></li><li class=menu__item><a class=menu__link href=/about/site/><span class=menu__text>站点</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io><span class=menu__text>编辑</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io/issues><span class=menu__text>反馈</span></a></li><li class=menu__item><a class=menu__link href=/search/><span class=menu__text>搜索</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Node: Koa2 + Mongodb(从0到1)搭建项目</h1><div class="post__meta meta"><div class="meta__item-author meta__item"><svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span></div><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2021-03-01T12:08:54+08:00>2021-03-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/ rel=category>开发日记</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>目录</div><div class=toc__menu><nav id=TableOfContents><ul><li><ul><li><a href=#一前言>一、前言</a></li><li><a href=#二创建项目--安装依赖>二、创建项目 & 安装依赖</a><ul><li><a href=#1创建文件且初始化项目>1、创建文件且初始化项目</a></li><li><a href=#2安装依赖>2、安装依赖</a></li></ul></li><li><a href=#三配置>三、配置</a><ul><li><a href=#1基础配置>1、基础配置</a></li><li><a href=#2配置路由>2、配置路由</a></li><li><a href=#3热重启处理>3、热重启处理</a></li><li><a href=#4node-支持-import模块引入可忽略>4、node 支持 import模块引入（可忽略）</a><ul><li></li></ul></li><li><a href=#5连接数据库>5、连接数据库</a><ul><li></li></ul></li><li><a href=#6解决跨域>6、解决跨域</a></li></ul></li><li><a href=#四ts--eslint>四、TS & ESLint</a></li><li><a href=#五project-结构图>五、<code>Project</code> 结构图</a></li><li><a href=#源码参考>源码参考</a><ul><li><ul><li></li></ul></li></ul></li></ul></li></ul></nav></div></div><div class="content post__content clearfix"><p>自己搭建项目让我们不仅仅关注于开发本身，知其然知其所以然，收获更多&mldr;</p><h2 id=一前言>一、前言</h2><p>虽然，对于新手来说，我们选择类似于koa-generator之类的脚手架，可以最快的入手koa2或者node项目。但是，自己搭建项目，更加适用于实际开发中前后端分离的定制化业务场景，且能让我们不仅仅关注于开发本身，知其然知其所以然，收获更多的东西。</p><p>在全局中安装koa依赖包 (保持项目版本的统一性)或在本地项目中安装</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install -g koa 
 npm install koa --save
-</code></pre><h2 id=二创建项目--安装依赖>二、创建项目 & 安装依赖</h2><h3 id=1创建文件且初始化项目>1、创建文件且初始化项目</h3><pre><code>npm init
-</code></pre><h3 id=2安装依赖>2、安装依赖</h3><pre><code>// 路由
+</code></pre></div><h2 id=二创建项目--安装依赖>二、创建项目 & 安装依赖</h2><h3 id=1创建文件且初始化项目>1、创建文件且初始化项目</h3><pre><code>npm init
+</code></pre><h3 id=2安装依赖>2、安装依赖</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>// 路由
 npm install koa-router koa-bodyparser --save
 // 热重启
 npm install nodemon --save
@@ -12,127 +12,127 @@ npm install babel-plugin-transform-es2015-modules-commonjs babel-register --save
 npm install mongoose --save
 // 解决跨域问题
 npm install koa2-cors --save
-</code></pre><h2 id=三配置>三、配置</h2><h3 id=1基础配置>1、基础配置</h3><p>最基本的开发环境已搭建完，开启service监听3000端口:</p><blockquote><p>对于任何请求，app将调用异步函数<code>app.use(async (ctx, next) => {})</code>处理请求，只有当<code>next()</code>之后才能执行下一个<code>app.use()</code></p></blockquote><pre><code>const Koa = require('koa')
-const app = new Koa({
-  // 代理
-  // proxy: true
-});
+</code></pre></div><h2 id=三配置>三、配置</h2><h3 id=1基础配置>1、基础配置</h3><p>最基本的开发环境已搭建完，开启service监听3000端口:</p><blockquote><p>对于任何请求，app将调用异步函数<code>app.use(async (ctx, next) => {})</code>处理请求，只有当<code>next()</code>之后才能执行下一个<code>app.use()</code></p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Koa</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;koa&#39;</span>)
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>app</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Koa</span>({
+  <span style=color:#75715e>// 代理
+</span><span style=color:#75715e></span>  <span style=color:#75715e>// proxy: true
+</span><span style=color:#75715e></span>});
 
-// logger
-app.use(async (ctx, next) =&gt; {
-  console.log('--0-0--')
-  await next();
-  const rt = ctx.response.get('X-Response-Time')
-  console.log(`--0-1-- ${ctx.method} ${ctx.url} - ${rt}`)
+<span style=color:#75715e>// logger
+</span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>async</span> (<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>next</span>) =&gt; {
+  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;--0-0--&#39;</span>)
+  <span style=color:#a6e22e>await</span> <span style=color:#a6e22e>next</span>();
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>rt</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>ctx</span>.<span style=color:#a6e22e>response</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;X-Response-Time&#39;</span>)
+  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`--0-1-- </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>ctx</span>.<span style=color:#a6e22e>method</span><span style=color:#e6db74>}</span><span style=color:#e6db74> </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>ctx</span>.<span style=color:#a6e22e>url</span><span style=color:#e6db74>}</span><span style=color:#e6db74> - </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>rt</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>)
 })
 
-// x-response-time
-app.use(async (ctx, next) =&gt; {
-  console.log('--1-0--')
-  const start = new Date()
-  await next()
-  const ms = Date.now() - start;
-  console.log('--1-1--')
-  ctx.set('X-Response-Time', `${ms}ms`);
+<span style=color:#75715e>// x-response-time
+</span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>async</span> (<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>next</span>) =&gt; {
+  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;--1-0--&#39;</span>)
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>start</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Date()
+  <span style=color:#a6e22e>await</span> <span style=color:#a6e22e>next</span>()
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>ms</span> <span style=color:#f92672>=</span> Date.<span style=color:#a6e22e>now</span>() <span style=color:#f92672>-</span> <span style=color:#a6e22e>start</span>;
+  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;--1-1--&#39;</span>)
+  <span style=color:#a6e22e>ctx</span>.<span style=color:#a6e22e>set</span>(<span style=color:#e6db74>&#39;X-Response-Time&#39;</span>, <span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>ms</span><span style=color:#e6db74>}</span><span style=color:#e6db74>ms`</span>);
 })
 
-// response
-app.use(async ctx =&gt; {
-  ctx.body = 'Hello World, Koa!'
+<span style=color:#75715e>// response
+</span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>async</span> <span style=color:#a6e22e>ctx</span> =&gt; {
+  <span style=color:#a6e22e>ctx</span>.<span style=color:#a6e22e>body</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Hello World, Koa!&#39;</span>
 })
 
-app.listen(3000)
-</code></pre><h3 id=2配置路由>2、配置路由</h3><pre><code>const Koa = require('koa');
-const bodyParser = require('koa-bodyparser');
-const app = new Koa();
-app.use(bodyParser());  // 解析request的body
+<span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>listen</span>(<span style=color:#ae81ff>3000</span>)
+</code></pre></div><h3 id=2配置路由>2、配置路由</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Koa</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;koa&#39;</span>);
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>bodyParser</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;koa-bodyparser&#39;</span>);
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>app</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Koa</span>();
+<span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>bodyParser</span>());  <span style=color:#75715e>// 解析request的body
+</span><span style=color:#75715e></span>
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>router</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;koa-router&#39;</span>)()
+<span style=color:#a6e22e>router</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;/&#39;</span>, <span style=color:#a6e22e>async</span> (<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>next</span>) =&gt; {
+	<span style=color:#75715e>// todo
+</span><span style=color:#75715e></span>})
+<span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>router</span>.<span style=color:#a6e22e>routes</span>());
+<span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>listen</span>(<span style=color:#ae81ff>3000</span>);
+<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;app started at port 3000...&#39;</span>)
+</code></pre></div><p>可直接访问端口3000，若针对<code>BFF层</code>开发聚合接口，可增加<code>api</code>前缀标识</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Router</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;koa-router&#39;</span>)
 
-const router = require('koa-router')()
-router.get('/', async (ctx, next) =&gt; {
-	// todo
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>router</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Router</span>({
+	<span style=color:#a6e22e>prefix</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;/api&#39;</span>
 })
-app.use(router.routes());
-app.listen(3000);
-console.log('app started at port 3000...')
-</code></pre><p>可直接访问端口3000，若针对<code>BFF层</code>开发聚合接口，可增加<code>api</code>前缀标识</p><pre><code>const Router = require('koa-router')
-
-const router = new Router({
-	prefix: '/api'
-})
-</code></pre><p>此时访问地址变为：<code>http://localhost:3000/api</code></p><h3 id=3热重启处理>3、热重启处理</h3><p>对标webpack项目中的热更新，代码的修改，不必重新<code>npm run start</code>启动项目就可以实时的看到效果。对于node项目的管理，当然也有类似的工具：<code>nodemon</code></p><blockquote><p>Nodemon，用于监视源中的任何更改并自动重新启动服务器。支持自定义配置<code>nodemon.json</code>使用</p></blockquote><p>更改<code>package.json</code>，执行 <code>npm run start</code>，达到了热重启的效果</p><pre><code>// package.json
-&quot;scripts&quot;: {
-    ...
-    &quot;start&quot;: &quot;nodemon app.js&quot;
-  },
-</code></pre><h3 id=4node-支持-import模块引入可忽略>4、node 支持 import模块引入（可忽略）</h3><blockquote><p>原生的 <code>node</code> 不支持<code>import</code>引入模块，所以项目中强行使用<code>import</code>方式引入，会抛出类似报错信息: <code>SyntaxError: Unexpected token import</code></p></blockquote><p>解决方案涉及按如下几个方面：</p><ul><li>安装 <code>babel</code> 依赖</li><li>根目录下创建 <code>start.js</code></li><li>更改 <code>package.json</code></li></ul><h5 id=安装如下依赖>安装如下依赖</h5><pre><code>npm install babel-plugin-transform-es2015-modules-commonjs babel-register --save
-</code></pre><h5 id=根目录下创建startjs>根目录下创建start.js</h5><pre><code>require('babel-register')
+</code></pre></div><p>此时访问地址变为：<code>http://localhost:3000/api</code></p><h3 id=3热重启处理>3、热重启处理</h3><p>对标webpack项目中的热更新，代码的修改，不必重新<code>npm run start</code>启动项目就可以实时的看到效果。对于node项目的管理，当然也有类似的工具：<code>nodemon</code></p><blockquote><p>Nodemon，用于监视源中的任何更改并自动重新启动服务器。支持自定义配置<code>nodemon.json</code>使用</p></blockquote><p>更改<code>package.json</code>，执行 <code>npm run start</code>，达到了热重启的效果</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=color:#960050;background-color:#1e0010>//</span> <span style=color:#960050;background-color:#1e0010>package.json</span>
+<span style=color:#e6db74>&#34;scripts&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> {
+    <span style=color:#960050;background-color:#1e0010>...</span>
+    <span style=color:#f92672>&#34;start&#34;</span>: <span style=color:#e6db74>&#34;nodemon app.js&#34;</span>
+  }<span style=color:#960050;background-color:#1e0010>,</span>
+</code></pre></div><h3 id=4node-支持-import模块引入可忽略>4、node 支持 import模块引入（可忽略）</h3><blockquote><p>原生的 <code>node</code> 不支持<code>import</code>引入模块，所以项目中强行使用<code>import</code>方式引入，会抛出类似报错信息: <code>SyntaxError: Unexpected token import</code></p></blockquote><p>解决方案涉及按如下几个方面：</p><ul><li>安装 <code>babel</code> 依赖</li><li>根目录下创建 <code>start.js</code></li><li>更改 <code>package.json</code></li></ul><h5 id=安装如下依赖>安装如下依赖</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install babel-plugin-transform-es2015-modules-commonjs babel-register --save
+</code></pre></div><h5 id=根目录下创建startjs>根目录下创建start.js</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;babel-register&#39;</span>)
 (
   {
-    plugins: ['babel-plugin-transform-es2015-modules-commonjs'],
+    <span style=color:#a6e22e>plugins</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#39;babel-plugin-transform-es2015-modules-commonjs&#39;</span>],
   }
 )
 
-module.exports = require('./app.js')
-</code></pre><h5 id=更改-packagejson>更改 <code>package.json</code></h5><pre><code>&quot;scripts&quot;: {
-    ...
-    &quot;start&quot;: &quot;nodemon star.js&quot;
+<span style=color:#a6e22e>module</span>.<span style=color:#a6e22e>exports</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;./app.js&#39;</span>)
+</code></pre></div><h5 id=更改-packagejson>更改 <code>package.json</code></h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=color:#e6db74>&#34;scripts&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> {
+    <span style=color:#960050;background-color:#1e0010>...</span>
+    <span style=color:#f92672>&#34;start&#34;</span>: <span style=color:#e6db74>&#34;nodemon star.js&#34;</span>
   }
-</code></pre><p>完成以上三个步骤，在<code>app.js</code>内使用<code>import</code>语法，运行 <code>npm start</code>，刚才报错信息消失</p><h3 id=5连接数据库>5、连接数据库</h3><ul><li>安装：<code>npm install mongoose --save</code></li><li>启动: <code>mongod</code></li><li>视图管理: <code>MongoDB Compass</code></li></ul><h5 id=a-搭建如下数据库>a. 搭建如下数据库：</h5><p><img src=/img-blogs/2021/20210301-001.png alt=搭建数据库 width=1282 height=777></p><h5 id=b-查询语句>b. 查询语句</h5><pre><code>// 文件路径: app/dbHelper/user.js
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
+</code></pre></div><p>完成以上三个步骤，在<code>app.js</code>内使用<code>import</code>语法，运行 <code>npm start</code>，刚才报错信息消失</p><h3 id=5连接数据库>5、连接数据库</h3><ul><li>安装：<code>npm install mongoose --save</code></li><li>启动: <code>mongod</code></li><li>视图管理: <code>MongoDB Compass</code></li></ul><h5 id=a-搭建如下数据库>a. 搭建如下数据库：</h5><p><img src=/img-blogs/2021/20210301-001.png alt=搭建数据库 width=1282 height=777></p><h5 id=b-查询语句>b. 查询语句</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// 文件路径: app/dbHelper/user.js
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>MongoClient</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;mongodb&#39;</span>).<span style=color:#a6e22e>MongoClient</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>assert</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;assert&#39;</span>);
 
-// mongoDB
-const dbUrl = &quot;mongodb://localhost:27017/testLocal&quot;;
-const client = new MongoClient(dbUrl, {useNewUrlParser: true});
-const dbName = 'testLocal'
-const tableName = 'user'
+<span style=color:#75715e>// mongoDB
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>dbUrl</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;mongodb://localhost:27017/testLocal&#34;</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>client</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>MongoClient</span>(<span style=color:#a6e22e>dbUrl</span>, {<span style=color:#a6e22e>useNewUrlParser</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>true</span>});
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>dbName</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;testLocal&#39;</span>
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>tableName</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;user&#39;</span>
 
-/**
- * @desc: 查询所有用户
- */
-exports.queryUsers = function() {
-  return new Promise(function (resolve, reject) {
-    try {
-      client.connect(function(err) {
-        assert.equal(null, err);
-        const db = client.db(dbName);
-        const collection = db.collection(tableName);
-        collection.find({}).toArray(function(err, result) {
-          assert.equal(err, null);
-          // console.log('--db-1-result--', result)
-          client.close();
-          resolve(result)
+<span style=color:#75715e>/**
+</span><span style=color:#75715e> * @desc: 查询所有用户
+</span><span style=color:#75715e> */</span>
+<span style=color:#a6e22e>exports</span>.<span style=color:#a6e22e>queryUsers</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span>() {
+  <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> Promise(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>resolve</span>, <span style=color:#a6e22e>reject</span>) {
+    <span style=color:#66d9ef>try</span> {
+      <span style=color:#a6e22e>client</span>.<span style=color:#a6e22e>connect</span>(<span style=color:#66d9ef>function</span>(<span style=color:#a6e22e>err</span>) {
+        <span style=color:#a6e22e>assert</span>.<span style=color:#a6e22e>equal</span>(<span style=color:#66d9ef>null</span>, <span style=color:#a6e22e>err</span>);
+        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>db</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>client</span>.<span style=color:#a6e22e>db</span>(<span style=color:#a6e22e>dbName</span>);
+        <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>collection</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>db</span>.<span style=color:#a6e22e>collection</span>(<span style=color:#a6e22e>tableName</span>);
+        <span style=color:#a6e22e>collection</span>.<span style=color:#a6e22e>find</span>({}).<span style=color:#a6e22e>toArray</span>(<span style=color:#66d9ef>function</span>(<span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>result</span>) {
+          <span style=color:#a6e22e>assert</span>.<span style=color:#a6e22e>equal</span>(<span style=color:#a6e22e>err</span>, <span style=color:#66d9ef>null</span>);
+          <span style=color:#75715e>// console.log(&#39;--db-1-result--&#39;, result)
+</span><span style=color:#75715e></span>          <span style=color:#a6e22e>client</span>.<span style=color:#a6e22e>close</span>();
+          <span style=color:#a6e22e>resolve</span>(<span style=color:#a6e22e>result</span>)
         });
       })
-    } catch(e) {
-      reject(e)
+    } <span style=color:#66d9ef>catch</span>(<span style=color:#a6e22e>e</span>) {
+      <span style=color:#a6e22e>reject</span>(<span style=color:#a6e22e>e</span>)
     }
   })
 }
-</code></pre><h6 id=c-运行程序查看结果>c. 运行程序查看结果</h6><p>数据查询结果：
-<img src=/img-blogs/2021/20210301-002.png alt=数据查询结果 width=586 height=179></p><p>视图结果：</p><p><img src=/img-blogs/2021/20210301-003.png alt=视图 width=404 height=83></p><p>到此为止，聚个BFF层接口功能的项目结构基本就满足了。</p><h3 id=6解决跨域>6、解决跨域</h3><p>对于接口跨域，解决的办法有很多，<code>jsonp</code>、<code>cros</code>、<code>Nginx</code>代理、<code>node</code>代理等。这里只介绍<code>cros</code>方案：<code>koa2-cors</code></p><p><strong>入口文件</strong></p><pre><code>// app.js 引入
-const cors = require('koa2-cors')
-const app = new Koa()
-import corsConfigs from './configs/cors'
+</code></pre></div><h6 id=c-运行程序查看结果>c. 运行程序查看结果</h6><p>数据查询结果：
+<img src=/img-blogs/2021/20210301-002.png alt=数据查询结果 width=586 height=179></p><p>视图结果：</p><p><img src=/img-blogs/2021/20210301-003.png alt=视图 width=404 height=83></p><p>到此为止，聚个BFF层接口功能的项目结构基本就满足了。</p><h3 id=6解决跨域>6、解决跨域</h3><p>对于接口跨域，解决的办法有很多，<code>jsonp</code>、<code>cros</code>、<code>Nginx</code>代理、<code>node</code>代理等。这里只介绍<code>cros</code>方案：<code>koa2-cors</code></p><p><strong>入口文件</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// app.js 引入
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>cors</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;koa2-cors&#39;</span>)
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>app</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Koa</span>()
+<span style=color:#66d9ef>import</span> <span style=color:#a6e22e>corsConfigs</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;./configs/cors&#39;</span>
 
-// 处理跨域的配置
-app.use(cors(corsConfigs));
-</code></pre><p><strong>配置文件</strong></p><pre><code>// config/cors.js
-/**
- * @desc: 跨域处理配置项
- * @author: lianpf
- * @date: 2021-02-24
- *  */
-const corsConfigs = {
-  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization', 'Date'],
-  maxAge: 100,
-  credentials: true,
-  allowMethods: ['GET', 'POST', 'OPTIONS'],
-  allowHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Custom-Header', 'anonymous'],
+<span style=color:#75715e>// 处理跨域的配置
+</span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>cors</span>(<span style=color:#a6e22e>corsConfigs</span>));
+</code></pre></div><p><strong>配置文件</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// config/cors.js
+</span><span style=color:#75715e></span><span style=color:#75715e>/**
+</span><span style=color:#75715e> * @desc: 跨域处理配置项
+</span><span style=color:#75715e> * @author: lianpf
+</span><span style=color:#75715e> * @date: 2021-02-24
+</span><span style=color:#75715e> *  */</span>
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>corsConfigs</span> <span style=color:#f92672>=</span> {
+  <span style=color:#a6e22e>exposeHeaders</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#39;WWW-Authenticate&#39;</span>, <span style=color:#e6db74>&#39;Server-Authorization&#39;</span>, <span style=color:#e6db74>&#39;Date&#39;</span>],
+  <span style=color:#a6e22e>maxAge</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>100</span>,
+  <span style=color:#a6e22e>credentials</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>true</span>,
+  <span style=color:#a6e22e>allowMethods</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#39;GET&#39;</span>, <span style=color:#e6db74>&#39;POST&#39;</span>, <span style=color:#e6db74>&#39;OPTIONS&#39;</span>],
+  <span style=color:#a6e22e>allowHeaders</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#39;Content-Type&#39;</span>, <span style=color:#e6db74>&#39;Authorization&#39;</span>, <span style=color:#e6db74>&#39;Accept&#39;</span>, <span style=color:#e6db74>&#39;X-Custom-Header&#39;</span>, <span style=color:#e6db74>&#39;anonymous&#39;</span>],
 }
 
-export default corsConfigs
-</code></pre><h2 id=四ts--eslint>四、TS & ESLint</h2><blockquote><p>待补充&mldr;</p></blockquote><p>可收藏 <a href=http://lianpf.github.io/>曜灵（SUN）SITE 🌝</a>，及时获取文章更新信息</p><h2 id=五project-结构图>五、<code>Project</code> 结构图</h2><pre><code>├── app
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>corsConfigs</span>
+</code></pre></div><h2 id=四ts--eslint>四、TS & ESLint</h2><blockquote><p>待补充&mldr;</p></blockquote><p>可收藏 <a href=http://lianpf.github.io/>曜灵（SUN）SITE 🌝</a>，及时获取文章更新信息</p><h2 id=五project-结构图>五、<code>Project</code> 结构图</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>├── app
 │   ├── controller
 │   │   └── user.js
 │   ├── dbHelper
@@ -144,65 +144,65 @@ export default corsConfigs
 ├── package-lock.json
 ├── package.json
 └── start.js
-</code></pre><h2 id=源码参考>源码参考</h2><blockquote><p>gitHub仓库: <a href=https://github.com/lianpf/examples/tree/master/node/koa2-mongodb>https://github.com/lianpf/examples/tree/master/node/koa2-mongodb</a></p></blockquote><h5 id=关键文件>关键文件</h5><p>app.js</p><pre><code>/**
- * @desc: 入口文件
- * @author: lianpf
- * @date: 2021-02-24
- *  */
-const Koa = require('koa');
-const bodyParser = require('koa-bodyparser')
-const cors = require('koa2-cors')
-const app = new Koa()
-import router from './app/router'
-import corsConfigs from './configs/cors'
+</code></pre></div><h2 id=源码参考>源码参考</h2><blockquote><p>gitHub仓库: <a href=https://github.com/lianpf/examples/tree/master/node/koa2-mongodb>https://github.com/lianpf/examples/tree/master/node/koa2-mongodb</a></p></blockquote><h5 id=关键文件>关键文件</h5><p>app.js</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>/**
+</span><span style=color:#75715e> * @desc: 入口文件
+</span><span style=color:#75715e> * @author: lianpf
+</span><span style=color:#75715e> * @date: 2021-02-24
+</span><span style=color:#75715e> *  */</span>
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Koa</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;koa&#39;</span>);
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>bodyParser</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;koa-bodyparser&#39;</span>)
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>cors</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;koa2-cors&#39;</span>)
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>app</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Koa</span>()
+<span style=color:#66d9ef>import</span> <span style=color:#a6e22e>router</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;./app/router&#39;</span>
+<span style=color:#66d9ef>import</span> <span style=color:#a6e22e>corsConfigs</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;./configs/cors&#39;</span>
 
-// 处理跨域的配置
-app.use(cors(corsConfigs));
+<span style=color:#75715e>// 处理跨域的配置
+</span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>cors</span>(<span style=color:#a6e22e>corsConfigs</span>));
 
-// logger 中间件
-// const loggerAsync = require('./middleware/logger-async')
-// app.use(loggerAsync())
+<span style=color:#75715e>// logger 中间件
+</span><span style=color:#75715e>// const loggerAsync = require(&#39;./middleware/logger-async&#39;)
+</span><span style=color:#75715e>// app.use(loggerAsync())
+</span><span style=color:#75715e></span>
+<span style=color:#75715e>// router
+</span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>bodyParser</span>()); <span style=color:#75715e>// 解析request的body
+</span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>router</span>.<span style=color:#a6e22e>routes</span>());
 
-// router
-app.use(bodyParser()); // 解析request的body
-app.use(router.routes());
-
-// response
-// app.use(async ctx =&gt; {
-//   ctx.body = 'Hello World, Koa!'
-// })
-
-// 在端口3000监听:
-app.listen(3000);
-console.log('app started at port 3000...')
-</code></pre><p>package.json</p><pre><code>{
-  &quot;name&quot;: &quot;koa2-ts-mongodb&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;koa2-mongodb-ts demo&quot;,
-  &quot;main&quot;: &quot;app.js&quot;,
-  &quot;scripts&quot;: {
-    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
-    &quot;start&quot;: &quot;nodemon start.js&quot;
+<span style=color:#75715e>// response
+</span><span style=color:#75715e>// app.use(async ctx =&gt; {
+</span><span style=color:#75715e>//   ctx.body = &#39;Hello World, Koa!&#39;
+</span><span style=color:#75715e>// })
+</span><span style=color:#75715e></span>
+<span style=color:#75715e>// 在端口3000监听:
+</span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>listen</span>(<span style=color:#ae81ff>3000</span>);
+<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;app started at port 3000...&#39;</span>)
+</code></pre></div><p>package.json</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;koa2-ts-mongodb&#34;</span>,
+  <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;1.0.0&#34;</span>,
+  <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;koa2-mongodb-ts demo&#34;</span>,
+  <span style=color:#f92672>&#34;main&#34;</span>: <span style=color:#e6db74>&#34;app.js&#34;</span>,
+  <span style=color:#f92672>&#34;scripts&#34;</span>: {
+    <span style=color:#f92672>&#34;test&#34;</span>: <span style=color:#e6db74>&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>,
+    <span style=color:#f92672>&#34;start&#34;</span>: <span style=color:#e6db74>&#34;nodemon start.js&#34;</span>
   },
-  &quot;author&quot;: &quot;&quot;,
-  &quot;license&quot;: &quot;ISC&quot;,
-  &quot;dependencies&quot;: {
-    &quot;babel-plugin-transform-es2015-modules-commonjs&quot;: &quot;^6.26.2&quot;,
-    &quot;babel-register&quot;: &quot;^6.26.0&quot;,
-    &quot;koa&quot;: &quot;^2.13.1&quot;,
-    &quot;koa-bodyparser&quot;: &quot;^4.3.0&quot;,
-    &quot;koa-router&quot;: &quot;^10.0.0&quot;,
-    &quot;koa2-cors&quot;: &quot;^2.0.6&quot;,
-    &quot;mongoose&quot;: &quot;^5.11.18&quot;,
-    &quot;nodemon&quot;: &quot;^2.0.7&quot;
+  <span style=color:#f92672>&#34;author&#34;</span>: <span style=color:#e6db74>&#34;&#34;</span>,
+  <span style=color:#f92672>&#34;license&#34;</span>: <span style=color:#e6db74>&#34;ISC&#34;</span>,
+  <span style=color:#f92672>&#34;dependencies&#34;</span>: {
+    <span style=color:#f92672>&#34;babel-plugin-transform-es2015-modules-commonjs&#34;</span>: <span style=color:#e6db74>&#34;^6.26.2&#34;</span>,
+    <span style=color:#f92672>&#34;babel-register&#34;</span>: <span style=color:#e6db74>&#34;^6.26.0&#34;</span>,
+    <span style=color:#f92672>&#34;koa&#34;</span>: <span style=color:#e6db74>&#34;^2.13.1&#34;</span>,
+    <span style=color:#f92672>&#34;koa-bodyparser&#34;</span>: <span style=color:#e6db74>&#34;^4.3.0&#34;</span>,
+    <span style=color:#f92672>&#34;koa-router&#34;</span>: <span style=color:#e6db74>&#34;^10.0.0&#34;</span>,
+    <span style=color:#f92672>&#34;koa2-cors&#34;</span>: <span style=color:#e6db74>&#34;^2.0.6&#34;</span>,
+    <span style=color:#f92672>&#34;mongoose&#34;</span>: <span style=color:#e6db74>&#34;^5.11.18&#34;</span>,
+    <span style=color:#f92672>&#34;nodemon&#34;</span>: <span style=color:#e6db74>&#34;^2.0.7&#34;</span>
   },
-  &quot;devDependencies&quot;: {
-    &quot;@types/koa&quot;: &quot;^2.13.0&quot;,
-    &quot;tslint&quot;: &quot;^6.1.3&quot;,
-    &quot;typescript&quot;: &quot;^4.1.5&quot;
+  <span style=color:#f92672>&#34;devDependencies&#34;</span>: {
+    <span style=color:#f92672>&#34;@types/koa&#34;</span>: <span style=color:#e6db74>&#34;^2.13.0&#34;</span>,
+    <span style=color:#f92672>&#34;tslint&#34;</span>: <span style=color:#e6db74>&#34;^6.1.3&#34;</span>,
+    <span style=color:#f92672>&#34;typescript&#34;</span>: <span style=color:#e6db74>&#34;^4.1.5&#34;</span>
   }
 }
-</code></pre><p>start.js</p><pre><code>require('babel-register')
+</code></pre></div><p>start.js</p><pre><code>require('babel-register')
 (
   {
     plugins: ['babel-plugin-transform-es2015-modules-commonjs'],
@@ -230,8 +230,7 @@ export default router
 <a class="widget-taglist__link widget__link btn" href=/tags/npm/ title=npm>npm (5)</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/ title=React技术栈>React技术栈 (4)</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/ssr/ title=SSR>SSR (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ts/ title=TS>TS (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/typescript/ title=TypeScript>TypeScript (2)</a>
+<a class="widget-taglist__link widget__link btn" href=/tags/ts/ title=TS>TS (3)</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/vue%E6%8A%80%E6%9C%AF%E6%A0%88/ title=Vue技术栈>Vue技术栈 (5)</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BDai/ title=人工智能(AI)>人工智能(AI) (1)</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/%E5%B7%A5%E5%85%B7/ title=工具>工具 (15)</a>
