@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>日常工具 on 曜灵（SUN）Site</title>
+    <link>/tags/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 日常工具 on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 22 Jun 2019 22:08:54 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>终端(Terminal)</title>
+      <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/18.%E7%BB%88%E7%AB%AF/</link>
+      <pubDate>Sat, 22 Jun 2019 22:08:54 +0800</pubDate>
+      
+      <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/18.%E7%BB%88%E7%AB%AF/</guid>
+      <description>&lt;p&gt;终端操作&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>快捷键（Shortcut keys）</title>
+      <link>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/17.%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Sat, 22 Jun 2019 22:02:21 +0800</pubDate>
+      
+      <guid>/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/17.%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>&lt;p&gt;mac设备等快捷操作&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

