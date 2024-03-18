@@ -1,0 +1,121 @@
+<!doctype html><html class=no-js lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>GitHub Action + Gitee 构建同步国内和国外站点 - 曜灵（SUN）Site</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><meta property="og:title" content="GitHub Action + Gitee 构建同步国内和国外站点"><meta property="og:description" content="一、回顾『国外站点gitHub』自动构建发布 GitHub Action + Hugo 自动构建"><meta property="og:type" content="article"><meta property="og:url" content="/posts/other/20.gitee-sync-build-blog/"><meta property="article:published_time" content="2021-02-17T17:56:37+08:00"><meta property="article:modified_time" content="2021-02-17T17:56:37+08:00"><meta itemprop=name content="GitHub Action + Gitee 构建同步国内和国外站点"><meta itemprop=description content="一、回顾『国外站点gitHub』自动构建发布 GitHub Action + Hugo 自动构建"><meta itemprop=datePublished content="2021-02-17T17:56:37+08:00"><meta itemprop=dateModified content="2021-02-17T17:56:37+08:00"><meta itemprop=wordCount content="1507"><meta itemprop=keywords content="工程化,工具,"><meta name=twitter:card content="summary"><meta name=twitter:title content="GitHub Action + Gitee 构建同步国内和国外站点"><meta name=twitter:description content="一、回顾『国外站点gitHub』自动构建发布 GitHub Action + Hugo 自动构建"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/js/highlight/styles/agate.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.png><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><style type=text/css>pre{padding:0}</style></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class="logo logo--mixed"><a class=logo__link href=/ title=曜灵（SUN）Site rel=home><div class="logo__item logo__imagebox"><img class=logo__img src=/img-common/avatar1.jpeg></div><div class="logo__item logo__text"><div class=logo__title>曜灵（SUN）Site</div><div class=logo__tagline>🌝 带着 "偏见" 去理解技术的世界</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
+<span class=menu__btn-title tabindex=-1>菜单</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>首页</span></a></li><li class=menu__item><a class=menu__link href=/about/me/><span class=menu__text>博主</span></a></li><li class=menu__item><a class=menu__link href=/about/site/><span class=menu__text>站点</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io><span class=menu__text>编辑</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io/issues><span class=menu__text>反馈</span></a></li><li class=menu__item><a class=menu__link href=/search/><span class=menu__text>搜索</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>GitHub Action + Gitee 构建同步国内和国外站点</h1><div class="post__meta meta"><div class="meta__item-author meta__item"><svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span></div><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2021-02-17T17:56:37+08:00>2021-02-17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E5%85%B6%E4%BB%96/ rel=category>其他</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>目录</div><div class=toc__menu><nav id=TableOfContents><ul><li><ul><li><a href=#一回顾国外站点github自动构建发布>一、回顾『国外站点<code>gitHub</code>』自动构建发布</a></li><li><a href=#二国内站点gitee同步构建发布>二、『国内站点<code>gitee</code>』同步构建发布</a><ul><li><a href=#1-secrets配置>1. <code>secrets</code>配置</a></li><li><a href=#2非同名仓库代码同步问题yikunhub-mirror-actionmaster>2.『非同名仓库』代码同步问题：<code>Yikun/hub-mirror-action@master</code></a></li><li><a href=#3-国内站点gitee-page发布问题yanglbmegitee-pages-actionmain>3. 国内站点<code>Gitee Page</code>发布问题：<code>yanglbme/gitee-pages-action@main</code></a></li></ul></li><li><a href=#三双站点自动化同步构建发布完整配置>三、双站点『自动化同步构建发布』完整配置</a></li><li><a href=#参考>参考</a></li></ul></li></ul></nav></div></div><div class="content post__content clearfix"><hr><h2 id=一回顾国外站点github自动构建发布>一、回顾『国外站点<code>gitHub</code>』自动构建发布</h2><p><code>GitHub Action + Hugo 自动构建发布个人博客</code>请参考这里：<a href=https://lianpf.gitee.io/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/01.%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%8D%9A%E5%AE%A2/>自动化构建博客</a></p><hr><h2 id=二国内站点gitee同步构建发布>二、『国内站点<code>gitee</code>』同步构建发布</h2><p>因为不使用付费的<code>Gitee Pages Pro</code>服务，那么<code>Gitee</code>不能像<code>GitHub</code>一样自动部署<code>Pages</code>，而我们又想实现<code>Blogs</code>国外和国内两个站点的同步构建发布。那么思路如下：</p><ul><li>首先保证使用<code>GitHub Actions</code>，可以实现国外站点的自动构建发布</li><li>同步<code>GitHub</code>代码到<code>Gitee</code>: 使用<code>GitHub actions</code> <code>Yikun/hub-mirror-action@master</code></li><li><code>Gitee</code>构建发布：<code>yanglbme/gitee-pages-action@main</code></li></ul><h3 id=1-secrets配置>1. <code>secrets</code>配置</h3><p>在执行<code>gitHub Actions</code>脚本的仓库里：</p><ul><li>配置<code>secrets.GITEE_PRIVATE_KEY</code></li><li>配置<code>secrets.GITEE_TOKEN</code></li><li>配置<code>secrets.GITEE_PASSWORD</code></li></ul><p>注意：</p><ul><li>配置<code>secrets</code>的仓库，是执行<code>Actions</code>的仓库<code>xxx/Blogs.git</code>，而不是国外站点静态文件存储仓库<code>xxx/xxx.github.io.git</code></li><li>配置<code>secrets</code>的位置是在<code>xxx/Blogs.git</code>仓库的<code>Settings -> Secrets -> Actions</code>位置，点击 <code>New repository secret</code></li><li><code>secrets.GITEE_PRIVATE_KEY</code>配置一定要是『本地的密钥对』全局<code>ssh key</code>的密钥，我这里配置的是<code>id_rsa</code></li><li><code>secrets.GITEE_PRIVATE_KEY</code>对应的公钥(<code>id_rsa.pub</code>)，要配置在『需要同步的远程仓库』里，我这里是<code>Gitee</code></li></ul><blockquote><p><code>ssh</code>生成参考：<a href=https://lianpf.gitee.io/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/06.git%E4%B8%ADssh%E4%B8%8Ehttps/>git中ssh与https | Blogs</a></p></blockquote><h3 id=2非同名仓库代码同步问题yikunhub-mirror-actionmaster>2.『非同名仓库』代码同步问题：<code>Yikun/hub-mirror-action@master</code></h3><ul><li>使用<code>Yikun/hub-mirror-action@master</code>可实现从<code>GitHub</code>到<code>Gitee</code>的代码同步</li><li>但对于国外站点<code>lianpf.github.io</code>和国内站点<code>lianpf</code>仓库不同名的问题，需要增加配置：<code>mappings: "lianpf.github.io=>lianpf"</code></li></ul><p>使用配置如下：</p><pre><code>name: GiteePages
+
+...
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Sync to Gitee
+        uses: Yikun/hub-mirror-action@master
+        with:
+          # 替换为你的 GitHub 用户名
+          src: github/lianpf
+          # 替换为你的 Gitee 用户名
+          dst: gitee/lianpf
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token:  ${{ secrets.GITEE_TOKEN }}
+          # 仓库名不同时，同步
+          mappings: &quot;lianpf.github.io=&gt;lianpf&quot;
+          static_list: &quot;lianpf.github.io&quot;
+          force_update: true
+          debug: true
+      ...
+
+</code></pre><h3 id=3-国内站点gitee-page发布问题yanglbmegitee-pages-actionmain>3. 国内站点<code>Gitee Page</code>发布问题：<code>yanglbme/gitee-pages-action@main</code></h3><pre><code>name: GiteePages
+...
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      ...
+      - name: Build Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          # 注意替换为你的 Gitee 用户名
+          gitee-username: lianpf
+          # 注意替换为你的 Gitee 用户名
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          # 注意替换为你的 Gitee 仓库，仓库名严格区分大小写，请准确填写，否则会出错
+          gitee-repo: lianpf/lianpf
+          # 要部署的分支，默认是 master，若是其他分支，则需要指定（指定的分支必须存在）
+          branch: master
+</code></pre><hr><h2 id=三双站点自动化同步构建发布完整配置>三、双站点『自动化同步构建发布』完整配置</h2><pre><code>name: GitHubPages
+
+on:
+  push:
+    branches:
+      - master  # 设置部署分支
+    paths-ignore: # 忽略文件
+      - 'README.md'
+      - '.env'
+      - '.gitignore'
+      - 'bin'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      # - name: Read .env
+      #   id: hugo-version
+      #   run: |
+      #     . ./.env
+      #     echo &quot;::set-output name=HUGO_VERSION::${HUGO_VERSION}&quot;
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          # hugo-version: '${{ steps.hugo-version.outputs.HUGO_VERSION }}'
+          hugo-version: '0.75.1' # 0.75.1 latest
+          extended: true
+          
+      - name: Build
+        run: |
+          hugo --minify
+          echo -e &quot;Generated by Hugo.\nLatest build: $(date).\n&quot; &gt; public/README
+
+      - name: Deploy GitHub
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          external_repository: lianpf/lianpf.github.io
+          publish_branch: master
+          publish_dir: ./public
+      
+      - name: Sync to Gitee
+        uses: Yikun/hub-mirror-action@master
+        with:
+          # 替换为你的 GitHub 用户名
+          src: github/lianpf
+          # 替换为你的 Gitee 用户名
+          dst: gitee/lianpf
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token:  ${{ secrets.GITEE_TOKEN }}
+          # 仓库名不同时，同步
+          mappings: &quot;lianpf.github.io=&gt;lianpf&quot;
+          static_list: &quot;lianpf.github.io&quot;
+          force_update: true
+          debug: true
+
+      - name: Build And Deploy Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          # 注意替换为你的 Gitee 用户名
+          gitee-username: lianpf
+          # 注意替换为你的 Gitee 用户名
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          # 注意替换为你的 Gitee 仓库，仓库名严格区分大小写，请准确填写，否则会出错
+          gitee-repo: lianpf/lianpf
+          # 要部署的分支，默认是 master，若是其他分支，则需要指定（指定的分支必须存在）
+          branch: master
+
+</code></pre><hr><h2 id=参考>参考</h2><ul><li><a href=https://github.com/wearerequired/git-mirror-action>wearerequired/git-mirror-action@master</a></li><li><a href=https://github.com/marketplace/actions/gitee-pages-action>yanglbme/gitee-pages-action</a></li><li><a href=https://github.com/mqyqingfeng/Blog/issues/238>Gitee 如何自动部署 Pages |
+冴羽</a></li></ul><hr><p><strong>最后， 希望大家早日实现：成为编程高手的伟大梦想！</strong><br><strong>欢迎交流~</strong></p><p><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286></p><p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong><br><strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/ rel=tag>工程化</a></li><li class=tags__item><a class="tags__link btn" href=/tags/%E5%B7%A5%E5%85%B7/ rel=tag>工具</a></li></ul></div></footer></article></main><div class="authorbox clearfix"><figure class=authorbox__avatar><img alt="曜灵 avatar" src=/img-common/avatar1.jpeg class=avatar height=90 width=90></figure><div class=authorbox__header><span class=authorbox__name>关于 曜灵</span></div><div class=authorbox__description>博主目前就职于X集团上海研发中心-平台工具组，是一名软件开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层、Go Web编程等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目</div></div><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/frontend-develop/react-ssr/ rel=prev><span class=pager__subtitle>«&#8201;上一篇</span><p class=pager__title>React & Vue: SSR同构</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/posts/other/09.hugo-grammar/ rel=next><span class=pager__subtitle>下一篇&#8201;»</span><p class=pager__title>工具: Hugo语法纪要</p></a></div></nav><script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=title label=comments theme=github-light crossorigin=anonymous async></script></div></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2016 - 2024 曜灵（SUN）Site.
+<span class=footer__copyright-credits>基于 <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> 引擎和 <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> 主题</span></div></div></footer><script src=https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js></script><script>addBackToTop({cornerOffset:100,diameter:56,backgroundColor:'#63B8FF',innerHTML:'<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',textColor:'#fff'})</script></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script><script src=/js/highlight/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script></body></html>

@@ -1,0 +1,102 @@
+<!doctype html><html class=no-js lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>JavaScript: H5和native利用JsBridge交互 - 曜灵（SUN）Site</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><meta property="og:title" content="JavaScript: H5和native利用JsBridge交互"><meta property="og:description" content="H5和native利用JSBridge交互，其中涉及到了一些和ios交互的callHandler框架，WebViewJavascriptBridge相关的原理还待补充&mldr;"><meta property="og:type" content="article"><meta property="og:url" content="/posts/other/34.h5%E5%92%8Cnative%E5%88%A9%E7%94%A8jsbridge%E4%BA%A4%E4%BA%92/"><meta property="article:published_time" content="2017-09-17T00:00:00+00:00"><meta property="article:modified_time" content="2017-09-17T00:00:00+00:00"><meta itemprop=name content="JavaScript: H5和native利用JsBridge交互"><meta itemprop=description content="H5和native利用JSBridge交互，其中涉及到了一些和ios交互的callHandler框架，WebViewJavascriptBridge相关的原理还待补充&mldr;"><meta itemprop=datePublished content="2017-09-17T00:00:00+00:00"><meta itemprop=dateModified content="2017-09-17T00:00:00+00:00"><meta itemprop=wordCount content="1065"><meta itemprop=keywords content="JS,Hybrid,"><meta name=twitter:card content="summary"><meta name=twitter:title content="JavaScript: H5和native利用JsBridge交互"><meta name=twitter:description content="H5和native利用JSBridge交互，其中涉及到了一些和ios交互的callHandler框架，WebViewJavascriptBridge相关的原理还待补充&mldr;"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/js/highlight/styles/agate.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.png><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><style type=text/css>pre{padding:0}</style></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class="logo logo--mixed"><a class=logo__link href=/ title=曜灵（SUN）Site rel=home><div class="logo__item logo__imagebox"><img class=logo__img src=/img-common/avatar1.jpeg></div><div class="logo__item logo__text"><div class=logo__title>曜灵（SUN）Site</div><div class=logo__tagline>🌝 带着 "偏见" 去理解技术的世界</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
+<span class=menu__btn-title tabindex=-1>菜单</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>首页</span></a></li><li class=menu__item><a class=menu__link href=/about/me/><span class=menu__text>博主</span></a></li><li class=menu__item><a class=menu__link href=/about/site/><span class=menu__text>站点</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io><span class=menu__text>编辑</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io/issues><span class=menu__text>反馈</span></a></li><li class=menu__item><a class=menu__link href=/search/><span class=menu__text>搜索</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>JavaScript: H5和native利用JsBridge交互</h1><div class="post__meta meta"><div class="meta__item-author meta__item"><svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span></div><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2017-09-17T00:00:00Z>2017-09-17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E5%85%B6%E4%BB%96/ rel=category>其他</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>目录</div><div class=toc__menu><nav id=TableOfContents><ul><li><ul><li><a href=#一基本用法使用>一.基本用法使用</a><ul><li><a href=#bridge文件>bridge文件</a></li><li><a href=#js调用文件>js调用文件</a></li></ul></li><li><a href=#二重点>二.重点</a><ul><li><a href=#数据>数据</a></li><li><a href=#js端调用native需要native回传数据>js端调用native需要native回传数据</a></li></ul></li></ul></li></ul></nav></div></div><div class="content post__content clearfix"><p>H5和native利用JSBridge交互，其中涉及到了一些和ios交互的callHandler框架，WebViewJavascriptBridge相关的原理还待补充&mldr;</p><h2 id=一基本用法使用>一.基本用法使用</h2><h3 id=bridge文件>bridge文件</h3><p>bridge文件是原生调用native的基础，大致需要这么几步完成:
+1.建立AppClient对象</p><pre><code>function AppClient(appObj, isAndroid) {
+	this.appObj = appObj;
+	this.isAndroid = isAndroid;
+};
+</code></pre><p>2.建立js文件调用native的方法</p><pre><code>AppClient.prototype.closePage = function() {
+  if (this.isAndroid) {
+    this.appObj.closePageAction();
+  } else {
+    this.appObj.callHandler(&quot;closePageAction&quot;);
+  }
+}
+</code></pre><p>注：closePage()就是js文件调用native关闭页面的方法，&ldquo;closePageAction"是native端暴露给js端关闭
+页面的操作。</p><h3 id=js调用文件>js调用文件</h3><p>1.init AppClient对象</p><pre><code>if(window.android) {
+    appClient = new AppClient(window.android, true);
+    // 此处可以调用一些init的方法
+  } else {
+    function setupWebViewJavascriptBridge(callback) {
+      if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+      if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+      window.WVJBCallbacks = [callback];
+      var WVJBIframe = document.createElement('iframe');
+      WVJBIframe.style.display = 'none';
+      WVJBIframe.src = 'https://__bridge_loaded__';
+      document.documentElement.appendChild(WVJBIframe);
+      setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+    }
+
+    setupWebViewJavascriptBridge(function(bridge) {
+      appClient = new AppClient(bridge, false);
+      // 此处可以调用一些init的方法
+    });
+  }
+</code></pre><p>2.调用，依旧closePage()为例：</p><pre><code>appClient.closePage();
+</code></pre><h2 id=二重点>二.重点</h2><h3 id=数据>数据</h3><p>1.native存在多线程，所以在js端h5页面在获取接口数据时，需要设置ajax异步(以jQuery为例：async：true)
+2.js实现异步的几种途径：
+(1) 在异步获取数据成功之后，再去继续下一步操作，以jQuery为例：
+在success回调函数里面，执行接下来的操作</p><pre><code>$.ajax({
+    headers: {
+      Accept: &quot;application/json; charset=utf-8&quot;,
+      basicParams: JSON.stringify(appData),
+    },
+    url:staticUrl + url,
+    type:'POST',
+    dataType:&quot;json&quot;,
+    data: params,
+    async:true,
+    cache:false,
+    contentType:'application/json',
+    processData:false,
+    success:function(data){
+        // 你的下一步操作
+    },
+    error:function(data){
+      console.log(&quot;---出现错误---&quot;+ JSON.stringify(data));
+    }
+  });
+</code></pre><p>(2)ES6原生提供的Promise对象，将异步操作以同步操作的流程表达出来</p><pre><code>var promise = new Promise(function(resolve, reject) {
+ if (/* 异步操作成功 */){
+ resolve(value);
+ } else {
+ reject(error);
+ }
+});
+
+promise.then(function(value) {
+ // success  你的下一步操作
+}, function(value) {
+ // failure
+});
+
+</code></pre><h3 id=js端调用native需要native回传数据>js端调用native需要native回传数据</h3><p>1.定义native回调js端的函数
+(1)invokeJsPassCompanyCodeAndName()即native调用js的函数，必须放在window全局对象下,
+否则native可能会调不到；
+(2)ios端利用callHandler框架回传的数据只能是json对象的形式</p><pre><code>window.invokeJsPassCompanyCodeAndName = function(_params) {
+  companyCode = _params.companyCode;
+  companyName = _params.companyName;
+  var jsonStr = &quot;&quot;;
+  getSign(jsonStr);
+}
+</code></pre><p>2.js端调用native</p><pre><code>appClient.getSignedParams(&quot;jsDataAction&quot;, jsDataAction, ajaxRequestStr);
+
+</code></pre><p>注：三个参数（callbackName, callback, params）回调函数名称，回调函数，给native传的参数</p><p>3.bridge文件</p><pre><code>AppClient.prototype.getSignedParams = function (callbackName, callback, jsonStr) {
+  var dataParams = &quot;&quot;;
+  if(isJson(jsonStr)){
+    dataParams = JSON.parse(jsonStr);
+  }
+  var iOSData = {
+    from: 'H5',
+    params: dataParams
+  };
+
+  if (this.isAndroid) {
+    this.appObj.getSignedParamsAction('H5', jsonStr);
+  } else {
+    this.appObj.callHandler(&quot;getSignedParamsAction&quot;, iOSData, callback);
+  }
+};
+
+</code></pre><p>注：利用callHandler给native传参数时，iOSData必须是一个json对象</p><hr><p><strong>最后， 希望大家早日实现：成为编程高手的伟大梦想！</strong><br><strong>欢迎交流~</strong></p><figure><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286></figure></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/js/ rel=tag>JS</a></li><li class=tags__item><a class="tags__link btn" href=/tags/hybrid/ rel=tag>Hybrid</a></li></ul></div></footer></article></main><div class="authorbox clearfix"><figure class=authorbox__avatar><img alt="曜灵 avatar" src=/img-common/avatar1.jpeg class=avatar height=90 width=90></figure><div class=authorbox__header><span class=authorbox__name>关于 曜灵</span></div><div class=authorbox__description>博主目前就职于X集团上海研发中心-平台工具组，是一名软件开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层、Go Web编程等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目</div></div><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/other/mac-system-env-config/ rel=prev><span class=pager__subtitle>«&#8201;上一篇</span><p class=pager__title>Mac系统/软件版本配置问题汇总</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/posts/other/06.git%E4%B8%ADssh%E4%B8%8Ehttps/ rel=next><span class=pager__subtitle>下一篇&#8201;»</span><p class=pager__title>Git 中 ssh key、https 配置及用户名、邮箱基本信息配置</p></a></div></nav><script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=title label=comments theme=github-light crossorigin=anonymous async></script></div></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2016 - 2024 曜灵（SUN）Site.
+<span class=footer__copyright-credits>基于 <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> 引擎和 <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> 主题</span></div></div></footer><script src=https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js></script><script>addBackToTop({cornerOffset:100,diameter:56,backgroundColor:'#63B8FF',innerHTML:'<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',textColor:'#fff'})</script></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script><script src=/js/highlight/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script></body></html>

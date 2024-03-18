@@ -1,0 +1,63 @@
+<!doctype html><html class=no-js lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>VPN: Adblock Plus Filters自定义规则 - 曜灵（SUN）Site</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><meta property="og:title" content="VPN: Adblock Plus Filters自定义规则"><meta property="og:description" content="SSR工具PAC模式 Adblock Plus Filters自定义规则&mldr;"><meta property="og:type" content="article"><meta property="og:url" content="/posts/other/35.vpn-ssr-adblock-filters/"><meta property="article:published_time" content="2023-05-22T09:52:01+08:00"><meta property="article:modified_time" content="2023-05-22T09:52:01+08:00"><meta itemprop=name content="VPN: Adblock Plus Filters自定义规则"><meta itemprop=description content="SSR工具PAC模式 Adblock Plus Filters自定义规则&mldr;"><meta itemprop=datePublished content="2023-05-22T09:52:01+08:00"><meta itemprop=dateModified content="2023-05-22T09:52:01+08:00"><meta itemprop=wordCount content="722"><meta itemprop=keywords content="工具,"><meta name=twitter:card content="summary"><meta name=twitter:title content="VPN: Adblock Plus Filters自定义规则"><meta name=twitter:description content="SSR工具PAC模式 Adblock Plus Filters自定义规则&mldr;"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/js/highlight/styles/agate.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.png><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><style type=text/css>pre{padding:0}</style></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class="logo logo--mixed"><a class=logo__link href=/ title=曜灵（SUN）Site rel=home><div class="logo__item logo__imagebox"><img class=logo__img src=/img-common/avatar1.jpeg></div><div class="logo__item logo__text"><div class=logo__title>曜灵（SUN）Site</div><div class=logo__tagline>🌝 带着 "偏见" 去理解技术的世界</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
+<span class=menu__btn-title tabindex=-1>菜单</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>首页</span></a></li><li class=menu__item><a class=menu__link href=/about/me/><span class=menu__text>博主</span></a></li><li class=menu__item><a class=menu__link href=/about/site/><span class=menu__text>站点</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io><span class=menu__text>编辑</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io/issues><span class=menu__text>反馈</span></a></li><li class=menu__item><a class=menu__link href=/search/><span class=menu__text>搜索</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>VPN: Adblock Plus Filters自定义规则</h1><div class="post__meta meta"><div class="meta__item-author meta__item"><svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span></div><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2023-05-22T09:52:01+08:00>2023-05-22</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E5%85%B6%E4%BB%96/ rel=category>其他</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>目录</div><div class=toc__menu><nav id=TableOfContents><ul><li><ul><li><a href=#一adblock-plus-filters自定义规则>一、<code>Adblock Plus Filters</code>自定义规则</a><ul><li><a href=#1-常用ssr工具>1. 常用SSR工具</a></li><li><a href=#2-自定义规则>2. 自定义规则</a></li><li><a href=#3-添加用户自定义规则到ssr>3. 添加「用户自定义规则」到SSR</a></li></ul></li><li><a href=#参考>参考</a></li></ul></li></ul></nav></div></div><div class="content post__content clearfix"><p>SSR工具PAC模式 Adblock Plus Filters自定义规则&mldr;</p><hr><h2 id=一adblock-plus-filters自定义规则>一、<code>Adblock Plus Filters</code>自定义规则</h2><h3 id=1-常用ssr工具>1. 常用SSR工具</h3><ul><li>shadowsocks</li><li>v2ray</li></ul><h3 id=2-自定义规则>2. 自定义规则</h3><p><strong>常用规则</strong>:</p><pre><code># 1.通配符 * — 走代理
+# 表示任何字符串，任何满足条件的都走代理。如:
+*.example.com/*
+匹配:
+https://www.example.com
+https://image.example.com
+https://image.example.com/abcd
+
+# 2.例外规则 @@ — 不走代理
+# 任何满足@@后面规则的地址，都不走代理。如:
+@@*.example.com/\*
+匹配:
+https://www.example.com
+https://image.example.com
+https://image.example.com/abcd
+
+# 3. || 标记
+# 只匹配域名的结尾 —— 走代理
+||example.com
+
+# 4. | 标记
+# 匹配地址的开头和结尾 —— 走代理
+|https://example.com # 以https://example.com开头的地址
+example.com| # 以example.com结尾的地址
+
+# 5. ! 标记
+# !后面的内容表示注释，以!开头的规则也会无效
+</code></pre><p><strong>GFW List</strong>内常用域名匹配白名单：</p><pre><code># 可点击SSR软件的PAC配置，从GFW List名单查看更多：
+# 地址为: http://127.0.0.1:11085/pac/proxy.js
+# 走代理
+||github.com
+||github.io
+||jsdelivr.net
+.google.com
+...
+
+# 不走代理
+@@||aliyun.com
+@@||baidu.com
+@@||chinaso.com
+@@||chinaz.com
+@@||qq.com
+@@||sina.cn
+...
+</code></pre><h3 id=3-添加用户自定义规则到ssr>3. 添加「用户自定义规则」到SSR</h3><blockquote><p>PAC模式下，v2ray等会自动选择GFW List里的网址使用代理。但因为在「墙内」，你希望走代理访问的网址，可能不被包含在默认PAC列表里。所以，需要我们添加「用户自定义规则」来实现访问特定网站时走代理。</p></blockquote><p><strong>(1) 示例规则Demo</strong></p><pre><code>!走搭理的所有域名地址
+||google.*
+||npmjs.com
+||mozilla.*
+||poe.com
+||openai.com
+
+!不走代理的所有域名地址
+@@||gitee.com
+@@||csdn.net
+@@||juejin.cn
+@@||leetcode.cn
+@@||webgl3d.cn
+
+!在职公司的域名地址
+@@.baidu.com
+</code></pre><p><strong>(2) 添加用户自定义规则</strong></p><blockquote><p>打开<strong>SSR软件（v2ray、shadowsocks等）的PAC设置</strong>，添加上面(1)中的用户自定义demo规则。</p></blockquote><p><img alt=pac用户自定义规则 src=https://cdn.jsdelivr.net/gh/lianpf/image-bed@main/blog/2023/20230530-001@2x.png width=500></p><hr><h2 id=参考>参考</h2><ul><li><a href=https://www.oldboard.tech/2021/03/02/shadowsocks-pac.html>Shadowsocks PAC模式自定义规则</a></li><li><a href=https://juejin.cn/post/6987951479361372167>ShadowSocks 自定义规则</a></li><li><a href=https://adblockplus.org/en/filter-cheatsheet>Adblock Plus filters官方</a></li></ul><hr><p><strong>最后， 希望大家早日实现：成为编程高手的伟大梦想！</strong><br><strong>欢迎交流~</strong></p><p><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286></p><p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong><br><strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/%E5%B7%A5%E5%85%B7/ rel=tag>工具</a></li></ul></div></footer></article></main><div class="authorbox clearfix"><figure class=authorbox__avatar><img alt="曜灵 avatar" src=/img-common/avatar1.jpeg class=avatar height=90 width=90></figure><div class=authorbox__header><span class=authorbox__name>关于 曜灵</span></div><div class=authorbox__description>博主目前就职于X集团上海研发中心-平台工具组，是一名软件开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层、Go Web编程等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目</div></div><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/backend-develop/14.go-websocket/ rel=prev><span class=pager__subtitle>«&#8201;上一篇</span><p class=pager__title>Go: Websocket</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/posts/other/36.chrome-setting/ rel=next><span class=pager__subtitle>下一篇&#8201;»</span><p class=pager__title>浏览器: Chrome的配置和问题</p></a></div></nav><script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=title label=comments theme=github-light crossorigin=anonymous async></script></div></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2016 - 2024 曜灵（SUN）Site.
+<span class=footer__copyright-credits>基于 <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> 引擎和 <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> 主题</span></div></div></footer><script src=https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js></script><script>addBackToTop({cornerOffset:100,diameter:56,backgroundColor:'#63B8FF',innerHTML:'<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',textColor:'#fff'})</script></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script><script src=/js/highlight/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script></body></html>
