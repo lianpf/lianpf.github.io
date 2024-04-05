@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>设计模式 on 曜灵（SUN）Site</title><link>/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link><description>Recent content in 设计模式 on 曜灵（SUN）Site</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 20 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml"/><item><title>设计模式: 聊一聊JavaScript设计模式（一）</title><link>/posts/computer-basics/02.js-design-pattern-i/</link><pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate><guid>/posts/computer-basics/02.js-design-pattern-i/</guid><description>&lt;p>一个模式就是一个可重用的方案。当代码是建立在行之有效的模式上时,我们可以花更少的时间去关心我们的代码结构,从而能花&amp;hellip;&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>设计模式 on 曜灵（SUN）Site</title>
+    <link>https://lianpf.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in 设计模式 on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 20 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://lianpf.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>设计模式: 聊一聊JavaScript设计模式（一）</title>
+      <link>https://lianpf.github.io/posts/computer-basics/02.js-design-pattern-i/</link>
+      <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/02.js-design-pattern-i/</guid>
+      <description>&lt;p&gt;一个模式就是一个可重用的方案。当代码是建立在行之有效的模式上时,我们可以花更少的时间去关心我们的代码结构,从而能花&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,168 +1,208 @@
-<!doctype html><html class=no-js lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>JavaScript之你不知道的this - 曜灵（SUN）Site</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><meta property="og:title" content="JavaScript之你不知道的this"><meta property="og:description" content="很重要的一句话 只有掌握了如何创建、关联和扩展对象，你才能用 JavaScript"><meta property="og:type" content="article"><meta property="og:url" content="/posts/frontend-develop/js-unknown/"><meta property="article:published_time" content="2018-11-06T00:00:00+00:00"><meta property="article:modified_time" content="2020-09-04T01:12:37+08:00"><meta itemprop=name content="JavaScript之你不知道的this"><meta itemprop=description content="很重要的一句话 只有掌握了如何创建、关联和扩展对象，你才能用 JavaScript"><meta itemprop=datePublished content="2018-11-06T00:00:00+00:00"><meta itemprop=dateModified content="2020-09-04T01:12:37+08:00"><meta itemprop=wordCount content="2793"><meta itemprop=keywords content="JS,"><meta name=twitter:card content="summary"><meta name=twitter:title content="JavaScript之你不知道的this"><meta name=twitter:description content="很重要的一句话 只有掌握了如何创建、关联和扩展对象，你才能用 JavaScript"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/js/highlight/styles/agate.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.png><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><style type=text/css>pre{padding:0}</style></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class="logo logo--mixed"><a class=logo__link href=/ title=曜灵（SUN）Site rel=home><div class="logo__item logo__imagebox"><img class=logo__img src=/img-common/avatar1.jpeg></div><div class="logo__item logo__text"><div class=logo__title>曜灵（SUN）Site</div><div class=logo__tagline>🌝 带着 "偏见" 去理解技术的世界</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
-<span class=menu__btn-title tabindex=-1>菜单</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>首页</span></a></li><li class=menu__item><a class=menu__link href=/about/me/><span class=menu__text>博主</span></a></li><li class=menu__item><a class=menu__link href=/about/site/><span class=menu__text>站点</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io><span class=menu__text>编辑</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io/issues><span class=menu__text>反馈</span></a></li><li class=menu__item><a class=menu__link href=/search/><span class=menu__text>搜索</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>JavaScript之你不知道的this</h1><div class="post__meta meta"><div class="meta__item-author meta__item"><svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span></div><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2018-11-06T00:00:00Z>2018-11-06</time>
-<time class=meta__text datetime=2020-09-04T01:12:37+08:00>(最后修改: 2020-09-04)</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ rel=category>前端开发</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>目录</div><div class=toc__menu><nav id=TableOfContents><ul><li><ul><li><ul><li><a href=#很重要的一句话>很重要的一句话</a></li><li><a href=#一这篇文章出现的背景>一、这篇文章出现的背景</a><ul><li><a href=#1-this在我们开发过程中的重要性开发场景----通过一段代码简单了解this>1. this在我们开发过程中的重要性(开发场景) &ndash; 通过一段代码简单了解this</a></li><li><a href=#2两种错误的理解>2.两种错误的理解</a></li><li><a href=#3本质>3.本质</a></li></ul></li><li><a href=#二this-绑定规则--优先级>二、this 绑定规则 & 优先级</a><ul><li><a href=#1-默认绑定>1. 默认绑定</a></li><li><a href=#2-隐式绑定>2. 隐式绑定</a></li><li><a href=#3-显示绑定>3. 显示绑定</a></li><li><a href=#4-new绑定>4. new绑定</a></li></ul></li><li><a href=#三绑定例外>三、绑定例外</a><ul><li><a href=#1-箭头函数>1. 箭头函数</a></li><li><a href=#2-被忽略的this>2. 被忽略的this</a></li></ul></li><li><a href=#四隐式绑定丢失>四、(隐式)绑定丢失</a><ul><li><a href=#1-引用赋值丢失>1. 引用赋值丢失</a></li><li><a href=#2-传参丢失>2. 传参丢失</a></li><li><a href=#3-回调函数丢失>3. 回调函数丢失</a></li></ul></li><li><a href=#总结>总结</a></li></ul></li></ul></li></ul></nav></div></div><div class="content post__content clearfix"><h3 id=很重要的一句话>很重要的一句话</h3><blockquote><p>只有掌握了如何创建、关联和扩展对象，你才能用 JavaScript 创建类似谷歌地图这样大型的复杂应用</p></blockquote><hr><h3 id=一这篇文章出现的背景>一、这篇文章出现的背景</h3><h4 id=1-this在我们开发过程中的重要性开发场景----通过一段代码简单了解this>1. this在我们开发过程中的重要性(开发场景) &ndash; 通过一段代码简单了解this</h4><blockquote><p>提供了一种更优雅的方式来隐式”传递”一个对象引用, 让API设计更加简洁和清晰</p></blockquote><p>首先来看一段代码, 此处不使用this, 需要给identify()和speak()显示的传入一个上下文对象:</p><pre><code>// 定义 you &amp; me对象
-var me = {
-    name: &quot;Kyle&quot;
-};
-var you = {
-    name: &quot;Reader&quot;
-};
-
-function identify(context) {
-    return context.name.toUpperCase();
-}
-function speak(context) {
-    var greeting = &quot;Hello, I'm &quot; + identify( context );
-    console.log( greeting );
-}
-
-identify( you ); // READER
-speak( me ); //hello, 我是 KYLE
-</code></pre><p>使用this解决: 可以在不同的上下文对象(me 和 you)中重复使用函数identify()和speak()</p><pre><code>function identify() {
-    return this.name.toUpperCase();
-}
-function speak() {
-    var greeting = &quot;Hello, I'm &quot; + identify.call( this );
-    console.log( greeting );
-}
-
-identify.call( me ); // KYLE
-identify.call( you ); // READER
-
-speak.call( me ); // Hello, 我是 KYLE
-speak.call( you ); // Hello, 我是 READER
-</code></pre><p>显然, 随着你的使用模式越来越复杂, 显式传递上下文对象会让代码变得越来越混乱, this可以让你的代码变得更优雅。
-特别是当你使用对象(关联)和原型时, 利用this使得函数可以自动引用合适的上下文对象显的尤为重要</p><h4 id=2两种错误的理解>2.两种错误的理解</h4><ul><li>this指向函数自身</li><li>this指向函数的作用域, 这个在某些情况下是正确的, 但是在其他情况下确实错误的</li></ul><p>事实上, 一部分人认为"this既不指向函数自身也不指向函数的词法作用域", 但是也是不对的, 在某
-种情况下, this就指向函数自身, 也可能指向词法作用域</p><h4 id=3本质>3.本质</h4><blockquote><p>this是在运行(函数被调用)时发生绑定的,并不是在编写时绑定, 它的上下文取决于函数调用时的各种条件,
-它指向什么完全取决于函数在哪里被调用</p></blockquote><hr><h3 id=二this-绑定规则--优先级>二、this 绑定规则 & 优先级</h3><p>简单来说, 有这大致四种</p><ol><li>由new调用(new绑定)</li><li>函数是否通过call、apply(显式绑定)或者硬绑定调用</li><li>函数是否在某个上下文对象中调用(隐式绑定)</li><li>默认绑定</li></ol><h4 id=1-默认绑定>1. 默认绑定</h4><blockquote><p>无法应用其他规则时的默认规则, 严格模式下绑定到undefined, 否则绑定到全局对象</p></blockquote><p>最常用的函数调用类型:独立函数调用</p><pre><code>function foo() {
-    console.log( this.a );
-}
-
-var a = 2;
-foo(); // 2
-</code></pre><p>代码中, foo()是直接使用不带任何修饰的函数引用进行调用的,只能适用于this的默认绑定,无法应用其他规则,
-因此this指向全局对象</p><pre><code>// 严格模式下
-function foo() {
-    &quot;use strict&quot;;
-    console.log( this.a );
-}
-
-var a = 2;
-foo(); // TypeError: this is undefined
-</code></pre><p>所以, 不推荐这种写法。</p><h4 id=2-隐式绑定>2. 隐式绑定</h4><p>考虑调用位置是否有上下文对象,或者说是否被某个对象或者包含</p><blockquote><p>当函数引用有上下文对象时,隐式绑定规则会把函数调用中的this绑定到这个上下文对象</p></blockquote><p><strong>必须在一个对象内部包含一个指向函数的属性，并通过这个属性间接引用函数，从而把 this 间接(隐式)绑定到这个对象上</strong></p><pre><code>function foo() {
-    console.log(this.a);
-}
-var obj = {
-    a: 2,
-    foo: foo
-};
-
-obj.foo(); // 2
-</code></pre><p><strong>对象属性引用链中只有最后一层会影响调用位置, 即调用栈的末端</strong></p><pre><code>function foo() {
-    console.log( this.a );
-}
-var obj2 = {
-    a: 42,
-    foo: foo
-};
-var obj1 = {
-    a: 2,
-    obj2: obj2
-};
-
-obj1.obj2.foo(); // 42
-</code></pre><h4 id=3-显示绑定>3. 显示绑定</h4><p>强制指定某些对象对函数进行调用，this则强制指向调用函数的对象</p><ul><li>call(thisObj, arg1, arg2, arg3&mldr;)</li><li>apply(thisObj, argArr)</li><li>ES5 中提供了内置的方法 硬绑定bind(thisObj)</li></ul><p>显示绑定场景</p><pre><code>function foo() {
-    console.log( this.a );
-}
-var obj = {
-    a:2
-};
-
-foo.call( obj ); // 2
-</code></pre><p>硬绑定常用场景</p><pre><code>function foo(something) {
-    console.log( this.a, something );
-    return this.a + something;
-}
-var obj = {
-    a:2
-};
-
-var bar = foo.bind( obj );
-var b = bar( 3 ); // 2 3
-console.log( b ); // 5
-</code></pre><h4 id=4-new绑定>4. new绑定</h4><p>new方式优先级最高，只要是使用new方式来调用一个构造函数，this一定会指向new调用函数新创建的对象</p><pre><code>function foo(a) {
-    this.a = a;
-}
-var bar = new foo(2);
-
-console.log( bar.a ); // 2
-</code></pre><hr><h3 id=三绑定例外>三、绑定例外</h3><h4 id=1-箭头函数>1. 箭头函数</h4><p>实际原因是箭头函数根本没有自己的this</p><blockquote><p>this指向的固定化，并不是因为箭头函数内部有绑定this的机制, 实际原因箭头函数没有自己的this，它的this是继承而来，默认指向在定义它时所处的对象(宿主对象)。
-捕获其所在（即定义的位置）上下文的this值，作为自己的this值, 如果在当前的箭头函数作用域中找不到变量，就像上一级作用域里去找, 导致内部的this就是外层代码块的this</p></blockquote><pre><code>// demo 1
-function foo() {
-	 setTimeout(() =&gt; {
-	    console.log('id:', this.id);
-	  }, 100);
-}
-var id = 21;
-foo.call({ id: 42 }) // id: 42
-
-//demo 2
-function Person() {
-    this.name = 'dog';
-    this.age = '18';
-    setTimeout( () =&gt; {
-        console.log(this);
-        console.log('my name:' + this.name + '&amp; my age:' + this.age)
-    }, 1000)
-}
-var p = Person();
-
-</code></pre><h4 id=2-被忽略的this>2. 被忽略的this</h4><blockquote><p>当被绑定的是null，则使用的是默认绑定规则</p></blockquote><pre><code>// 如果你把 null 或者 undefined 作为 this 的绑定对象传入 call 、 apply 或者 bind ，这些值在调用时会被忽略，
-实际应用的是默认绑定规则
-function foo() {
-	console.log( this.a );
-}
-var a = 2222;
-foo.call( null ); // 2222
-</code></pre><hr><h3 id=四隐式绑定丢失>四、(隐式)绑定丢失</h3><blockquote><p>最常见的this绑定问题就是被隐式绑定的函数会丢失绑定对象,也是就说它会应用默认绑定,从而把this绑定到全局对象或者undefined上,取决于是否是严格模式</p></blockquote><h4 id=1-引用赋值丢失>1. 引用赋值丢失</h4><pre><code>function foo() {
-    console.log( this.a );
-}
-var obj = {
-    a: 2,
-    foo: foo
-};
-var bar = obj.foo; // 函数别名!
-var a = &quot;oops, global&quot;; // a是全局对象的属性
-
-bar(); // &quot;oops, global&quot;
-</code></pre><blockquote><p>虽然 bar 是 obj.foo 的一个引用，但是实际上，它引用的是 foo 函数本身，这就相当于：var bar = foo，
+<!doctype html><html lang=zh dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>JavaScript之你不知道的this | 曜灵（SUN）Site</title>
+<meta name=keywords content="JS"><meta name=description content="很重要的一句话 只有掌握了如何创建、关联和扩展对象，你才能用 JavaScript"><meta name=author content="曜灵"><link rel=canonical href=https://lianpf.github.io/posts/frontend-develop/js-unknown/><link crossorigin=anonymous href=/assets/css/stylesheet.css rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.js onload=hljs.initHighlightingOnLoad()></script><link rel=icon href=https://lianpf.github.io/img-common/favicon.png><link rel=icon type=image/png sizes=16x16 href=https://lianpf.github.io/img-common/favicon.png><link rel=icon type=image/png sizes=32x32 href=https://lianpf.github.io/img-common/favicon.png><link rel=apple-touch-icon href=https://lianpf.github.io/img-common/avatar.jpeg><link rel=mask-icon href=https://lianpf.github.io/img-common/avatar.jpeg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=zh href=https://lianpf.github.io/posts/frontend-develop/js-unknown/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css><script src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js></script><script>var _hmt=_hmt||[];(function(){var e,t=document.createElement("script");t.src="",e=document.getElementsByTagName("script")[0],e.parentNode.insertBefore(t,e)})()</script><meta property="og:title" content="JavaScript之你不知道的this"><meta property="og:description" content="很重要的一句话 只有掌握了如何创建、关联和扩展对象，你才能用 JavaScript"><meta property="og:type" content="article"><meta property="og:url" content="https://lianpf.github.io/posts/frontend-develop/js-unknown/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2018-11-06T00:00:00+00:00"><meta property="article:modified_time" content="2020-09-04T01:12:37+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="JavaScript之你不知道的this"><meta name=twitter:description content="很重要的一句话 只有掌握了如何创建、关联和扩展对象，你才能用 JavaScript"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"📚文章","item":"https://lianpf.github.io/posts/"},{"@type":"ListItem","position":2,"name":"👨🏻‍💻 前端","item":"https://lianpf.github.io/posts/frontend-develop/"},{"@type":"ListItem","position":3,"name":"JavaScript之你不知道的this","item":"https://lianpf.github.io/posts/frontend-develop/js-unknown/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"JavaScript之你不知道的this","name":"JavaScript之你不知道的this","description":"很重要的一句话 只有掌握了如何创建、关联和扩展对象，你才能用 JavaScript","keywords":["JS"],"articleBody":"很重要的一句话 只有掌握了如何创建、关联和扩展对象，你才能用 JavaScript 创建类似谷歌地图这样大型的复杂应用\n一、这篇文章出现的背景 1. this在我们开发过程中的重要性(开发场景) – 通过一段代码简单了解this 提供了一种更优雅的方式来隐式”传递”一个对象引用, 让API设计更加简洁和清晰\n首先来看一段代码, 此处不使用this, 需要给identify()和speak()显示的传入一个上下文对象:\n// 定义 you \u0026 me对象 var me = { name: \"Kyle\" }; var you = { name: \"Reader\" }; function identify(context) { return context.name.toUpperCase(); } function speak(context) { var greeting = \"Hello, I'm \" + identify( context ); console.log( greeting ); } identify( you ); // READER speak( me ); //hello, 我是 KYLE 使用this解决: 可以在不同的上下文对象(me 和 you)中重复使用函数identify()和speak()\nfunction identify() { return this.name.toUpperCase(); } function speak() { var greeting = \"Hello, I'm \" + identify.call( this ); console.log( greeting ); } identify.call( me ); // KYLE identify.call( you ); // READER speak.call( me ); // Hello, 我是 KYLE speak.call( you ); // Hello, 我是 READER 显然, 随着你的使用模式越来越复杂, 显式传递上下文对象会让代码变得越来越混乱, this可以让你的代码变得更优雅。 特别是当你使用对象(关联)和原型时, 利用this使得函数可以自动引用合适的上下文对象显的尤为重要\n2.两种错误的理解 this指向函数自身 this指向函数的作用域, 这个在某些情况下是正确的, 但是在其他情况下确实错误的 事实上, 一部分人认为\"this既不指向函数自身也不指向函数的词法作用域\", 但是也是不对的, 在某 种情况下, this就指向函数自身, 也可能指向词法作用域\n3.本质 this是在运行(函数被调用)时发生绑定的,并不是在编写时绑定, 它的上下文取决于函数调用时的各种条件, 它指向什么完全取决于函数在哪里被调用\n二、this 绑定规则 \u0026 优先级 简单来说, 有这大致四种\n由new调用(new绑定) 函数是否通过call、apply(显式绑定)或者硬绑定调用 函数是否在某个上下文对象中调用(隐式绑定) 默认绑定 1. 默认绑定 无法应用其他规则时的默认规则, 严格模式下绑定到undefined, 否则绑定到全局对象\n最常用的函数调用类型:独立函数调用\nfunction foo() { console.log( this.a ); } var a = 2; foo(); // 2 代码中, foo()是直接使用不带任何修饰的函数引用进行调用的,只能适用于this的默认绑定,无法应用其他规则, 因此this指向全局对象\n// 严格模式下 function foo() { \"use strict\"; console.log( this.a ); } var a = 2; foo(); // TypeError: this is undefined 所以, 不推荐这种写法。\n2. 隐式绑定 考虑调用位置是否有上下文对象,或者说是否被某个对象或者包含\n当函数引用有上下文对象时,隐式绑定规则会把函数调用中的this绑定到这个上下文对象\n必须在一个对象内部包含一个指向函数的属性，并通过这个属性间接引用函数，从而把 this 间接(隐式)绑定到这个对象上\nfunction foo() { console.log(this.a); } var obj = { a: 2, foo: foo }; obj.foo(); // 2 对象属性引用链中只有最后一层会影响调用位置, 即调用栈的末端\nfunction foo() { console.log( this.a ); } var obj2 = { a: 42, foo: foo }; var obj1 = { a: 2, obj2: obj2 }; obj1.obj2.foo(); // 42 3. 显示绑定 强制指定某些对象对函数进行调用，this则强制指向调用函数的对象\ncall(thisObj, arg1, arg2, arg3…) apply(thisObj, argArr) ES5 中提供了内置的方法 硬绑定bind(thisObj) 显示绑定场景\nfunction foo() { console.log( this.a ); } var obj = { a:2 }; foo.call( obj ); // 2 硬绑定常用场景\nfunction foo(something) { console.log( this.a, something ); return this.a + something; } var obj = { a:2 }; var bar = foo.bind( obj ); var b = bar( 3 ); // 2 3 console.log( b ); // 5 4. new绑定 new方式优先级最高，只要是使用new方式来调用一个构造函数，this一定会指向new调用函数新创建的对象\nfunction foo(a) { this.a = a; } var bar = new foo(2); console.log( bar.a ); // 2 三、绑定例外 1. 箭头函数 实际原因是箭头函数根本没有自己的this\nthis指向的固定化，并不是因为箭头函数内部有绑定this的机制, 实际原因箭头函数没有自己的this，它的this是继承而来，默认指向在定义它时所处的对象(宿主对象)。 捕获其所在（即定义的位置）上下文的this值，作为自己的this值, 如果在当前的箭头函数作用域中找不到变量，就像上一级作用域里去找, 导致内部的this就是外层代码块的this\n// demo 1 function foo() { setTimeout(() =\u003e { console.log('id:', this.id); }, 100); } var id = 21; foo.call({ id: 42 }) // id: 42 //demo 2 function Person() { this.name = 'dog'; this.age = '18'; setTimeout( () =\u003e { console.log(this); console.log('my name:' + this.name + '\u0026 my age:' + this.age) }, 1000) } var p = Person(); 2. 被忽略的this 当被绑定的是null，则使用的是默认绑定规则\n// 如果你把 null 或者 undefined 作为 this 的绑定对象传入 call 、 apply 或者 bind ，这些值在调用时会被忽略， 实际应用的是默认绑定规则 function foo() { console.log( this.a ); } var a = 2222; foo.call( null ); // 2222 四、(隐式)绑定丢失 最常见的this绑定问题就是被隐式绑定的函数会丢失绑定对象,也是就说它会应用默认绑定,从而把this绑定到全局对象或者undefined上,取决于是否是严格模式\n1. 引用赋值丢失 function foo() { console.log( this.a ); } var obj = { a: 2, foo: foo }; var bar = obj.foo; // 函数别名! var a = \"oops, global\"; // a是全局对象的属性 bar(); // \"oops, global\" 虽然 bar 是 obj.foo 的一个引用，但是实际上，它引用的是 foo 函数本身，这就相当于：var bar = foo， obj对象只是一个中间桥梁， obj.foo只起到传递函数的作用，所以bar跟obj对象没有任何关系,此时的 bar() 其实是一个不带任何修饰的函数调用. 而bar本身又不带a属性，因此应用了默认绑定,最后a只能指向window.\n2. 传参丢失 function foo() { console.log( this.a ); } function doFoo(fn) { // fn其实引用的是foo fn(); // \u003c-- 调用位置! } var obj = { a: 2, foo: foo }; var a = \"oops, global\"; // a是全局对象的属性 doFoo( obj.foo ); // \"oops, global\" 参数传递其实就是一种隐式赋值，因此我们传入函数时也会被隐式赋值，所以结果和上一 个例子一样\n3. 回调函数丢失 function thisTo(){ console.log(this.a); } var data={ a:2, foo:thisTo //通过属性引用this所在函数 }; var a=3;//全局属性 setTimeout(data.foo,100);// 3 所谓传参丢失，就是在将包含this的函数作为参数在函数中传递时，this指向改变\nsetTimeout函数的本来写法应该是setTimeout(function(){......},100)； 100ms后执行的函数都在“……”中， 可以将要执行函数定义成var fun = function(){......}, 即:setTimeout(fun,100)，100ms后就有：fun()；所以此时此刻是data.foo作为一个参数，是这样的：setTimeout(thisTo,100);100ms过后执行thisTo()， 实际道理还跟1.1差不多，没有调用thisTo的对象，this只能指向window 实际上你没办法控制回调函数的执行方式,没有办法控制会影响绑定的调用位置. 因此, 回调函数丢失this绑定是非常常见的,甚至更加出乎意料的是,调用回调函数的函数可能会修改this,特别 是在一些流行的JavaScript库中时间处理器会把回调函数的this强制绑定到触发事件的DOM元素上\n总结 四种规则:\n由new调用(new绑定) 通过call、apply(显式绑定)或者硬绑定调用 函数是否在某个上下文对象中调用(隐式绑定) 默认绑定 特殊情况特殊处理:\n箭头函数 被忽略的this 绑定丢失 最后， 希望大家早日实现：成为编程高手的伟大梦想！ 欢迎交流~\n本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！ 若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！\n","wordCount":"2793","inLanguage":"zh","datePublished":"2018-11-06T00:00:00Z","dateModified":"2020-09-04T01:12:37+08:00","author":{"@type":"Person","name":"曜灵"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://lianpf.github.io/posts/frontend-develop/js-unknown/"},"publisher":{"@type":"Organization","name":"曜灵（SUN）Site","logo":{"@type":"ImageObject","url":"https://lianpf.github.io/img-common/favicon.png"}}}</script></head><body class=dark id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://lianpf.github.io/ accesskey=h title="曜灵（SUN）Site (Alt + H)"><img src=https://lianpf.github.io/img-common/avatar.jpeg alt=logo aria-label=logo height=35>曜灵（SUN）Site</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li></ul></div></div><ul id=menu><li><a href=https://lianpf.github.io/search title="🔍 搜索 (Alt + /)" accesskey=/><span>🔍 搜索</span></a></li><li><a href=https://lianpf.github.io/ title="🏠 主页"><span>🏠 主页</span></a></li><li><a href=https://lianpf.github.io/archives/ title="⏱️ 归档"><span>⏱️ 归档</span></a></li><li><a href=https://lianpf.github.io/tags title="🧩 标签"><span>🧩 标签</span></a></li><li><a href=https://lianpf.github.io/about title="🙋🏻‍♂️ 关于"><span>🙋🏻‍♂️ 关于</span></a></li></ul></nav></header><main class="main page"><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}</style><article class=post-single><div id=single-content><header class=post-header><div class=breadcrumbs><a href=https://lianpf.github.io/>🏠 主页</a>&nbsp;»&nbsp;<a href=https://lianpf.github.io/posts/>📚文章</a>&nbsp;»&nbsp;<a href=https://lianpf.github.io/posts/frontend-develop/>👨🏻‍💻 前端</a></div><h1 class=post-title>JavaScript之你不知道的this</h1><div class=post-meta><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}.parent-post-meta{display:flex;flex-wrap:wrap;opacity:.8}</style><span class=parent-post-meta><span id=post_meta_style_1><span class="fa fa-calendar-check-o"></span>
+<span>2018-11-06
+&nbsp;&nbsp;
+</span></span><span id=post_meta_style_3><span class="fa fa-file-word-o"></span>
+<span>2793字
+&nbsp;&nbsp;
+</span></span><span id=post_meta_style_4><span class="fa fa-clock-o"></span>
+<span>6分钟
+&nbsp;&nbsp;
+</span></span><span id=post_meta_style_5><span class="fa fa-user-o"></span>
+<span>曜灵
+&nbsp;&nbsp;
+</span></span><span id=post_meta_style_6><span class="fa fa-tags" style=opacity:.8></span>
+<span><span class=post-tags-meta><a href=https://lianpf.github.io/tags/js/ style=color:var(--secondary)!important>JS</a>
+</span></span></span></span><span style=opacity:.8><span id=post_meta_style_7>&nbsp;&nbsp;
+<span class="fa fa-eye"></span>
+<span><span id=busuanzi_container_page_pv><span id=busuanzi_value_page_pv></span></span>
+&nbsp;&nbsp;
+</span></span><span id=post_meta_style_8><span class="fa fa-commenting-o"></span>
+<span><script src=https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js></script><script>let url=document.documentURI,dnsUrl="https://lianpf.github.io/",urlSplit=url.split(dnsUrl),finalUrl=urlSplit[1];finalUrl[0]!=="/"&&(finalUrl="/"+finalUrl),twikoo.getCommentsCount({envId:null,region:null,urls:[finalUrl],includeReply:!1}).then(function(e){let t=e[0].count;const n=document.getElementById("comment_count");n.innerText=t}).catch(function(e){console.error(e)})</script><span id=comment_count></span></span></span></span></div></header><aside id=toc-container class="toc-container wide"><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>目录</span></summary><div class=inner><ul><li><a href=#%e5%be%88%e9%87%8d%e8%a6%81%e7%9a%84%e4%b8%80%e5%8f%a5%e8%af%9d aria-label=很重要的一句话>很重要的一句话</a></li><li><a href=#%e4%b8%80%e8%bf%99%e7%af%87%e6%96%87%e7%ab%a0%e5%87%ba%e7%8e%b0%e7%9a%84%e8%83%8c%e6%99%af aria-label=一、这篇文章出现的背景>一、这篇文章出现的背景</a><ul><li><a href=#1-this%e5%9c%a8%e6%88%91%e4%bb%ac%e5%bc%80%e5%8f%91%e8%bf%87%e7%a8%8b%e4%b8%ad%e7%9a%84%e9%87%8d%e8%a6%81%e6%80%a7%e5%bc%80%e5%8f%91%e5%9c%ba%e6%99%af----%e9%80%9a%e8%bf%87%e4%b8%80%e6%ae%b5%e4%bb%a3%e7%a0%81%e7%ae%80%e5%8d%95%e4%ba%86%e8%a7%a3this aria-label="1. this在我们开发过程中的重要性(开发场景) &amp;ndash; 通过一段代码简单了解this">1. this在我们开发过程中的重要性(开发场景) &ndash; 通过一段代码简单了解this</a></li><li><a href=#2%e4%b8%a4%e7%a7%8d%e9%94%99%e8%af%af%e7%9a%84%e7%90%86%e8%a7%a3 aria-label=2.两种错误的理解>2.两种错误的理解</a></li><li><a href=#3%e6%9c%ac%e8%b4%a8 aria-label=3.本质>3.本质</a></li></ul></li><li><a href=#%e4%ba%8cthis-%e7%bb%91%e5%ae%9a%e8%a7%84%e5%88%99--%e4%bc%98%e5%85%88%e7%ba%a7 aria-label="二、this 绑定规则 &amp;amp; 优先级">二、this 绑定规则 & 优先级</a><ul><li><a href=#1-%e9%bb%98%e8%ae%a4%e7%bb%91%e5%ae%9a aria-label="1. 默认绑定">1. 默认绑定</a></li><li><a href=#2-%e9%9a%90%e5%bc%8f%e7%bb%91%e5%ae%9a aria-label="2. 隐式绑定">2. 隐式绑定</a></li><li><a href=#3-%e6%98%be%e7%a4%ba%e7%bb%91%e5%ae%9a aria-label="3. 显示绑定">3. 显示绑定</a></li><li><a href=#4-new%e7%bb%91%e5%ae%9a aria-label="4. new绑定">4. new绑定</a></li></ul></li><li><a href=#%e4%b8%89%e7%bb%91%e5%ae%9a%e4%be%8b%e5%a4%96 aria-label=三、绑定例外>三、绑定例外</a><ul><li><a href=#1-%e7%ae%ad%e5%a4%b4%e5%87%bd%e6%95%b0 aria-label="1. 箭头函数">1. 箭头函数</a></li><li><a href=#2-%e8%a2%ab%e5%bf%bd%e7%95%a5%e7%9a%84this aria-label="2. 被忽略的this">2. 被忽略的this</a></li></ul></li><li><a href=#%e5%9b%9b%e9%9a%90%e5%bc%8f%e7%bb%91%e5%ae%9a%e4%b8%a2%e5%a4%b1 aria-label=四、(隐式)绑定丢失>四、(隐式)绑定丢失</a><ul><li><a href=#1-%e5%bc%95%e7%94%a8%e8%b5%8b%e5%80%bc%e4%b8%a2%e5%a4%b1 aria-label="1. 引用赋值丢失">1. 引用赋值丢失</a></li><li><a href=#2-%e4%bc%a0%e5%8f%82%e4%b8%a2%e5%a4%b1 aria-label="2. 传参丢失">2. 传参丢失</a></li><li><a href=#3-%e5%9b%9e%e8%b0%83%e5%87%bd%e6%95%b0%e4%b8%a2%e5%a4%b1 aria-label="3. 回调函数丢失">3. 回调函数丢失</a></li></ul></li><li><a href=#%e6%80%bb%e7%bb%93 aria-label=总结>总结</a></li></ul></div></details></div></aside><script>let activeElement,elements;window.addEventListener("DOMContentLoaded",function(){checkTocPosition(),elements=document.querySelectorAll("h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]"),activeElement=elements[0];const t=encodeURI(activeElement.getAttribute("id")).toLowerCase();document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active")},!1),window.addEventListener("resize",function(){checkTocPosition()},!1),window.addEventListener("scroll",()=>{elements&&(activeElement=Array.from(elements).find(e=>{if(getOffsetTop(e)-window.pageYOffset>0&&getOffsetTop(e)-window.pageYOffset<window.innerHeight/2)return e})||activeElement,elements.forEach(e=>{const t=encodeURI(e.getAttribute("id")).toLowerCase();e===activeElement?document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active"):document.querySelector(`.inner ul li a[href="#${t}"]`).classList.remove("active")}))},!1);const main=parseInt(getComputedStyle(document.body).getPropertyValue("--article-width"),10),toc=parseInt(getComputedStyle(document.body).getPropertyValue("--toc-width"),10),gap=parseInt(getComputedStyle(document.body).getPropertyValue("--gap"),10);function checkTocPosition(){const e=document.body.scrollWidth;e-main-toc*2-gap*4>0?document.getElementById("toc-container").classList.add("wide"):document.getElementById("toc-container").classList.remove("wide")}function getOffsetTop(e){if(!e.getClientRects().length)return 0;let t=e.getBoundingClientRect(),n=e.ownerDocument.defaultView;return t.top+n.pageYOffset}</script><div class=post-content><h3 id=很重要的一句话>很重要的一句话<a hidden class=anchor aria-hidden=true href=#很重要的一句话>#</a></h3><blockquote><p>只有掌握了如何创建、关联和扩展对象，你才能用 JavaScript 创建类似谷歌地图这样大型的复杂应用</p></blockquote><hr><h3 id=一这篇文章出现的背景>一、这篇文章出现的背景<a hidden class=anchor aria-hidden=true href=#一这篇文章出现的背景>#</a></h3><h4 id=1-this在我们开发过程中的重要性开发场景----通过一段代码简单了解this>1. this在我们开发过程中的重要性(开发场景) &ndash; 通过一段代码简单了解this<a hidden class=anchor aria-hidden=true href=#1-this在我们开发过程中的重要性开发场景----通过一段代码简单了解this>#</a></h4><blockquote><p>提供了一种更优雅的方式来隐式”传递”一个对象引用, 让API设计更加简洁和清晰</p></blockquote><p>首先来看一段代码, 此处不使用this, 需要给identify()和speak()显示的传入一个上下文对象:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span><span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>定义</span> you <span style=color:#f92672>&amp;</span> me对象
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> me <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    name: <span style=color:#e6db74>&#34;Kyle&#34;</span>
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> you <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    name: <span style=color:#e6db74>&#34;Reader&#34;</span>
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>function identify(context) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> context<span style=color:#f92672>.</span>name<span style=color:#f92672>.</span>toUpperCase();
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>function speak(context) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> greeting <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hello, I&#39;m &#34;</span> <span style=color:#f92672>+</span> identify( context );
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log( greeting );
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>identify( you ); <span style=color:#f92672>//</span> READER
+</span></span><span style=display:flex><span>speak( me ); <span style=color:#f92672>//</span>hello, <span style=color:#960050;background-color:#1e0010>我是</span> KYLE
+</span></span></code></pre></div><p>使用this解决: 可以在不同的上下文对象(me 和 you)中重复使用函数identify()和speak()</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>function identify() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> this<span style=color:#f92672>.</span>name<span style=color:#f92672>.</span>toUpperCase();
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>function speak() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> greeting <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hello, I&#39;m &#34;</span> <span style=color:#f92672>+</span> identify<span style=color:#f92672>.</span>call( this );
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log( greeting );
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>identify<span style=color:#f92672>.</span>call( me ); <span style=color:#f92672>//</span> KYLE
+</span></span><span style=display:flex><span>identify<span style=color:#f92672>.</span>call( you ); <span style=color:#f92672>//</span> READER
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>speak<span style=color:#f92672>.</span>call( me ); <span style=color:#f92672>//</span> Hello, <span style=color:#960050;background-color:#1e0010>我是</span> KYLE
+</span></span><span style=display:flex><span>speak<span style=color:#f92672>.</span>call( you ); <span style=color:#f92672>//</span> Hello, <span style=color:#960050;background-color:#1e0010>我是</span> READER
+</span></span></code></pre></div><p>显然, 随着你的使用模式越来越复杂, 显式传递上下文对象会让代码变得越来越混乱, this可以让你的代码变得更优雅。
+特别是当你使用对象(关联)和原型时, 利用this使得函数可以自动引用合适的上下文对象显的尤为重要</p><h4 id=2两种错误的理解>2.两种错误的理解<a hidden class=anchor aria-hidden=true href=#2两种错误的理解>#</a></h4><ul><li>this指向函数自身</li><li>this指向函数的作用域, 这个在某些情况下是正确的, 但是在其他情况下确实错误的</li></ul><p>事实上, 一部分人认为"this既不指向函数自身也不指向函数的词法作用域", 但是也是不对的, 在某
+种情况下, this就指向函数自身, 也可能指向词法作用域</p><h4 id=3本质>3.本质<a hidden class=anchor aria-hidden=true href=#3本质>#</a></h4><blockquote><p>this是在运行(函数被调用)时发生绑定的,并不是在编写时绑定, 它的上下文取决于函数调用时的各种条件,
+它指向什么完全取决于函数在哪里被调用</p></blockquote><hr><h3 id=二this-绑定规则--优先级>二、this 绑定规则 & 优先级<a hidden class=anchor aria-hidden=true href=#二this-绑定规则--优先级>#</a></h3><p>简单来说, 有这大致四种</p><ol><li>由new调用(new绑定)</li><li>函数是否通过call、apply(显式绑定)或者硬绑定调用</li><li>函数是否在某个上下文对象中调用(隐式绑定)</li><li>默认绑定</li></ol><h4 id=1-默认绑定>1. 默认绑定<a hidden class=anchor aria-hidden=true href=#1-默认绑定>#</a></h4><blockquote><p>无法应用其他规则时的默认规则, 严格模式下绑定到undefined, 否则绑定到全局对象</p></blockquote><p>最常用的函数调用类型:独立函数调用</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>function foo() {
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log( this<span style=color:#f92672>.</span>a );
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> a <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>;
+</span></span><span style=display:flex><span>foo(); <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span>
+</span></span></code></pre></div><p>代码中, foo()是直接使用不带任何修饰的函数引用进行调用的,只能适用于this的默认绑定,无法应用其他规则,
+因此this指向全局对象</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span><span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>严格模式下</span>
+</span></span><span style=display:flex><span>function foo() {
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;use strict&#34;</span>;
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log( this<span style=color:#f92672>.</span>a );
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> a <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>;
+</span></span><span style=display:flex><span>foo(); <span style=color:#f92672>//</span> TypeError: this is undefined
+</span></span></code></pre></div><p>所以, 不推荐这种写法。</p><h4 id=2-隐式绑定>2. 隐式绑定<a hidden class=anchor aria-hidden=true href=#2-隐式绑定>#</a></h4><p>考虑调用位置是否有上下文对象,或者说是否被某个对象或者包含</p><blockquote><p>当函数引用有上下文对象时,隐式绑定规则会把函数调用中的this绑定到这个上下文对象</p></blockquote><p><strong>必须在一个对象内部包含一个指向函数的属性，并通过这个属性间接引用函数，从而把 this 间接(隐式)绑定到这个对象上</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>function foo() {
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log(this<span style=color:#f92672>.</span>a);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> obj <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    a: <span style=color:#ae81ff>2</span>,
+</span></span><span style=display:flex><span>    foo: foo
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>obj<span style=color:#f92672>.</span>foo(); <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span>
+</span></span></code></pre></div><p><strong>对象属性引用链中只有最后一层会影响调用位置, 即调用栈的末端</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>function foo() {
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log( this<span style=color:#f92672>.</span>a );
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> obj2 <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    a: <span style=color:#ae81ff>42</span>,
+</span></span><span style=display:flex><span>    foo: foo
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> obj1 <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    a: <span style=color:#ae81ff>2</span>,
+</span></span><span style=display:flex><span>    obj2: obj2
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>obj1<span style=color:#f92672>.</span>obj2<span style=color:#f92672>.</span>foo(); <span style=color:#f92672>//</span> <span style=color:#ae81ff>42</span>
+</span></span></code></pre></div><h4 id=3-显示绑定>3. 显示绑定<a hidden class=anchor aria-hidden=true href=#3-显示绑定>#</a></h4><p>强制指定某些对象对函数进行调用，this则强制指向调用函数的对象</p><ul><li>call(thisObj, arg1, arg2, arg3&mldr;)</li><li>apply(thisObj, argArr)</li><li>ES5 中提供了内置的方法 硬绑定bind(thisObj)</li></ul><p>显示绑定场景</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>function foo() {
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log( this<span style=color:#f92672>.</span>a );
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> obj <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    a:<span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>foo<span style=color:#f92672>.</span>call( obj ); <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span>
+</span></span></code></pre></div><p>硬绑定常用场景</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>function foo(something) {
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log( this<span style=color:#f92672>.</span>a, something );
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> this<span style=color:#f92672>.</span>a <span style=color:#f92672>+</span> something;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> obj <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    a:<span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> bar <span style=color:#f92672>=</span> foo<span style=color:#f92672>.</span>bind( obj );
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> b <span style=color:#f92672>=</span> bar( <span style=color:#ae81ff>3</span> ); <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>console<span style=color:#f92672>.</span>log( b ); <span style=color:#f92672>//</span> <span style=color:#ae81ff>5</span>
+</span></span></code></pre></div><h4 id=4-new绑定>4. new绑定<a hidden class=anchor aria-hidden=true href=#4-new绑定>#</a></h4><p>new方式优先级最高，只要是使用new方式来调用一个构造函数，this一定会指向new调用函数新创建的对象</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>function foo(a) {
+</span></span><span style=display:flex><span>    this<span style=color:#f92672>.</span>a <span style=color:#f92672>=</span> a;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> bar <span style=color:#f92672>=</span> new foo(<span style=color:#ae81ff>2</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>console<span style=color:#f92672>.</span>log( bar<span style=color:#f92672>.</span>a ); <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span>
+</span></span></code></pre></div><hr><h3 id=三绑定例外>三、绑定例外<a hidden class=anchor aria-hidden=true href=#三绑定例外>#</a></h3><h4 id=1-箭头函数>1. 箭头函数<a hidden class=anchor aria-hidden=true href=#1-箭头函数>#</a></h4><p>实际原因是箭头函数根本没有自己的this</p><blockquote><p>this指向的固定化，并不是因为箭头函数内部有绑定this的机制, 实际原因箭头函数没有自己的this，它的this是继承而来，默认指向在定义它时所处的对象(宿主对象)。
+捕获其所在（即定义的位置）上下文的this值，作为自己的this值, 如果在当前的箭头函数作用域中找不到变量，就像上一级作用域里去找, 导致内部的this就是外层代码块的this</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span><span style=color:#f92672>//</span> demo <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>function foo() {
+</span></span><span style=display:flex><span>	 setTimeout(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>	    console<span style=color:#f92672>.</span>log(<span style=color:#e6db74>&#39;id:&#39;</span>, this<span style=color:#f92672>.</span>id);
+</span></span><span style=display:flex><span>	  }, <span style=color:#ae81ff>100</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> id <span style=color:#f92672>=</span> <span style=color:#ae81ff>21</span>;
+</span></span><span style=display:flex><span>foo<span style=color:#f92672>.</span>call({ id: <span style=color:#ae81ff>42</span> }) <span style=color:#f92672>//</span> id: <span style=color:#ae81ff>42</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>//</span>demo <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>function Person() {
+</span></span><span style=display:flex><span>    this<span style=color:#f92672>.</span>name <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;dog&#39;</span>;
+</span></span><span style=display:flex><span>    this<span style=color:#f92672>.</span>age <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;18&#39;</span>;
+</span></span><span style=display:flex><span>    setTimeout( () <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        console<span style=color:#f92672>.</span>log(this);
+</span></span><span style=display:flex><span>        console<span style=color:#f92672>.</span>log(<span style=color:#e6db74>&#39;my name:&#39;</span> <span style=color:#f92672>+</span> this<span style=color:#f92672>.</span>name <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;&amp; my age:&#39;</span> <span style=color:#f92672>+</span> this<span style=color:#f92672>.</span>age)
+</span></span><span style=display:flex><span>    }, <span style=color:#ae81ff>1000</span>)
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> p <span style=color:#f92672>=</span> Person();
+</span></span></code></pre></div><h4 id=2-被忽略的this>2. 被忽略的this<a hidden class=anchor aria-hidden=true href=#2-被忽略的this>#</a></h4><blockquote><p>当被绑定的是null，则使用的是默认绑定规则</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span><span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>如果你把</span> null <span style=color:#960050;background-color:#1e0010>或者</span> undefined <span style=color:#960050;background-color:#1e0010>作为</span> this <span style=color:#960050;background-color:#1e0010>的绑定对象传入</span> call <span style=color:#960050;background-color:#1e0010>、</span> apply <span style=color:#960050;background-color:#1e0010>或者</span> bind <span style=color:#960050;background-color:#1e0010>，这些值在调用时会被忽略，</span>
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>实际应用的是默认绑定规则</span>
+</span></span><span style=display:flex><span>function foo() {
+</span></span><span style=display:flex><span>	console<span style=color:#f92672>.</span>log( this<span style=color:#f92672>.</span>a );
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> a <span style=color:#f92672>=</span> <span style=color:#ae81ff>2222</span>;
+</span></span><span style=display:flex><span>foo<span style=color:#f92672>.</span>call( null ); <span style=color:#f92672>//</span> <span style=color:#ae81ff>2222</span>
+</span></span></code></pre></div><hr><h3 id=四隐式绑定丢失>四、(隐式)绑定丢失<a hidden class=anchor aria-hidden=true href=#四隐式绑定丢失>#</a></h3><blockquote><p>最常见的this绑定问题就是被隐式绑定的函数会丢失绑定对象,也是就说它会应用默认绑定,从而把this绑定到全局对象或者undefined上,取决于是否是严格模式</p></blockquote><h4 id=1-引用赋值丢失>1. 引用赋值丢失<a hidden class=anchor aria-hidden=true href=#1-引用赋值丢失>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>function foo() {
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log( this<span style=color:#f92672>.</span>a );
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> obj <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    a: <span style=color:#ae81ff>2</span>,
+</span></span><span style=display:flex><span>    foo: foo
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> bar <span style=color:#f92672>=</span> obj<span style=color:#f92672>.</span>foo; <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>函数别名</span><span style=color:#f92672>!</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> a <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;oops, global&#34;</span>; <span style=color:#f92672>//</span> a是全局对象的属性
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>bar(); <span style=color:#f92672>//</span> <span style=color:#e6db74>&#34;oops, global&#34;</span>
+</span></span></code></pre></div><blockquote><p>虽然 bar 是 obj.foo 的一个引用，但是实际上，它引用的是 foo 函数本身，这就相当于：var bar = foo，
 obj对象只是一个中间桥梁， obj.foo只起到传递函数的作用，所以bar跟obj对象没有任何关系,此时的 bar() 其实是一个不带任何修饰的函数调用.
-而bar本身又不带a属性，因此应用了默认绑定,最后a只能指向window.</p></blockquote><h4 id=2-传参丢失>2. 传参丢失</h4><pre><code>function foo() {
-    console.log( this.a );
-}
-function doFoo(fn) {
-    // fn其实引用的是foo
-    fn(); // &lt;-- 调用位置!
-}
-var obj = {
-    a: 2,
-    foo: foo
-};
-var a = &quot;oops, global&quot;; // a是全局对象的属性
-
-doFoo( obj.foo ); // &quot;oops, global&quot;
-</code></pre><blockquote><p>参数传递其实就是一种隐式赋值，因此我们传入函数时也会被隐式赋值，所以结果和上一 个例子一样</p></blockquote><h4 id=3-回调函数丢失>3. 回调函数丢失</h4><pre><code>function thisTo(){
-   console.log(this.a);
-}
-var data={
-    a:2,
-    foo:thisTo //通过属性引用this所在函数
-};
-var a=3;//全局属性
-
-setTimeout(data.foo,100);// 3
-</code></pre><p>所谓传参丢失，就是在将包含this的函数作为参数在函数中传递时，this指向改变</p><blockquote><p><code>setTimeout</code>函数的本来写法应该是<code>setTimeout(function(){......},100)；</code>
+而bar本身又不带a属性，因此应用了默认绑定,最后a只能指向window.</p></blockquote><h4 id=2-传参丢失>2. 传参丢失<a hidden class=anchor aria-hidden=true href=#2-传参丢失>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>function foo() {
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log( this<span style=color:#f92672>.</span>a );
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>function doFoo(fn) {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> fn其实引用的是foo
+</span></span><span style=display:flex><span>    fn(); <span style=color:#f92672>//</span> <span style=color:#f92672>&lt;--</span> <span style=color:#960050;background-color:#1e0010>调用位置</span><span style=color:#f92672>!</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> obj <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    a: <span style=color:#ae81ff>2</span>,
+</span></span><span style=display:flex><span>    foo: foo
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> a <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;oops, global&#34;</span>; <span style=color:#f92672>//</span> a是全局对象的属性
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>doFoo( obj<span style=color:#f92672>.</span>foo ); <span style=color:#f92672>//</span> <span style=color:#e6db74>&#34;oops, global&#34;</span>
+</span></span></code></pre></div><blockquote><p>参数传递其实就是一种隐式赋值，因此我们传入函数时也会被隐式赋值，所以结果和上一 个例子一样</p></blockquote><h4 id=3-回调函数丢失>3. 回调函数丢失<a hidden class=anchor aria-hidden=true href=#3-回调函数丢失>#</a></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>function thisTo(){
+</span></span><span style=display:flex><span>   console<span style=color:#f92672>.</span>log(this<span style=color:#f92672>.</span>a);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> data<span style=color:#f92672>=</span>{
+</span></span><span style=display:flex><span>    a:<span style=color:#ae81ff>2</span>,
+</span></span><span style=display:flex><span>    foo:thisTo <span style=color:#f92672>//</span><span style=color:#960050;background-color:#1e0010>通过属性引用</span>this所在函数
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> a<span style=color:#f92672>=</span><span style=color:#ae81ff>3</span>;<span style=color:#f92672>//</span><span style=color:#960050;background-color:#1e0010>全局属性</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>setTimeout(data<span style=color:#f92672>.</span>foo,<span style=color:#ae81ff>100</span>);<span style=color:#f92672>//</span> <span style=color:#ae81ff>3</span>
+</span></span></code></pre></div><p>所谓传参丢失，就是在将包含this的函数作为参数在函数中传递时，this指向改变</p><blockquote><p><code>setTimeout</code>函数的本来写法应该是<code>setTimeout(function(){......},100)；</code>
 100ms后执行的函数都在“&mldr;&mldr;”中， 可以将要执行函数定义成<code>var fun = function(){......},</code>
 即:setTimeout(fun,100)，100ms后就有：fun()；所以此时此刻是data.foo作为一个参数，是这样的：setTimeout(thisTo,100);100ms过后执行thisTo()， 实际道理还跟1.1差不多，没有调用thisTo的对象，this只能指向window
-实际上你没办法控制回调函数的执行方式,没有办法控制会影响绑定的调用位置. 因此, 回调函数丢失this绑定是非常常见的,甚至更加出乎意料的是,调用回调函数的函数可能会修改this,特别 是在一些流行的JavaScript库中时间处理器会把回调函数的this强制绑定到触发事件的DOM元素上</p></blockquote><hr><h3 id=总结>总结</h3><p>四种规则:</p><ul><li>由new调用(new绑定)</li><li>通过call、apply(显式绑定)或者硬绑定调用</li><li>函数是否在某个上下文对象中调用(隐式绑定)</li><li>默认绑定</li></ul><p>特殊情况特殊处理:</p><ul><li>箭头函数</li><li>被忽略的this</li><li>绑定丢失</li></ul><hr><p><strong>最后， 希望大家早日实现：成为编程高手的伟大梦想！</strong><br><strong>欢迎交流~</strong></p><figure><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286></figure><p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong><br><strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/js/ rel=tag>JS</a></li></ul></div></footer></article></main><div class="authorbox clearfix"><figure class=authorbox__avatar><img alt="曜灵 avatar" src=/img-common/avatar1.jpeg class=avatar height=90 width=90></figure><div class=authorbox__header><span class=authorbox__name>关于 曜灵</span></div><div class=authorbox__description>博主目前就职于X集团上海研发中心-平台工具组，是一名软件开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层、Go Web编程等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目</div></div><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/frontend-develop/react-children/ rel=prev><span class=pager__subtitle>«&#8201;上一篇</span><p class=pager__title>对React children 的深入理解</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/posts/computer-basics/02.js-design-pattern-i/ rel=next><span class=pager__subtitle>下一篇&#8201;»</span><p class=pager__title>设计模式: 聊一聊JavaScript设计模式（一）</p></a></div></nav><script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=title label=comments theme=github-light crossorigin=anonymous async></script></div></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2016 - 2024 曜灵（SUN）Site.
-<span class=footer__copyright-credits>基于 <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> 引擎和 <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> 主题</span></div></div></footer><script src=https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js></script><script>addBackToTop({cornerOffset:100,diameter:56,backgroundColor:'#63B8FF',innerHTML:'<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',textColor:'#fff'})</script></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script><script src=/js/highlight/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script></body></html>
+实际上你没办法控制回调函数的执行方式,没有办法控制会影响绑定的调用位置. 因此, 回调函数丢失this绑定是非常常见的,甚至更加出乎意料的是,调用回调函数的函数可能会修改this,特别 是在一些流行的JavaScript库中时间处理器会把回调函数的this强制绑定到触发事件的DOM元素上</p></blockquote><hr><h3 id=总结>总结<a hidden class=anchor aria-hidden=true href=#总结>#</a></h3><p>四种规则:</p><ul><li>由new调用(new绑定)</li><li>通过call、apply(显式绑定)或者硬绑定调用</li><li>函数是否在某个上下文对象中调用(隐式绑定)</li><li>默认绑定</li></ul><p>特殊情况特殊处理:</p><ul><li>箭头函数</li><li>被忽略的this</li><li>绑定丢失</li></ul><hr><p><strong>最后， 希望大家早日实现：成为编程高手的伟大梦想！</strong><br><strong>欢迎交流~</strong></p><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600><p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong><br><strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p></div><footer class=post-footer><nav class=paginav><a class=prev href=https://lianpf.github.io/posts/computer-basics/02.js-design-pattern-i/><span class=title>« 上一页</span><br><span>设计模式: 聊一聊JavaScript设计模式（一）</span>
+</a><a class=next href=https://lianpf.github.io/posts/frontend-develop/react-children/><span class=title>下一页 »</span><br><span>对React children 的深入理解</span></a></nav><div class=share-buttons><a target=_blank rel="noopener noreferrer" aria-label="share JavaScript之你不知道的this on twitter" href="https://twitter.com/intent/tweet/?text=JavaScript%e4%b9%8b%e4%bd%a0%e4%b8%8d%e7%9f%a5%e9%81%93%e7%9a%84this&amp;url=https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fjs-unknown%2f&amp;hashtags=JS"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg>
+</a><a target=_blank rel="noopener noreferrer" aria-label="share JavaScript之你不知道的this on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fjs-unknown%2f&amp;title=JavaScript%e4%b9%8b%e4%bd%a0%e4%b8%8d%e7%9f%a5%e9%81%93%e7%9a%84this&amp;summary=JavaScript%e4%b9%8b%e4%bd%a0%e4%b8%8d%e7%9f%a5%e9%81%93%e7%9a%84this&amp;source=https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fjs-unknown%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg>
+</a><a target=_blank rel="noopener noreferrer" aria-label="share JavaScript之你不知道的this on reddit" href="https://reddit.com/submit?url=https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fjs-unknown%2f&title=JavaScript%e4%b9%8b%e4%bd%a0%e4%b8%8d%e7%9f%a5%e9%81%93%e7%9a%84this"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg>
+</a><a target=_blank rel="noopener noreferrer" aria-label="share JavaScript之你不知道的this on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fjs-unknown%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg>
+</a><a target=_blank rel="noopener noreferrer" aria-label="share JavaScript之你不知道的this on whatsapp" href="https://api.whatsapp.com/send?text=JavaScript%e4%b9%8b%e4%bd%a0%e4%b8%8d%e7%9f%a5%e9%81%93%e7%9a%84this%20-%20https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fjs-unknown%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg>
+</a><a target=_blank rel="noopener noreferrer" aria-label="share JavaScript之你不知道的this on telegram" href="https://telegram.me/share/url?text=JavaScript%e4%b9%8b%e4%bd%a0%e4%b8%8d%e7%9f%a5%e9%81%93%e7%9a%84this&amp;url=https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fjs-unknown%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></div></footer></div><script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=title label=comments theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>Copyright
+&copy;
+2016-2024
+<a href=https://lianpf.github.io/ style=color:#939393>曜灵（SUN）Site</a>.
+基于 Hugo 引擎和 PaperMod 主题
+</span><a href=https://beian.miit.gov.cn/ target=_blank style=color:#939393></a>&nbsp;</footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><span class=topInner><svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+<span id=read_progress></span>
+</span></a><script>document.addEventListener("scroll",function(){const t=document.getElementById("read_progress"),n=document.documentElement.scrollHeight,s=document.documentElement.clientHeight,o=document.documentElement.scrollTop||document.body.scrollTop;t.innerText=((o/(n-s)).toFixed(2)*100).toFixed(0)})</script><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>let mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>200||document.documentElement.scrollTop>200?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{(function(){document.cookie="change-themes="+escape("false")})(),document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.body.addEventListener("copy",function(e){if(window.getSelection().toString()&&window.getSelection().toString().length>50){let t=e.clipboardData||window.clipboardData;if(t){e.preventDefault();let n=window.getSelection().toString()+`
+
+————————————————
+版权声明：本文为「曜灵（SUN）Site」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：`+location.href,s=window.getSelection().toString()+`
+
+————————————————
+版权声明：本文为「曜灵（SUN）Site」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：`+location.href;t.setData("text/html",n),t.setData("text/plain",s)}}})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const s=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerText="复制";function i(){t.innerText="已复制！",setTimeout(()=>{t.innerText="复制"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){let t=e.textContent+`
+————————————————
+版权声明：本文为「曜灵（SUN）Site」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：`+location.href;navigator.clipboard.writeText(t),i();return}const n=document.createRange();n.selectNodeContents(e);const s=window.getSelection();s.removeAllRanges(),s.addRange(n);try{document.execCommand("copy"),i()}catch{}s.removeRange(n)});let l=e.className.replaceAll("language-",""),n=document.createElement("div"),a=document.createElement("div"),r=document.createElement("div"),c=document.createElement("div"),o=document.createElement("div");o.innerText=l,n.setAttribute("class","mac-tool"),a.setAttribute("class","mac bb1"),r.setAttribute("class","mac bb2"),c.setAttribute("class","mac bb3"),o.setAttribute("class","language-type"),n.appendChild(a),n.appendChild(r),n.appendChild(c),n.appendChild(o),s.classList.contains("highlight")?(s.appendChild(t),s.appendChild(n)):s.parentNode.firstChild==s||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?(e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t),s.appendChild(n)):(e.parentNode.appendChild(t),s.appendChild(n)))})</script></body></html>

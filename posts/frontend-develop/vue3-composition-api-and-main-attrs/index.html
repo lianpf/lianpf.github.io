@@ -1,442 +1,485 @@
-<!doctype html><html class=no-js lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>vue3+ts(3)：vue3组合式api及重要属性变更 - 曜灵（SUN）Site</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><meta property="og:title" content="vue3+ts(3)：vue3组合式api及重要属性变更"><meta property="og:description" content="本文是vue3+ts项目系列第3篇《vue3组合式api及重要属性变更》，会&mldr;"><meta property="og:type" content="article"><meta property="og:url" content="/posts/frontend-develop/vue3-composition-api-and-main-attrs/"><meta property="article:published_time" content="2021-03-18T20:22:41+08:00"><meta property="article:modified_time" content="2021-03-18T20:22:41+08:00"><meta itemprop=name content="vue3+ts(3)：vue3组合式api及重要属性变更"><meta itemprop=description content="本文是vue3+ts项目系列第3篇《vue3组合式api及重要属性变更》，会&mldr;"><meta itemprop=datePublished content="2021-03-18T20:22:41+08:00"><meta itemprop=dateModified content="2021-03-18T20:22:41+08:00"><meta itemprop=wordCount content="4184"><meta itemprop=keywords content="Vue技术栈,TS,"><meta name=twitter:card content="summary"><meta name=twitter:title content="vue3+ts(3)：vue3组合式api及重要属性变更"><meta name=twitter:description content="本文是vue3+ts项目系列第3篇《vue3组合式api及重要属性变更》，会&mldr;"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/js/highlight/styles/agate.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.png><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?9476c4482071e4a786f624283467fed0";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><style type=text/css>pre{padding:0}</style></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class="logo logo--mixed"><a class=logo__link href=/ title=曜灵（SUN）Site rel=home><div class="logo__item logo__imagebox"><img class=logo__img src=/img-common/avatar1.jpeg></div><div class="logo__item logo__text"><div class=logo__title>曜灵（SUN）Site</div><div class=logo__tagline>🌝 带着 "偏见" 去理解技术的世界</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
-<span class=menu__btn-title tabindex=-1>菜单</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>首页</span></a></li><li class=menu__item><a class=menu__link href=/about/me/><span class=menu__text>博主</span></a></li><li class=menu__item><a class=menu__link href=/about/site/><span class=menu__text>站点</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io><span class=menu__text>编辑</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/lianpf/lianpf.github.io/issues><span class=menu__text>反馈</span></a></li><li class=menu__item><a class=menu__link href=/search/><span class=menu__text>搜索</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>vue3+ts(3)：vue3组合式api及重要属性变更</h1><div class="post__meta meta"><div class="meta__item-author meta__item"><svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2.0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class=meta__text>曜灵</span></div><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2021-03-18T20:22:41+08:00>2021-03-18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ rel=category>前端开发</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>目录</div><div class=toc__menu><nav id=TableOfContents><ul><li><ul><li><a href=#一前言>一、前言</a></li><li><a href=#二背景>二、背景</a></li><li><a href=#三composition-api-等核心特性>三、Composition API 等核心特性</a><ul><li><a href=#1setup>1、<code>setup</code></a></li><li><a href=#2reactive>2、<code>reactive</code></a></li><li><a href=#3ref引用--torefs>3、<code>ref引用</code> & <code>toRefs</code></a></li><li><a href=#4lifecycle-hooks>4、<code>Lifecycle Hooks</code></a></li><li><a href=#5computed>5、<code>computed</code></a></li><li><a href=#6watch>6、<code>watch</code></a></li><li><a href=#7依赖注入-provide--inject>7、依赖注入 <code>provide & inject</code></a></li></ul></li><li><a href=#四项目结构>四、项目结构</a></li><li><a href=#五源码>五、源码</a></li></ul></li></ul></nav></div></div><div class="content post__content clearfix"><p>本文是vue3+ts项目系列第3篇《vue3组合式api及重要属性变更》，会&mldr;</p><h2 id=一前言>一、前言</h2><p>在 react 和 vue 社区中也越来越多人开始使用TypeScript，使用 TS 可以增加代码的可读性和可维护性。从发布的 Vue3 正式版本来看， Vue3 的源码是用 TS 编写的，更好的 TypeScript 支持也是这次升级的一大亮点。当然，在实际开发中如何正确拥抱 TS 以及如何迁移到 Vue3 也是项目中我们不得不面对的问题，这里针对 Vue3 和 TS单独做了一个系列和大家做一下交流，本篇是 vue3+ts项目系列3篇《vue3组合式api及重要属性变更》。</p><p>本系列其他内容如下:</p><ul><li>vue3+ts项目系列第1篇<a href=https://lianpf.github.io/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/>《vue3项目从0到1搭建》</a></li><li>vue3+ts项目系列第2篇<a href=https://lianpf.github.io/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/>《TypeScript 语法汇总》</a></li><li>vue3+ts项目系列第3篇<a href=https://lianpf.github.io/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/>《vue3组合式api及重要属性变更》</a></li></ul><h2 id=二背景>二、背景</h2><p>Vue作为一种渐进式框架， 借鉴了 React 的组件化和虚拟 DOM、Angular 的模块化和双向数据绑定。随着 Vue 3 内核 API 与实现已趋稳定， 可以看到相对vue2.x，Vue3做了很多重要的变更，特别是Composition API的引入。</p><p>3.0 对比 2.x 的重要变更有 6 个方面：</p><ul><li>Performance（性能）: 优化了虚拟 DOM，有了更加优化的编译，实现了更加高效的组件初始化<ul><li>Rewritten virtual dom implementation （重写了虚拟 DOM）</li><li>Compiler-informed fast paths （优化编译）、</li><li>More efficient component initialization （更高效的组件初始化）</li><li>1.3-2x better update performance （1.3~2 倍的更新性能）</li><li>2-3x faster SSR （2~3 倍的 SSR 速度）</li></ul></li><li>Tree-shaking support （支持 Tree-shaking）: 按需求引用的内置的指令和方法<ul><li>All runtime features included: 22.5kb. More features but still lighter than Vue 2。大多数可选功能（如 v-model、<transition>）现在都是支持 Tree-shaking 的</li><li>Bare-bone HelloWorld size: 13.5kb. 11.75kb with only Composition API support</li><li>All runtime features included: 22.5kb. More features but still lighter than Vue 2</li></ul></li><li>Composition API<ul><li>Usable alongside existing Options API （可与现有选项 API 一起使用）</li><li>Flexible logic composition and reuse （灵活的逻辑组成和重用）</li><li>Reactivity module can be used as a standalone library （Reactivity 模块可以作为独立的库使用）</li></ul></li><li>Fragment, Teleport, Suspense<ul><li>Fragment: vue2时，由于组件必须只有一个根节点，很多时候会添加一些没有意义的节点用于包裹。Fragment组件就是用于解决这个问题的</li><li>Teleport其实就是React中的Portal，提供一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案</li><li>和React中的Supense是一样的。Suspense 让你的组件在渲染之前进行“等待”，并在等待时显示 fallback 的内容</li></ul></li><li>Better TypeScript support （更好的 TypeScript 支持度）</li><li>Custom Renderer API （自定义的 Renderer API）</li></ul><p>本文主要接下来主要涉及到的内容为 Custom Renderer API。</p><h2 id=三composition-api-等核心特性>三、Composition API 等核心特性</h2><p>核心关注点:</p><ul><li><code>setup</code></li><li><code>reactive</code></li><li><code>ref引用</code> & <code>toRefs</code></li><li><code>Lifecycle Hooks</code></li><li><code>computed</code></li><li><code>watch</code></li><li>依赖注入 <code>provide & inject</code></li></ul><h3 id=1setup>1、<code>setup</code></h3><p>setup() 函数是 vue3 中，专门为组件提供的新属性。它为我们使用 vue3 的 Composition API 新特性提供了统一的入口。</p><ul><li>setup 函数相当于 vue2.x 中 beforeCreate 和 created, 在 beforeCreate 之后、created 之前执行</li><li>setup第一个形参，接收 props 数据</li><li>setup第二个形参是一个上下文对象, 在 setup() 函数中无法访问到 this, 可以用这个context来访问</li></ul><p><strong>Tips:</strong></p><blockquote><p>setup 第一个参数接受一个响应式的props，这个props指向的是外部的props。如果你没有定义props选项，setup中的第一个参数将为undifined。遵循vue2.x的原则</p></blockquote><ul><li>props 定义</li><li>不要在子组件中修改props；如果你尝试修改，将会给你警告甚至报错</li><li>不要解构props。解构的props会失去响应性</li></ul><p>示例：</p><pre><code>import { inject, defineComponent } from &quot;vue&quot;;
-export default defineComponent({
-  name: &quot;ListItem&quot;,
-  props: {
-    data: Object
-  },
-  steup({data}) {
-    console.log(&quot;--userData--&quot;, data);
-    return {
-      data
-    };
-  }
-});
-</code></pre><h3 id=2reactive>2、<code>reactive</code></h3><p>reactive() 函数接收一个普通对象，返回一个响应式的数据对象。</p><p>示例：</p><pre><code>import { defineComponent, onUnmounted, reactive, ref, watchEffect } from &quot;vue&quot;;
+<!doctype html><html lang=zh dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>vue3+ts(3)：vue3组合式api及重要属性变更 | 曜灵（SUN）Site</title>
+<meta name=keywords content="Vue技术栈,TS"><meta name=description content="本文是vue3+ts项目系列第3篇《vue3组合式api及重要属性变更》，会&mldr;"><meta name=author content="曜灵"><link rel=canonical href=https://lianpf.github.io/posts/frontend-develop/vue3-composition-api-and-main-attrs/><link crossorigin=anonymous href=/assets/css/stylesheet.css rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.js onload=hljs.initHighlightingOnLoad()></script><link rel=icon href=https://lianpf.github.io/img-common/favicon.png><link rel=icon type=image/png sizes=16x16 href=https://lianpf.github.io/img-common/favicon.png><link rel=icon type=image/png sizes=32x32 href=https://lianpf.github.io/img-common/favicon.png><link rel=apple-touch-icon href=https://lianpf.github.io/img-common/avatar.jpeg><link rel=mask-icon href=https://lianpf.github.io/img-common/avatar.jpeg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=zh href=https://lianpf.github.io/posts/frontend-develop/vue3-composition-api-and-main-attrs/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css><script src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js></script><script>var _hmt=_hmt||[];(function(){var e,t=document.createElement("script");t.src="",e=document.getElementsByTagName("script")[0],e.parentNode.insertBefore(t,e)})()</script><meta property="og:title" content="vue3+ts(3)：vue3组合式api及重要属性变更"><meta property="og:description" content="本文是vue3+ts项目系列第3篇《vue3组合式api及重要属性变更》，会&mldr;"><meta property="og:type" content="article"><meta property="og:url" content="https://lianpf.github.io/posts/frontend-develop/vue3-composition-api-and-main-attrs/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-03-18T20:22:41+08:00"><meta property="article:modified_time" content="2021-03-18T20:22:41+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="vue3+ts(3)：vue3组合式api及重要属性变更"><meta name=twitter:description content="本文是vue3+ts项目系列第3篇《vue3组合式api及重要属性变更》，会&mldr;"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"📚文章","item":"https://lianpf.github.io/posts/"},{"@type":"ListItem","position":2,"name":"👨🏻‍💻 前端","item":"https://lianpf.github.io/posts/frontend-develop/"},{"@type":"ListItem","position":3,"name":"vue3+ts(3)：vue3组合式api及重要属性变更","item":"https://lianpf.github.io/posts/frontend-develop/vue3-composition-api-and-main-attrs/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"vue3+ts(3)：vue3组合式api及重要属性变更","name":"vue3\u002bts(3)：vue3组合式api及重要属性变更","description":"本文是vue3+ts项目系列第3篇《vue3组合式api及重要属性变更》，会\u0026hellip;\n","keywords":["Vue技术栈","TS"],"articleBody":"本文是vue3+ts项目系列第3篇《vue3组合式api及重要属性变更》，会…\n一、前言 在 react 和 vue 社区中也越来越多人开始使用TypeScript，使用 TS 可以增加代码的可读性和可维护性。从发布的 Vue3 正式版本来看， Vue3 的源码是用 TS 编写的，更好的 TypeScript 支持也是这次升级的一大亮点。当然，在实际开发中如何正确拥抱 TS 以及如何迁移到 Vue3 也是项目中我们不得不面对的问题，这里针对 Vue3 和 TS单独做了一个系列和大家做一下交流，本篇是 vue3+ts项目系列3篇《vue3组合式api及重要属性变更》。\n本系列其他内容如下:\nvue3+ts项目系列第1篇《vue3项目从0到1搭建》 vue3+ts项目系列第2篇《TypeScript 语法汇总》 vue3+ts项目系列第3篇《vue3组合式api及重要属性变更》 二、背景 Vue作为一种渐进式框架， 借鉴了 React 的组件化和虚拟 DOM、Angular 的模块化和双向数据绑定。随着 Vue 3 内核 API 与实现已趋稳定， 可以看到相对vue2.x，Vue3做了很多重要的变更，特别是Composition API的引入。\n3.0 对比 2.x 的重要变更有 6 个方面：\nPerformance（性能）: 优化了虚拟 DOM，有了更加优化的编译，实现了更加高效的组件初始化 Rewritten virtual dom implementation （重写了虚拟 DOM） Compiler-informed fast paths （优化编译）、 More efficient component initialization （更高效的组件初始化） 1.3-2x better update performance （1.3~2 倍的更新性能） 2-3x faster SSR （2~3 倍的 SSR 速度） Tree-shaking support （支持 Tree-shaking）: 按需求引用的内置的指令和方法 All runtime features included: 22.5kb. More features but still lighter than Vue 2。大多数可选功能（如 v-model、）现在都是支持 Tree-shaking 的 Bare-bone HelloWorld size: 13.5kb. 11.75kb with only Composition API support All runtime features included: 22.5kb. More features but still lighter than Vue 2 Composition API Usable alongside existing Options API （可与现有选项 API 一起使用） Flexible logic composition and reuse （灵活的逻辑组成和重用） Reactivity module can be used as a standalone library （Reactivity 模块可以作为独立的库使用） Fragment, Teleport, Suspense Fragment: vue2时，由于组件必须只有一个根节点，很多时候会添加一些没有意义的节点用于包裹。Fragment组件就是用于解决这个问题的 Teleport其实就是React中的Portal，提供一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案 和React中的Supense是一样的。Suspense 让你的组件在渲染之前进行“等待”，并在等待时显示 fallback 的内容 Better TypeScript support （更好的 TypeScript 支持度） Custom Renderer API （自定义的 Renderer API） 本文主要接下来主要涉及到的内容为 Custom Renderer API。\n三、Composition API 等核心特性 核心关注点:\nsetup reactive ref引用 \u0026 toRefs Lifecycle Hooks computed watch 依赖注入 provide \u0026 inject 1、setup setup() 函数是 vue3 中，专门为组件提供的新属性。它为我们使用 vue3 的 Composition API 新特性提供了统一的入口。\nsetup 函数相当于 vue2.x 中 beforeCreate 和 created, 在 beforeCreate 之后、created 之前执行 setup第一个形参，接收 props 数据 setup第二个形参是一个上下文对象, 在 setup() 函数中无法访问到 this, 可以用这个context来访问 Tips:\nsetup 第一个参数接受一个响应式的props，这个props指向的是外部的props。如果你没有定义props选项，setup中的第一个参数将为undifined。遵循vue2.x的原则\nprops 定义 不要在子组件中修改props；如果你尝试修改，将会给你警告甚至报错 不要解构props。解构的props会失去响应性 示例：\nimport { inject, defineComponent } from \"vue\"; export default defineComponent({ name: \"ListItem\", props: { data: Object }, steup({data}) { console.log(\"--userData--\", data); return { data }; } }); 2、reactive reactive() 函数接收一个普通对象，返回一个响应式的数据对象。\n示例：\nimport { defineComponent, onUnmounted, reactive, ref, watchEffect } from \"vue\"; export default defineComponent({ name: \"About\", components: {}, setup() { const state = reactive({ msg: '欢迎来到 \"关于 vue3 和TS的语法DEMO\"', testWatchEffectCount: 0 }); // watchEffect —— 1.自动收集数据源作为依赖、2.只有变更后的值、3.默认会执行一次寻找依赖，然后属性改变也会执行 const count = ref(0); watchEffect(() =\u003e { console.log(\"--watchEffect-value--\", count.value); state.testWatchEffectCount = count.value; }); setInterval(() =\u003e { count.value++; }, 500); const stop = watchEffect(() =\u003e { console.log(\"--stop-effect--\"); }); // 清除副作用 watchEffect(onInvalidate =\u003e { console.log(count.value, \"0-副作用\"); const token = setTimeout(() =\u003e { console.log(count.value, \"1-副作用\"); }, 5000); onInvalidate(() =\u003e { // count(watchEffect函数依赖项) 改变时或停止侦听时，取消之前的异步操作 token.cancel(); }); }); onUnmounted(() =\u003e { stop(); }); return { state }; } }); \u003c/script\u003e 3、ref引用 \u0026 toRefs ref常用于基本类型，reactive用于引用类型。如果ref传入对象，其实内部会自动变为reactive\nref() 函数根据给定的值创建一个响应式的数据对象，返回值是一个对象，这个对象上只包含一个 .value 属性 toRefs() 函数可以将 reactive() 创建出来的响应式对象，转换为普通的对象，只不过，这个对象上的每个属性节点，都是 ref() 类型的响应式数据 通过 ref() 还可以引用页面上的元素或组件，和vue2的ref概念类似 元素引用 组件引用 示例：父组件\nimport { ref, reactive, toRefs, onMounted } from 'vue' export default { setup() { const count = ref(0) // 创建响应式数据对象 count，初始值为 0 console.log(count.value) // 在setup内访问count值需要.value 属性才可以，但在template中可以直接访问 const state = reactive({count: 0, name:'weedsFly'}) // 用reactive集中创建多个响应式对象 const add = () =\u003e { // methods写在setup内 state.count++ } // 元素引用 const h1Ref = ref(null) // 创建一个 DOM 引用 onMounted(() =\u003e { // 在 DOM 首次加载完毕之后，才能获取到元素的引用 h1Ref.value.style.color = 'pink' // h1Ref.value 是原生DOM对象 }) // 组件引用 const compRef = ref(null) // 创建一个组件的 ref 引用 showCompData = () =\u003e { // 展示子组件中 count 的值 console.log(compRef.value.count) } return { count, // ...state, // 使用展开运算符后 用reactive创建的响应式数据 变成了 固定的值 ...toRefs(state), // 可以用toRefs函数 将传进来的非响应式对象 转成 ref() 类型的响应式数据 add, h1Ref, compRef, showCompData } }, } 示例：子组件\nimport { ref } from 'vue' export default { setup() { const count = ref(0) // 定义响应式的数据 return { count } } } 4、Lifecycle Hooks 新版的生命周期函数，可以按需导入到组件中，且只能在 setup() 函数中使用\nuse setup() beforeCreate created onBeforeMount \u003c- beforeMount onMounted \u003c- mounted onBeforeUpdate \u003c- beforeUpdate onUpdated \u003c- updated onBeforeUnmount \u003c- beforeDestroy onUnmounted \u003c- destroyed onErrorCaptured \u003c- errorCaptured Tips:\n无法设置 reactive的state\n示例：\nimport { defineComponent, onUnmounted, reactive, ref, watchEffect } from \"vue\"; export default defineComponent({ name: \"About\", components: {}, setup() { const state = reactive({ msg: '欢迎来到 \"关于 vue3 和TS的语法DEMO\"', testWatchEffectCount: 0 }); // watchEffect —— 1.自动收集数据源作为依赖、2.只有变更后的值、3.默认会执行一次寻找依赖，然后属性改变也会执行 const count = ref(0); watchEffect(() =\u003e { console.log(\"--watchEffect-value--\", count.value); state.testWatchEffectCount = count.value; }); setInterval(() =\u003e { count.value++; }, 500); const stop = watchEffect(() =\u003e { console.log(\"--stop-effect--\"); }); // 清除副作用 watchEffect(onInvalidate =\u003e { console.log(count.value, \"0-副作用\"); const token = setTimeout(() =\u003e { console.log(count.value, \"1-副作用\"); }, 5000); onInvalidate(() =\u003e { // count(watchEffect函数依赖项) 改变时或停止侦听时，取消之前的异步操作 token.cancel(); }); }); onUnmounted(() =\u003e { stop(); }); return { state }; } }); 5、computed computed() 用来创建计算属性，computed() 函数的返回值是一个 ref 的实例\ncomputed创建只读的计算属性(传入一个 function 函数，可以得到一个只读的计算属性) computed创建可读可写的计算属性 示例:\nimport { ref, computed } from 'vue' export default { setup() { const count = ref(0) const computedCount = computed(() =\u003e count.value + 1) computedCount.value = 9 // computed value is readonly. const count2 = ref(0) const computedCount2 = computed({ get: () =\u003e count2.value + 1, set: val =\u003e { count2.value = val - 1 } }) computedCount2.value = 100 // 为计算属性赋值的操作，会触发 set 函数 console.log(count2.value) // 触发 set 函数后，count 的值会被更新 return { count, computedCount, count2, computedCount2 } }, } 6、watch 监视单个数据源变动 监视单个reactive创建的数据 监视单个ref创建的数据源 监视多个数据源 监视多个reactive创建的数据源 监视多个ref创建的数据源 清除watch监视 在 watch 中清除无效的异步任务（与节流防抖同效） 示例:\nimport { reactive, ref, watch } from 'vue' export default { setup() { // 1-1 监视单个reactive创建的数据源 const state = reactive({count: 100}) watch( () =\u003e state.count, (newVal, oldVal) =\u003e { console.log(newVal, oldVal)}, {lazy: true} // 在 watch 被创建的时候，不执行回调函数中的代码 ) // 1-2 监视单个ref创建的数据源 const count2 = ref(100) const stop2 = watch( count2, (newVal, oldVal) =\u003e { console.log(newVal, oldVal)}, {lazy: true} // 在 watch 被创建的时候，不执行回调函数中的代码 ) // 2-1 监视多个reactive创建的数据源 const state3 = reactive({count: 100, name: 'Laiyj'}) watch( [() =\u003e state3.count, () =\u003e state3.name], ([newCount, newName], [oldCount, oldName]) =\u003e { console.log(newCount, oldCount) console.log(newName, oldName) }, {lazy: true} // 在 watch 被创建的时候，不执行回调函数中的代码 ) // 2-2 监视多个ref创建的数据源 const count4 count = ref(100) const name4 = ref('Fei') watch( [count4, name4], ([newCount, newName], [oldCount, oldName]) =\u003e { console.log(newCount, oldCount) console.log(newName, oldName) }, {lazy: true} // 在 watch 被创建的时候，不执行回调函数中的代码 ) setTimeout(() =\u003e { state.count++; count2++; state2.count++; state2.name = 'lian'; count4++; name4 = 'lian4'; }, 500) } // 3、清除watch监视 const clearWatch = () =\u003e { stop() } // 4、watch 中清除无效的异步任务（与节流防抖同效） const keyword6 = ref('') const asyncPrint = (val) =\u003e { // 执行异步任务，并得到关闭异步任务的 timerId return setTimeout(() =\u003e { console.log(val) }, 1000) } watch( keyword6, (newVal, oldVal, onClean) =\u003e { const timeId = asyncPrint() onClean(() =\u003e {clearTimeout(timeId)}) // 如果 watch 监听被重复执行了，则会先清除上次未完成的异步任务 } ) return { state, count2, state3, count4, name4 clearWatch, keyword6 } } 7、依赖注入 provide \u0026 inject provide() 和 inject() 可以实现嵌套组件之间的数据传递 只能在 setup() 函数中使用。 父级组件中使用 provide() 函数向下传递数据；子级组件中使用 inject() 获取上层传递过来的数据 Tips:\nsteup() 初始化，在brforeCreate 前后, 所以，对于动态组件，类似 list 内加载 list-item, item是无法拿到list provide的值的\n示例：父组件\nimport { defineComponent, reactive, computed, provide, readonly, ref, onMounted } from \"vue\"; import ListItem from \"./components/ListItem.vue\"; import TestInject from \"./components/TestInject.vue\"; interface ListByStatusData { page: number; pageSize: number; } interface MovieItem { id: string; name: string; desc: string; } export default defineComponent({ name: \"List\", components: { ListItem, TestInject }, setup() { let list: Array\u003cMovieItem\u003e = []; /** * @name: reactive * @desc: 核心流程 * @author: lianpf * @date: 2021.03.06 * */ let state = reactive({ title: \"List Page\", count: 0, total: 0, list, provideStatus: false }); const params = computed(() =\u003e ({ count: state.count + 1 })); /** * @name: 异步请求函数 \u0026 泛型函数 * @desc: 核心流程 * @author: lianpf * @date: 2021.03.06 * */ type FnType = (x: number, y: number) =\u003e Promise\u003cArray\u003cMovieItem\u003e\u003e; const getInitList: FnType = (page, pageSize) =\u003e { console.log(`--req-params-page:${page}-pageSize:${pageSize}--`); return new Promise((resolve, reject) =\u003e { try { let res: Array\u003cMovieItem\u003e = [ { id: \"100\", name: \"list-item-001\", desc: \"001-001-001-001\" }, { id: \"200\", name: \"list-item-002\", desc: \"002-002-002-002\" }, { id: \"300\", name: \"list-item-003\", desc: \"003-003-003-003\" } ]; resolve(res); } catch (e) { reject(e); } }); }; // const tempList = () =\u003e getInitList() let reqParams: ListByStatusData = { page: 1, pageSize: 10 }; // 异步流控制函数 const asyncFlow = async () =\u003e { let resData = await getInitList(reqParams.page, reqParams.pageSize); state.count = 2; state.list = resData; list = resData; }; onMounted(async () =\u003e { await asyncFlow(); }); /** * @name: 依赖注入 —— 父组件通过 provide 函数向子级组件共享数据（不限层级） * @desc: 核心功能 * @author: lianpf * @date: 2021.03.06 * */ const parentColor = ref(\"salmon\"); // provide('要共享的数据名称', 被共享的数据) provide(\"themeColor\", readonly(parentColor)); const updateThemeColor = () =\u003e { state.provideStatus = !state.provideStatus; parentColor.value = state.provideStatus ? \"skyblue\" : \"salmon\"; }; // 父组件 function update “注入”的值 provide(\"updateThemeColor\", updateThemeColor); provide(\"location\", \"North Pole\"); provide(\"geolocation\", { longitude: 90, latitude: 135 }); return { state, params, list }; } }); \u003c/script\u003e 示例: 子组件\nimport { inject, defineComponent } from \"vue\"; export default defineComponent({ name: \"TestInject\", setup() { /** * @name: 依赖注入 * @desc: 核心功能 —— 调用 inject 函数时，通过指定的数据名称，获取到父级共享的数据 * @author: lianpf * @date: 2021.03.06 * */ const userThemeColor = inject(\"themeColor\"); const updateThemeColor = inject(\"updateThemeColor\"); console.log(\"--userThemeColor--\", userThemeColor); const userLocation = inject(\"location\", \"The Universe\"); const userGeolocation = inject(\"geolocation\"); return { userThemeColor, updateThemeColor, userLocation, userGeolocation }; } }); \u003c/script\u003e 四、项目结构 ├── README.md ├── babel.config.js ├── package-lock.json ├── package.json ├── public │ ├── favicon.ico │ └── index.html ├── src │ ├── App.vue │ ├── assets │ │ ├── logo.png │ │ └── styles │ │ └── varible.styl │ ├── components │ │ ├── HeaderNav.vue │ │ └── HelloWorld.vue │ ├── main.ts │ ├── router │ │ └── index.ts │ ├── shims-vue.d.ts │ ├── store │ │ └── index.ts │ ├── types │ │ └── movie.ts │ └── views │ ├── About.vue │ ├── Detail.vue │ ├── Home.vue │ ├── List.vue │ └── components │ ├── ListItem.vue │ └── TestInject.vue └── tsconfig.json 五、源码 example源码地址: vue3-ts\n最后， 希望大家早日实现：成为编程高手的伟大梦想！ 欢迎交流~\n本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！ 若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！\n","wordCount":"4196","inLanguage":"zh","datePublished":"2021-03-18T20:22:41+08:00","dateModified":"2021-03-18T20:22:41+08:00","author":{"@type":"Person","name":"曜灵"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://lianpf.github.io/posts/frontend-develop/vue3-composition-api-and-main-attrs/"},"publisher":{"@type":"Organization","name":"曜灵（SUN）Site","logo":{"@type":"ImageObject","url":"https://lianpf.github.io/img-common/favicon.png"}}}</script></head><body class=dark id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://lianpf.github.io/ accesskey=h title="曜灵（SUN）Site (Alt + H)"><img src=https://lianpf.github.io/img-common/avatar.jpeg alt=logo aria-label=logo height=35>曜灵（SUN）Site</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li></ul></div></div><ul id=menu><li><a href=https://lianpf.github.io/search title="🔍 搜索 (Alt + /)" accesskey=/><span>🔍 搜索</span></a></li><li><a href=https://lianpf.github.io/ title="🏠 主页"><span>🏠 主页</span></a></li><li><a href=https://lianpf.github.io/archives/ title="⏱️ 归档"><span>⏱️ 归档</span></a></li><li><a href=https://lianpf.github.io/tags title="🧩 标签"><span>🧩 标签</span></a></li><li><a href=https://lianpf.github.io/about title="🙋🏻‍♂️ 关于"><span>🙋🏻‍♂️ 关于</span></a></li></ul></nav></header><main class="main page"><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}</style><article class=post-single><div id=single-content><header class=post-header><div class=breadcrumbs><a href=https://lianpf.github.io/>🏠 主页</a>&nbsp;»&nbsp;<a href=https://lianpf.github.io/posts/>📚文章</a>&nbsp;»&nbsp;<a href=https://lianpf.github.io/posts/frontend-develop/>👨🏻‍💻 前端</a></div><h1 class=post-title>vue3+ts(3)：vue3组合式api及重要属性变更</h1><div class=post-meta><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}.parent-post-meta{display:flex;flex-wrap:wrap;opacity:.8}</style><span class=parent-post-meta><span id=post_meta_style_1><span class="fa fa-calendar-check-o"></span>
+<span>2021-03-18
+&nbsp;&nbsp;
+</span></span><span id=post_meta_style_3><span class="fa fa-file-word-o"></span>
+<span>4196字
+&nbsp;&nbsp;
+</span></span><span id=post_meta_style_4><span class="fa fa-clock-o"></span>
+<span>9分钟
+&nbsp;&nbsp;
+</span></span><span id=post_meta_style_5><span class="fa fa-user-o"></span>
+<span>曜灵
+&nbsp;&nbsp;
+</span></span><span id=post_meta_style_6><span class="fa fa-tags" style=opacity:.8></span>
+<span><span class=post-tags-meta><a href=https://lianpf.github.io/tags/vue%E6%8A%80%E6%9C%AF%E6%A0%88/ style=color:var(--secondary)!important>Vue技术栈</a>
+&nbsp;<a href=https://lianpf.github.io/tags/ts/ style=color:var(--secondary)!important>TS</a>
+</span></span></span></span><span style=opacity:.8><span id=post_meta_style_7>&nbsp;&nbsp;
+<span class="fa fa-eye"></span>
+<span><span id=busuanzi_container_page_pv><span id=busuanzi_value_page_pv></span></span>
+&nbsp;&nbsp;
+</span></span><span id=post_meta_style_8><span class="fa fa-commenting-o"></span>
+<span><script src=https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js></script><script>let url=document.documentURI,dnsUrl="https://lianpf.github.io/",urlSplit=url.split(dnsUrl),finalUrl=urlSplit[1];finalUrl[0]!=="/"&&(finalUrl="/"+finalUrl),twikoo.getCommentsCount({envId:null,region:null,urls:[finalUrl],includeReply:!1}).then(function(e){let t=e[0].count;const n=document.getElementById("comment_count");n.innerText=t}).catch(function(e){console.error(e)})</script><span id=comment_count></span></span></span></span></div></header><aside id=toc-container class="toc-container wide"><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>目录</span></summary><div class=inner><ul><li><a href=#%e4%b8%80%e5%89%8d%e8%a8%80 aria-label=一、前言>一、前言</a></li><li><a href=#%e4%ba%8c%e8%83%8c%e6%99%af aria-label=二、背景>二、背景</a></li><li><a href=#%e4%b8%89composition-api-%e7%ad%89%e6%a0%b8%e5%bf%83%e7%89%b9%e6%80%a7 aria-label="三、Composition API 等核心特性">三、Composition API 等核心特性</a><ul><li><a href=#1setup aria-label=1、setup>1、<code>setup</code></a></li><li><a href=#2reactive aria-label=2、reactive>2、<code>reactive</code></a></li><li><a href=#3ref%e5%bc%95%e7%94%a8--torefs aria-label="3、ref引用 &amp;amp; toRefs">3、<code>ref引用</code> & <code>toRefs</code></a></li><li><a href=#4lifecycle-hooks aria-label="4、Lifecycle Hooks">4、<code>Lifecycle Hooks</code></a></li><li><a href=#5computed aria-label=5、computed>5、<code>computed</code></a></li><li><a href=#6watch aria-label=6、watch>6、<code>watch</code></a></li><li><a href=#7%e4%be%9d%e8%b5%96%e6%b3%a8%e5%85%a5-provide--inject aria-label="7、依赖注入 provide &amp;amp; inject">7、依赖注入 <code>provide & inject</code></a></li></ul></li><li><a href=#%e5%9b%9b%e9%a1%b9%e7%9b%ae%e7%bb%93%e6%9e%84 aria-label=四、项目结构>四、项目结构</a></li><li><a href=#%e4%ba%94%e6%ba%90%e7%a0%81 aria-label=五、源码>五、源码</a></li></ul></div></details></div></aside><script>let activeElement,elements;window.addEventListener("DOMContentLoaded",function(){checkTocPosition(),elements=document.querySelectorAll("h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]"),activeElement=elements[0];const t=encodeURI(activeElement.getAttribute("id")).toLowerCase();document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active")},!1),window.addEventListener("resize",function(){checkTocPosition()},!1),window.addEventListener("scroll",()=>{elements&&(activeElement=Array.from(elements).find(e=>{if(getOffsetTop(e)-window.pageYOffset>0&&getOffsetTop(e)-window.pageYOffset<window.innerHeight/2)return e})||activeElement,elements.forEach(e=>{const t=encodeURI(e.getAttribute("id")).toLowerCase();e===activeElement?document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active"):document.querySelector(`.inner ul li a[href="#${t}"]`).classList.remove("active")}))},!1);const main=parseInt(getComputedStyle(document.body).getPropertyValue("--article-width"),10),toc=parseInt(getComputedStyle(document.body).getPropertyValue("--toc-width"),10),gap=parseInt(getComputedStyle(document.body).getPropertyValue("--gap"),10);function checkTocPosition(){const e=document.body.scrollWidth;e-main-toc*2-gap*4>0?document.getElementById("toc-container").classList.add("wide"):document.getElementById("toc-container").classList.remove("wide")}function getOffsetTop(e){if(!e.getClientRects().length)return 0;let t=e.getBoundingClientRect(),n=e.ownerDocument.defaultView;return t.top+n.pageYOffset}</script><div class=post-content><p>本文是vue3+ts项目系列第3篇《vue3组合式api及重要属性变更》，会&mldr;</p><h2 id=一前言>一、前言<a hidden class=anchor aria-hidden=true href=#一前言>#</a></h2><p>在 react 和 vue 社区中也越来越多人开始使用TypeScript，使用 TS 可以增加代码的可读性和可维护性。从发布的 Vue3 正式版本来看， Vue3 的源码是用 TS 编写的，更好的 TypeScript 支持也是这次升级的一大亮点。当然，在实际开发中如何正确拥抱 TS 以及如何迁移到 Vue3 也是项目中我们不得不面对的问题，这里针对 Vue3 和 TS单独做了一个系列和大家做一下交流，本篇是 vue3+ts项目系列3篇《vue3组合式api及重要属性变更》。</p><p>本系列其他内容如下:</p><ul><li>vue3+ts项目系列第1篇<a href=https://lianpf.github.io/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/>《vue3项目从0到1搭建》</a></li><li>vue3+ts项目系列第2篇<a href=https://lianpf.github.io/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/>《TypeScript 语法汇总》</a></li><li>vue3+ts项目系列第3篇<a href=https://lianpf.github.io/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/>《vue3组合式api及重要属性变更》</a></li></ul><h2 id=二背景>二、背景<a hidden class=anchor aria-hidden=true href=#二背景>#</a></h2><p>Vue作为一种渐进式框架， 借鉴了 React 的组件化和虚拟 DOM、Angular 的模块化和双向数据绑定。随着 Vue 3 内核 API 与实现已趋稳定， 可以看到相对vue2.x，Vue3做了很多重要的变更，特别是Composition API的引入。</p><p>3.0 对比 2.x 的重要变更有 6 个方面：</p><ul><li>Performance（性能）: 优化了虚拟 DOM，有了更加优化的编译，实现了更加高效的组件初始化<ul><li>Rewritten virtual dom implementation （重写了虚拟 DOM）</li><li>Compiler-informed fast paths （优化编译）、</li><li>More efficient component initialization （更高效的组件初始化）</li><li>1.3-2x better update performance （1.3~2 倍的更新性能）</li><li>2-3x faster SSR （2~3 倍的 SSR 速度）</li></ul></li><li>Tree-shaking support （支持 Tree-shaking）: 按需求引用的内置的指令和方法<ul><li>All runtime features included: 22.5kb. More features but still lighter than Vue 2。大多数可选功能（如 v-model、<transition>）现在都是支持 Tree-shaking 的</li><li>Bare-bone HelloWorld size: 13.5kb. 11.75kb with only Composition API support</li><li>All runtime features included: 22.5kb. More features but still lighter than Vue 2</li></ul></li><li>Composition API<ul><li>Usable alongside existing Options API （可与现有选项 API 一起使用）</li><li>Flexible logic composition and reuse （灵活的逻辑组成和重用）</li><li>Reactivity module can be used as a standalone library （Reactivity 模块可以作为独立的库使用）</li></ul></li><li>Fragment, Teleport, Suspense<ul><li>Fragment: vue2时，由于组件必须只有一个根节点，很多时候会添加一些没有意义的节点用于包裹。Fragment组件就是用于解决这个问题的</li><li>Teleport其实就是React中的Portal，提供一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案</li><li>和React中的Supense是一样的。Suspense 让你的组件在渲染之前进行“等待”，并在等待时显示 fallback 的内容</li></ul></li><li>Better TypeScript support （更好的 TypeScript 支持度）</li><li>Custom Renderer API （自定义的 Renderer API）</li></ul><p>本文主要接下来主要涉及到的内容为 Custom Renderer API。</p><h2 id=三composition-api-等核心特性>三、Composition API 等核心特性<a hidden class=anchor aria-hidden=true href=#三composition-api-等核心特性>#</a></h2><p>核心关注点:</p><ul><li><code>setup</code></li><li><code>reactive</code></li><li><code>ref引用</code> & <code>toRefs</code></li><li><code>Lifecycle Hooks</code></li><li><code>computed</code></li><li><code>watch</code></li><li>依赖注入 <code>provide & inject</code></li></ul><h3 id=1setup>1、<code>setup</code><a hidden class=anchor aria-hidden=true href=#1setup>#</a></h3><p>setup() 函数是 vue3 中，专门为组件提供的新属性。它为我们使用 vue3 的 Composition API 新特性提供了统一的入口。</p><ul><li>setup 函数相当于 vue2.x 中 beforeCreate 和 created, 在 beforeCreate 之后、created 之前执行</li><li>setup第一个形参，接收 props 数据</li><li>setup第二个形参是一个上下文对象, 在 setup() 函数中无法访问到 this, 可以用这个context来访问</li></ul><p><strong>Tips:</strong></p><blockquote><p>setup 第一个参数接受一个响应式的props，这个props指向的是外部的props。如果你没有定义props选项，setup中的第一个参数将为undifined。遵循vue2.x的原则</p></blockquote><ul><li>props 定义</li><li>不要在子组件中修改props；如果你尝试修改，将会给你警告甚至报错</li><li>不要解构props。解构的props会失去响应性</li></ul><p>示例：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>import { inject, defineComponent } from <span style=color:#e6db74>&#34;vue&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> default defineComponent({
+</span></span><span style=display:flex><span>  name: <span style=color:#e6db74>&#34;ListItem&#34;</span>,
+</span></span><span style=display:flex><span>  props: {
+</span></span><span style=display:flex><span>    data: <span style=color:#a6e22e>Object</span>
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  steup({data}) {
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log(<span style=color:#e6db74>&#34;--userData--&#34;</span>, data);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>      data
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>});
+</span></span></code></pre></div><h3 id=2reactive>2、<code>reactive</code><a hidden class=anchor aria-hidden=true href=#2reactive>#</a></h3><p>reactive() 函数接收一个普通对象，返回一个响应式的数据对象。</p><p>示例：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>import { defineComponent, onUnmounted, reactive, ref, watchEffect } from <span style=color:#e6db74>&#34;vue&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> default defineComponent({
+</span></span><span style=display:flex><span>  name: <span style=color:#e6db74>&#34;About&#34;</span>,
+</span></span><span style=display:flex><span>  components: {},
+</span></span><span style=display:flex><span>  setup() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> state <span style=color:#f92672>=</span> reactive({
+</span></span><span style=display:flex><span>      msg: <span style=color:#e6db74>&#39;欢迎来到 &#34;关于 vue3 和TS的语法DEMO&#34;&#39;</span>,
+</span></span><span style=display:flex><span>      testWatchEffectCount: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> watchEffect <span style=color:#960050;background-color:#1e0010>——</span> <span style=color:#ae81ff>1.</span><span style=color:#960050;background-color:#1e0010>自动收集数据源作为依赖、</span><span style=color:#ae81ff>2.</span><span style=color:#960050;background-color:#1e0010>只有变更后的值、</span><span style=color:#ae81ff>3.</span><span style=color:#960050;background-color:#1e0010>默认会执行一次寻找依赖，然后属性改变也会执行</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> count <span style=color:#f92672>=</span> ref(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    watchEffect(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      console<span style=color:#f92672>.</span>log(<span style=color:#e6db74>&#34;--watchEffect-value--&#34;</span>, count<span style=color:#f92672>.</span>value);
+</span></span><span style=display:flex><span>      state<span style=color:#f92672>.</span>testWatchEffectCount <span style=color:#f92672>=</span> count<span style=color:#f92672>.</span>value;
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>    setInterval(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      count<span style=color:#f92672>.</span>value<span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>    }, <span style=color:#ae81ff>500</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> stop <span style=color:#f92672>=</span> watchEffect(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      console<span style=color:#f92672>.</span>log(<span style=color:#e6db74>&#34;--stop-effect--&#34;</span>);
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>清除副作用</span>
+</span></span><span style=display:flex><span>    watchEffect(onInvalidate <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      console<span style=color:#f92672>.</span>log(count<span style=color:#f92672>.</span>value, <span style=color:#e6db74>&#34;0-副作用&#34;</span>);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>const</span> token <span style=color:#f92672>=</span> setTimeout(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        console<span style=color:#f92672>.</span>log(count<span style=color:#f92672>.</span>value, <span style=color:#e6db74>&#34;1-副作用&#34;</span>);
+</span></span><span style=display:flex><span>      }, <span style=color:#ae81ff>5000</span>);
+</span></span><span style=display:flex><span>      onInvalidate(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>//</span> count(watchEffect函数依赖项) <span style=color:#960050;background-color:#1e0010>改变时或停止侦听时，取消之前的异步操作</span>
+</span></span><span style=display:flex><span>        token<span style=color:#f92672>.</span>cancel();
+</span></span><span style=display:flex><span>      });
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    onUnmounted(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      stop();
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>      state
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/</span>script<span style=color:#f92672>&gt;</span>
+</span></span></code></pre></div><h3 id=3ref引用--torefs>3、<code>ref引用</code> & <code>toRefs</code><a hidden class=anchor aria-hidden=true href=#3ref引用--torefs>#</a></h3><blockquote><p>ref常用于基本类型，reactive用于引用类型。如果ref传入对象，其实内部会自动变为reactive</p></blockquote><ul><li>ref() 函数根据给定的值创建一个响应式的数据对象，返回值是一个对象，这个对象上只包含一个 .value 属性</li><li>toRefs() 函数可以将 reactive() 创建出来的响应式对象，转换为普通的对象，只不过，这个对象上的每个属性节点，都是 ref() 类型的响应式数据</li><li>通过 ref() 还可以引用页面上的元素或组件，和vue2的ref概念类似<ul><li>元素引用</li><li>组件引用</li></ul></li></ul><p>示例：父组件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>import { ref, reactive, toRefs, onMounted } from <span style=color:#e6db74>&#39;vue&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> default {
+</span></span><span style=display:flex><span>    setup() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> count <span style=color:#f92672>=</span> ref(<span style=color:#ae81ff>0</span>) <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>创建响应式数据对象</span> count<span style=color:#960050;background-color:#1e0010>，初始值为</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>        console<span style=color:#f92672>.</span>log(count<span style=color:#f92672>.</span>value) <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>在</span>setup内访问count值需要<span style=color:#f92672>.</span>value <span style=color:#960050;background-color:#1e0010>属性才可以，但在</span>template中可以直接访问
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> state <span style=color:#f92672>=</span> reactive({count: <span style=color:#ae81ff>0</span>, name:<span style=color:#e6db74>&#39;weedsFly&#39;</span>}) <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>用</span>reactive集中创建多个响应式对象
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> add <span style=color:#f92672>=</span> () <span style=color:#f92672>=&gt;</span> { <span style=color:#f92672>//</span> methods写在setup内
+</span></span><span style=display:flex><span>          state<span style=color:#f92672>.</span>count<span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>元素引用</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> h1Ref <span style=color:#f92672>=</span> ref(null) <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>创建一个</span> DOM <span style=color:#960050;background-color:#1e0010>引用</span>
+</span></span><span style=display:flex><span>        onMounted(() <span style=color:#f92672>=&gt;</span> { <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>在</span> DOM <span style=color:#960050;background-color:#1e0010>首次加载完毕之后，才能获取到元素的引用</span>
+</span></span><span style=display:flex><span>          h1Ref<span style=color:#f92672>.</span>value<span style=color:#f92672>.</span>style<span style=color:#f92672>.</span>color <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;pink&#39;</span> <span style=color:#f92672>//</span> h1Ref<span style=color:#f92672>.</span>value <span style=color:#960050;background-color:#1e0010>是原生</span>DOM对象
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>        <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>组件引用</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> compRef <span style=color:#f92672>=</span> ref(null) <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>创建一个组件的</span> ref <span style=color:#960050;background-color:#1e0010>引用</span>
+</span></span><span style=display:flex><span>        showCompData <span style=color:#f92672>=</span> () <span style=color:#f92672>=&gt;</span> { <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>展示子组件中</span> count <span style=color:#960050;background-color:#1e0010>的值</span>
+</span></span><span style=display:flex><span>          console<span style=color:#f92672>.</span>log(compRef<span style=color:#f92672>.</span>value<span style=color:#f92672>.</span>count) 
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>          count,
+</span></span><span style=display:flex><span>          <span style=color:#f92672>//</span> <span style=color:#f92672>...</span>state,  <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>使用展开运算符后</span> <span style=color:#960050;background-color:#1e0010>用</span>reactive创建的响应式数据 <span style=color:#960050;background-color:#1e0010>变成了</span> <span style=color:#960050;background-color:#1e0010>固定的值</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>...</span>toRefs(state), <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>可以用</span>toRefs函数 <span style=color:#960050;background-color:#1e0010>将传进来的非响应式对象</span> <span style=color:#960050;background-color:#1e0010>转成</span> ref() <span style=color:#960050;background-color:#1e0010>类型的响应式数据</span>
+</span></span><span style=display:flex><span>          add,
+</span></span><span style=display:flex><span>          h1Ref,
+</span></span><span style=display:flex><span>          compRef,
+</span></span><span style=display:flex><span>          showCompData
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span> }
+</span></span></code></pre></div><p>示例：子组件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>import { ref } from <span style=color:#e6db74>&#39;vue&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> default {
+</span></span><span style=display:flex><span>  setup() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> count <span style=color:#f92672>=</span> ref(<span style=color:#ae81ff>0</span>) <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>定义响应式的数据</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>      count
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=4lifecycle-hooks>4、<code>Lifecycle Hooks</code><a hidden class=anchor aria-hidden=true href=#4lifecycle-hooks>#</a></h3><p>新版的生命周期函数，可以按需导入到组件中，且只能在 setup() 函数中使用</p><ul><li><code>use setup()</code><ul><li><del><code>beforeCreate</code></del></li><li><del><code>created</code></del></li></ul></li><li><code>onBeforeMount</code> &lt;- <code>beforeMount</code></li><li><code>onMounted</code> &lt;- <code>mounted</code></li><li><code>onBeforeUpdate</code> &lt;- <code>beforeUpdate</code></li><li><code>onUpdated</code> &lt;- <code>updated</code></li><li><code>onBeforeUnmount</code> &lt;- <code>beforeDestroy</code></li><li><code>onUnmounted</code> &lt;- <code>destroyed</code></li><li><code>onErrorCaptured</code> &lt;- <code>errorCaptured</code></li></ul><p><strong>Tips:</strong></p><blockquote><p>无法设置 reactive的state</p></blockquote><p>示例：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>import { defineComponent, onUnmounted, reactive, ref, watchEffect } from <span style=color:#e6db74>&#34;vue&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> default defineComponent({
+</span></span><span style=display:flex><span>  name: <span style=color:#e6db74>&#34;About&#34;</span>,
+</span></span><span style=display:flex><span>  components: {},
+</span></span><span style=display:flex><span>  setup() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> state <span style=color:#f92672>=</span> reactive({
+</span></span><span style=display:flex><span>      msg: <span style=color:#e6db74>&#39;欢迎来到 &#34;关于 vue3 和TS的语法DEMO&#34;&#39;</span>,
+</span></span><span style=display:flex><span>      testWatchEffectCount: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> watchEffect <span style=color:#960050;background-color:#1e0010>——</span> <span style=color:#ae81ff>1.</span><span style=color:#960050;background-color:#1e0010>自动收集数据源作为依赖、</span><span style=color:#ae81ff>2.</span><span style=color:#960050;background-color:#1e0010>只有变更后的值、</span><span style=color:#ae81ff>3.</span><span style=color:#960050;background-color:#1e0010>默认会执行一次寻找依赖，然后属性改变也会执行</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> count <span style=color:#f92672>=</span> ref(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    watchEffect(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      console<span style=color:#f92672>.</span>log(<span style=color:#e6db74>&#34;--watchEffect-value--&#34;</span>, count<span style=color:#f92672>.</span>value);
+</span></span><span style=display:flex><span>      state<span style=color:#f92672>.</span>testWatchEffectCount <span style=color:#f92672>=</span> count<span style=color:#f92672>.</span>value;
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>    setInterval(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      count<span style=color:#f92672>.</span>value<span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>    }, <span style=color:#ae81ff>500</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> stop <span style=color:#f92672>=</span> watchEffect(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      console<span style=color:#f92672>.</span>log(<span style=color:#e6db74>&#34;--stop-effect--&#34;</span>);
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>清除副作用</span>
+</span></span><span style=display:flex><span>    watchEffect(onInvalidate <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      console<span style=color:#f92672>.</span>log(count<span style=color:#f92672>.</span>value, <span style=color:#e6db74>&#34;0-副作用&#34;</span>);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>const</span> token <span style=color:#f92672>=</span> setTimeout(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        console<span style=color:#f92672>.</span>log(count<span style=color:#f92672>.</span>value, <span style=color:#e6db74>&#34;1-副作用&#34;</span>);
+</span></span><span style=display:flex><span>      }, <span style=color:#ae81ff>5000</span>);
+</span></span><span style=display:flex><span>      onInvalidate(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>//</span> count(watchEffect函数依赖项) <span style=color:#960050;background-color:#1e0010>改变时或停止侦听时，取消之前的异步操作</span>
+</span></span><span style=display:flex><span>        token<span style=color:#f92672>.</span>cancel();
+</span></span><span style=display:flex><span>      });
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    onUnmounted(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      stop();
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>      state
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>});
+</span></span></code></pre></div><h3 id=5computed>5、<code>computed</code><a hidden class=anchor aria-hidden=true href=#5computed>#</a></h3><p>computed() 用来创建计算属性，computed() 函数的返回值是一个 ref 的实例</p><ul><li>computed创建只读的计算属性(传入一个 function 函数，可以得到一个只读的计算属性)</li><li>computed创建可读可写的计算属性</li></ul><p>示例:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>import { ref, computed } from <span style=color:#e6db74>&#39;vue&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> default {
+</span></span><span style=display:flex><span>  setup() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> count <span style=color:#f92672>=</span> ref(<span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> computedCount <span style=color:#f92672>=</span> computed(() <span style=color:#f92672>=&gt;</span> count<span style=color:#f92672>.</span>value <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>    computedCount<span style=color:#f92672>.</span>value <span style=color:#f92672>=</span> <span style=color:#ae81ff>9</span> <span style=color:#f92672>//</span>  computed value is readonly<span style=color:#f92672>.</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> count2 <span style=color:#f92672>=</span> ref(<span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> computedCount2 <span style=color:#f92672>=</span> computed({
+</span></span><span style=display:flex><span>      get: () <span style=color:#f92672>=&gt;</span> count2<span style=color:#f92672>.</span>value <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>,
+</span></span><span style=display:flex><span>      set: val <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        count2<span style=color:#f92672>.</span>value <span style=color:#f92672>=</span> val <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    })
+</span></span><span style=display:flex><span>    computedCount2<span style=color:#f92672>.</span>value <span style=color:#f92672>=</span> <span style=color:#ae81ff>100</span> <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>为计算属性赋值的操作，会触发</span> set <span style=color:#960050;background-color:#1e0010>函数</span> 
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log(count2<span style=color:#f92672>.</span>value) <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>触发</span> set <span style=color:#960050;background-color:#1e0010>函数后，</span>count <span style=color:#960050;background-color:#1e0010>的值会被更新</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>      count,
+</span></span><span style=display:flex><span>      computedCount,
+</span></span><span style=display:flex><span>      count2,
+</span></span><span style=display:flex><span>      computedCount2
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=6watch>6、<code>watch</code><a hidden class=anchor aria-hidden=true href=#6watch>#</a></h3><ul><li>监视单个数据源变动<ul><li>监视单个reactive创建的数据</li><li>监视单个ref创建的数据源</li></ul></li><li>监视多个数据源<ul><li>监视多个reactive创建的数据源</li><li>监视多个ref创建的数据源</li></ul></li><li>清除watch监视</li><li>在 watch 中清除无效的异步任务（与节流防抖同效）</li></ul><p>示例:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>import { reactive, ref, watch } from <span style=color:#e6db74>&#39;vue&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> default {
+</span></span><span style=display:flex><span>  setup() {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> <span style=color:#ae81ff>1</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span> <span style=color:#960050;background-color:#1e0010>监视单个</span>reactive创建的数据源
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> state <span style=color:#f92672>=</span> reactive({count: <span style=color:#ae81ff>100</span>})
+</span></span><span style=display:flex><span>    watch(
+</span></span><span style=display:flex><span>      () <span style=color:#f92672>=&gt;</span> state<span style=color:#f92672>.</span>count,
+</span></span><span style=display:flex><span>      (newVal, oldVal) <span style=color:#f92672>=&gt;</span> { console<span style=color:#f92672>.</span>log(newVal, oldVal)},
+</span></span><span style=display:flex><span>      {lazy: true} <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>在</span> watch <span style=color:#960050;background-color:#1e0010>被创建的时候，不执行回调函数中的代码</span>
+</span></span><span style=display:flex><span>    )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> <span style=color:#ae81ff>1</span><span style=color:#f92672>-</span><span style=color:#ae81ff>2</span> <span style=color:#960050;background-color:#1e0010>监视单个</span>ref创建的数据源
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> count2 <span style=color:#f92672>=</span> ref(<span style=color:#ae81ff>100</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> stop2 <span style=color:#f92672>=</span> watch(
+</span></span><span style=display:flex><span>      count2,
+</span></span><span style=display:flex><span>      (newVal, oldVal) <span style=color:#f92672>=&gt;</span> { console<span style=color:#f92672>.</span>log(newVal, oldVal)},
+</span></span><span style=display:flex><span>      {lazy: true} <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>在</span> watch <span style=color:#960050;background-color:#1e0010>被创建的时候，不执行回调函数中的代码</span>
+</span></span><span style=display:flex><span>    )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span> <span style=color:#960050;background-color:#1e0010>监视多个</span>reactive创建的数据源
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> state3 <span style=color:#f92672>=</span> reactive({count: <span style=color:#ae81ff>100</span>, name: <span style=color:#e6db74>&#39;Laiyj&#39;</span>})
+</span></span><span style=display:flex><span>    watch(
+</span></span><span style=display:flex><span>      [() <span style=color:#f92672>=&gt;</span> state3<span style=color:#f92672>.</span>count, () <span style=color:#f92672>=&gt;</span> state3<span style=color:#f92672>.</span>name],
+</span></span><span style=display:flex><span>      ([newCount, newName], [oldCount, oldName]) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        console<span style=color:#f92672>.</span>log(newCount, oldCount)
+</span></span><span style=display:flex><span>        console<span style=color:#f92672>.</span>log(newName, oldName)
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>      {lazy: true} <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>在</span> watch <span style=color:#960050;background-color:#1e0010>被创建的时候，不执行回调函数中的代码</span>
+</span></span><span style=display:flex><span>    )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span><span style=color:#f92672>-</span><span style=color:#ae81ff>2</span> <span style=color:#960050;background-color:#1e0010>监视多个</span>ref创建的数据源
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> count4 count <span style=color:#f92672>=</span> ref(<span style=color:#ae81ff>100</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> name4 <span style=color:#f92672>=</span> ref(<span style=color:#e6db74>&#39;Fei&#39;</span>)
+</span></span><span style=display:flex><span>    watch(
+</span></span><span style=display:flex><span>      [count4, name4],
+</span></span><span style=display:flex><span>      ([newCount, newName], [oldCount, oldName]) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        console<span style=color:#f92672>.</span>log(newCount, oldCount)
+</span></span><span style=display:flex><span>        console<span style=color:#f92672>.</span>log(newName, oldName)
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>      {lazy: true} <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>在</span> watch <span style=color:#960050;background-color:#1e0010>被创建的时候，不执行回调函数中的代码</span>
+</span></span><span style=display:flex><span>    )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    setTimeout(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      state<span style=color:#f92672>.</span>count<span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>      count2<span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>      state2<span style=color:#f92672>.</span>count<span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>      state2<span style=color:#f92672>.</span>name <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;lian&#39;</span>;
+</span></span><span style=display:flex><span>      count4<span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>      name4 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;lian4&#39;</span>;
+</span></span><span style=display:flex><span>    }, <span style=color:#ae81ff>500</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>//</span> <span style=color:#ae81ff>3</span><span style=color:#960050;background-color:#1e0010>、清除</span>watch监视
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> clearWatch <span style=color:#f92672>=</span> () <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>    stop()
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>//</span> <span style=color:#ae81ff>4</span><span style=color:#960050;background-color:#1e0010>、</span>watch <span style=color:#960050;background-color:#1e0010>中清除无效的异步任务（与节流防抖同效）</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> keyword6 <span style=color:#f92672>=</span> ref(<span style=color:#e6db74>&#39;&#39;</span>)
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> asyncPrint <span style=color:#f92672>=</span> (val) <span style=color:#f92672>=&gt;</span> { <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>执行异步任务，并得到关闭异步任务的</span> timerId
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> setTimeout(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      console<span style=color:#f92672>.</span>log(val)
+</span></span><span style=display:flex><span>    }, <span style=color:#ae81ff>1000</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  watch(
+</span></span><span style=display:flex><span>    keyword6,
+</span></span><span style=display:flex><span>    (newVal, oldVal, onClean) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>const</span> timeId <span style=color:#f92672>=</span> asyncPrint()
+</span></span><span style=display:flex><span>      onClean(() <span style=color:#f92672>=&gt;</span> {clearTimeout(timeId)}) <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>如果</span> watch <span style=color:#960050;background-color:#1e0010>监听被重复执行了，则会先清除上次未完成的异步任务</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>    state,
+</span></span><span style=display:flex><span>    count2,
+</span></span><span style=display:flex><span>    state3,
+</span></span><span style=display:flex><span>    count4,
+</span></span><span style=display:flex><span>    name4
+</span></span><span style=display:flex><span>    clearWatch,
+</span></span><span style=display:flex><span>    keyword6
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=7依赖注入-provide--inject>7、依赖注入 <code>provide & inject</code><a hidden class=anchor aria-hidden=true href=#7依赖注入-provide--inject>#</a></h3><ul><li>provide() 和 inject() 可以实现嵌套组件之间的数据传递</li><li>只能在 setup() 函数中使用。</li><li>父级组件中使用 provide() 函数向下传递数据；子级组件中使用 inject() 获取上层传递过来的数据</li></ul><p>Tips:</p><blockquote><p>steup() 初始化，在brforeCreate 前后, 所以，对于动态组件，类似 list 内加载 list-item, item是无法拿到list provide的值的</p></blockquote><p>示例：父组件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>import {
+</span></span><span style=display:flex><span>  defineComponent,
+</span></span><span style=display:flex><span>  reactive,
+</span></span><span style=display:flex><span>  computed,
+</span></span><span style=display:flex><span>  provide,
+</span></span><span style=display:flex><span>  readonly,
+</span></span><span style=display:flex><span>  ref,
+</span></span><span style=display:flex><span>  onMounted
+</span></span><span style=display:flex><span>} from <span style=color:#e6db74>&#34;vue&#34;</span>;
+</span></span><span style=display:flex><span>import ListItem from <span style=color:#e6db74>&#34;./components/ListItem.vue&#34;</span>;
+</span></span><span style=display:flex><span>import TestInject from <span style=color:#e6db74>&#34;./components/TestInject.vue&#34;</span>;
+</span></span><span style=display:flex><span>interface ListByStatusData {
+</span></span><span style=display:flex><span>  page: number;
+</span></span><span style=display:flex><span>  pageSize: number;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>interface MovieItem {
+</span></span><span style=display:flex><span>  id: string;
+</span></span><span style=display:flex><span>  name: string;
+</span></span><span style=display:flex><span>  desc: string;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> default defineComponent({
+</span></span><span style=display:flex><span>  name: <span style=color:#e6db74>&#34;List&#34;</span>,
+</span></span><span style=display:flex><span>  components: {
+</span></span><span style=display:flex><span>    ListItem,
+</span></span><span style=display:flex><span>    TestInject
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  setup() {
+</span></span><span style=display:flex><span>    let list: <span style=color:#a6e22e>Array</span><span style=color:#f92672>&lt;</span>MovieItem<span style=color:#f92672>&gt;</span> <span style=color:#f92672>=</span> [];
+</span></span><span style=display:flex><span>    <span style=color:#f92672>/**</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>name: reactive
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>desc: <span style=color:#960050;background-color:#1e0010>核心流程</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>author: lianpf
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>date: <span style=color:#ae81ff>2021.03</span><span style=color:#f92672>.</span><span style=color:#ae81ff>06</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#f92672>*/</span>
+</span></span><span style=display:flex><span>    let state <span style=color:#f92672>=</span> reactive({
+</span></span><span style=display:flex><span>      title: <span style=color:#e6db74>&#34;List Page&#34;</span>,
+</span></span><span style=display:flex><span>      count: <span style=color:#ae81ff>0</span>,
+</span></span><span style=display:flex><span>      total: <span style=color:#ae81ff>0</span>,
+</span></span><span style=display:flex><span>      list,
+</span></span><span style=display:flex><span>      provideStatus: false
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> params <span style=color:#f92672>=</span> computed(() <span style=color:#f92672>=&gt;</span> ({
+</span></span><span style=display:flex><span>      count: state<span style=color:#f92672>.</span>count <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    }));
+</span></span><span style=display:flex><span>    <span style=color:#f92672>/**</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>name: <span style=color:#960050;background-color:#1e0010>异步请求函数</span> <span style=color:#f92672>&amp;</span> <span style=color:#960050;background-color:#1e0010>泛型函数</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>desc: <span style=color:#960050;background-color:#1e0010>核心流程</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>author: lianpf
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>date: <span style=color:#ae81ff>2021.03</span><span style=color:#f92672>.</span><span style=color:#ae81ff>06</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#f92672>*/</span>
+</span></span><span style=display:flex><span>    type FnType <span style=color:#f92672>=</span> (x: number, y: number) <span style=color:#f92672>=&gt;</span> Promise<span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Array</span><span style=color:#f92672>&lt;</span>MovieItem<span style=color:#f92672>&gt;&gt;</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> getInitList: FnType <span style=color:#f92672>=</span> (page, pageSize) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      console<span style=color:#f92672>.</span>log(<span style=color:#960050;background-color:#1e0010>`</span><span style=color:#f92672>--</span>req<span style=color:#f92672>-</span>params<span style=color:#f92672>-</span>page:<span style=color:#f92672>$</span>{page}<span style=color:#f92672>-</span>pageSize:<span style=color:#f92672>$</span>{pageSize}<span style=color:#f92672>--</span><span style=color:#960050;background-color:#1e0010>`</span>);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> new Promise((resolve, reject) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>        try {
+</span></span><span style=display:flex><span>          let res: <span style=color:#a6e22e>Array</span><span style=color:#f92672>&lt;</span>MovieItem<span style=color:#f92672>&gt;</span> <span style=color:#f92672>=</span> [
+</span></span><span style=display:flex><span>            {
+</span></span><span style=display:flex><span>              id: <span style=color:#e6db74>&#34;100&#34;</span>,
+</span></span><span style=display:flex><span>              name: <span style=color:#e6db74>&#34;list-item-001&#34;</span>,
+</span></span><span style=display:flex><span>              desc: <span style=color:#e6db74>&#34;001-001-001-001&#34;</span>
+</span></span><span style=display:flex><span>            },
+</span></span><span style=display:flex><span>            {
+</span></span><span style=display:flex><span>              id: <span style=color:#e6db74>&#34;200&#34;</span>,
+</span></span><span style=display:flex><span>              name: <span style=color:#e6db74>&#34;list-item-002&#34;</span>,
+</span></span><span style=display:flex><span>              desc: <span style=color:#e6db74>&#34;002-002-002-002&#34;</span>
+</span></span><span style=display:flex><span>            },
+</span></span><span style=display:flex><span>            {
+</span></span><span style=display:flex><span>              id: <span style=color:#e6db74>&#34;300&#34;</span>,
+</span></span><span style=display:flex><span>              name: <span style=color:#e6db74>&#34;list-item-003&#34;</span>,
+</span></span><span style=display:flex><span>              desc: <span style=color:#e6db74>&#34;003-003-003-003&#34;</span>
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>          ];
+</span></span><span style=display:flex><span>          resolve(res);
+</span></span><span style=display:flex><span>        } catch (e) {
+</span></span><span style=display:flex><span>          reject(e);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      });
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> <span style=color:#66d9ef>const</span> tempList <span style=color:#f92672>=</span> () <span style=color:#f92672>=&gt;</span> getInitList()
+</span></span><span style=display:flex><span>    let reqParams: ListByStatusData <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>      page: <span style=color:#ae81ff>1</span>,
+</span></span><span style=display:flex><span>      pageSize: <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>异步流控制函数</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> asyncFlow <span style=color:#f92672>=</span> async () <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      let resData <span style=color:#f92672>=</span> await getInitList(reqParams<span style=color:#f92672>.</span>page, reqParams<span style=color:#f92672>.</span>pageSize);
+</span></span><span style=display:flex><span>      state<span style=color:#f92672>.</span>count <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>;
+</span></span><span style=display:flex><span>      state<span style=color:#f92672>.</span>list <span style=color:#f92672>=</span> resData;
+</span></span><span style=display:flex><span>      list <span style=color:#f92672>=</span> resData;
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    onMounted(async () <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      await asyncFlow();
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>    <span style=color:#f92672>/**</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>name: <span style=color:#960050;background-color:#1e0010>依赖注入</span> <span style=color:#960050;background-color:#1e0010>——</span> <span style=color:#960050;background-color:#1e0010>父组件通过</span> provide <span style=color:#960050;background-color:#1e0010>函数向子级组件共享数据（不限层级）</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>desc: <span style=color:#960050;background-color:#1e0010>核心功能</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>author: lianpf
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>date: <span style=color:#ae81ff>2021.03</span><span style=color:#f92672>.</span><span style=color:#ae81ff>06</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#f92672>*/</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> parentColor <span style=color:#f92672>=</span> ref(<span style=color:#e6db74>&#34;salmon&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> provide(<span style=color:#e6db74>&#39;要共享的数据名称&#39;</span>, <span style=color:#960050;background-color:#1e0010>被共享的数据</span>)
+</span></span><span style=display:flex><span>    provide(<span style=color:#e6db74>&#34;themeColor&#34;</span>, readonly(parentColor));
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> updateThemeColor <span style=color:#f92672>=</span> () <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>      state<span style=color:#f92672>.</span>provideStatus <span style=color:#f92672>=</span> <span style=color:#f92672>!</span>state<span style=color:#f92672>.</span>provideStatus;
+</span></span><span style=display:flex><span>      parentColor<span style=color:#f92672>.</span>value <span style=color:#f92672>=</span> state<span style=color:#f92672>.</span>provideStatus <span style=color:#960050;background-color:#1e0010>?</span> <span style=color:#e6db74>&#34;skyblue&#34;</span> : <span style=color:#e6db74>&#34;salmon&#34;</span>;
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>    <span style=color:#f92672>//</span> <span style=color:#960050;background-color:#1e0010>父组件</span> function update <span style=color:#960050;background-color:#1e0010>“注入”的值</span>
+</span></span><span style=display:flex><span>    provide(<span style=color:#e6db74>&#34;updateThemeColor&#34;</span>, updateThemeColor);
+</span></span><span style=display:flex><span>    provide(<span style=color:#e6db74>&#34;location&#34;</span>, <span style=color:#e6db74>&#34;North Pole&#34;</span>);
+</span></span><span style=display:flex><span>    provide(<span style=color:#e6db74>&#34;geolocation&#34;</span>, {
+</span></span><span style=display:flex><span>      longitude: <span style=color:#ae81ff>90</span>,
+</span></span><span style=display:flex><span>      latitude: <span style=color:#ae81ff>135</span>
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>      state,
+</span></span><span style=display:flex><span>      params,
+</span></span><span style=display:flex><span>      list
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/</span>script<span style=color:#f92672>&gt;</span>
+</span></span></code></pre></div><p>示例: 子组件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>import { inject, defineComponent } from <span style=color:#e6db74>&#34;vue&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> default defineComponent({
+</span></span><span style=display:flex><span>  name: <span style=color:#e6db74>&#34;TestInject&#34;</span>,
+</span></span><span style=display:flex><span>  setup() {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>/**</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>name: <span style=color:#960050;background-color:#1e0010>依赖注入</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>desc: <span style=color:#960050;background-color:#1e0010>核心功能</span> <span style=color:#960050;background-color:#1e0010>——</span> <span style=color:#960050;background-color:#1e0010>调用</span> inject <span style=color:#960050;background-color:#1e0010>函数时，通过指定的数据名称，获取到父级共享的数据</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>author: lianpf
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span> <span style=color:#960050;background-color:#1e0010>@</span>date: <span style=color:#ae81ff>2021.03</span><span style=color:#f92672>.</span><span style=color:#ae81ff>06</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>*</span>  <span style=color:#f92672>*/</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> userThemeColor <span style=color:#f92672>=</span> inject(<span style=color:#e6db74>&#34;themeColor&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> updateThemeColor <span style=color:#f92672>=</span> inject(<span style=color:#e6db74>&#34;updateThemeColor&#34;</span>);
+</span></span><span style=display:flex><span>    console<span style=color:#f92672>.</span>log(<span style=color:#e6db74>&#34;--userThemeColor--&#34;</span>, userThemeColor);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> userLocation <span style=color:#f92672>=</span> inject(<span style=color:#e6db74>&#34;location&#34;</span>, <span style=color:#e6db74>&#34;The Universe&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> userGeolocation <span style=color:#f92672>=</span> inject(<span style=color:#e6db74>&#34;geolocation&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>      userThemeColor,
+</span></span><span style=display:flex><span>      updateThemeColor,
+</span></span><span style=display:flex><span>      userLocation,
+</span></span><span style=display:flex><span>      userGeolocation
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/</span>script<span style=color:#f92672>&gt;</span>
+</span></span></code></pre></div><h2 id=四项目结构>四、项目结构<a hidden class=anchor aria-hidden=true href=#四项目结构>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>├──</span> README<span style=color:#f92672>.</span>md
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>├──</span> babel<span style=color:#f92672>.</span>config<span style=color:#f92672>.</span>js
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>├──</span> package<span style=color:#f92672>-</span>lock<span style=color:#f92672>.</span>json
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>├──</span> package<span style=color:#f92672>.</span>json
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>├──</span> public
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>├──</span> favicon<span style=color:#f92672>.</span>ico
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>└──</span> index<span style=color:#f92672>.</span>html
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>├──</span> src
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>├──</span> App<span style=color:#f92672>.</span>vue
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>├──</span> assets
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>├──</span> logo<span style=color:#f92672>.</span>png
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>└──</span> styles
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>│</span>       <span style=color:#960050;background-color:#1e0010>└──</span> varible<span style=color:#f92672>.</span>styl
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>├──</span> components
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>├──</span> HeaderNav<span style=color:#f92672>.</span>vue
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>└──</span> HelloWorld<span style=color:#f92672>.</span>vue
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>├──</span> main<span style=color:#f92672>.</span>ts
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>├──</span> router
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>└──</span> index<span style=color:#f92672>.</span>ts
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>├──</span> shims<span style=color:#f92672>-</span>vue<span style=color:#f92672>.</span>d<span style=color:#f92672>.</span>ts
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>├──</span> store
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>└──</span> index<span style=color:#f92672>.</span>ts
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>├──</span> types
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>└──</span> movie<span style=color:#f92672>.</span>ts
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>   <span style=color:#960050;background-color:#1e0010>└──</span> views
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>       <span style=color:#960050;background-color:#1e0010>├──</span> About<span style=color:#f92672>.</span>vue
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>       <span style=color:#960050;background-color:#1e0010>├──</span> Detail<span style=color:#f92672>.</span>vue
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>       <span style=color:#960050;background-color:#1e0010>├──</span> Home<span style=color:#f92672>.</span>vue
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>       <span style=color:#960050;background-color:#1e0010>├──</span> List<span style=color:#f92672>.</span>vue
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>       <span style=color:#960050;background-color:#1e0010>└──</span> components
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>           <span style=color:#960050;background-color:#1e0010>├──</span> ListItem<span style=color:#f92672>.</span>vue
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>│</span>           <span style=color:#960050;background-color:#1e0010>└──</span> TestInject<span style=color:#f92672>.</span>vue
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>└──</span> tsconfig<span style=color:#f92672>.</span>json
+</span></span></code></pre></div><h2 id=五源码>五、源码<a hidden class=anchor aria-hidden=true href=#五源码>#</a></h2><blockquote><p>example源码地址: <a href=https://github.com/lianpf/examples/tree/master/vue/vue3-ts>vue3-ts</a></p></blockquote><hr><p><strong>最后， 希望大家早日实现：成为编程高手的伟大梦想！</strong><br><strong>欢迎交流~</strong></p><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286><p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong><br><strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p></div><footer class=post-footer><nav class=paginav><a class=prev href=https://lianpf.github.io/posts/other/11.mysql-gui/><span class=title>« 上一页</span><br><span>MySQL 8.0问题排查</span>
+</a><a class=next href=https://lianpf.github.io/posts/frontend-develop/03.ts-basic-grammar/><span class=title>下一页 »</span><br><span>vue3+ts(2)：TypeScript 语法汇总</span></a></nav><div class=share-buttons><a target=_blank rel="noopener noreferrer" aria-label="share vue3+ts(3)：vue3组合式api及重要属性变更 on twitter" href="https://twitter.com/intent/tweet/?text=vue3%2bts%283%29%ef%bc%9avue3%e7%bb%84%e5%90%88%e5%bc%8fapi%e5%8f%8a%e9%87%8d%e8%a6%81%e5%b1%9e%e6%80%a7%e5%8f%98%e6%9b%b4&amp;url=https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fvue3-composition-api-and-main-attrs%2f&amp;hashtags=Vue%e6%8a%80%e6%9c%af%e6%a0%88%2cTS"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg>
+</a><a target=_blank rel="noopener noreferrer" aria-label="share vue3+ts(3)：vue3组合式api及重要属性变更 on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fvue3-composition-api-and-main-attrs%2f&amp;title=vue3%2bts%283%29%ef%bc%9avue3%e7%bb%84%e5%90%88%e5%bc%8fapi%e5%8f%8a%e9%87%8d%e8%a6%81%e5%b1%9e%e6%80%a7%e5%8f%98%e6%9b%b4&amp;summary=vue3%2bts%283%29%ef%bc%9avue3%e7%bb%84%e5%90%88%e5%bc%8fapi%e5%8f%8a%e9%87%8d%e8%a6%81%e5%b1%9e%e6%80%a7%e5%8f%98%e6%9b%b4&amp;source=https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fvue3-composition-api-and-main-attrs%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg>
+</a><a target=_blank rel="noopener noreferrer" aria-label="share vue3+ts(3)：vue3组合式api及重要属性变更 on reddit" href="https://reddit.com/submit?url=https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fvue3-composition-api-and-main-attrs%2f&title=vue3%2bts%283%29%ef%bc%9avue3%e7%bb%84%e5%90%88%e5%bc%8fapi%e5%8f%8a%e9%87%8d%e8%a6%81%e5%b1%9e%e6%80%a7%e5%8f%98%e6%9b%b4"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg>
+</a><a target=_blank rel="noopener noreferrer" aria-label="share vue3+ts(3)：vue3组合式api及重要属性变更 on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fvue3-composition-api-and-main-attrs%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg>
+</a><a target=_blank rel="noopener noreferrer" aria-label="share vue3+ts(3)：vue3组合式api及重要属性变更 on whatsapp" href="https://api.whatsapp.com/send?text=vue3%2bts%283%29%ef%bc%9avue3%e7%bb%84%e5%90%88%e5%bc%8fapi%e5%8f%8a%e9%87%8d%e8%a6%81%e5%b1%9e%e6%80%a7%e5%8f%98%e6%9b%b4%20-%20https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fvue3-composition-api-and-main-attrs%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg>
+</a><a target=_blank rel="noopener noreferrer" aria-label="share vue3+ts(3)：vue3组合式api及重要属性变更 on telegram" href="https://telegram.me/share/url?text=vue3%2bts%283%29%ef%bc%9avue3%e7%bb%84%e5%90%88%e5%bc%8fapi%e5%8f%8a%e9%87%8d%e8%a6%81%e5%b1%9e%e6%80%a7%e5%8f%98%e6%9b%b4&amp;url=https%3a%2f%2flianpf.github.io%2fposts%2ffrontend-develop%2fvue3-composition-api-and-main-attrs%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></div></footer></div><script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=title label=comments theme=github-light crossorigin=anonymous async></script></article></main><footer class=footer><span>Copyright
+&copy;
+2016-2024
+<a href=https://lianpf.github.io/ style=color:#939393>曜灵（SUN）Site</a>.
+基于 Hugo 引擎和 PaperMod 主题
+</span><a href=https://beian.miit.gov.cn/ target=_blank style=color:#939393></a>&nbsp;</footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><span class=topInner><svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+<span id=read_progress></span>
+</span></a><script>document.addEventListener("scroll",function(){const t=document.getElementById("read_progress"),n=document.documentElement.scrollHeight,s=document.documentElement.clientHeight,o=document.documentElement.scrollTop||document.body.scrollTop;t.innerText=((o/(n-s)).toFixed(2)*100).toFixed(0)})</script><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>let mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>200||document.documentElement.scrollTop>200?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{(function(){document.cookie="change-themes="+escape("false")})(),document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.body.addEventListener("copy",function(e){if(window.getSelection().toString()&&window.getSelection().toString().length>50){let t=e.clipboardData||window.clipboardData;if(t){e.preventDefault();let n=window.getSelection().toString()+`
 
-export default defineComponent({
-  name: &quot;About&quot;,
-  components: {},
-  setup() {
-    const state = reactive({
-      msg: '欢迎来到 &quot;关于 vue3 和TS的语法DEMO&quot;',
-      testWatchEffectCount: 0
-    });
-    // watchEffect —— 1.自动收集数据源作为依赖、2.只有变更后的值、3.默认会执行一次寻找依赖，然后属性改变也会执行
-    const count = ref(0);
-    watchEffect(() =&gt; {
-      console.log(&quot;--watchEffect-value--&quot;, count.value);
-      state.testWatchEffectCount = count.value;
-    });
-    setInterval(() =&gt; {
-      count.value++;
-    }, 500);
+————————————————
+版权声明：本文为「曜灵（SUN）Site」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：`+location.href,s=window.getSelection().toString()+`
 
-    const stop = watchEffect(() =&gt; {
-      console.log(&quot;--stop-effect--&quot;);
-    });
-    // 清除副作用
-    watchEffect(onInvalidate =&gt; {
-      console.log(count.value, &quot;0-副作用&quot;);
-      const token = setTimeout(() =&gt; {
-        console.log(count.value, &quot;1-副作用&quot;);
-      }, 5000);
-      onInvalidate(() =&gt; {
-        // count(watchEffect函数依赖项) 改变时或停止侦听时，取消之前的异步操作
-        token.cancel();
-      });
-    });
-
-    onUnmounted(() =&gt; {
-      stop();
-    });
-    return {
-      state
-    };
-  }
-});
-&lt;/script&gt;
-</code></pre><h3 id=3ref引用--torefs>3、<code>ref引用</code> & <code>toRefs</code></h3><blockquote><p>ref常用于基本类型，reactive用于引用类型。如果ref传入对象，其实内部会自动变为reactive</p></blockquote><ul><li>ref() 函数根据给定的值创建一个响应式的数据对象，返回值是一个对象，这个对象上只包含一个 .value 属性</li><li>toRefs() 函数可以将 reactive() 创建出来的响应式对象，转换为普通的对象，只不过，这个对象上的每个属性节点，都是 ref() 类型的响应式数据</li><li>通过 ref() 还可以引用页面上的元素或组件，和vue2的ref概念类似<ul><li>元素引用</li><li>组件引用</li></ul></li></ul><p>示例：父组件</p><pre><code>import { ref, reactive, toRefs, onMounted } from 'vue'
-
-export default {
-    setup() {
-        const count = ref(0) // 创建响应式数据对象 count，初始值为 0
-        console.log(count.value) // 在setup内访问count值需要.value 属性才可以，但在template中可以直接访问
-
-        const state = reactive({count: 0, name:'weedsFly'}) // 用reactive集中创建多个响应式对象
-        const add = () =&gt; { // methods写在setup内
-          state.count++
-        }
-
-        // 元素引用
-        const h1Ref = ref(null) // 创建一个 DOM 引用
-        onMounted(() =&gt; { // 在 DOM 首次加载完毕之后，才能获取到元素的引用
-          h1Ref.value.style.color = 'pink' // h1Ref.value 是原生DOM对象
-        })
-        // 组件引用
-        const compRef = ref(null) // 创建一个组件的 ref 引用
-        showCompData = () =&gt; { // 展示子组件中 count 的值
-          console.log(compRef.value.count) 
-        }
-
-        return {
-          count,
-          // ...state,  // 使用展开运算符后 用reactive创建的响应式数据 变成了 固定的值
-          ...toRefs(state), // 可以用toRefs函数 将传进来的非响应式对象 转成 ref() 类型的响应式数据
-          add,
-          h1Ref,
-          compRef,
-          showCompData
-        }
-    },
- }
-</code></pre><p>示例：子组件</p><pre><code>import { ref } from 'vue'
-
-export default {
-  setup() {
-    const count = ref(0) // 定义响应式的数据
-    return {
-      count
-    }
-  }
-}
-</code></pre><h3 id=4lifecycle-hooks>4、<code>Lifecycle Hooks</code></h3><p>新版的生命周期函数，可以按需导入到组件中，且只能在 setup() 函数中使用</p><ul><li><code>use setup()</code><ul><li><del><code>beforeCreate</code></del></li><li><del><code>created</code></del></li></ul></li><li><code>onBeforeMount</code> &lt;- <code>beforeMount</code></li><li><code>onMounted</code> &lt;- <code>mounted</code></li><li><code>onBeforeUpdate</code> &lt;- <code>beforeUpdate</code></li><li><code>onUpdated</code> &lt;- <code>updated</code></li><li><code>onBeforeUnmount</code> &lt;- <code>beforeDestroy</code></li><li><code>onUnmounted</code> &lt;- <code>destroyed</code></li><li><code>onErrorCaptured</code> &lt;- <code>errorCaptured</code></li></ul><p><strong>Tips:</strong></p><blockquote><p>无法设置 reactive的state</p></blockquote><p>示例：</p><pre><code>import { defineComponent, onUnmounted, reactive, ref, watchEffect } from &quot;vue&quot;;
-
-export default defineComponent({
-  name: &quot;About&quot;,
-  components: {},
-  setup() {
-    const state = reactive({
-      msg: '欢迎来到 &quot;关于 vue3 和TS的语法DEMO&quot;',
-      testWatchEffectCount: 0
-    });
-    // watchEffect —— 1.自动收集数据源作为依赖、2.只有变更后的值、3.默认会执行一次寻找依赖，然后属性改变也会执行
-    const count = ref(0);
-    watchEffect(() =&gt; {
-      console.log(&quot;--watchEffect-value--&quot;, count.value);
-      state.testWatchEffectCount = count.value;
-    });
-    setInterval(() =&gt; {
-      count.value++;
-    }, 500);
-
-    const stop = watchEffect(() =&gt; {
-      console.log(&quot;--stop-effect--&quot;);
-    });
-    // 清除副作用
-    watchEffect(onInvalidate =&gt; {
-      console.log(count.value, &quot;0-副作用&quot;);
-      const token = setTimeout(() =&gt; {
-        console.log(count.value, &quot;1-副作用&quot;);
-      }, 5000);
-      onInvalidate(() =&gt; {
-        // count(watchEffect函数依赖项) 改变时或停止侦听时，取消之前的异步操作
-        token.cancel();
-      });
-    });
-
-    onUnmounted(() =&gt; {
-      stop();
-    });
-    return {
-      state
-    };
-  }
-});
-</code></pre><h3 id=5computed>5、<code>computed</code></h3><p>computed() 用来创建计算属性，computed() 函数的返回值是一个 ref 的实例</p><ul><li>computed创建只读的计算属性(传入一个 function 函数，可以得到一个只读的计算属性)</li><li>computed创建可读可写的计算属性</li></ul><p>示例:</p><pre><code>import { ref, computed } from 'vue'
-
-export default {
-  setup() {
-    const count = ref(0)
-    const computedCount = computed(() =&gt; count.value + 1)
-    computedCount.value = 9 //  computed value is readonly.
-
-    const count2 = ref(0)
-    const computedCount2 = computed({
-      get: () =&gt; count2.value + 1,
-      set: val =&gt; {
-        count2.value = val - 1
-      }
-    })
-    computedCount2.value = 100 // 为计算属性赋值的操作，会触发 set 函数 
-    console.log(count2.value) // 触发 set 函数后，count 的值会被更新
-    
-    return {
-      count,
-      computedCount,
-      count2,
-      computedCount2
-    }
-  },
-}
-</code></pre><h3 id=6watch>6、<code>watch</code></h3><ul><li>监视单个数据源变动<ul><li>监视单个reactive创建的数据</li><li>监视单个ref创建的数据源</li></ul></li><li>监视多个数据源<ul><li>监视多个reactive创建的数据源</li><li>监视多个ref创建的数据源</li></ul></li><li>清除watch监视</li><li>在 watch 中清除无效的异步任务（与节流防抖同效）</li></ul><p>示例:</p><pre><code>import { reactive, ref, watch } from 'vue'
-
-export default {
-  setup() {
-    // 1-1 监视单个reactive创建的数据源
-    const state = reactive({count: 100})
-    watch(
-      () =&gt; state.count,
-      (newVal, oldVal) =&gt; { console.log(newVal, oldVal)},
-      {lazy: true} // 在 watch 被创建的时候，不执行回调函数中的代码
-    )
-
-    // 1-2 监视单个ref创建的数据源
-    const count2 = ref(100)
-    const stop2 = watch(
-      count2,
-      (newVal, oldVal) =&gt; { console.log(newVal, oldVal)},
-      {lazy: true} // 在 watch 被创建的时候，不执行回调函数中的代码
-    )
-
-    // 2-1 监视多个reactive创建的数据源
-    const state3 = reactive({count: 100, name: 'Laiyj'})
-    watch(
-      [() =&gt; state3.count, () =&gt; state3.name],
-      ([newCount, newName], [oldCount, oldName]) =&gt; {
-        console.log(newCount, oldCount)
-        console.log(newName, oldName)
-      },
-      {lazy: true} // 在 watch 被创建的时候，不执行回调函数中的代码
-    )
-
-    // 2-2 监视多个ref创建的数据源
-    const count4 count = ref(100)
-    const name4 = ref('Fei')
-    watch(
-      [count4, name4],
-      ([newCount, newName], [oldCount, oldName]) =&gt; {
-        console.log(newCount, oldCount)
-        console.log(newName, oldName)
-      },
-      {lazy: true} // 在 watch 被创建的时候，不执行回调函数中的代码
-    )
-
-    setTimeout(() =&gt; {
-      state.count++;
-      count2++;
-      state2.count++;
-      state2.name = 'lian';
-      count4++;
-      name4 = 'lian4';
-    }, 500)
-  }
-
-  // 3、清除watch监视
-  const clearWatch = () =&gt; {
-    stop()
-  }
-
-  // 4、watch 中清除无效的异步任务（与节流防抖同效）
-  const keyword6 = ref('')
-  const asyncPrint = (val) =&gt; { // 执行异步任务，并得到关闭异步任务的 timerId
-    return setTimeout(() =&gt; {
-      console.log(val)
-    }, 1000)
-  }
-  watch(
-    keyword6,
-    (newVal, oldVal, onClean) =&gt; {
-      const timeId = asyncPrint()
-      onClean(() =&gt; {clearTimeout(timeId)}) // 如果 watch 监听被重复执行了，则会先清除上次未完成的异步任务
-    }
-  )
-
-  return {
-    state,
-    count2,
-    state3,
-    count4,
-    name4
-    clearWatch,
-    keyword6
-  }
-}
-</code></pre><h3 id=7依赖注入-provide--inject>7、依赖注入 <code>provide & inject</code></h3><ul><li>provide() 和 inject() 可以实现嵌套组件之间的数据传递</li><li>只能在 setup() 函数中使用。</li><li>父级组件中使用 provide() 函数向下传递数据；子级组件中使用 inject() 获取上层传递过来的数据</li></ul><p>Tips:</p><blockquote><p>steup() 初始化，在brforeCreate 前后, 所以，对于动态组件，类似 list 内加载 list-item, item是无法拿到list provide的值的</p></blockquote><p>示例：父组件</p><pre><code>import {
-  defineComponent,
-  reactive,
-  computed,
-  provide,
-  readonly,
-  ref,
-  onMounted
-} from &quot;vue&quot;;
-import ListItem from &quot;./components/ListItem.vue&quot;;
-import TestInject from &quot;./components/TestInject.vue&quot;;
-interface ListByStatusData {
-  page: number;
-  pageSize: number;
-}
-interface MovieItem {
-  id: string;
-  name: string;
-  desc: string;
-}
-
-export default defineComponent({
-  name: &quot;List&quot;,
-  components: {
-    ListItem,
-    TestInject
-  },
-  setup() {
-    let list: Array&lt;MovieItem&gt; = [];
-    /**
-     * @name: reactive
-     * @desc: 核心流程
-     * @author: lianpf
-     * @date: 2021.03.06
-     * */
-    let state = reactive({
-      title: &quot;List Page&quot;,
-      count: 0,
-      total: 0,
-      list,
-      provideStatus: false
-    });
-
-    const params = computed(() =&gt; ({
-      count: state.count + 1
-    }));
-    /**
-     * @name: 异步请求函数 &amp; 泛型函数
-     * @desc: 核心流程
-     * @author: lianpf
-     * @date: 2021.03.06
-     * */
-    type FnType = (x: number, y: number) =&gt; Promise&lt;Array&lt;MovieItem&gt;&gt;;
-    const getInitList: FnType = (page, pageSize) =&gt; {
-      console.log(`--req-params-page:${page}-pageSize:${pageSize}--`);
-      return new Promise((resolve, reject) =&gt; {
-        try {
-          let res: Array&lt;MovieItem&gt; = [
-            {
-              id: &quot;100&quot;,
-              name: &quot;list-item-001&quot;,
-              desc: &quot;001-001-001-001&quot;
-            },
-            {
-              id: &quot;200&quot;,
-              name: &quot;list-item-002&quot;,
-              desc: &quot;002-002-002-002&quot;
-            },
-            {
-              id: &quot;300&quot;,
-              name: &quot;list-item-003&quot;,
-              desc: &quot;003-003-003-003&quot;
-            }
-          ];
-          resolve(res);
-        } catch (e) {
-          reject(e);
-        }
-      });
-    };
-    // const tempList = () =&gt; getInitList()
-    let reqParams: ListByStatusData = {
-      page: 1,
-      pageSize: 10
-    };
-
-    // 异步流控制函数
-    const asyncFlow = async () =&gt; {
-      let resData = await getInitList(reqParams.page, reqParams.pageSize);
-      state.count = 2;
-      state.list = resData;
-      list = resData;
-    };
-
-    onMounted(async () =&gt; {
-      await asyncFlow();
-    });
-    /**
-     * @name: 依赖注入 —— 父组件通过 provide 函数向子级组件共享数据（不限层级）
-     * @desc: 核心功能
-     * @author: lianpf
-     * @date: 2021.03.06
-     * */
-    const parentColor = ref(&quot;salmon&quot;);
-    // provide('要共享的数据名称', 被共享的数据)
-    provide(&quot;themeColor&quot;, readonly(parentColor));
-    const updateThemeColor = () =&gt; {
-      state.provideStatus = !state.provideStatus;
-      parentColor.value = state.provideStatus ? &quot;skyblue&quot; : &quot;salmon&quot;;
-    };
-    // 父组件 function update “注入”的值
-    provide(&quot;updateThemeColor&quot;, updateThemeColor);
-    provide(&quot;location&quot;, &quot;North Pole&quot;);
-    provide(&quot;geolocation&quot;, {
-      longitude: 90,
-      latitude: 135
-    });
-
-    return {
-      state,
-      params,
-      list
-    };
-  }
-});
-&lt;/script&gt;
-</code></pre><p>示例: 子组件</p><pre><code>import { inject, defineComponent } from &quot;vue&quot;;
-
-export default defineComponent({
-  name: &quot;TestInject&quot;,
-  setup() {
-    /**
-     * @name: 依赖注入
-     * @desc: 核心功能 —— 调用 inject 函数时，通过指定的数据名称，获取到父级共享的数据
-     * @author: lianpf
-     * @date: 2021.03.06
-     *  */
-    const userThemeColor = inject(&quot;themeColor&quot;);
-    const updateThemeColor = inject(&quot;updateThemeColor&quot;);
-    console.log(&quot;--userThemeColor--&quot;, userThemeColor);
-
-    const userLocation = inject(&quot;location&quot;, &quot;The Universe&quot;);
-    const userGeolocation = inject(&quot;geolocation&quot;);
-
-    return {
-      userThemeColor,
-      updateThemeColor,
-      userLocation,
-      userGeolocation
-    };
-  }
-});
-&lt;/script&gt;
-</code></pre><h2 id=四项目结构>四、项目结构</h2><pre><code>├── README.md
-├── babel.config.js
-├── package-lock.json
-├── package.json
-├── public
-│   ├── favicon.ico
-│   └── index.html
-├── src
-│   ├── App.vue
-│   ├── assets
-│   │   ├── logo.png
-│   │   └── styles
-│   │       └── varible.styl
-│   ├── components
-│   │   ├── HeaderNav.vue
-│   │   └── HelloWorld.vue
-│   ├── main.ts
-│   ├── router
-│   │   └── index.ts
-│   ├── shims-vue.d.ts
-│   ├── store
-│   │   └── index.ts
-│   ├── types
-│   │   └── movie.ts
-│   └── views
-│       ├── About.vue
-│       ├── Detail.vue
-│       ├── Home.vue
-│       ├── List.vue
-│       └── components
-│           ├── ListItem.vue
-│           └── TestInject.vue
-└── tsconfig.json
-</code></pre><h2 id=五源码>五、源码</h2><blockquote><p>example源码地址: <a href=https://github.com/lianpf/examples/tree/master/vue/vue3-ts>vue3-ts</a></p></blockquote><hr><p><strong>最后， 希望大家早日实现：成为编程高手的伟大梦想！</strong><br><strong>欢迎交流~</strong></p><p><img src=/img-common/weChatPublic.jpg alt=微信公众号 width=600 height=286></p><p><strong>本文版权归原作者曜灵所有！未经允许，严禁转载！对非法转载者, 原作者保留采用法律手段追究的权利！</strong><br><strong>若需转载，请联系微信公众号：连先生有猫病，可获取作者联系方式！</strong></p></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/vue%E6%8A%80%E6%9C%AF%E6%A0%88/ rel=tag>Vue技术栈</a></li><li class=tags__item><a class="tags__link btn" href=/tags/ts/ rel=tag>TS</a></li></ul></div></footer></article></main><div class="authorbox clearfix"><figure class=authorbox__avatar><img alt="曜灵 avatar" src=/img-common/avatar1.jpeg class=avatar height=90 width=90></figure><div class=authorbox__header><span class=authorbox__name>关于 曜灵</span></div><div class=authorbox__description>博主目前就职于X集团上海研发中心-平台工具组，是一名软件开发工程师。技术领域涉及 React技术栈、Vue技术栈、Hybrid、工程化，及node BFF层、Go Web编程等相关内容。工作之余，积极为社区贡献自己的绵薄之力，现有若干独立的开源项目</div></div><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/frontend-develop/03.ts-basic-grammar/ rel=prev><span class=pager__subtitle>«&#8201;上一篇</span><p class=pager__title>vue3+ts(2)：TypeScript 语法汇总</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/posts/other/11.mysql-gui/ rel=next><span class=pager__subtitle>下一篇&#8201;»</span><p class=pager__title>MySQL 8.0问题排查</p></a></div></nav><script src=https://utteranc.es/client.js repo=lianpf/lianpf.github.io issue-term=title label=comments theme=github-light crossorigin=anonymous async></script></div></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2016 - 2024 曜灵（SUN）Site.
-<span class=footer__copyright-credits>基于 <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> 引擎和 <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> 主题</span></div></div></footer><script src=https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js></script><script>addBackToTop({cornerOffset:100,diameter:56,backgroundColor:'#63B8FF',innerHTML:'<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',textColor:'#fff'})</script></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script><script src=/js/highlight/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script></body></html>
+————————————————
+版权声明：本文为「曜灵（SUN）Site」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：`+location.href;t.setData("text/html",n),t.setData("text/plain",s)}}})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const s=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerText="复制";function i(){t.innerText="已复制！",setTimeout(()=>{t.innerText="复制"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){let t=e.textContent+`
+————————————————
+版权声明：本文为「曜灵（SUN）Site」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：`+location.href;navigator.clipboard.writeText(t),i();return}const n=document.createRange();n.selectNodeContents(e);const s=window.getSelection();s.removeAllRanges(),s.addRange(n);try{document.execCommand("copy"),i()}catch{}s.removeRange(n)});let l=e.className.replaceAll("language-",""),n=document.createElement("div"),a=document.createElement("div"),r=document.createElement("div"),c=document.createElement("div"),o=document.createElement("div");o.innerText=l,n.setAttribute("class","mac-tool"),a.setAttribute("class","mac bb1"),r.setAttribute("class","mac bb2"),c.setAttribute("class","mac bb3"),o.setAttribute("class","language-type"),n.appendChild(a),n.appendChild(r),n.appendChild(c),n.appendChild(o),s.classList.contains("highlight")?(s.appendChild(t),s.appendChild(n)):s.parentNode.firstChild==s||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?(e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t),s.appendChild(n)):(e.parentNode.appendChild(t),s.appendChild(n)))})</script></body></html>

@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://lianpf.github.io/sitemap.xml

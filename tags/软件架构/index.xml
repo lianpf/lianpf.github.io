@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>软件架构 on 曜灵（SUN）Site</title><link>/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/</link><description>Recent content in 软件架构 on 曜灵（SUN）Site</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 29 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml"/><item><title>谈谈 JS 和 设计泛型</title><link>/posts/computer-basics/05.js-design-generics/</link><pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate><guid>/posts/computer-basics/05.js-design-generics/</guid><description>&amp;ldquo;泛型&amp;rdquo;, 计算机编程中, 一个必不可少</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>软件架构 on 曜灵（SUN）Site</title>
+    <link>https://lianpf.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/</link>
+    <description>Recent content in 软件架构 on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 29 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://lianpf.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>谈谈 JS 和 设计泛型</title>
+      <link>https://lianpf.github.io/posts/computer-basics/05.js-design-generics/</link>
+      <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/05.js-design-generics/</guid>
+      <description>&amp;ldquo;泛型&amp;rdquo;, 计算机编程中, 一个必不可少</description>
+    </item>
+    
+  </channel>
+</rss>

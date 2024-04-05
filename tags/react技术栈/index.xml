@@ -1,1 +1,56 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>React技术栈 on 曜灵（SUN）Site</title><link>/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/</link><description>Recent content in React技术栈 on 曜灵（SUN）Site</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 01 Feb 2021 11:28:18 +0800</lastBuildDate><atom:link href="/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/index.xml" rel="self" type="application/rss+xml"/><item><title>React &amp; Vue: SSR同构</title><link>/posts/frontend-develop/react-ssr/</link><pubDate>Mon, 01 Feb 2021 11:28:18 +0800</pubDate><guid>/posts/frontend-develop/react-ssr/</guid><description>&lt;p>汇总一下SSR同构方案，这里以REACT为例&amp;hellip;&lt;/p></description></item><item><title>聊下react中生命周期</title><link>/posts/frontend-develop/react-lifecycle/</link><pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate><guid>/posts/frontend-develop/react-lifecycle/</guid><description>&lt;p>这是一篇原计划在react v16.x 发布的时候要写的文章，按照这个时间节点，至少拖欠了两年之久&amp;hellip;&lt;/p></description></item><item><title>对比 React Hooks 和 Vue Composition API</title><link>/posts/frontend-develop/react-hooks-compare-vue-composition-api/</link><pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate><guid>/posts/frontend-develop/react-hooks-compare-vue-composition-api/</guid><description>&lt;p>目录 场景 hook 的时代意义 React Hooks Vue Composition API 差别 总结 场景 先理解&amp;hellip;&lt;/p></description></item><item><title>聊一聊Diff算法（React、Vue）</title><link>/posts/frontend-develop/react-diff-algorithm/</link><pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate><guid>/posts/frontend-develop/react-diff-algorithm/</guid><description>&lt;p>你了解传统的diff算法么？了解 react 优化的diff算法么？了解 Vue2.x和Vue3.x 渲染器的diff算法&amp;hellip;&lt;/p></description></item><item><title>对React children 的深入理解</title><link>/posts/frontend-develop/react-children/</link><pubDate>Tue, 29 May 2018 00:00:00 +0000</pubDate><guid>/posts/frontend-develop/react-children/</guid><description>&lt;p>react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样&amp;hellip;&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>React技术栈 on 曜灵（SUN）Site</title>
+    <link>https://lianpf.github.io/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/</link>
+    <description>Recent content in React技术栈 on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 01 Feb 2021 11:28:18 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/react%E6%8A%80%E6%9C%AF%E6%A0%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>React &amp; Vue: SSR同构</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/react-ssr/</link>
+      <pubDate>Mon, 01 Feb 2021 11:28:18 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/react-ssr/</guid>
+      <description>&lt;p&gt;汇总一下SSR同构方案，这里以REACT为例&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>聊下react中生命周期</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/react-lifecycle/</link>
+      <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/react-lifecycle/</guid>
+      <description>&lt;p&gt;这是一篇原计划在react v16.x 发布的时候要写的文章，按照这个时间节点，至少拖欠了两年之久&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>对比 React Hooks 和 Vue Composition API</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/react-hooks-compare-vue-composition-api/</link>
+      <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/react-hooks-compare-vue-composition-api/</guid>
+      <description>&lt;p&gt;目录 场景 hook 的时代意义 React Hooks Vue Composition API 差别 总结 场景 先理解&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>聊一聊Diff算法（React、Vue）</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/react-diff-algorithm/</link>
+      <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/react-diff-algorithm/</guid>
+      <description>&lt;p&gt;你了解传统的diff算法么？了解 react 优化的diff算法么？了解 Vue2.x和Vue3.x 渲染器的diff算法&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>对React children 的深入理解</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/react-children/</link>
+      <pubDate>Tue, 29 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/react-children/</guid>
+      <description>&lt;p&gt;react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,1 +1,110 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>计算机基础 on 曜灵（SUN）Site</title><link>/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</link><description>Recent content in 计算机基础 on 曜灵（SUN）Site</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 16 Mar 2024 23:11:19 +0800</lastBuildDate><atom:link href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux: Deepin系统环境配置</title><link>/posts/computer-basics/deepin-env-config/</link><pubDate>Sat, 16 Mar 2024 23:11:19 +0800</pubDate><guid>/posts/computer-basics/deepin-env-config/</guid><description>&lt;p>在上一篇 &lt;a href="/posts/computer-basics/deepin-env-config/">Linux: 基于Windows，安装Deepin（深度）双系统&lt;/a>中，成功安装&lt;code>Deepin&lt;/code>系统。那么为了方便后续的使用，需要更新系统，安装应用程序和环境配置。&lt;/p></description></item><item><title>Linux: 基于Windows，安装Deepin（深度）双系统</title><link>/posts/computer-basics/deepin-install/</link><pubDate>Fri, 15 Mar 2024 23:09:41 +0800</pubDate><guid>/posts/computer-basics/deepin-install/</guid><description>&lt;p>因为Linux的桌面发行版比较多，个人更加倾向于Debian系统，曾经折腾过deepin国产操作系统，所以此次仍然选择了deepin。本文主要介绍的是基于Windows系统上，安装Deepin系统社区20.9版本的整个过程&amp;hellip;&lt;/p></description></item><item><title>浏览器: DOM树和虚拟DOM树</title><link>/posts/computer-basics/09.dom-tree-and-virtual-dom-tree/</link><pubDate>Fri, 17 Sep 2021 22:18:27 +0800</pubDate><guid>/posts/computer-basics/09.dom-tree-and-virtual-dom-tree/</guid><description>&lt;p>渲染流水线中，DOM树本身的缺陷很容易引起重排、重绘等性能问题，后来有了虚拟DOM的&amp;hellip;&lt;/p></description></item><item><title>浏览器: Chrome架构-打开了1个⻚面，却有4个进程？</title><link>/posts/computer-basics/chrome-framework/</link><pubDate>Wed, 15 Sep 2021 22:32:37 +0800</pubDate><guid>/posts/computer-basics/chrome-framework/</guid><description>宏观视角下，聊一下浏览器，为什么打开1个页面，却有4个进程?</description></item><item><title>网络进程：Http请求流程</title><link>/posts/computer-basics/06.http-request-process/</link><pubDate>Tue, 14 Sep 2021 09:19:04 +0800</pubDate><guid>/posts/computer-basics/06.http-request-process/</guid><description>&lt;p>http和TCP的关系? 什么是 HTTP协议？建立在TCP连接基础之上，一种允许浏览器向服务器获取资源(JavaScript、CSS、图片等)的协议&amp;hellip;&lt;/p></description></item><item><title>浏览器: 关于cookie</title><link>/posts/computer-basics/07.cookie/</link><pubDate>Tue, 10 Aug 2021 18:08:13 +0800</pubDate><guid>/posts/computer-basics/07.cookie/</guid><description>&lt;p>我们都知道&lt;code>HTTP协议&lt;/code>是&lt;code>无状态&lt;/code>的，这种无状态意味着程序需要验证每一次请求，从而辨别客户端的身份。 &lt;code>Cookie&lt;/code>，就是为了辨别客户端身份而储存在客户端本地的数据&lt;/p></description></item><item><title>浏览器：导航流程-输入URL到页面展示，中间发生了什么(http)</title><link>/posts/computer-basics/chrome-url-navigation-process/</link><pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate><guid>/posts/computer-basics/chrome-url-navigation-process/</guid><description>&lt;p>浏览器输入URL到⻚面展示完整流程主要涉及到：浏览器进程、网络进程和渲染进程。其中&amp;hellip;&lt;/p></description></item><item><title>JavaScript&amp;Node: 事件循环机制（Event Loop）</title><link>/posts/computer-basics/chrome-event-loop/</link><pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate><guid>/posts/computer-basics/chrome-event-loop/</guid><description>一、背景 作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到</description></item><item><title>网络原理: http缓存机制及其原理</title><link>/posts/computer-basics/04.http-cache/</link><pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate><guid>/posts/computer-basics/04.http-cache/</guid><description>大家不应该仅仅局限于知道浏览器会对请求的静态文件进行缓存, 但</description></item><item><title>谈谈 JS 和 设计泛型</title><link>/posts/computer-basics/05.js-design-generics/</link><pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate><guid>/posts/computer-basics/05.js-design-generics/</guid><description>&amp;ldquo;泛型&amp;rdquo;, 计算机编程中, 一个必不可少</description></item><item><title>设计模式: 聊一聊JavaScript设计模式（一）</title><link>/posts/computer-basics/02.js-design-pattern-i/</link><pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate><guid>/posts/computer-basics/02.js-design-pattern-i/</guid><description>&lt;p>一个模式就是一个可重用的方案。当代码是建立在行之有效的模式上时,我们可以花更少的时间去关心我们的代码结构,从而能花&amp;hellip;&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>计算机基础 on 曜灵（SUN）Site</title>
+    <link>https://lianpf.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</link>
+    <description>Recent content in 计算机基础 on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 16 Mar 2024 23:11:19 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux: Deepin系统环境配置</title>
+      <link>https://lianpf.github.io/posts/computer-basics/deepin-env-config/</link>
+      <pubDate>Sat, 16 Mar 2024 23:11:19 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/deepin-env-config/</guid>
+      <description>&lt;p&gt;在上一篇 &lt;a href=&#34;https://lianpf.github.io/posts/computer-basics/deepin-env-config/&#34;&gt;Linux: 基于Windows，安装Deepin（深度）双系统&lt;/a&gt;中，成功安装&lt;code&gt;Deepin&lt;/code&gt;系统。那么为了方便后续的使用，需要更新系统，安装应用程序和环境配置。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux: 基于Windows，安装Deepin（深度）双系统</title>
+      <link>https://lianpf.github.io/posts/computer-basics/deepin-install/</link>
+      <pubDate>Fri, 15 Mar 2024 23:09:41 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/deepin-install/</guid>
+      <description>&lt;p&gt;因为Linux的桌面发行版比较多，个人更加倾向于Debian系统，曾经折腾过deepin国产操作系统，所以此次仍然选择了deepin。本文主要介绍的是基于Windows系统上，安装Deepin系统社区20.9版本的整个过程&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>浏览器: DOM树和虚拟DOM树</title>
+      <link>https://lianpf.github.io/posts/computer-basics/09.dom-tree-and-virtual-dom-tree/</link>
+      <pubDate>Fri, 17 Sep 2021 22:18:27 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/09.dom-tree-and-virtual-dom-tree/</guid>
+      <description>&lt;p&gt;渲染流水线中，DOM树本身的缺陷很容易引起重排、重绘等性能问题，后来有了虚拟DOM的&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>浏览器: Chrome架构-打开了1个⻚面，却有4个进程？</title>
+      <link>https://lianpf.github.io/posts/computer-basics/chrome-framework/</link>
+      <pubDate>Wed, 15 Sep 2021 22:32:37 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/chrome-framework/</guid>
+      <description>宏观视角下，聊一下浏览器，为什么打开1个页面，却有4个进程?</description>
+    </item>
+    
+    <item>
+      <title>网络进程：Http请求流程</title>
+      <link>https://lianpf.github.io/posts/computer-basics/06.http-request-process/</link>
+      <pubDate>Tue, 14 Sep 2021 09:19:04 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/06.http-request-process/</guid>
+      <description>&lt;p&gt;http和TCP的关系? 什么是 HTTP协议？建立在TCP连接基础之上，一种允许浏览器向服务器获取资源(JavaScript、CSS、图片等)的协议&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>浏览器: 关于cookie</title>
+      <link>https://lianpf.github.io/posts/computer-basics/07.cookie/</link>
+      <pubDate>Tue, 10 Aug 2021 18:08:13 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/07.cookie/</guid>
+      <description>&lt;p&gt;我们都知道&lt;code&gt;HTTP协议&lt;/code&gt;是&lt;code&gt;无状态&lt;/code&gt;的，这种无状态意味着程序需要验证每一次请求，从而辨别客户端的身份。 &lt;code&gt;Cookie&lt;/code&gt;，就是为了辨别客户端身份而储存在客户端本地的数据&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>浏览器：导航流程-输入URL到页面展示，中间发生了什么(http)</title>
+      <link>https://lianpf.github.io/posts/computer-basics/chrome-url-navigation-process/</link>
+      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/chrome-url-navigation-process/</guid>
+      <description>&lt;p&gt;浏览器输入URL到⻚面展示完整流程主要涉及到：浏览器进程、网络进程和渲染进程。其中&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JavaScript&amp;Node: 事件循环机制（Event Loop）</title>
+      <link>https://lianpf.github.io/posts/computer-basics/chrome-event-loop/</link>
+      <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/chrome-event-loop/</guid>
+      <description>一、背景 作为一枚“前端打字员”， 无论是新手还是老鸟，都会遇到</description>
+    </item>
+    
+    <item>
+      <title>网络原理: http缓存机制及其原理</title>
+      <link>https://lianpf.github.io/posts/computer-basics/04.http-cache/</link>
+      <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/04.http-cache/</guid>
+      <description>大家不应该仅仅局限于知道浏览器会对请求的静态文件进行缓存, 但</description>
+    </item>
+    
+    <item>
+      <title>谈谈 JS 和 设计泛型</title>
+      <link>https://lianpf.github.io/posts/computer-basics/05.js-design-generics/</link>
+      <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/05.js-design-generics/</guid>
+      <description>&amp;ldquo;泛型&amp;rdquo;, 计算机编程中, 一个必不可少</description>
+    </item>
+    
+    <item>
+      <title>设计模式: 聊一聊JavaScript设计模式（一）</title>
+      <link>https://lianpf.github.io/posts/computer-basics/02.js-design-pattern-i/</link>
+      <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/02.js-design-pattern-i/</guid>
+      <description>&lt;p&gt;一个模式就是一个可重用的方案。当代码是建立在行之有效的模式上时,我们可以花更少的时间去关心我们的代码结构,从而能花&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
