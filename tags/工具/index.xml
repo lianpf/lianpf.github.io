@@ -6,7 +6,16 @@
     <description>Recent content in 工具 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 30 May 2023 15:52:42 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Apr 2024 16:12:04 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>工具: Hugo博客的 Papermod 主题</title>
+      <link>https://lianpf.github.io/posts/other/tools-docs-hugo-papermod/</link>
+      <pubDate>Sat, 06 Apr 2024 16:12:04 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/other/tools-docs-hugo-papermod/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Hugo&lt;/code&gt;博客中的官方导航栏是头部的，之前使用的&lt;code&gt;Mainroad&lt;/code&gt;主题也是如此（且不太好自定义到左侧）。日常文档阅读中，侧边&lt;code&gt;toc&lt;/code&gt;更为方便，故对主题做了升级&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>工具:（Markdown）文档工具</title>
       <link>https://lianpf.github.io/posts/other/tools-docs-markdown/</link>
