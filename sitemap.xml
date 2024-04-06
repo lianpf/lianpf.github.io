@@ -62,9 +62,6 @@
     <loc>https://lianpf.github.io/posts/other/35.vpn-ssr-adblock-filters/</loc>
     <lastmod>2023-05-22T09:52:01+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/frontend-develop/</loc>
-    <lastmod>2023-05-05T17:31:23+08:00</lastmod>
-  </url><url>
     <loc>https://lianpf.github.io/posts/backend-develop/14.go-websocket/</loc>
     <lastmod>2023-04-07T23:30:57+08:00</lastmod>
   </url><url>
@@ -127,6 +124,9 @@
   </url><url>
     <loc>https://lianpf.github.io/posts/other/npm-package-pnpm/</loc>
     <lastmod>2022-07-20T13:52:08+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/posts/frontend-develop/</loc>
+    <lastmod>2022-05-05T17:30:50+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/frontend-develop/09.ajax-interceptor/</loc>
     <lastmod>2022-05-05T17:30:50+08:00</lastmod>
