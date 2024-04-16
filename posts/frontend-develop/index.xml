@@ -124,5 +124,14 @@
       <description>&lt;p&gt;项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&amp;hellip;&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>移动端: H5和native利用JsBridge交互</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/mobile-native-bridge/</link>
+      <pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/mobile-native-bridge/</guid>
+      <description>&lt;p&gt;H5和native利用JSBridge交互，其中涉及到了一些和ios交互的callHandler框架，WebViewJavascriptBridge相关的原理还待补充&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

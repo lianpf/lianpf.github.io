@@ -341,15 +341,6 @@
     </item>
     
     <item>
-      <title>JavaScript: H5和native利用JsBridge交互</title>
-      <link>https://lianpf.github.io/posts/other/34.h5%E5%92%8Cnative%E5%88%A9%E7%94%A8jsbridge%E4%BA%A4%E4%BA%92/</link>
-      <pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/other/34.h5%E5%92%8Cnative%E5%88%A9%E7%94%A8jsbridge%E4%BA%A4%E4%BA%92/</guid>
-      <description>&lt;p&gt;H5和native利用JSBridge交互，其中涉及到了一些和ios交互的callHandler框架，WebViewJavascriptBridge相关的原理还待补充&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Mac系统/软件版本配置问题汇总</title>
       <link>https://lianpf.github.io/posts/other/mac-system-env-config/</link>
       <pubDate>Thu, 03 Aug 2017 09:36:46 +0800</pubDate>
