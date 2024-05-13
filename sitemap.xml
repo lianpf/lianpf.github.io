@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lianpf.github.io/posts/frontend-develop/</loc>
+    <lastmod>2024-05-13T23:52:28+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/posts/</loc>
+    <lastmod>2024-05-13T23:52:28+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/categories/</loc>
+    <lastmod>2024-05-13T23:52:28+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/tags/ts/</loc>
+    <lastmod>2024-05-13T23:52:28+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/tags/</loc>
+    <lastmod>2024-05-13T23:52:28+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/posts/frontend-develop/ts-codefragment/</loc>
+    <lastmod>2024-05-13T23:52:28+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2024-05-13T23:52:28+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/</loc>
+    <lastmod>2024-05-13T23:52:28+08:00</lastmod>
+  </url><url>
     <loc>https://lianpf.github.io/posts/other/</loc>
     <lastmod>2024-04-09T20:34:31+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/</loc>
-    <lastmod>2024-04-09T20:34:31+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/categories/</loc>
-    <lastmod>2024-04-09T20:34:31+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/tags/</loc>
-    <lastmod>2024-04-09T20:34:31+08:00</lastmod>
-  </url><url>
     <loc>https://lianpf.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
-    <lastmod>2024-04-09T20:34:31+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/</loc>
     <lastmod>2024-04-09T20:34:31+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/tags/%E5%AD%95%E6%9C%9F/</loc>
@@ -59,9 +71,6 @@
     <loc>https://lianpf.github.io/tags/npm/</loc>
     <lastmod>2023-06-15T13:50:52+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2023-06-15T13:50:52+08:00</lastmod>
-  </url><url>
     <loc>https://lianpf.github.io/tags/go/</loc>
     <lastmod>2023-05-30T15:52:42+08:00</lastmod>
   </url><url>
@@ -84,9 +93,6 @@
     <lastmod>2023-04-07T23:30:57+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/tags/js/</loc>
-    <lastmod>2023-04-03T22:45:25+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/tags/ts/</loc>
     <lastmod>2023-04-03T22:45:25+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/other/32.code-fragment/</loc>
@@ -136,9 +142,6 @@
   </url><url>
     <loc>https://lianpf.github.io/posts/other/npm-package-pnpm/</loc>
     <lastmod>2022-07-20T13:52:08+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/posts/frontend-develop/</loc>
-    <lastmod>2022-05-05T17:30:50+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/frontend-develop/09.ajax-interceptor/</loc>
     <lastmod>2022-05-05T17:30:50+08:00</lastmod>
