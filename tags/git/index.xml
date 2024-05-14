@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Git on 曜灵（SUN）Site</title>
+    <title>git on 曜灵（SUN）Site</title>
     <link>https://lianpf.github.io/tags/git/</link>
-    <description>Recent content in Git on 曜灵（SUN）Site</description>
+    <description>Recent content in git on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 06 Aug 2021 14:05:21 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
@@ -17,11 +17,11 @@
     </item>
     
     <item>
-      <title>Git 中 ssh key、https 配置及用户名、邮箱基本信息配置</title>
-      <link>https://lianpf.github.io/posts/other/06.git%E4%B8%ADssh%E4%B8%8Ehttps/</link>
+      <title>Git: ssh key、https 配置及用户名、邮箱基本信息配置</title>
+      <link>https://lianpf.github.io/posts/other/gitconfigs-ssh-https/</link>
       <pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/06.git%E4%B8%ADssh%E4%B8%8Ehttps/</guid>
+      <guid>https://lianpf.github.io/posts/other/gitconfigs-ssh-https/</guid>
       <description>&lt;p&gt;git 作为当前最受欢迎的版本控制软件，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
     </item>
     

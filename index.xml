@@ -449,21 +449,21 @@
     </item>
     
     <item>
+      <title>Git: 团队分支命名使用和Commit提交规范</title>
+      <link>https://lianpf.github.io/posts/other/git-teamusage-standards/</link>
+      <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/other/git-teamusage-standards/</guid>
+      <description>一、背景 团队开发中，遵循一个合理、清晰的 Git 使用流程，是非常重</description>
+    </item>
+    
+    <item>
       <title>GitHub Action &#43; Hugo 自动构建发布个人博客</title>
       <link>https://lianpf.github.io/posts/other/github-actions-and-hugo-auto-build-blog/</link>
       <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lianpf.github.io/posts/other/github-actions-and-hugo-auto-build-blog/</guid>
       <description>一、整个流程及原理 1.物料 xxx.github.io public 仓库 A 存放个人源码(博客文稿)</description>
-    </item>
-    
-    <item>
-      <title>团队中git使用规范</title>
-      <link>https://lianpf.github.io/posts/other/02.%E5%9B%A2%E9%98%9F%E4%B8%ADgit%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83/</link>
-      <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/other/02.%E5%9B%A2%E9%98%9F%E4%B8%ADgit%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83/</guid>
-      <description>一、背景 团队开发中，遵循一个合理、清晰的 Git 使用流程，是非常重</description>
     </item>
     
     <item>
@@ -674,11 +674,11 @@
     </item>
     
     <item>
-      <title>Git 中 ssh key、https 配置及用户名、邮箱基本信息配置</title>
-      <link>https://lianpf.github.io/posts/other/06.git%E4%B8%ADssh%E4%B8%8Ehttps/</link>
+      <title>Git: ssh key、https 配置及用户名、邮箱基本信息配置</title>
+      <link>https://lianpf.github.io/posts/other/gitconfigs-ssh-https/</link>
       <pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/06.git%E4%B8%ADssh%E4%B8%8Ehttps/</guid>
+      <guid>https://lianpf.github.io/posts/other/gitconfigs-ssh-https/</guid>
       <description>&lt;p&gt;git 作为当前最受欢迎的版本控制软件，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
     </item>
     
