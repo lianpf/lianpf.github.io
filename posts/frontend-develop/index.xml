@@ -6,7 +6,16 @@
     <description>Recent content in 👨🏻‍💻 前端 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 15 May 2024 20:37:01 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/posts/frontend-develop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 May 2024 23:36:59 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/posts/frontend-develop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>工程化: 模块联邦Module Federation机制</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/buildtool-modulefederation/</link>
+      <pubDate>Mon, 20 May 2024 23:36:59 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/buildtool-modulefederation/</guid>
+      <description>一、模块联邦 模块联邦 (Module Federation) 是 Webpack 5 中的一个新特性，它允许将多个 Webpack</description>
+    </item>
+    
     <item>
       <title>微前端: qiankun、wujie和Micro App等框架对比</title>
       <link>https://lianpf.github.io/posts/frontend-develop/microfrontend_framework_compare/</link>

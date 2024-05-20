@@ -3,16 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lianpf.github.io/posts/frontend-develop/</loc>
-    <lastmod>2024-05-15T20:37:01+08:00</lastmod>
+    <lastmod>2024-05-20T23:36:59+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/</loc>
-    <lastmod>2024-05-15T20:37:01+08:00</lastmod>
+    <lastmod>2024-05-20T23:36:59+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/categories/</loc>
-    <lastmod>2024-05-15T20:37:01+08:00</lastmod>
+    <lastmod>2024-05-20T23:36:59+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/tags/vite/</loc>
+    <lastmod>2024-05-20T23:36:59+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/tags/webpack/</loc>
+    <lastmod>2024-05-20T23:36:59+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/tags/</loc>
-    <lastmod>2024-05-15T20:37:01+08:00</lastmod>
+    <lastmod>2024-05-20T23:36:59+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/</loc>
+    <lastmod>2024-05-20T23:36:59+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/posts/frontend-develop/buildtool-modulefederation/</loc>
+    <lastmod>2024-05-20T23:36:59+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2024-05-20T23:36:59+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/</loc>
+    <lastmod>2024-05-20T23:36:59+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2024-05-15T20:37:01+08:00</lastmod>
@@ -23,16 +41,10 @@
     <loc>https://lianpf.github.io/posts/frontend-develop/microfrontend_framework_compare/</loc>
     <lastmod>2024-05-15T20:37:01+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/</loc>
-    <lastmod>2024-05-15T20:37:01+08:00</lastmod>
-  </url><url>
     <loc>https://lianpf.github.io/tags/ts/</loc>
     <lastmod>2024-05-13T23:52:28+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/frontend-develop/ts-codefragment/</loc>
-    <lastmod>2024-05-13T23:52:28+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2024-05-13T23:52:28+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/other/</loc>
@@ -151,9 +163,6 @@
   </url><url>
     <loc>https://lianpf.github.io/posts/tech/tech/</loc>
     <lastmod>2022-05-05T00:17:58+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/</loc>
-    <lastmod>2022-02-18T14:48:38+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/other/github-actions-common/</loc>
     <lastmod>2022-02-18T14:48:38+08:00</lastmod>
