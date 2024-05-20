@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>iframe on 曜灵（SUN）Site</title>
+    <link>https://lianpf.github.io/tags/iframe/</link>
+    <description>Recent content in iframe on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 31 Aug 2020 17:11:34 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/iframe/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript: PostMessage使用</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/11.use-post_message/</link>
+      <pubDate>Mon, 31 Aug 2020 17:11:34 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/11.use-post_message/</guid>
+      <description>&lt;p&gt;&lt;code&gt;window.postMessage&lt;/code&gt;&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

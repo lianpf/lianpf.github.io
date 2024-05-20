@@ -27,10 +27,10 @@
     
     <item>
       <title>Node: pm2管理Node服务启动静态build打包文件</title>
-      <link>https://lianpf.github.io/posts/backend-develop/08.node-pm2/</link>
+      <link>https://lianpf.github.io/posts/backend-develop/node-pm2/</link>
       <pubDate>Thu, 02 Dec 2021 18:27:31 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/backend-develop/08.node-pm2/</guid>
+      <guid>https://lianpf.github.io/posts/backend-develop/node-pm2/</guid>
       <description>一、环境配置 centOS 安装 node &amp;amp; 配置全局变量 1.centos 安装 node 注意：安装和配置过</description>
     </item>
     

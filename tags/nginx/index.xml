@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>nginx on 曜灵（SUN）Site</title>
+    <title>Nginx on 曜灵（SUN）Site</title>
     <link>https://lianpf.github.io/tags/nginx/</link>
-    <description>Recent content in nginx on 曜灵（SUN）Site</description>
+    <description>Recent content in Nginx on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Sat, 27 Aug 2022 17:35:12 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nginx: Common Conf（场景化常用配置）</title>
-      <link>https://lianpf.github.io/posts/backend-develop/16.nginx-common-conf/</link>
+      <link>https://lianpf.github.io/posts/backend-develop/nginx-commonconf/</link>
       <pubDate>Sat, 27 Aug 2022 17:35:12 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/backend-develop/16.nginx-common-conf/</guid>
+      <guid>https://lianpf.github.io/posts/backend-develop/nginx-commonconf/</guid>
       <description>&lt;p&gt;&lt;code&gt;Nginx&lt;/code&gt;中常用的配置记录&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Nginx: 常用命令和反向代理配置</title>
-      <link>https://lianpf.github.io/posts/backend-develop/15.nginx-reverse-proxy/</link>
+      <link>https://lianpf.github.io/posts/backend-develop/nginx-reverseproxy/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://lianpf.github.io/posts/backend-develop/15.nginx-reverse-proxy/</guid>
+      <guid>https://lianpf.github.io/posts/backend-develop/nginx-reverseproxy/</guid>
       <description>&lt;p&gt;常用基础命令和&lt;code&gt;Nginx Demo&lt;/code&gt;配置过程记录&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Nginx: 能够做什么</title>
-      <link>https://lianpf.github.io/posts/backend-develop/02.what-can-nginx-do/</link>
+      <link>https://lianpf.github.io/posts/backend-develop/nginx-whatcando/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://lianpf.github.io/posts/backend-develop/02.what-can-nginx-do/</guid>
+      <guid>https://lianpf.github.io/posts/backend-develop/nginx-whatcando/</guid>
       <description>&lt;p&gt;node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
     </item>
     

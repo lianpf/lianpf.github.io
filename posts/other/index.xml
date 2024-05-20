@@ -81,19 +81,19 @@
     
     <item>
       <title>工具: Homebrew</title>
-      <link>https://lianpf.github.io/posts/other/30.homebrew/</link>
+      <link>https://lianpf.github.io/posts/other/mac-homebrew/</link>
       <pubDate>Fri, 17 Mar 2023 13:55:54 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/30.homebrew/</guid>
+      <guid>https://lianpf.github.io/posts/other/mac-homebrew/</guid>
       <description>&lt;p&gt;&lt;code&gt;Homebrew&lt;/code&gt;是使用 Mac OS 的一件利器，&lt;code&gt;Homebrew&lt;/code&gt;可以安装 &lt;code&gt;Apple&lt;/code&gt;没有预装但非常&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ChatGPT（OpenAI）注册及使用</title>
-      <link>https://lianpf.github.io/posts/other/29.chatgpt%E6%B3%A8%E5%86%8C%E4%BD%BF%E7%94%A8/</link>
+      <link>https://lianpf.github.io/posts/other/chatgpt-registeranduse/</link>
       <pubDate>Thu, 09 Feb 2023 13:25:34 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/29.chatgpt%E6%B3%A8%E5%86%8C%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://lianpf.github.io/posts/other/chatgpt-registeranduse/</guid>
       <description>&lt;p&gt;从春节前就开始酝酿的&lt;code&gt;ChatGPT&lt;/code&gt;最近大火，接下来就给大家梳理一下注册的过程&amp;hellip;&lt;/p&gt;</description>
     </item>
     
@@ -170,15 +170,6 @@
     </item>
     
     <item>
-      <title>MySQL 8.0问题排查</title>
-      <link>https://lianpf.github.io/posts/other/11.mysql-gui/</link>
-      <pubDate>Mon, 05 Apr 2021 10:27:21 +0800</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/other/11.mysql-gui/</guid>
-      <description>&lt;p&gt;开发项目电脑中装上了mysql8.0数据库，在使用数据库时遇见未知的意外错误，下面来记录下问题解决的过程&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>vue3&#43;ts(1)：vue3项目从0到1搭建</title>
       <link>https://lianpf.github.io/posts/other/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Wed, 10 Mar 2021 16:19:18 +0800</pubDate>
@@ -194,15 +185,6 @@
       
       <guid>https://lianpf.github.io/posts/other/tree-generate-project-directory/</guid>
       <description>&lt;p&gt;输出优美的目录结构仅仅只需要&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Node: Koa2 &#43; Mongodb(从0到1)搭建项目</title>
-      <link>https://lianpf.github.io/posts/other/03.koa2-mongodb%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/</link>
-      <pubDate>Mon, 01 Mar 2021 12:08:54 +0800</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/other/03.koa2-mongodb%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/</guid>
-      <description>&lt;p&gt;自己搭建项目让我们不仅仅关注于开发本身，知其然知其所以然，收获更多&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -306,28 +288,19 @@
     
     <item>
       <title>再也看不惯悲剧的我们-《飞驰人生》</title>
-      <link>https://lianpf.github.io/posts/other/article-no_longer_tolerate_tragedies/</link>
+      <link>https://lianpf.github.io/posts/other/article-nolongertoleratetragedies/</link>
       <pubDate>Sat, 27 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/article-no_longer_tolerate_tragedies/</guid>
+      <guid>https://lianpf.github.io/posts/other/article-nolongertoleratetragedies/</guid>
       <description>最好的喜剧永远是悲剧? 张弛在夕阳下驾车飞下悬崖是最好的结局?</description>
     </item>
     
     <item>
       <title>Node: npm包和nrm管理镜像源</title>
-      <link>https://lianpf.github.io/posts/other/08.npm-package-and-nrm-image-source-management/</link>
+      <link>https://lianpf.github.io/posts/other/npm-package-nrmimagesourcemanage/</link>
       <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/08.npm-package-and-nrm-image-source-management/</guid>
-      <description>&lt;p&gt;node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Node: 最简单的node server</title>
-      <link>https://lianpf.github.io/posts/other/07.node%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84node-server/</link>
-      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/other/07.node%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84node-server/</guid>
+      <guid>https://lianpf.github.io/posts/other/npm-package-nrmimagesourcemanage/</guid>
       <description>&lt;p&gt;node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
     </item>
     
