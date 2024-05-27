@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>代码片段 on 曜灵（SUN）Site</title>
+    <link>https://lianpf.github.io/tags/%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</link>
+    <description>Recent content in 代码片段 on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 03 Apr 2023 22:45:25 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>代码片段：go</title>
+      <link>https://lianpf.github.io/posts/backend-develop/go-codefragment/</link>
+      <pubDate>Mon, 03 Apr 2023 22:45:25 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/backend-develop/go-codefragment/</guid>
+      <description>&lt;p&gt;常用的一些&lt;code&gt;code fragment&lt;/code&gt;&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>代码片段：js/es6&#43;/ts</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/js-es-ts-codefragment/</link>
+      <pubDate>Mon, 03 Apr 2023 22:45:25 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/js-es-ts-codefragment/</guid>
+      <description>&lt;p&gt;常用的一些&lt;code&gt;code fragment&lt;/code&gt;&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>代码片段: html/css/less/sass</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/css-codefragment/</link>
+      <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/css-codefragment/</guid>
+      <description>项目开发中，经常遇到页面布局和样式的一些问题，最近做了一些梳</description>
+    </item>
+    
+  </channel>
+</rss>

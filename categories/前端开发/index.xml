@@ -35,6 +35,15 @@
     </item>
     
     <item>
+      <title>代码片段：js/es6&#43;/ts</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/js-es-ts-codefragment/</link>
+      <pubDate>Mon, 03 Apr 2023 22:45:25 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/js-es-ts-codefragment/</guid>
+      <description>&lt;p&gt;常用的一些&lt;code&gt;code fragment&lt;/code&gt;&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>代码片段：js/es6&#43;/ts/go</title>
       <link>https://lianpf.github.io/posts/other/32.code-fragment/</link>
       <pubDate>Mon, 03 Apr 2023 22:45:25 +0800</pubDate>
@@ -135,10 +144,10 @@
     
     <item>
       <title>代码片段: html/css/less/sass</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/css-code-fragment/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/css-codefragment/</link>
       <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lianpf.github.io/posts/frontend-develop/css-code-fragment/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/css-codefragment/</guid>
       <description>项目开发中，经常遇到页面布局和样式的一些问题，最近做了一些梳</description>
     </item>
     
