@@ -16,14 +16,5 @@
       <description>&lt;p&gt;渲染流水线中，DOM树本身的缺陷很容易引起重排、重绘等性能问题，后来有了虚拟DOM的&amp;hellip;&lt;/p&gt;</description>
     </item>
     
-    <item>
-      <title>样式代码片段: html/css/less/sass</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/02.styles-code-fragment/</link>
-      <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/frontend-develop/02.styles-code-fragment/</guid>
-      <description>&lt;p&gt;项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
   </channel>
 </rss>

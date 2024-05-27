@@ -116,6 +116,15 @@
     </item>
     
     <item>
+      <title>代码片段: html/css/less/sass</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/css-code-fragment/</link>
+      <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/css-code-fragment/</guid>
+      <description>项目开发中，经常遇到页面布局和样式的一些问题，最近做了一些梳</description>
+    </item>
+    
+    <item>
       <title>聊一聊Diff算法（React、Vue）</title>
       <link>https://lianpf.github.io/posts/frontend-develop/react-diff-algorithm/</link>
       <pubDate>Sat, 14 Dec 2019 00:00:00 +0000</pubDate>
@@ -140,15 +149,6 @@
       
       <guid>https://lianpf.github.io/posts/frontend-develop/react-children/</guid>
       <description>&lt;p&gt;react的核心是组件, 使得你可以利用jsx像嵌套HTML标签一样&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>样式代码片段: html/css/less/sass</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/02.styles-code-fragment/</link>
-      <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/frontend-develop/02.styles-code-fragment/</guid>
-      <description>&lt;p&gt;项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -512,6 +512,15 @@
     </item>
     
     <item>
+      <title>代码片段: html/css/less/sass</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/css-code-fragment/</link>
+      <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/css-code-fragment/</guid>
+      <description>项目开发中，经常遇到页面布局和样式的一些问题，最近做了一些梳</description>
+    </item>
+    
+    <item>
       <title>工具&amp;工程化：依托模板搭建企业级脚手架(cli)</title>
       <link>https://lianpf.github.io/posts/other/25.%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%84%9A%E6%89%8B%E6%9E%B6/</link>
       <pubDate>Mon, 20 Jan 2020 16:07:35 +0800</pubDate>
@@ -680,15 +689,6 @@
       
       <guid>https://lianpf.github.io/posts/backend-develop/node-simpleserver/</guid>
       <description>&lt;p&gt;node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>样式代码片段: html/css/less/sass</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/02.styles-code-fragment/</link>
-      <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/frontend-develop/02.styles-code-fragment/</guid>
-      <description>&lt;p&gt;项目开发中，经常遇到div元素自适应等高的问题，最近简单的做了一些总结&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
