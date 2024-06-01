@@ -6,7 +6,16 @@
     <description>Recent content on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 20 May 2024 23:36:59 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Jun 2024 11:13:14 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux应用: 热点 hotspot</title>
+      <link>https://lianpf.github.io/posts/computer-basics/linux-app-hotspot/</link>
+      <pubDate>Sat, 01 Jun 2024 11:13:14 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/linux-app-hotspot/</guid>
+      <description>&lt;p&gt;在&lt;code&gt;Linux&lt;/code&gt;系统中，需要连接&lt;code&gt;Wifi&lt;/code&gt;的同时，且开启热点&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>工程化: 模块联邦Module Federation机制</title>
       <link>https://lianpf.github.io/posts/frontend-develop/buildtool-modulefederation/</link>

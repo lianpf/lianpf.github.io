@@ -6,7 +6,16 @@
     <description>Recent content in 计算机基础 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 16 Mar 2024 23:11:19 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Jun 2024 11:13:14 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux应用: 热点 hotspot</title>
+      <link>https://lianpf.github.io/posts/computer-basics/linux-app-hotspot/</link>
+      <pubDate>Sat, 01 Jun 2024 11:13:14 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/computer-basics/linux-app-hotspot/</guid>
+      <description>&lt;p&gt;在&lt;code&gt;Linux&lt;/code&gt;系统中，需要连接&lt;code&gt;Wifi&lt;/code&gt;的同时，且开启热点&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Linux: Deepin系统环境配置</title>
       <link>https://lianpf.github.io/posts/computer-basics/deepin-env-config/</link>
