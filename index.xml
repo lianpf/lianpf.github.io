@@ -6,7 +6,25 @@
     <description>Recent content on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 01 Jun 2024 11:13:14 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Aug 2024 23:25:59 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ESLint: 构建适配Vue3配置的公共Package</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/eslint-build-utilpackage/</link>
+      <pubDate>Tue, 06 Aug 2024 23:25:59 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/eslint-build-utilpackage/</guid>
+      <description>&lt;p&gt;上一篇文章&lt;a href=&#34;https://lianpf.github.io/posts/frontend-develop/eslint-ts-prettier-config-vue3/&#34;&gt;《Vue3技术栈：ESLint、TypeScript和Prettier配置》&lt;/a&gt;，我们主要拆解了在vue3项目中，如何去配置和使用相关规则。那么，如果我们想要把以上规则整理成团队规范，作为基础npm包使用，这里该如何配置呢&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vue3技术栈：ESLint、TypeScript和Prettier配置</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/eslint-ts-prettier-config-vue3/</link>
+      <pubDate>Sun, 04 Aug 2024 20:19:23 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/eslint-ts-prettier-config-vue3/</guid>
+      <description>&lt;p&gt;前期规范主要针对Vue2的历史项目，近期对Vue3项目的规则做了统一梳理，具体如&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Linux应用: 热点 hotspot</title>
       <link>https://lianpf.github.io/posts/computer-basics/linux-app-hotspot/</link>
