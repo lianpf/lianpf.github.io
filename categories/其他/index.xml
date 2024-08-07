@@ -35,7 +35,7 @@
     </item>
     
     <item>
-      <title>Node: 使用patch-package或其他方式给npm包打补丁</title>
+      <title>NPM补丁包: patch-package的使用及补丁包管理</title>
       <link>https://lianpf.github.io/posts/frontend-develop/npm-package-patch/</link>
       <pubDate>Thu, 15 Jun 2023 13:50:52 +0800</pubDate>
       
