@@ -9,19 +9,19 @@
     <lastBuildDate>Thu, 15 Jun 2023 13:50:52 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/node/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Node: 使用patch-package或其他方式给npm包打补丁</title>
-      <link>https://lianpf.github.io/posts/other/npm-package-patch/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-patch/</link>
       <pubDate>Thu, 15 Jun 2023 13:50:52 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/npm-package-patch/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-patch/</guid>
       <description>&lt;p&gt;日常团队协作过程中，由于现状不得不使用相对滞后版本的依赖包，但又期望使用新版本的某些功能&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Node: npm包管理之pnpm</title>
-      <link>https://lianpf.github.io/posts/other/npm-package-pnpm/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm/</link>
       <pubDate>Wed, 20 Jul 2022 13:52:08 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/npm-package-pnpm/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm/</guid>
       <description>&lt;p&gt;随着项目的增多，依赖项与项目的数量成正比。使用&lt;code&gt;pnpm&lt;/code&gt;在磁盘上节省大量空间，且安装速度要快得多&amp;hellip;&lt;/p&gt;</description>
     </item>
     
@@ -36,10 +36,10 @@
     
     <item>
       <title>Node: 常用npm package使用</title>
-      <link>https://lianpf.github.io/posts/other/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Wed, 21 Jul 2021 17:17:47 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/</guid>
       <description>&lt;p&gt;使用npm package过程中，积累的一些依赖解决方案&amp;hellip;&lt;/p&gt;</description>
     </item>
     
@@ -90,10 +90,10 @@
     
     <item>
       <title>Node: npm包和nrm管理镜像源</title>
-      <link>https://lianpf.github.io/posts/other/npm-package-nrmimagesourcemanage/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-nrmimagesourcemanage/</link>
       <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/npm-package-nrmimagesourcemanage/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-nrmimagesourcemanage/</guid>
       <description>&lt;p&gt;node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
     </item>
     

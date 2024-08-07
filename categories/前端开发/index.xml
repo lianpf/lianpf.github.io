@@ -63,10 +63,10 @@
     
     <item>
       <title>Node: 使用patch-package或其他方式给npm包打补丁</title>
-      <link>https://lianpf.github.io/posts/other/npm-package-patch/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-patch/</link>
       <pubDate>Thu, 15 Jun 2023 13:50:52 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/npm-package-patch/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-patch/</guid>
       <description>&lt;p&gt;日常团队协作过程中，由于现状不得不使用相对滞后版本的依赖包，但又期望使用新版本的某些功能&amp;hellip;&lt;/p&gt;</description>
     </item>
     
@@ -117,10 +117,10 @@
     
     <item>
       <title>Vue开发问题汇总</title>
-      <link>https://lianpf.github.io/posts/other/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</link>
       <pubDate>Thu, 19 Aug 2021 14:45:23 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</guid>
       <description>&lt;p&gt;Vue开发问题汇总&amp;hellip;&lt;/p&gt;</description>
     </item>
     

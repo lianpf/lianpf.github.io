@@ -107,7 +107,7 @@
     <loc>https://lianpf.github.io/tags/node/</loc>
     <lastmod>2023-06-15T13:50:52+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/other/npm-package-patch/</loc>
+    <loc>https://lianpf.github.io/posts/frontend-develop/npm-package-patch/</loc>
     <lastmod>2023-06-15T13:50:52+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/tags/go/</loc>
@@ -188,7 +188,7 @@
     <loc>https://lianpf.github.io/posts/backend-develop/nginx-commonconf/</loc>
     <lastmod>2022-08-27T17:35:12+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/other/npm-package-pnpm/</loc>
+    <loc>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm/</loc>
     <lastmod>2022-07-20T13:52:08+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/frontend-develop/09.ajax-interceptor/</loc>
@@ -239,7 +239,7 @@
     <loc>https://lianpf.github.io/posts/frontend-develop/js-regular/</loc>
     <lastmod>2021-08-23T10:59:19+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/other/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</loc>
+    <loc>https://lianpf.github.io/posts/frontend-develop/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</loc>
     <lastmod>2021-08-19T14:45:23+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/computer-basics/07.cookie/</loc>
@@ -251,7 +251,7 @@
     <loc>https://lianpf.github.io/posts/other/git-faq-summary/</loc>
     <lastmod>2021-08-06T14:05:21+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/other/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/</loc>
+    <loc>https://lianpf.github.io/posts/frontend-develop/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2021-07-21T17:17:47+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/backend-develop/node-aprframework-docs/</loc>
@@ -272,7 +272,7 @@
     <loc>https://lianpf.github.io/posts/frontend-develop/03.ts-basic-grammar/</loc>
     <lastmod>2021-03-13T17:59:58+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/other/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/</loc>
+    <loc>https://lianpf.github.io/posts/frontend-develop/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2021-03-10T16:19:18+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/other/tree-generate-project-directory/</loc>
@@ -380,7 +380,7 @@
     <loc>https://lianpf.github.io/posts/frontend-develop/react-children/</loc>
     <lastmod>2018-05-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/other/npm-package-nrmimagesourcemanage/</loc>
+    <loc>https://lianpf.github.io/posts/frontend-develop/npm-package-nrmimagesourcemanage/</loc>
     <lastmod>2018-05-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/backend-develop/nginx-reverseproxy/</loc>

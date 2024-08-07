@@ -117,10 +117,10 @@
     
     <item>
       <title>Node: 使用patch-package或其他方式给npm包打补丁</title>
-      <link>https://lianpf.github.io/posts/other/npm-package-patch/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-patch/</link>
       <pubDate>Thu, 15 Jun 2023 13:50:52 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/npm-package-patch/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-patch/</guid>
       <description>&lt;p&gt;日常团队协作过程中，由于现状不得不使用相对滞后版本的依赖包，但又期望使用新版本的某些功能&amp;hellip;&lt;/p&gt;</description>
     </item>
     
@@ -261,10 +261,10 @@
     
     <item>
       <title>Node: npm包管理之pnpm</title>
-      <link>https://lianpf.github.io/posts/other/npm-package-pnpm/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm/</link>
       <pubDate>Wed, 20 Jul 2022 13:52:08 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/npm-package-pnpm/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm/</guid>
       <description>&lt;p&gt;随着项目的增多，依赖项与项目的数量成正比。使用&lt;code&gt;pnpm&lt;/code&gt;在磁盘上节省大量空间，且安装速度要快得多&amp;hellip;&lt;/p&gt;</description>
     </item>
     
@@ -378,10 +378,10 @@
     
     <item>
       <title>Vue开发问题汇总</title>
-      <link>https://lianpf.github.io/posts/other/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</link>
       <pubDate>Thu, 19 Aug 2021 14:45:23 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/vue%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</guid>
       <description>&lt;p&gt;Vue开发问题汇总&amp;hellip;&lt;/p&gt;</description>
     </item>
     
@@ -405,10 +405,10 @@
     
     <item>
       <title>Node: 常用npm package使用</title>
-      <link>https://lianpf.github.io/posts/other/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Wed, 21 Jul 2021 17:17:47 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/</guid>
       <description>&lt;p&gt;使用npm package过程中，积累的一些依赖解决方案&amp;hellip;&lt;/p&gt;</description>
     </item>
     
@@ -459,10 +459,10 @@
     
     <item>
       <title>vue3&#43;ts(1)：vue3项目从0到1搭建</title>
-      <link>https://lianpf.github.io/posts/other/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Wed, 10 Mar 2021 16:19:18 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/10.vue3%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/</guid>
       <description>&lt;p&gt;本文是vue3+ts项目系列第1篇《vue3项目从0到1搭建》，主要涉及到&amp;hellip;&lt;/p&gt;</description>
     </item>
     
@@ -711,10 +711,10 @@
     
     <item>
       <title>Node: npm包和nrm管理镜像源</title>
-      <link>https://lianpf.github.io/posts/other/npm-package-nrmimagesourcemanage/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-nrmimagesourcemanage/</link>
       <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://lianpf.github.io/posts/other/npm-package-nrmimagesourcemanage/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-nrmimagesourcemanage/</guid>
       <description>&lt;p&gt;node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
     </item>
     
