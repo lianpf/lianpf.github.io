@@ -6,7 +6,16 @@
     <description>Recent content in 后端开发 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 07 Apr 2023 23:30:57 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Jun 2024 20:34:12 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>工具：项目创建的常见方式</title>
+      <link>https://lianpf.github.io/posts/other/tools-project-create/</link>
+      <pubDate>Sat, 08 Jun 2024 20:34:12 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/other/tools-project-create/</guid>
+      <description>&lt;p&gt;摘要&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Go: Websocket</title>
       <link>https://lianpf.github.io/posts/backend-develop/go-websocket/</link>
