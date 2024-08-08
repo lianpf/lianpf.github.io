@@ -6,7 +6,16 @@
     <description>Recent content in 前端开发 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 06 Aug 2024 23:25:59 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 08 Aug 2024 20:08:50 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NPM Scripts: 生命周期</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/npm-scripts-lifecycle/</link>
+      <pubDate>Thu, 08 Aug 2024 20:08:50 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/npm-scripts-lifecycle/</guid>
+      <description>&lt;p&gt;&lt;code&gt;package.json&lt;/code&gt;文件的&lt;code&gt;“scripts”&lt;/code&gt;属性支持许多内置脚本，及其预设的生命周期事件。特别是，当运行&lt;code&gt;npm run &amp;lt;stage&amp;gt;&lt;/code&gt;这些命令时，也将运行其前置和后置命令&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>ESLint: 构建适配Vue3配置的公共Package</title>
       <link>https://lianpf.github.io/posts/frontend-develop/eslint-build-utilpackage/</link>
