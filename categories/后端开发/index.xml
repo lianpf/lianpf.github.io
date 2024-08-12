@@ -6,7 +6,16 @@
     <description>Recent content in 后端开发 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 08 Jun 2024 20:34:12 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Aug 2024 21:22:21 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node版本管理：n和nvm</title>
+      <link>https://lianpf.github.io/posts/backend-develop/node-versionmanagement-tool/</link>
+      <pubDate>Mon, 12 Aug 2024 21:22:21 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/backend-develop/node-versionmanagement-tool/</guid>
+      <description>&lt;p&gt;将切换 &lt;code&gt;Node&lt;/code&gt; 和 &lt;code&gt;npm&lt;/code&gt; 版本的常用工具（&lt;code&gt;n&lt;/code&gt;和&lt;code&gt;nvm&lt;/code&gt;），从&lt;code&gt;Cloud_Notes&lt;/code&gt;云笔记迁移到了这里&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>工具：项目创建的常见方式</title>
       <link>https://lianpf.github.io/posts/other/tools-project-create/</link>
