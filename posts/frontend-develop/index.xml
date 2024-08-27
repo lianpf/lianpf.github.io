@@ -6,7 +6,16 @@
     <description>Recent content in 👨🏻‍💻 前端 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 08 Aug 2024 20:08:50 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/posts/frontend-develop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Aug 2024 19:36:15 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/posts/frontend-develop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>前端工程化：Rollup 构建</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/engine-rollup-config/</link>
+      <pubDate>Tue, 27 Aug 2024 19:36:15 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/engine-rollup-config/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Rollup&lt;/code&gt;是一个用于&lt;code&gt;JavaScript&lt;/code&gt;的模块打包工具，使用&lt;code&gt;JavaScript&lt;/code&gt;的&lt;code&gt;ES6&lt;/code&gt;版本中包含的新标准化代码模块格式，而不是以前的&lt;code&gt;CommonJS&lt;/code&gt;和&lt;code&gt;AMD&lt;/code&gt;等特殊解决方案。让你像&lt;code&gt;ES 模块&lt;/code&gt;一样，在所有场景获得原生支持，自由无缝地组合&lt;strong&gt;你最喜欢的库中最有用的个别函数&lt;/strong&gt;&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>NPM Scripts: 生命周期</title>
       <link>https://lianpf.github.io/posts/frontend-develop/npm-scripts-lifecycle/</link>
@@ -36,10 +45,10 @@
     
     <item>
       <title>前端工程化: babel的一些常见问题</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/frontengine-babel-faq/</link>
+      <link>https://lianpf.github.io/posts/frontend-develop/engine-babel-faq/</link>
       <pubDate>Fri, 31 May 2024 13:46:06 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/frontend-develop/frontengine-babel-faq/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/engine-babel-faq/</guid>
       <description>&lt;p&gt;摘要&amp;hellip;&lt;/p&gt;</description>
     </item>
     
