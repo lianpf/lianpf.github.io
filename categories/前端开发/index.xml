@@ -26,12 +26,12 @@
     </item>
     
     <item>
-      <title>Node版本管理：n和nvm</title>
+      <title>Node：node版本管理（n和nvm）及常见环境配置问题</title>
       <link>https://lianpf.github.io/posts/backend-develop/node-versionmanagement-tool/</link>
       <pubDate>Mon, 12 Aug 2024 21:22:21 +0800</pubDate>
       
       <guid>https://lianpf.github.io/posts/backend-develop/node-versionmanagement-tool/</guid>
-      <description>&lt;p&gt;将切换 &lt;code&gt;Node&lt;/code&gt; 和 &lt;code&gt;npm&lt;/code&gt; 版本的常用工具（&lt;code&gt;n&lt;/code&gt;和&lt;code&gt;nvm&lt;/code&gt;），从&lt;code&gt;Cloud_Notes&lt;/code&gt;云笔记迁移到了这里&amp;hellip;&lt;/p&gt;</description>
+      <description>&lt;p&gt;将切换 &lt;code&gt;Node&lt;/code&gt; 和 &lt;code&gt;npm&lt;/code&gt; 版本的常用工具（&lt;code&gt;n&lt;/code&gt;和&lt;code&gt;nvm&lt;/code&gt;），从&lt;code&gt;Cloud_Notes&lt;/code&gt;云笔记迁移到了这里。同时，对于日常遇到的一些问题做相关记录&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -98,15 +98,6 @@
     </item>
     
     <item>
-      <title>常见问题&amp;代码片段: TS</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/ts-codefragment/</link>
-      <pubDate>Mon, 13 May 2024 23:52:28 +0800</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/frontend-develop/ts-codefragment/</guid>
-      <description>&lt;p&gt;摘要&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>NPM补丁包: patch-package的使用及补丁包管理</title>
       <link>https://lianpf.github.io/posts/frontend-develop/npm-package-patch/</link>
       <pubDate>Thu, 15 Jun 2023 13:50:52 +0800</pubDate>
@@ -116,20 +107,11 @@
     </item>
     
     <item>
-      <title>代码片段：js/es6&#43;/ts</title>
+      <title>代码片段和常见问题：js &amp; es6&#43; &amp; ts</title>
       <link>https://lianpf.github.io/posts/frontend-develop/js-es-ts-codefragment/</link>
       <pubDate>Mon, 03 Apr 2023 22:45:25 +0800</pubDate>
       
       <guid>https://lianpf.github.io/posts/frontend-develop/js-es-ts-codefragment/</guid>
-      <description>&lt;p&gt;常用的一些&lt;code&gt;code fragment&lt;/code&gt;&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>代码片段：js/es6&#43;/ts/go</title>
-      <link>https://lianpf.github.io/posts/other/32.code-fragment/</link>
-      <pubDate>Mon, 03 Apr 2023 22:45:25 +0800</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/other/32.code-fragment/</guid>
       <description>&lt;p&gt;常用的一些&lt;code&gt;code fragment&lt;/code&gt;&amp;hellip;&lt;/p&gt;</description>
     </item>
     
@@ -224,11 +206,11 @@
     </item>
     
     <item>
-      <title>代码片段: html/css/less/sass</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/css-codefragment/</link>
+      <title>代码片段和常见问题: html &amp; css &amp; less &amp; sass</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/css-html-codefragment/</link>
       <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lianpf.github.io/posts/frontend-develop/css-codefragment/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/css-html-codefragment/</guid>
       <description>项目开发中，经常遇到页面布局和样式的一些问题，最近做了一些梳</description>
     </item>
     

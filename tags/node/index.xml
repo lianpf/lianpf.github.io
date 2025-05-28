@@ -8,12 +8,12 @@
     <language>zh</language>
     <lastBuildDate>Mon, 12 Aug 2024 21:22:21 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/node/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Node版本管理：n和nvm</title>
+      <title>Node：node版本管理（n和nvm）及常见环境配置问题</title>
       <link>https://lianpf.github.io/posts/backend-develop/node-versionmanagement-tool/</link>
       <pubDate>Mon, 12 Aug 2024 21:22:21 +0800</pubDate>
       
       <guid>https://lianpf.github.io/posts/backend-develop/node-versionmanagement-tool/</guid>
-      <description>&lt;p&gt;将切换 &lt;code&gt;Node&lt;/code&gt; 和 &lt;code&gt;npm&lt;/code&gt; 版本的常用工具（&lt;code&gt;n&lt;/code&gt;和&lt;code&gt;nvm&lt;/code&gt;），从&lt;code&gt;Cloud_Notes&lt;/code&gt;云笔记迁移到了这里&amp;hellip;&lt;/p&gt;</description>
+      <description>&lt;p&gt;将切换 &lt;code&gt;Node&lt;/code&gt; 和 &lt;code&gt;npm&lt;/code&gt; 版本的常用工具（&lt;code&gt;n&lt;/code&gt;和&lt;code&gt;nvm&lt;/code&gt;），从&lt;code&gt;Cloud_Notes&lt;/code&gt;云笔记迁移到了这里。同时，对于日常遇到的一些问题做相关记录&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -26,16 +26,25 @@
     </item>
     
     <item>
-      <title>Node: npm包管理之pnpm</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm/</link>
+      <title>代码片段和常见问题：go &amp; node</title>
+      <link>https://lianpf.github.io/posts/backend-develop/node-go-codefragment/</link>
+      <pubDate>Mon, 03 Apr 2023 22:45:25 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/backend-develop/node-go-codefragment/</guid>
+      <description>&lt;p&gt;常用的一些&lt;code&gt;code fragment&lt;/code&gt;&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Node: pnpm、yarn管理npm包以常见的构建问题</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm-yarn/</link>
       <pubDate>Wed, 20 Jul 2022 13:52:08 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm-yarn/</guid>
       <description>&lt;p&gt;随着项目的增多，依赖项与项目的数量成正比。使用&lt;code&gt;pnpm&lt;/code&gt;在磁盘上节省大量空间，且安装速度要快得多&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Node: pm2管理Node服务启动静态build打包文件</title>
+      <title>Node: pm2管理Node服务（启动静态打包文件）</title>
       <link>https://lianpf.github.io/posts/backend-develop/node-pm2/</link>
       <pubDate>Thu, 02 Dec 2021 18:27:31 +0800</pubDate>
       
@@ -98,7 +107,7 @@
     </item>
     
     <item>
-      <title>Node: npm包和nrm管理镜像源</title>
+      <title>Node: nrm管理npm镜像源&amp;npm包的发布管理</title>
       <link>https://lianpf.github.io/posts/frontend-develop/npm-package-nrmimagesourcemanage/</link>
       <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
       

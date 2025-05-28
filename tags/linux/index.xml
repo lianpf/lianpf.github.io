@@ -35,7 +35,7 @@
     </item>
     
     <item>
-      <title>Node: pm2管理Node服务启动静态build打包文件</title>
+      <title>Node: pm2管理Node服务（启动静态打包文件）</title>
       <link>https://lianpf.github.io/posts/backend-develop/node-pm2/</link>
       <pubDate>Thu, 02 Dec 2021 18:27:31 +0800</pubDate>
       

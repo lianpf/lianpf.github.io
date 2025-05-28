@@ -128,9 +128,6 @@
     <loc>https://lianpf.github.io/posts/frontend-develop/microfrontend_framework_compare/</loc>
     <lastmod>2024-05-15T20:37:01+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/frontend-develop/ts-codefragment/</loc>
-    <lastmod>2024-05-13T23:52:28+08:00</lastmod>
-  </url><url>
     <loc>https://lianpf.github.io/posts/other/pregnancy-accompany-and-childbirth/</loc>
     <lastmod>2024-04-09T20:34:31+08:00</lastmod>
   </url><url>
@@ -170,13 +167,10 @@
     <loc>https://lianpf.github.io/tags/%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</loc>
     <lastmod>2023-04-03T22:45:25+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/backend-develop/go-codefragment/</loc>
+    <loc>https://lianpf.github.io/posts/backend-develop/node-go-codefragment/</loc>
     <lastmod>2023-04-03T22:45:25+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/frontend-develop/js-es-ts-codefragment/</loc>
-    <lastmod>2023-04-03T22:45:25+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/posts/other/32.code-fragment/</loc>
     <lastmod>2023-04-03T22:45:25+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/backend-develop/go-basic-commands/</loc>
@@ -221,7 +215,7 @@
     <loc>https://lianpf.github.io/posts/backend-develop/nginx-commonconf/</loc>
     <lastmod>2022-08-27T17:35:12+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm/</loc>
+    <loc>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm-yarn/</loc>
     <lastmod>2022-07-20T13:52:08+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/frontend-develop/09.ajax-interceptor/</loc>
@@ -353,7 +347,7 @@
     <loc>https://lianpf.github.io/tags/html/</loc>
     <lastmod>2020-01-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/frontend-develop/css-codefragment/</loc>
+    <loc>https://lianpf.github.io/posts/frontend-develop/css-html-codefragment/</loc>
     <lastmod>2020-01-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/other/25.%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%84%9A%E6%89%8B%E6%9E%B6/</loc>

@@ -80,15 +80,6 @@
     </item>
     
     <item>
-      <title>常见问题&amp;代码片段: TS</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/ts-codefragment/</link>
-      <pubDate>Mon, 13 May 2024 23:52:28 +0800</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/frontend-develop/ts-codefragment/</guid>
-      <description>&lt;p&gt;摘要&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>NPM补丁包: patch-package的使用及补丁包管理</title>
       <link>https://lianpf.github.io/posts/frontend-develop/npm-package-patch/</link>
       <pubDate>Thu, 15 Jun 2023 13:50:52 +0800</pubDate>
@@ -98,7 +89,7 @@
     </item>
     
     <item>
-      <title>代码片段：js/es6&#43;/ts</title>
+      <title>代码片段和常见问题：js &amp; es6&#43; &amp; ts</title>
       <link>https://lianpf.github.io/posts/frontend-develop/js-es-ts-codefragment/</link>
       <pubDate>Mon, 03 Apr 2023 22:45:25 +0800</pubDate>
       
@@ -107,11 +98,11 @@
     </item>
     
     <item>
-      <title>Node: npm包管理之pnpm</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm/</link>
+      <title>Node: pnpm、yarn管理npm包以常见的构建问题</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm-yarn/</link>
       <pubDate>Wed, 20 Jul 2022 13:52:08 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm-yarn/</guid>
       <description>&lt;p&gt;随着项目的增多，依赖项与项目的数量成正比。使用&lt;code&gt;pnpm&lt;/code&gt;在磁盘上节省大量空间，且安装速度要快得多&amp;hellip;&lt;/p&gt;</description>
     </item>
     
@@ -224,11 +215,11 @@
     </item>
     
     <item>
-      <title>代码片段: html/css/less/sass</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/css-codefragment/</link>
+      <title>代码片段和常见问题: html &amp; css &amp; less &amp; sass</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/css-html-codefragment/</link>
       <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lianpf.github.io/posts/frontend-develop/css-codefragment/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/css-html-codefragment/</guid>
       <description>项目开发中，经常遇到页面布局和样式的一些问题，最近做了一些梳</description>
     </item>
     
@@ -260,7 +251,7 @@
     </item>
     
     <item>
-      <title>Node: npm包和nrm管理镜像源</title>
+      <title>Node: nrm管理npm镜像源&amp;npm包的发布管理</title>
       <link>https://lianpf.github.io/posts/frontend-develop/npm-package-nrmimagesourcemanage/</link>
       <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
       

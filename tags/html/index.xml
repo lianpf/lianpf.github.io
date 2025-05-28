@@ -8,11 +8,11 @@
     <language>zh</language>
     <lastBuildDate>Fri, 31 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lianpf.github.io/tags/html/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>代码片段: html/css/less/sass</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/css-codefragment/</link>
+      <title>代码片段和常见问题: html &amp; css &amp; less &amp; sass</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/css-html-codefragment/</link>
       <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lianpf.github.io/posts/frontend-develop/css-codefragment/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/css-html-codefragment/</guid>
       <description>项目开发中，经常遇到页面布局和样式的一些问题，最近做了一些梳</description>
     </item>
     

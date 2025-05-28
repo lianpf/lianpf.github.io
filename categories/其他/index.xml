@@ -143,11 +143,11 @@
     </item>
     
     <item>
-      <title>Node: npm包管理之pnpm</title>
-      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm/</link>
+      <title>Node: pnpm、yarn管理npm包以常见的构建问题</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm-yarn/</link>
       <pubDate>Wed, 20 Jul 2022 13:52:08 +0800</pubDate>
       
-      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm/</guid>
+      <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm-yarn/</guid>
       <description>&lt;p&gt;随着项目的增多，依赖项与项目的数量成正比。使用&lt;code&gt;pnpm&lt;/code&gt;在磁盘上节省大量空间，且安装速度要快得多&amp;hellip;&lt;/p&gt;</description>
     </item>
     
@@ -350,7 +350,7 @@
     </item>
     
     <item>
-      <title>Node: npm包和nrm管理镜像源</title>
+      <title>Node: nrm管理npm镜像源&amp;npm包的发布管理</title>
       <link>https://lianpf.github.io/posts/frontend-develop/npm-package-nrmimagesourcemanage/</link>
       <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
       
