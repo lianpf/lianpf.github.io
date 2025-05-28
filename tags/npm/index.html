@@ -1,14 +1,8 @@
 <!doctype html><html lang=zh dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>npm | 曜灵（SUN）Site</title><meta name=keywords content><meta name=description content><meta name=author content="曜灵"><link rel=canonical href=https://lianpf.github.io/tags/npm/><link crossorigin=anonymous href=/assets/css/stylesheet.css rel="preload stylesheet" as=style><link rel=icon href=https://lianpf.github.io/img-common/favicon.png><link rel=icon type=image/png sizes=16x16 href=https://lianpf.github.io/img-common/favicon.png><link rel=icon type=image/png sizes=32x32 href=https://lianpf.github.io/img-common/favicon.png><link rel=apple-touch-icon href=https://lianpf.github.io/img-common/avatar.jpeg><link rel=mask-icon href=https://lianpf.github.io/img-common/avatar.jpeg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://lianpf.github.io/tags/npm/index.xml><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css><script src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
 <script src=https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js></script>
-<script>var _hmt=_hmt||[];(function(){var e,t=document.createElement("script");t.src="",e=document.getElementsByTagName("script")[0],e.parentNode.insertBefore(t,e)})()</script><meta property="og:title" content="npm"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://lianpf.github.io/tags/npm/"><meta name=twitter:card content="summary"><meta name=twitter:title content="npm"><meta name=twitter:description content></head><body class=list id=top><script>(function(){let e,t=new RegExp("(^| )change-themes=([^;]*)(;|$)");(e=document.cookie.match(t))||((new Date).getHours()>=19||(new Date).getHours()<6?(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark")):(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")))})(),localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://lianpf.github.io/ accesskey=h title="曜灵（SUN）Site (Alt + H)"><img src=https://lianpf.github.io/img-common/avatar.jpeg alt=logo aria-label=logo height=35>曜灵（SUN）Site</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://lianpf.github.io/search title="🔍 搜索 (Alt + /)" accesskey=/><span>🔍 搜索</span></a></li><li><a href=https://lianpf.github.io/ title="🏠 主页"><span>🏠 主页</span></a></li><li><a href=https://lianpf.github.io/archives/ title="⏱️ 归档"><span>⏱️ 归档</span></a></li><li><a href=https://lianpf.github.io/tags title="🧩 标签"><span>🧩 标签</span></a></li><li><a href=https://lianpf.github.io/about title="🙋🏻‍♂️ 关于"><span>🙋🏻‍♂️ 关于</span></a></li></ul></nav></header><main class=main><header class=page-header><div class=breadcrumbs><a href=https://lianpf.github.io/>🏠 主页</a>&nbsp;»&nbsp;<a href=https://lianpf.github.io/tags/>🧩 标签</a></div><h1>npm</h1></header><article class=post-entry><div class=post-info><header class=entry-header><h2>NPM Scripts: 生命周期</h2></header><section class=entry-content><p>package.json文件的“scripts”属性支持许多内置脚本，及其预设的生命周期事件。特别是，当运行npm run &lt;stage>这些命令时，也将运行其前置和后置命令…
+<script>var _hmt=_hmt||[];(function(){var e,t=document.createElement("script");t.src="",e=document.getElementsByTagName("script")[0],e.parentNode.insertBefore(t,e)})()</script><style>.fa-commenting-o,#post_meta_style_8,#comment_count,.comment-count,.comment-icon,svg[class*=comment],a[aria-label*=comment]{display:none!important}</style><meta property="og:title" content="npm"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://lianpf.github.io/tags/npm/"><meta name=twitter:card content="summary"><meta name=twitter:title content="npm"><meta name=twitter:description content></head><body class=list id=top><script>(function(){let e,t=new RegExp("(^| )change-themes=([^;]*)(;|$)");(e=document.cookie.match(t))||((new Date).getHours()>=19||(new Date).getHours()<6?(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark")):(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")))})(),localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://lianpf.github.io/ accesskey=h title="曜灵（SUN）Site (Alt + H)"><img src=https://lianpf.github.io/img-common/avatar.jpeg alt=logo aria-label=logo height=35>曜灵（SUN）Site</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://lianpf.github.io/search title="🔍 搜索 (Alt + /)" accesskey=/><span>🔍 搜索</span></a></li><li><a href=https://lianpf.github.io/ title="🏠 主页"><span>🏠 主页</span></a></li><li><a href=https://lianpf.github.io/archives/ title="⏱️ 归档"><span>⏱️ 归档</span></a></li><li><a href=https://lianpf.github.io/tags title="🧩 标签"><span>🧩 标签</span></a></li><li><a href=https://lianpf.github.io/about title="🙋🏻‍♂️ 关于"><span>🙋🏻‍♂️ 关于</span></a></li></ul></nav></header><main class=main><header class=page-header><div class=breadcrumbs><a href=https://lianpf.github.io/>🏠 主页</a>&nbsp;»&nbsp;<a href=https://lianpf.github.io/tags/>🧩 标签</a></div><h1>npm</h1></header><article class=post-entry><div class=post-info><header class=entry-header><h2>NPM Scripts: 生命周期</h2></header><section class=entry-content><p>package.json文件的“scripts”属性支持许多内置脚本，及其预设的生命周期事件。特别是，当运行npm run &lt;stage>这些命令时，也将运行其前置和后置命令…
 ...</p></section><footer class=entry-footer><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}.parent-post-meta{display:flex;flex-wrap:wrap;opacity:.8}</style><span class=parent-post-meta><span id=post_meta_style_1><span class="fa fa-calendar-check-o"></span>
-<span>2024-08-08
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_3><span class="fa fa-file-word-o"></span>
-<span>1258字
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_4><span class="fa fa-clock-o"></span>
-<span>3分钟
+<span>&nbsp;创建&nbsp;2024-08-08
 &nbsp;&nbsp;</span></span>
 <span id=post_meta_style_5><span class="fa fa-user-o"></span>
 <span>曜灵
@@ -16,13 +10,7 @@
 <span id=post_meta_style_6><span class="fa fa-tags" style=opacity:.8></span>
 <span><span class=post-tags-meta><a href=https://lianpf.github.io/tags/npm/ style=color:var(--secondary)!important>npm</a></span></span></span></span></footer></div><a class=entry-link aria-label="post link to NPM Scripts: 生命周期" href=https://lianpf.github.io/posts/frontend-develop/npm-scripts-lifecycle/></a></article><article class=post-entry><div class=post-info><header class=entry-header><h2>ESLint: 构建适配Vue3配置的公共Package</h2></header><section class=entry-content><p>上一篇文章《Vue3技术栈：ESLint、TypeScript和Prettier配置》，我们主要拆解了在vue3项目中，如何去配置和使用相关规则。那么，如果我们想要把以上规则整理成团队规范，作为基础npm包使用，这里该如何配置呢…
 ...</p></section><footer class=entry-footer><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}.parent-post-meta{display:flex;flex-wrap:wrap;opacity:.8}</style><span class=parent-post-meta><span id=post_meta_style_1><span class="fa fa-calendar-check-o"></span>
-<span>2024-08-06
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_3><span class="fa fa-file-word-o"></span>
-<span>1910字
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_4><span class="fa fa-clock-o"></span>
-<span>4分钟
+<span>&nbsp;创建&nbsp;2024-08-06
 &nbsp;&nbsp;</span></span>
 <span id=post_meta_style_5><span class="fa fa-user-o"></span>
 <span>曜灵
@@ -33,13 +21,7 @@
 &nbsp;<a href=https://lianpf.github.io/tags/ts/ style=color:var(--secondary)!important>TS</a>
 &nbsp;<a href=https://lianpf.github.io/tags/npm/ style=color:var(--secondary)!important>npm</a></span></span></span></span></footer></div><a class=entry-link aria-label="post link to ESLint: 构建适配Vue3配置的公共Package" href=https://lianpf.github.io/posts/frontend-develop/eslint-build-utilpackage/></a></article><article class=post-entry><div class=post-info><header class=entry-header><h2>NPM补丁包: patch-package的使用及补丁包管理</h2></header><section class=entry-content><p>日常团队协作过程中，由于现状不得不使用相对滞后版本的依赖包，但又期望使用新版本的某些功能…
 ...</p></section><footer class=entry-footer><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}.parent-post-meta{display:flex;flex-wrap:wrap;opacity:.8}</style><span class=parent-post-meta><span id=post_meta_style_1><span class="fa fa-calendar-check-o"></span>
-<span>2023-06-15
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_3><span class="fa fa-file-word-o"></span>
-<span>3116字
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_4><span class="fa fa-clock-o"></span>
-<span>7分钟
+<span>&nbsp;创建&nbsp;2023-06-15
 &nbsp;&nbsp;</span></span>
 <span id=post_meta_style_5><span class="fa fa-user-o"></span>
 <span>曜灵
@@ -48,13 +30,7 @@
 <span><span class=post-tags-meta><a href=https://lianpf.github.io/tags/node/ style=color:var(--secondary)!important>Node</a>
 &nbsp;<a href=https://lianpf.github.io/tags/npm/ style=color:var(--secondary)!important>npm</a></span></span></span></span></footer></div><a class=entry-link aria-label="post link to NPM补丁包: patch-package的使用及补丁包管理" href=https://lianpf.github.io/posts/frontend-develop/npm-package-patch/></a></article><article class=post-entry><div class=post-info><header class=entry-header><h2>工具:（Markdown）文档工具</h2></header><section class=entry-content><p>Markdown文档在日常和项目开发中已经成为必不可少的存在…
 ...</p></section><footer class=entry-footer><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}.parent-post-meta{display:flex;flex-wrap:wrap;opacity:.8}</style><span class=parent-post-meta><span id=post_meta_style_1><span class="fa fa-calendar-check-o"></span>
-<span>2023-05-30
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_3><span class="fa fa-file-word-o"></span>
-<span>416字
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_4><span class="fa fa-clock-o"></span>
-<span>1分钟
+<span>&nbsp;创建&nbsp;2023-05-30
 &nbsp;&nbsp;</span></span>
 <span id=post_meta_style_5><span class="fa fa-user-o"></span>
 <span>曜灵
@@ -64,13 +40,7 @@
 &nbsp;<a href=https://lianpf.github.io/tags/npm/ style=color:var(--secondary)!important>npm</a>
 &nbsp;<a href=https://lianpf.github.io/tags/%E5%B7%A5%E5%85%B7/ style=color:var(--secondary)!important>工具</a></span></span></span></span></footer></div><a class=entry-link aria-label="post link to 工具:（Markdown）文档工具" href=https://lianpf.github.io/posts/other/tools-docs-markdown/></a></article><article class=post-entry><div class=post-info><header class=entry-header><h2>Node: pnpm、yarn管理npm包以常见的构建问题</h2></header><section class=entry-content><p>随着项目的增多，依赖项与项目的数量成正比。使用pnpm在磁盘上节省大量空间，且安装速度要快得多…
 ...</p></section><footer class=entry-footer><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}.parent-post-meta{display:flex;flex-wrap:wrap;opacity:.8}</style><span class=parent-post-meta><span id=post_meta_style_1><span class="fa fa-calendar-check-o"></span>
-<span>2022-07-20
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_3><span class="fa fa-file-word-o"></span>
-<span>806字
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_4><span class="fa fa-clock-o"></span>
-<span>2分钟
+<span>&nbsp;创建&nbsp;2022-07-20
 &nbsp;&nbsp;</span></span>
 <span id=post_meta_style_5><span class="fa fa-user-o"></span>
 <span>曜灵
@@ -79,13 +49,7 @@
 <span><span class=post-tags-meta><a href=https://lianpf.github.io/tags/node/ style=color:var(--secondary)!important>Node</a>
 &nbsp;<a href=https://lianpf.github.io/tags/npm/ style=color:var(--secondary)!important>npm</a></span></span></span></span></footer></div><a class=entry-link aria-label="post link to Node: pnpm、yarn管理npm包以常见的构建问题" href=https://lianpf.github.io/posts/frontend-develop/npm-package-pnpm-yarn/></a></article><article class=post-entry><div class=post-info><header class=entry-header><h2>Node: 常用npm package使用</h2></header><section class=entry-content><p>使用npm package过程中，积累的一些依赖解决方案…
 ...</p></section><footer class=entry-footer><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}.parent-post-meta{display:flex;flex-wrap:wrap;opacity:.8}</style><span class=parent-post-meta><span id=post_meta_style_1><span class="fa fa-calendar-check-o"></span>
-<span>2021-07-21
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_3><span class="fa fa-file-word-o"></span>
-<span>640字
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_4><span class="fa fa-clock-o"></span>
-<span>2分钟
+<span>&nbsp;创建&nbsp;2021-07-21
 &nbsp;&nbsp;</span></span>
 <span id=post_meta_style_5><span class="fa fa-user-o"></span>
 <span>曜灵
@@ -94,13 +58,7 @@
 <span><span class=post-tags-meta><a href=https://lianpf.github.io/tags/npm/ style=color:var(--secondary)!important>npm</a>
 &nbsp;<a href=https://lianpf.github.io/tags/node/ style=color:var(--secondary)!important>Node</a></span></span></span></span></footer></div><a class=entry-link aria-label="post link to Node: 常用npm package使用" href=https://lianpf.github.io/posts/frontend-develop/19.%E5%B8%B8%E7%94%A8npm-package%E4%BD%BF%E7%94%A8/></a></article><article class=post-entry><div class=post-info><header class=entry-header><h2>Node: Apr框架使用文档</h2></header><section class=entry-content><p>整个团队依赖初版Apr作为统一的Node方案，随着业务场景越来越丰富，一些插件、middle等公共配置成为最佳实践后，逐渐下沉到Apr框架中，让Apr越来越…
 ...</p></section><footer class=entry-footer><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}.parent-post-meta{display:flex;flex-wrap:wrap;opacity:.8}</style><span class=parent-post-meta><span id=post_meta_style_1><span class="fa fa-calendar-check-o"></span>
-<span>2021-04-13
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_3><span class="fa fa-file-word-o"></span>
-<span>1109字
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_4><span class="fa fa-clock-o"></span>
-<span>3分钟
+<span>&nbsp;创建&nbsp;2021-04-13
 &nbsp;&nbsp;</span></span>
 <span id=post_meta_style_5><span class="fa fa-user-o"></span>
 <span>曜灵
@@ -109,13 +67,7 @@
 <span><span class=post-tags-meta><a href=https://lianpf.github.io/tags/node/ style=color:var(--secondary)!important>Node</a>
 &nbsp;<a href=https://lianpf.github.io/tags/npm/ style=color:var(--secondary)!important>npm</a></span></span></span></span></footer></div><a class=entry-link aria-label="post link to Node: Apr框架使用文档" href=https://lianpf.github.io/posts/backend-develop/node-aprframework-docs/></a></article><article class=post-entry><div class=post-info><header class=entry-header><h2>Node: Apr框架开发</h2></header><section class=entry-content><p>在低代码平台开发过程，由于物料管理系统以及Node Server 中间层的搭建使用过程中，发现很多通用的库和配置可以…
 ...</p></section><footer class=entry-footer><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}.parent-post-meta{display:flex;flex-wrap:wrap;opacity:.8}</style><span class=parent-post-meta><span id=post_meta_style_1><span class="fa fa-calendar-check-o"></span>
-<span>2021-04-12
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_3><span class="fa fa-file-word-o"></span>
-<span>2483字
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_4><span class="fa fa-clock-o"></span>
-<span>5分钟
+<span>&nbsp;创建&nbsp;2021-04-12
 &nbsp;&nbsp;</span></span>
 <span id=post_meta_style_5><span class="fa fa-user-o"></span>
 <span>曜灵
@@ -124,13 +76,7 @@
 <span><span class=post-tags-meta><a href=https://lianpf.github.io/tags/node/ style=color:var(--secondary)!important>Node</a>
 &nbsp;<a href=https://lianpf.github.io/tags/npm/ style=color:var(--secondary)!important>npm</a></span></span></span></span></footer></div><a class=entry-link aria-label="post link to Node: Apr框架开发" href=https://lianpf.github.io/posts/backend-develop/node-aprframework-develop/></a></article><article class=post-entry><div class=post-info><header class=entry-header><h2>Node: nrm管理npm镜像源&amp;npm包的发布管理</h2></header><section class=entry-content><p>node 作为当前最受欢迎的"js版"后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是…
 ...</p></section><footer class=entry-footer><style>i[id*=post_meta_style]{display:flex;align-items:center;margin:0 0 10px}.parent-post-meta{display:flex;flex-wrap:wrap;opacity:.8}</style><span class=parent-post-meta><span id=post_meta_style_1><span class="fa fa-calendar-check-o"></span>
-<span>2018-05-11
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_3><span class="fa fa-file-word-o"></span>
-<span>1884字
-&nbsp;&nbsp;</span></span>
-<span id=post_meta_style_4><span class="fa fa-clock-o"></span>
-<span>4分钟
+<span>&nbsp;创建&nbsp;2018-05-11
 &nbsp;&nbsp;</span></span>
 <span id=post_meta_style_5><span class="fa fa-user-o"></span>
 <span>曜灵
