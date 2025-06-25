@@ -17,15 +17,6 @@
     </item>
     
     <item>
-      <title>一句话</title>
-      <link>https://lianpf.github.io/posts/other/in-a-word/</link>
-      <pubDate>Thu, 21 Nov 2024 23:01:27 +0800</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/other/in-a-word/</guid>
-      <description>&lt;p&gt;一句话&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>宝宝：汽车儿童安全座椅</title>
       <link>https://lianpf.github.io/posts/other/baby-safety-seat/</link>
       <pubDate>Mon, 11 Nov 2024 20:13:07 +0800</pubDate>
@@ -296,15 +287,6 @@
     </item>
     
     <item>
-      <title>Redis scan命令学习</title>
-      <link>https://lianpf.github.io/posts/tech/tech1/</link>
-      <pubDate>Wed, 30 Nov 2022 15:55:23 +0800</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/tech/tech1/</guid>
-      <description>scan命令详解</description>
-    </item>
-    
-    <item>
       <title>GitHub和Gitee明星项目及组织</title>
       <link>https://lianpf.github.io/posts/other/github-star-project-and-org/</link>
       <pubDate>Mon, 31 Oct 2022 09:28:50 +0800</pubDate>
@@ -338,15 +320,6 @@
       
       <guid>https://lianpf.github.io/posts/frontend-develop/09.ajax-interceptor/</guid>
       <description>&lt;p&gt;一个用于修改&lt;code&gt;ajax&lt;/code&gt;请求响应的&lt;code&gt;chrome&lt;/code&gt;扩展&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Tech</title>
-      <link>https://lianpf.github.io/posts/tech/tech/</link>
-      <pubDate>Thu, 05 May 2022 00:17:58 +0800</pubDate>
-      
-      <guid>https://lianpf.github.io/posts/tech/tech/</guid>
-      <description>科技代码</description>
     </item>
     
     <item>
