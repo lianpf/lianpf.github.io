@@ -6,7 +6,16 @@
     <description>Recent content in 📚 其他 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 09 Jun 2025 15:14:50 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/posts/other/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Jul 2025 14:22:47 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/posts/other/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI：Google Gemini Cli</title>
+      <link>https://lianpf.github.io/posts/other/google-gemini-cli-use/</link>
+      <pubDate>Sat, 12 Jul 2025 14:22:47 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/other/google-gemini-cli-use/</guid>
+      <description>&lt;p&gt;本文主要包括 Google Gemini cli等一些AI工具的&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>AI编程：LLM（大模型）和Prompt（提示词）工程</title>
       <link>https://lianpf.github.io/posts/other/ai-llm-and-prompt/</link>
