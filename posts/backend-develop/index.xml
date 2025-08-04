@@ -6,7 +6,16 @@
     <description>Recent content in 🧱 后端开发 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 12 Aug 2024 21:22:21 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/posts/backend-develop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Aug 2025 11:08:43 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/posts/backend-develop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python 基础</title>
+      <link>https://lianpf.github.io/posts/backend-develop/python-basics/</link>
+      <pubDate>Sun, 03 Aug 2025 11:08:43 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/backend-develop/python-basics/</guid>
+      <description>&lt;p&gt;Python简洁易学，功能强大。本文介绍一些，后端开发必备基础知识&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Node：node版本管理（n和nvm）及常见环境配置问题</title>
       <link>https://lianpf.github.io/posts/backend-develop/node-versionmanagement-tool/</link>

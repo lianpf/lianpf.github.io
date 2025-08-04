@@ -6,7 +6,16 @@
     <description>Recent content on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 15 Jul 2025 20:35:35 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Aug 2025 11:08:43 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python 基础</title>
+      <link>https://lianpf.github.io/posts/backend-develop/python-basics/</link>
+      <pubDate>Sun, 03 Aug 2025 11:08:43 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/backend-develop/python-basics/</guid>
+      <description>&lt;p&gt;Python简洁易学，功能强大。本文介绍一些，后端开发必备基础知识&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>npm 到 pnpm：补丁包（patch）迁移</title>
       <link>https://lianpf.github.io/posts/frontend-develop/pnpm-patch/</link>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>后端 on 曜灵（SUN）Site</title>
+    <link>https://lianpf.github.io/tags/%E5%90%8E%E7%AB%AF/</link>
+    <description>Recent content in 后端 on 曜灵（SUN）Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 03 Aug 2025 11:08:43 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python 基础</title>
+      <link>https://lianpf.github.io/posts/backend-develop/python-basics/</link>
+      <pubDate>Sun, 03 Aug 2025 11:08:43 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/backend-develop/python-basics/</guid>
+      <description>&lt;p&gt;Python简洁易学，功能强大。本文介绍一些，后端开发必备基础知识&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
