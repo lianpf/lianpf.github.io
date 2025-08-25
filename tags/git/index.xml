@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>团队规范: Git Commit提交、分支命名和版本管理规范</title>
+      <link>https://lianpf.github.io/posts/other/git-teamusage-standards/</link>
+      <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/other/git-teamusage-standards/</guid>
+      <description>一、背景 团队开发中，遵循一个合理、清晰的 Git 使用流程，是非常重</description>
+    </item>
+    
+    <item>
       <title>Git: ssh key、https 配置及用户名、邮箱基本信息配置</title>
       <link>https://lianpf.github.io/posts/other/gitconfigs-ssh-https/</link>
       <pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate>
