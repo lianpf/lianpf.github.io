@@ -35,6 +35,15 @@
     </item>
     
     <item>
+      <title>调试工具: Charles</title>
+      <link>https://lianpf.github.io/posts/other/tools-debug-charles/</link>
+      <pubDate>Thu, 09 Jan 2025 15:19:47 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/other/tools-debug-charles/</guid>
+      <description>&lt;p&gt;作为开发者或测试工程师，抓包调试是日常工作中不可或缺的一环&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Node：node版本管理（n和nvm）及常见环境配置问题</title>
       <link>https://lianpf.github.io/posts/backend-develop/node-versionmanagement-tool/</link>
       <pubDate>Mon, 12 Aug 2024 21:22:21 +0800</pubDate>
