@@ -296,12 +296,12 @@
     </item>
     
     <item>
-      <title>Git: ssh key、https 配置及用户名、邮箱基本信息配置</title>
+      <title>Git: ssh key、https 基本配置</title>
       <link>https://lianpf.github.io/posts/other/gitconfigs-ssh-https/</link>
       <pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://lianpf.github.io/posts/other/gitconfigs-ssh-https/</guid>
-      <description>&lt;p&gt;git 作为当前最受欢迎的版本控制软件，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
+      <description>&lt;p&gt;git 作为当前最受欢迎的版本控制软件，使用是很频繁的&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
