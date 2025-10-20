@@ -6,7 +6,16 @@
     <description>Recent content in 工程化 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 01 Sep 2024 14:53:37 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Sep 2025 17:42:59 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>工程化实践：搭建 npm 私服(私有源)</title>
+      <link>https://lianpf.github.io/posts/frontend-develop/how-to-build-npm-private-registry-with-verdaccio/</link>
+      <pubDate>Fri, 05 Sep 2025 17:42:59 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/frontend-develop/how-to-build-npm-private-registry-with-verdaccio/</guid>
+      <description>本文旨在帮助前端团队理解 npm 私服的价值、主流方案对比，以及通过 Verdaccio 实现私有 npm 仓库的完整落地过程，解决依赖安全、网络和包管理混乱等痛点。</description>
+    </item>
+    
     <item>
       <title>工程化：@vue/cli 和 Webpack 构建</title>
       <link>https://lianpf.github.io/posts/frontend-develop/engine-webpack-vuecli-config/</link>
