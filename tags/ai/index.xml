@@ -6,14 +6,37 @@
     <description>Recent content in AI on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 12 Jul 2025 14:22:47 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Oct 2025 11:08:33 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI：CC Switch和Cherry Studio等软件的使用</title>
+      <link>https://lianpf.github.io/posts/other/ai-app-use/</link>
+      <pubDate>Mon, 27 Oct 2025 11:08:33 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/other/ai-app-use/</guid>
+      <description>本文主要介绍AI工具cc-switch和Cherry Studio的安装与使用。</description>
+    </item>
+    
+    <item>
+      <title>AI：Codex</title>
+      <link>https://lianpf.github.io/posts/other/openai-codex-use/</link>
+      <pubDate>Fri, 26 Sep 2025 10:06:40 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/other/openai-codex-use/</guid>
+      <description>本文主要介绍AI工具Codex的安装与使用。</description>
+    </item>
+    
     <item>
       <title>AI：Google Gemini Cli</title>
       <link>https://lianpf.github.io/posts/other/google-gemini-cli-use/</link>
       <pubDate>Sat, 12 Jul 2025 14:22:47 +0800</pubDate>
       
       <guid>https://lianpf.github.io/posts/other/google-gemini-cli-use/</guid>
-      <description>&lt;p&gt;本系列主要介绍一些AI工具，此文以&lt;code&gt;Google Gemini cli&lt;/code&gt;为例&amp;hellip;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;strong&gt;AI大模型与CLI应用系列&lt;/strong&gt;：本系列聚焦于AI大模型在命令行界面（CLI）中的应用，探索如何通过CLI工具高效利用AI能力，提升开发与工作效率。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;本文&lt;/strong&gt;: &lt;a href=&#34;https://lianpf.github.io/posts/other/google-gemini-cli-use/&#34;&gt;《AI：Google Gemini Cli》&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://lianpf.github.io/posts/other/openai-codex-use/&#34;&gt;《AI：OpenAI Codex》&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;此文以&lt;code&gt;Google Gemini cli&lt;/code&gt;为例&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>

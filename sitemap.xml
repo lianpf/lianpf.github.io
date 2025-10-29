@@ -2,19 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lianpf.github.io/posts/other/</loc>
+    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/posts/</loc>
+    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/tags/ai/</loc>
+    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/posts/other/ai-app-use/</loc>
+    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/categories/</loc>
+    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/tags/</loc>
+    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
+    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/</loc>
+    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/posts/other/openai-codex-use/</loc>
+    <lastmod>2025-10-29T10:06:40+08:00</lastmod>
+  </url><url>
     <loc>https://lianpf.github.io/posts/frontend-develop/</loc>
     <lastmod>2025-10-19T10:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/</loc>
-    <lastmod>2025-10-19T10:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/categories/</loc>
-    <lastmod>2025-10-19T10:00:00+08:00</lastmod>
-  </url><url>
     <loc>https://lianpf.github.io/tags/npm/</loc>
-    <lastmod>2025-10-19T10:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/tags/</loc>
     <lastmod>2025-10-19T10:00:00+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/</loc>
@@ -26,9 +47,6 @@
     <loc>https://lianpf.github.io/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/</loc>
     <lastmod>2025-10-19T10:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/</loc>
-    <lastmod>2025-10-19T10:00:00+08:00</lastmod>
-  </url><url>
     <loc>https://lianpf.github.io/posts/backend-develop/python-basics/</loc>
     <lastmod>2025-08-04T11:08:43+08:00</lastmod>
   </url><url>
@@ -37,9 +55,6 @@
   </url><url>
     <loc>https://lianpf.github.io/tags/%E5%90%8E%E7%AB%AF/</loc>
     <lastmod>2025-08-04T11:08:43+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
-    <lastmod>2025-10-15T14:22:47+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/tags/node/</loc>
     <lastmod>2025-07-16T09:35:35+08:00</lastmod>
@@ -53,16 +68,7 @@
     <loc>https://lianpf.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2025-07-16T09:35:35+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/other/</loc>
-    <lastmod>2025-10-15T14:22:47+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/tags/ai/</loc>
-    <lastmod>2025-10-15T14:22:47+08:00</lastmod>
-  </url><url>
     <loc>https://lianpf.github.io/posts/other/google-gemini-cli-use/</loc>
-    <lastmod>2025-10-15T14:22:47+08:00</lastmod>
-  </url><url>
-    <loc>https://lianpf.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2025-10-15T14:22:47+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/other/ai-editor-cursor/</loc>
