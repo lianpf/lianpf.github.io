@@ -116,12 +116,12 @@
     </item>
     
     <item>
-      <title>Node: nrm管理npm镜像源&amp;npm包的发布管理</title>
+      <title>NPM: 多源管理与私有包发布攻略</title>
       <link>https://lianpf.github.io/posts/frontend-develop/npm-package-nrmimagesourcemanage/</link>
       <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://lianpf.github.io/posts/frontend-develop/npm-package-nrmimagesourcemanage/</guid>
-      <description>&lt;p&gt;node 作为当前最受欢迎的&amp;quot;js版&amp;quot;后端开发语言之一，无论是业务开发，还是自动化构建部署，使用是很频繁的。但是&amp;hellip;&lt;/p&gt;</description>
+      <description>&lt;p&gt;在日常的Node.js或前端开发中，我们经常需要在不同的npm源之间切换：从&lt;strong&gt;npm官方源&lt;/strong&gt;下载公共包，使用&lt;strong&gt;国内镜像源&lt;/strong&gt;（如阿里云镜像）加速安装，或向&lt;strong&gt;公司私有源&lt;/strong&gt;发布内部SDK和工具。手动修改配置不仅效率低下，还容易导致团队环境不一致。本文提供一套经过验证的、高效可靠的管理与发布方案。&lt;/p&gt;</description>
     </item>
     
     <item>
