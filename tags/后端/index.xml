@@ -6,7 +6,16 @@
     <description>Recent content in 后端 on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 03 Aug 2025 11:08:43 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 Apr 2026 20:31:04 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python：环境管理选 pyenv 还是 uv</title>
+      <link>https://lianpf.github.io/posts/backend-develop/python-dependency-management/</link>
+      <pubDate>Wed, 15 Apr 2026 20:31:04 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/backend-develop/python-dependency-management/</guid>
+      <description>从前端工程化视角对比 pyenv&#43;venv 与 uv，帮助在 Mac 上快速完成 Python / AI 开发环境选型。</description>
+    </item>
+    
     <item>
       <title>Python 基础</title>
       <link>https://lianpf.github.io/posts/backend-develop/python-basics/</link>
