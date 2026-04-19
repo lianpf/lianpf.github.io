@@ -3,10 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lianpf.github.io/posts/</loc>
-    <lastmod>2026-04-16T13:31:04+08:00</lastmod>
+    <lastmod>2026-04-17T10:00:00+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/categories/</loc>
-    <lastmod>2026-04-16T13:31:04+08:00</lastmod>
+    <lastmod>2026-04-17T10:00:00+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/tags/python/</loc>
     <lastmod>2026-04-16T13:31:04+08:00</lastmod>
@@ -15,7 +15,7 @@
     <lastmod>2026-04-16T13:31:04+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/tags/</loc>
-    <lastmod>2026-04-16T13:31:04+08:00</lastmod>
+    <lastmod>2026-04-17T10:00:00+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/backend-develop/</loc>
     <lastmod>2026-04-16T13:31:04+08:00</lastmod>
@@ -27,21 +27,24 @@
     <lastmod>2026-04-16T13:31:04+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/</loc>
-    <lastmod>2026-04-16T13:31:04+08:00</lastmod>
+    <lastmod>2026-04-17T10:00:00+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/tags/ai/</loc>
-    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+    <lastmod>2026-04-17T10:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://lianpf.github.io/posts/ai-develop/ai-app-use/</loc>
-    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+    <loc>https://lianpf.github.io/posts/ai-develop/claude-code-use/</loc>
+    <lastmod>2026-04-17T10:00:00+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/categories/ai%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+    <lastmod>2026-04-17T10:00:00+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/ai-develop/</loc>
-    <lastmod>2025-10-29T11:08:33+08:00</lastmod>
+    <lastmod>2026-04-17T10:00:00+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2026-04-17T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://lianpf.github.io/posts/ai-develop/ai-app-use/</loc>
     <lastmod>2025-10-29T11:08:33+08:00</lastmod>
   </url><url>
     <loc>https://lianpf.github.io/posts/ai-develop/openai-codex-use/</loc>

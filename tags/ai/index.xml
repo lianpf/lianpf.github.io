@@ -6,7 +6,16 @@
     <description>Recent content in AI on 曜灵（SUN）Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 27 Oct 2025 11:08:33 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Jan 2026 10:00:00 +0800</lastBuildDate><atom:link href="https://lianpf.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI：Claude Code</title>
+      <link>https://lianpf.github.io/posts/ai-develop/claude-code-use/</link>
+      <pubDate>Thu, 15 Jan 2026 10:00:00 +0800</pubDate>
+      
+      <guid>https://lianpf.github.io/posts/ai-develop/claude-code-use/</guid>
+      <description>本文主要介绍 Anthropic Claude Code 的安装、登录与终端 CLI 快速上手。</description>
+    </item>
+    
     <item>
       <title>AI：CC Switch和Cherry Studio等软件的使用</title>
       <link>https://lianpf.github.io/posts/ai-develop/ai-app-use/</link>
